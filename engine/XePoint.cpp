@@ -71,17 +71,17 @@ bool CPoint::IsInPoly(CPoint* poly, int num, bool bInSize) {
 		if (IsFloatEqual((x-poly[i].x)*(poly[j].y-poly[i].y), (y-poly[i].y)*(poly[j].x-poly[i].x))) {
 			return bInSize;
 		}
-		// ±ßÆ½ÐÐxÖá
+		// 边平行x轴
 		if (!IsFloatEqual(poly[i].y, poly[j].y)) {
-			// ÉÏ·½
+			// 上方
 			if (y > poly[i].y && y > poly[j].y) {
 				continue;
 			}
-			// ÏÂ·½£¨ÉÏ±ÕÏÂ¿ª£©
+			// 下方（上闭下开）
 			if (y <= poly[i].y && y <= poly[j].y) {
 				continue;
 			}
-			// ÓÒ·½
+			// 右方
 			if (x > poly[i].x && x > poly[j].x) {
 				continue;
 			}
