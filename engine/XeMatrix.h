@@ -17,6 +17,15 @@ class CVector;
 class CMatrix
 {
 public:
+	enum EMatrix {
+		E_11,	E_12,	E_13,	E_14,
+		E_21,	E_22,	E_23,	E_24,
+		E_31,	E_32,	E_33,	E_34,
+		E_41,	E_42,	E_43,	E_44,
+		E_Num4x4
+	};
+
+public:
 	CMatrix();
 	
 	CMatrix(float* list);
