@@ -1,0 +1,13 @@
+#
+tags.sh
+TAGS
+cscope.out
+cscope.in.out
+cscope.po.out
+
+#xcode
+*.xcuserdatad
+xcshareddata
+
+#deps
+deps
