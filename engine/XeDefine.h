@@ -4,8 +4,8 @@
  * data: 2015-11- 3
  */
 
-#ifndef _DEFINE_H_
-#define _DEFINE_H_
+#ifndef _XEDEFINE_H_
+#define _XEDEFINE_H_
 
 // 调试功能宏
 #ifdef _DEBUG
@@ -51,3 +51,4 @@
 #define MOUSE2TOUCH					// 用鼠标模拟触摸
 //#define USE_SHADOW					// 开启阴影
 
+#endif //_XEDEFINE_H_

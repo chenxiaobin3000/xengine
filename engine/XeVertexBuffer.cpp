@@ -7,7 +7,7 @@ CVertexBuffer::CVertexBuffer() {
 	
 }
 
-CVertexBuffer::~IVertexBuffer() {
+CVertexBuffer::~CVertexBuffer() {
 
 }
 
@@ -15,15 +15,15 @@ void CVertexBuffer::setVertexCount(int value) {
 
 };
 	
-int CVertexBuffer::getVertexCount(); {
-
+int CVertexBuffer::getVertexCount() {
+    return 0;
 }
 
-Vertex* CVertexBuffer::lock(); {
-
+CVertex* CVertexBuffer::lock() {
+    return NULL;
 }
 
-void CVertexBuffer::unlock(); {
+void CVertexBuffer::unlock() {
 
 }
 	

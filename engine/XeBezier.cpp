@@ -55,7 +55,7 @@ CVertex& CBezier3::GetValue(float t) {
 }
 
 void CBezier3::GetValue(CVertexList& list) {
-	int size = list.size();
+	int size = (int)list.size();
 	float t = (float)(1.0 / size);
 	for (int i=0; i<size; ++i) {
 		list[i] = GetValue(t*i);

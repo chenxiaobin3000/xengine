@@ -107,7 +107,7 @@ void CRandom::Init(unsigned int seed) {
 }
 
 int CRandom::Random() {
-	return genrand_int32();
+	return (int)genrand_int32();
 }
 
 int CRandom::Random_100() {

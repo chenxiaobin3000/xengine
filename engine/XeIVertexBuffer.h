@@ -7,6 +7,8 @@
 #ifndef _XEIVERTEXBUFFER_H_
 #define _XEIVERTEXBUFFER_H_
 
+#include "XeVertex.h"
+
 namespace XE {
 
 class IVertexBuffer
@@ -17,7 +19,7 @@ public:
 	virtual void setVertexCount(int value) = 0;
 	virtual int getVertexCount() = 0;
 
-	virtual Vertex* lock() = 0;
+	virtual CVertex* lock() = 0;
 	virtual void unlock() = 0;
 };
 

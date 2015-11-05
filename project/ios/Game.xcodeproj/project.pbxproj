@@ -7,118 +7,172 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		517013DE1BD0F41D007147E7 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517013DD1BD0F41D007147E7 /* libfreetype.a */; settings = {ASSET_TAGS = (); }; };
-		517013E21BD0F4A5007147E7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517013E01BD0F4A5007147E7 /* test.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014F61BD0FA22007147E7 /* MyGUI_ActionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014951BD0FA22007147E7 /* MyGUI_ActionController.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014F71BD0FA22007147E7 /* MyGUI_Any.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014961BD0FA22007147E7 /* MyGUI_Any.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014F81BD0FA22007147E7 /* MyGUI_BackwardCompatibility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014971BD0FA22007147E7 /* MyGUI_BackwardCompatibility.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014F91BD0FA22007147E7 /* MyGUI_BiIndexBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014981BD0FA22007147E7 /* MyGUI_BiIndexBase.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014FA1BD0FA22007147E7 /* MyGUI_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014991BD0FA22007147E7 /* MyGUI_Button.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014FB1BD0FA22007147E7 /* MyGUI_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149A1BD0FA22007147E7 /* MyGUI_Canvas.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014FC1BD0FA22007147E7 /* MyGUI_ChildSkinInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149B1BD0FA22007147E7 /* MyGUI_ChildSkinInfo.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014FD1BD0FA22007147E7 /* MyGUI_ClipboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149C1BD0FA22007147E7 /* MyGUI_ClipboardManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014FE1BD0FA22007147E7 /* MyGUI_Colour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149D1BD0FA22007147E7 /* MyGUI_Colour.cpp */; settings = {ASSET_TAGS = (); }; };
-		517014FF1BD0FA22007147E7 /* MyGUI_ComboBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149E1BD0FA22007147E7 /* MyGUI_ComboBox.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015001BD0FA22007147E7 /* MyGUI_ConsoleLogListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149F1BD0FA22007147E7 /* MyGUI_ConsoleLogListener.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015011BD0FA22007147E7 /* MyGUI_Constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A01BD0FA22007147E7 /* MyGUI_Constants.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015021BD0FA22007147E7 /* MyGUI_ControllerEdgeHide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A11BD0FA22007147E7 /* MyGUI_ControllerEdgeHide.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015031BD0FA22007147E7 /* MyGUI_ControllerFadeAlpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A21BD0FA22007147E7 /* MyGUI_ControllerFadeAlpha.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015041BD0FA22007147E7 /* MyGUI_ControllerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A31BD0FA22007147E7 /* MyGUI_ControllerManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015051BD0FA22007147E7 /* MyGUI_ControllerPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A41BD0FA22007147E7 /* MyGUI_ControllerPosition.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015061BD0FA22007147E7 /* MyGUI_ControllerRepeatClick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A51BD0FA22007147E7 /* MyGUI_ControllerRepeatClick.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015071BD0FA22007147E7 /* MyGUI_DataFileStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A61BD0FA22007147E7 /* MyGUI_DataFileStream.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015081BD0FA22007147E7 /* MyGUI_DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A71BD0FA22007147E7 /* MyGUI_DataManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015091BD0FA22007147E7 /* MyGUI_DataMemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A81BD0FA22007147E7 /* MyGUI_DataMemoryStream.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170150A1BD0FA22007147E7 /* MyGUI_DataStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A91BD0FA22007147E7 /* MyGUI_DataStream.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170150B1BD0FA22007147E7 /* MyGUI_DDContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AA1BD0FA22007147E7 /* MyGUI_DDContainer.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170150C1BD0FA22007147E7 /* MyGUI_DynLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AB1BD0FA22007147E7 /* MyGUI_DynLib.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170150D1BD0FA22007147E7 /* MyGUI_DynLibManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AC1BD0FA22007147E7 /* MyGUI_DynLibManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170150E1BD0FA22007147E7 /* MyGUI_EditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AD1BD0FA22007147E7 /* MyGUI_EditBox.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170150F1BD0FA22007147E7 /* MyGUI_EditText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AE1BD0FA22007147E7 /* MyGUI_EditText.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015101BD0FA22007147E7 /* MyGUI_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AF1BD0FA22007147E7 /* MyGUI_Exception.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015111BD0FA22007147E7 /* MyGUI_FactoryManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B01BD0FA22007147E7 /* MyGUI_FactoryManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015121BD0FA22007147E7 /* MyGUI_FileLogListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B11BD0FA22007147E7 /* MyGUI_FileLogListener.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015131BD0FA22007147E7 /* MyGUI_FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B21BD0FA22007147E7 /* MyGUI_FontManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015141BD0FA22007147E7 /* MyGUI_GeometryUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B31BD0FA22007147E7 /* MyGUI_GeometryUtility.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015151BD0FA22007147E7 /* MyGUI_Gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B41BD0FA22007147E7 /* MyGUI_Gui.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015161BD0FA22007147E7 /* MyGUI_ImageBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B51BD0FA22007147E7 /* MyGUI_ImageBox.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015171BD0FA22007147E7 /* MyGUI_InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B61BD0FA22007147E7 /* MyGUI_InputManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015181BD0FA22007147E7 /* MyGUI_ItemBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B71BD0FA22007147E7 /* MyGUI_ItemBox.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015191BD0FA22007147E7 /* MyGUI_LanguageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B81BD0FA22007147E7 /* MyGUI_LanguageManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170151A1BD0FA22007147E7 /* MyGUI_LayerItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B91BD0FA22007147E7 /* MyGUI_LayerItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170151B1BD0FA22007147E7 /* MyGUI_LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BA1BD0FA22007147E7 /* MyGUI_LayerManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170151C1BD0FA22007147E7 /* MyGUI_LayerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BB1BD0FA22007147E7 /* MyGUI_LayerNode.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170151D1BD0FA22007147E7 /* MyGUI_LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BC1BD0FA22007147E7 /* MyGUI_LayoutManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170151E1BD0FA22007147E7 /* MyGUI_LevelLogFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BD1BD0FA22007147E7 /* MyGUI_LevelLogFilter.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170151F1BD0FA22007147E7 /* MyGUI_ListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BE1BD0FA22007147E7 /* MyGUI_ListBox.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015201BD0FA22007147E7 /* MyGUI_LogManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BF1BD0FA22007147E7 /* MyGUI_LogManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015211BD0FA22007147E7 /* MyGUI_LogSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C01BD0FA22007147E7 /* MyGUI_LogSource.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015221BD0FA22007147E7 /* MyGUI_MainSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C11BD0FA22007147E7 /* MyGUI_MainSkin.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015231BD0FA22007147E7 /* MyGUI_MaskPickInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C21BD0FA22007147E7 /* MyGUI_MaskPickInfo.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015241BD0FA22007147E7 /* MyGUI_MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C31BD0FA22007147E7 /* MyGUI_MenuBar.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015251BD0FA22007147E7 /* MyGUI_MenuControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C41BD0FA22007147E7 /* MyGUI_MenuControl.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015261BD0FA22007147E7 /* MyGUI_MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C51BD0FA22007147E7 /* MyGUI_MenuItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015271BD0FA22007147E7 /* MyGUI_MultiListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C61BD0FA22007147E7 /* MyGUI_MultiListBox.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015281BD0FA22007147E7 /* MyGUI_MultiListItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C71BD0FA22007147E7 /* MyGUI_MultiListItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015291BD0FA22007147E7 /* MyGUI_OverlappedLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C81BD0FA22007147E7 /* MyGUI_OverlappedLayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170152A1BD0FA22007147E7 /* MyGUI_PluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C91BD0FA22007147E7 /* MyGUI_PluginManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170152B1BD0FA22007147E7 /* MyGUI_PointerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CA1BD0FA22007147E7 /* MyGUI_PointerManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170152C1BD0FA22007147E7 /* MyGUI_PolygonalSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CB1BD0FA22007147E7 /* MyGUI_PolygonalSkin.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170152D1BD0FA22007147E7 /* MyGUI_PopupMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CC1BD0FA22007147E7 /* MyGUI_PopupMenu.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170152E1BD0FA22007147E7 /* MyGUI_Precompiled.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CD1BD0FA22007147E7 /* MyGUI_Precompiled.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170152F1BD0FA22007147E7 /* MyGUI_ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CE1BD0FA22007147E7 /* MyGUI_ProgressBar.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015301BD0FA22007147E7 /* MyGUI_RenderItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CF1BD0FA22007147E7 /* MyGUI_RenderItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015311BD0FA22007147E7 /* MyGUI_RenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D01BD0FA22007147E7 /* MyGUI_RenderManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015321BD0FA22007147E7 /* MyGUI_ResourceImageSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D11BD0FA22007147E7 /* MyGUI_ResourceImageSet.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015331BD0FA22007147E7 /* MyGUI_ResourceImageSetPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D21BD0FA22007147E7 /* MyGUI_ResourceImageSetPointer.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015341BD0FA22007147E7 /* MyGUI_ResourceLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D31BD0FA22007147E7 /* MyGUI_ResourceLayout.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015351BD0FA22007147E7 /* MyGUI_ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D41BD0FA22007147E7 /* MyGUI_ResourceManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015361BD0FA22007147E7 /* MyGUI_ResourceManualFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D51BD0FA22007147E7 /* MyGUI_ResourceManualFont.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015371BD0FA22007147E7 /* MyGUI_ResourceManualPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D61BD0FA22007147E7 /* MyGUI_ResourceManualPointer.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015381BD0FA22007147E7 /* MyGUI_ResourceSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D71BD0FA22007147E7 /* MyGUI_ResourceSkin.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015391BD0FA22007147E7 /* MyGUI_ResourceTrueTypeFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D81BD0FA22007147E7 /* MyGUI_ResourceTrueTypeFont.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170153A1BD0FA22007147E7 /* MyGUI_RotatingSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D91BD0FA22007147E7 /* MyGUI_RotatingSkin.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170153B1BD0FA22007147E7 /* MyGUI_ScrollBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DA1BD0FA22007147E7 /* MyGUI_ScrollBar.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170153C1BD0FA22007147E7 /* MyGUI_ScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DB1BD0FA22007147E7 /* MyGUI_ScrollView.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170153D1BD0FA22007147E7 /* MyGUI_ScrollViewBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DC1BD0FA22007147E7 /* MyGUI_ScrollViewBase.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170153E1BD0FA22007147E7 /* MyGUI_SharedLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DD1BD0FA22007147E7 /* MyGUI_SharedLayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170153F1BD0FA22007147E7 /* MyGUI_SharedLayerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DE1BD0FA22007147E7 /* MyGUI_SharedLayerNode.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015401BD0FA22007147E7 /* MyGUI_SimpleText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DF1BD0FA22007147E7 /* MyGUI_SimpleText.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015411BD0FA22007147E7 /* MyGUI_SkinItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E01BD0FA22007147E7 /* MyGUI_SkinItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015421BD0FA22007147E7 /* MyGUI_SkinManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E11BD0FA22007147E7 /* MyGUI_SkinManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015431BD0FA22007147E7 /* MyGUI_SubSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E21BD0FA22007147E7 /* MyGUI_SubSkin.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015441BD0FA22007147E7 /* MyGUI_SubWidgetBinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E31BD0FA22007147E7 /* MyGUI_SubWidgetBinding.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015451BD0FA22007147E7 /* MyGUI_SubWidgetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E41BD0FA22007147E7 /* MyGUI_SubWidgetManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015461BD0FA22007147E7 /* MyGUI_TabControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E51BD0FA22007147E7 /* MyGUI_TabControl.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015471BD0FA22007147E7 /* MyGUI_TabItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E61BD0FA22007147E7 /* MyGUI_TabItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015481BD0FA22007147E7 /* MyGUI_TextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E71BD0FA22007147E7 /* MyGUI_TextBox.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015491BD0FA22007147E7 /* MyGUI_TextIterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E81BD0FA22007147E7 /* MyGUI_TextIterator.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170154A1BD0FA22007147E7 /* MyGUI_TextureUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E91BD0FA22007147E7 /* MyGUI_TextureUtility.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170154B1BD0FA22007147E7 /* MyGUI_TextView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EA1BD0FA22007147E7 /* MyGUI_TextView.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170154C1BD0FA22007147E7 /* MyGUI_TileRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EB1BD0FA22007147E7 /* MyGUI_TileRect.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170154D1BD0FA22007147E7 /* MyGUI_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EC1BD0FA22007147E7 /* MyGUI_Timer.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170154E1BD0FA22007147E7 /* MyGUI_ToolTipManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014ED1BD0FA22007147E7 /* MyGUI_ToolTipManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170154F1BD0FA22007147E7 /* MyGUI_UString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EE1BD0FA22007147E7 /* MyGUI_UString.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015501BD0FA22007147E7 /* MyGUI_Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EF1BD0FA22007147E7 /* MyGUI_Widget.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015511BD0FA22007147E7 /* MyGUI_WidgetInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F01BD0FA22007147E7 /* MyGUI_WidgetInput.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015521BD0FA22007147E7 /* MyGUI_WidgetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F11BD0FA22007147E7 /* MyGUI_WidgetManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015531BD0FA22007147E7 /* MyGUI_WidgetUserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F21BD0FA22007147E7 /* MyGUI_WidgetUserData.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015541BD0FA22007147E7 /* MyGUI_Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F31BD0FA22007147E7 /* MyGUI_Window.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015551BD0FA22007147E7 /* MyGUI_WindowsClipboardHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F41BD0FA22007147E7 /* MyGUI_WindowsClipboardHandler.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015561BD0FA22007147E7 /* MyGUI_XmlDocument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F51BD0FA22007147E7 /* MyGUI_XmlDocument.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015671BD0FAA6007147E7 /* MyGUI_OpenGLDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517015611BD0FAA6007147E7 /* MyGUI_OpenGLDataManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015681BD0FAA6007147E7 /* MyGUI_OpenGLPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517015621BD0FAA6007147E7 /* MyGUI_OpenGLPlatform.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015691BD0FAA6007147E7 /* MyGUI_OpenGLRenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517015631BD0FAA6007147E7 /* MyGUI_OpenGLRenderManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170156A1BD0FAA6007147E7 /* MyGUI_OpenGLRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517015641BD0FAA6007147E7 /* MyGUI_OpenGLRTTexture.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170156B1BD0FAA6007147E7 /* MyGUI_OpenGLTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517015651BD0FAA6007147E7 /* MyGUI_OpenGLTexture.cpp */; settings = {ASSET_TAGS = (); }; };
-		5170156C1BD0FAA6007147E7 /* MyGUI_OpenGLVertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517015661BD0FAA6007147E7 /* MyGUI_OpenGLVertexBuffer.cpp */; settings = {ASSET_TAGS = (); }; };
-		517015731BD0FE2B007147E7 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = 517015711BD0FE2B007147E7 /* glew.c */; settings = {ASSET_TAGS = (); }; };
+		517013DE1BD0F41D007147E7 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517013DD1BD0F41D007147E7 /* libfreetype.a */; };
+		517013E21BD0F4A5007147E7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517013E01BD0F4A5007147E7 /* test.cpp */; };
+		517014F61BD0FA22007147E7 /* MyGUI_ActionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014951BD0FA22007147E7 /* MyGUI_ActionController.cpp */; };
+		517014F71BD0FA22007147E7 /* MyGUI_Any.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014961BD0FA22007147E7 /* MyGUI_Any.cpp */; };
+		517014F81BD0FA22007147E7 /* MyGUI_BackwardCompatibility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014971BD0FA22007147E7 /* MyGUI_BackwardCompatibility.cpp */; };
+		517014F91BD0FA22007147E7 /* MyGUI_BiIndexBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014981BD0FA22007147E7 /* MyGUI_BiIndexBase.cpp */; };
+		517014FA1BD0FA22007147E7 /* MyGUI_Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014991BD0FA22007147E7 /* MyGUI_Button.cpp */; };
+		517014FB1BD0FA22007147E7 /* MyGUI_Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149A1BD0FA22007147E7 /* MyGUI_Canvas.cpp */; };
+		517014FC1BD0FA22007147E7 /* MyGUI_ChildSkinInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149B1BD0FA22007147E7 /* MyGUI_ChildSkinInfo.cpp */; };
+		517014FD1BD0FA22007147E7 /* MyGUI_ClipboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149C1BD0FA22007147E7 /* MyGUI_ClipboardManager.cpp */; };
+		517014FE1BD0FA22007147E7 /* MyGUI_Colour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149D1BD0FA22007147E7 /* MyGUI_Colour.cpp */; };
+		517014FF1BD0FA22007147E7 /* MyGUI_ComboBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149E1BD0FA22007147E7 /* MyGUI_ComboBox.cpp */; };
+		517015001BD0FA22007147E7 /* MyGUI_ConsoleLogListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5170149F1BD0FA22007147E7 /* MyGUI_ConsoleLogListener.cpp */; };
+		517015011BD0FA22007147E7 /* MyGUI_Constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A01BD0FA22007147E7 /* MyGUI_Constants.cpp */; };
+		517015021BD0FA22007147E7 /* MyGUI_ControllerEdgeHide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A11BD0FA22007147E7 /* MyGUI_ControllerEdgeHide.cpp */; };
+		517015031BD0FA22007147E7 /* MyGUI_ControllerFadeAlpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A21BD0FA22007147E7 /* MyGUI_ControllerFadeAlpha.cpp */; };
+		517015041BD0FA22007147E7 /* MyGUI_ControllerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A31BD0FA22007147E7 /* MyGUI_ControllerManager.cpp */; };
+		517015051BD0FA22007147E7 /* MyGUI_ControllerPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A41BD0FA22007147E7 /* MyGUI_ControllerPosition.cpp */; };
+		517015061BD0FA22007147E7 /* MyGUI_ControllerRepeatClick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A51BD0FA22007147E7 /* MyGUI_ControllerRepeatClick.cpp */; };
+		517015071BD0FA22007147E7 /* MyGUI_DataFileStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A61BD0FA22007147E7 /* MyGUI_DataFileStream.cpp */; };
+		517015081BD0FA22007147E7 /* MyGUI_DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A71BD0FA22007147E7 /* MyGUI_DataManager.cpp */; };
+		517015091BD0FA22007147E7 /* MyGUI_DataMemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A81BD0FA22007147E7 /* MyGUI_DataMemoryStream.cpp */; };
+		5170150A1BD0FA22007147E7 /* MyGUI_DataStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014A91BD0FA22007147E7 /* MyGUI_DataStream.cpp */; };
+		5170150B1BD0FA22007147E7 /* MyGUI_DDContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AA1BD0FA22007147E7 /* MyGUI_DDContainer.cpp */; };
+		5170150C1BD0FA22007147E7 /* MyGUI_DynLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AB1BD0FA22007147E7 /* MyGUI_DynLib.cpp */; };
+		5170150D1BD0FA22007147E7 /* MyGUI_DynLibManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AC1BD0FA22007147E7 /* MyGUI_DynLibManager.cpp */; };
+		5170150E1BD0FA22007147E7 /* MyGUI_EditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AD1BD0FA22007147E7 /* MyGUI_EditBox.cpp */; };
+		5170150F1BD0FA22007147E7 /* MyGUI_EditText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AE1BD0FA22007147E7 /* MyGUI_EditText.cpp */; };
+		517015101BD0FA22007147E7 /* MyGUI_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014AF1BD0FA22007147E7 /* MyGUI_Exception.cpp */; };
+		517015111BD0FA22007147E7 /* MyGUI_FactoryManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B01BD0FA22007147E7 /* MyGUI_FactoryManager.cpp */; };
+		517015121BD0FA22007147E7 /* MyGUI_FileLogListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B11BD0FA22007147E7 /* MyGUI_FileLogListener.cpp */; };
+		517015131BD0FA22007147E7 /* MyGUI_FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B21BD0FA22007147E7 /* MyGUI_FontManager.cpp */; };
+		517015141BD0FA22007147E7 /* MyGUI_GeometryUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B31BD0FA22007147E7 /* MyGUI_GeometryUtility.cpp */; };
+		517015151BD0FA22007147E7 /* MyGUI_Gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B41BD0FA22007147E7 /* MyGUI_Gui.cpp */; };
+		517015161BD0FA22007147E7 /* MyGUI_ImageBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B51BD0FA22007147E7 /* MyGUI_ImageBox.cpp */; };
+		517015171BD0FA22007147E7 /* MyGUI_InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B61BD0FA22007147E7 /* MyGUI_InputManager.cpp */; };
+		517015181BD0FA22007147E7 /* MyGUI_ItemBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B71BD0FA22007147E7 /* MyGUI_ItemBox.cpp */; };
+		517015191BD0FA22007147E7 /* MyGUI_LanguageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B81BD0FA22007147E7 /* MyGUI_LanguageManager.cpp */; };
+		5170151A1BD0FA22007147E7 /* MyGUI_LayerItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014B91BD0FA22007147E7 /* MyGUI_LayerItem.cpp */; };
+		5170151B1BD0FA22007147E7 /* MyGUI_LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BA1BD0FA22007147E7 /* MyGUI_LayerManager.cpp */; };
+		5170151C1BD0FA22007147E7 /* MyGUI_LayerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BB1BD0FA22007147E7 /* MyGUI_LayerNode.cpp */; };
+		5170151D1BD0FA22007147E7 /* MyGUI_LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BC1BD0FA22007147E7 /* MyGUI_LayoutManager.cpp */; };
+		5170151E1BD0FA22007147E7 /* MyGUI_LevelLogFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BD1BD0FA22007147E7 /* MyGUI_LevelLogFilter.cpp */; };
+		5170151F1BD0FA22007147E7 /* MyGUI_ListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BE1BD0FA22007147E7 /* MyGUI_ListBox.cpp */; };
+		517015201BD0FA22007147E7 /* MyGUI_LogManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014BF1BD0FA22007147E7 /* MyGUI_LogManager.cpp */; };
+		517015211BD0FA22007147E7 /* MyGUI_LogSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C01BD0FA22007147E7 /* MyGUI_LogSource.cpp */; };
+		517015221BD0FA22007147E7 /* MyGUI_MainSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C11BD0FA22007147E7 /* MyGUI_MainSkin.cpp */; };
+		517015231BD0FA22007147E7 /* MyGUI_MaskPickInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C21BD0FA22007147E7 /* MyGUI_MaskPickInfo.cpp */; };
+		517015241BD0FA22007147E7 /* MyGUI_MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C31BD0FA22007147E7 /* MyGUI_MenuBar.cpp */; };
+		517015251BD0FA22007147E7 /* MyGUI_MenuControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C41BD0FA22007147E7 /* MyGUI_MenuControl.cpp */; };
+		517015261BD0FA22007147E7 /* MyGUI_MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C51BD0FA22007147E7 /* MyGUI_MenuItem.cpp */; };
+		517015271BD0FA22007147E7 /* MyGUI_MultiListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C61BD0FA22007147E7 /* MyGUI_MultiListBox.cpp */; };
+		517015281BD0FA22007147E7 /* MyGUI_MultiListItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C71BD0FA22007147E7 /* MyGUI_MultiListItem.cpp */; };
+		517015291BD0FA22007147E7 /* MyGUI_OverlappedLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C81BD0FA22007147E7 /* MyGUI_OverlappedLayer.cpp */; };
+		5170152A1BD0FA22007147E7 /* MyGUI_PluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014C91BD0FA22007147E7 /* MyGUI_PluginManager.cpp */; };
+		5170152B1BD0FA22007147E7 /* MyGUI_PointerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CA1BD0FA22007147E7 /* MyGUI_PointerManager.cpp */; };
+		5170152C1BD0FA22007147E7 /* MyGUI_PolygonalSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CB1BD0FA22007147E7 /* MyGUI_PolygonalSkin.cpp */; };
+		5170152D1BD0FA22007147E7 /* MyGUI_PopupMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CC1BD0FA22007147E7 /* MyGUI_PopupMenu.cpp */; };
+		5170152E1BD0FA22007147E7 /* MyGUI_Precompiled.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CD1BD0FA22007147E7 /* MyGUI_Precompiled.cpp */; };
+		5170152F1BD0FA22007147E7 /* MyGUI_ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CE1BD0FA22007147E7 /* MyGUI_ProgressBar.cpp */; };
+		517015301BD0FA22007147E7 /* MyGUI_RenderItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014CF1BD0FA22007147E7 /* MyGUI_RenderItem.cpp */; };
+		517015311BD0FA22007147E7 /* MyGUI_RenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D01BD0FA22007147E7 /* MyGUI_RenderManager.cpp */; };
+		517015321BD0FA22007147E7 /* MyGUI_ResourceImageSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D11BD0FA22007147E7 /* MyGUI_ResourceImageSet.cpp */; };
+		517015331BD0FA22007147E7 /* MyGUI_ResourceImageSetPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D21BD0FA22007147E7 /* MyGUI_ResourceImageSetPointer.cpp */; };
+		517015341BD0FA22007147E7 /* MyGUI_ResourceLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D31BD0FA22007147E7 /* MyGUI_ResourceLayout.cpp */; };
+		517015351BD0FA22007147E7 /* MyGUI_ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D41BD0FA22007147E7 /* MyGUI_ResourceManager.cpp */; };
+		517015361BD0FA22007147E7 /* MyGUI_ResourceManualFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D51BD0FA22007147E7 /* MyGUI_ResourceManualFont.cpp */; };
+		517015371BD0FA22007147E7 /* MyGUI_ResourceManualPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D61BD0FA22007147E7 /* MyGUI_ResourceManualPointer.cpp */; };
+		517015381BD0FA22007147E7 /* MyGUI_ResourceSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D71BD0FA22007147E7 /* MyGUI_ResourceSkin.cpp */; };
+		517015391BD0FA22007147E7 /* MyGUI_ResourceTrueTypeFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D81BD0FA22007147E7 /* MyGUI_ResourceTrueTypeFont.cpp */; };
+		5170153A1BD0FA22007147E7 /* MyGUI_RotatingSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014D91BD0FA22007147E7 /* MyGUI_RotatingSkin.cpp */; };
+		5170153B1BD0FA22007147E7 /* MyGUI_ScrollBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DA1BD0FA22007147E7 /* MyGUI_ScrollBar.cpp */; };
+		5170153C1BD0FA22007147E7 /* MyGUI_ScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DB1BD0FA22007147E7 /* MyGUI_ScrollView.cpp */; };
+		5170153D1BD0FA22007147E7 /* MyGUI_ScrollViewBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DC1BD0FA22007147E7 /* MyGUI_ScrollViewBase.cpp */; };
+		5170153E1BD0FA22007147E7 /* MyGUI_SharedLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DD1BD0FA22007147E7 /* MyGUI_SharedLayer.cpp */; };
+		5170153F1BD0FA22007147E7 /* MyGUI_SharedLayerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DE1BD0FA22007147E7 /* MyGUI_SharedLayerNode.cpp */; };
+		517015401BD0FA22007147E7 /* MyGUI_SimpleText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014DF1BD0FA22007147E7 /* MyGUI_SimpleText.cpp */; };
+		517015411BD0FA22007147E7 /* MyGUI_SkinItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E01BD0FA22007147E7 /* MyGUI_SkinItem.cpp */; };
+		517015421BD0FA22007147E7 /* MyGUI_SkinManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E11BD0FA22007147E7 /* MyGUI_SkinManager.cpp */; };
+		517015431BD0FA22007147E7 /* MyGUI_SubSkin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E21BD0FA22007147E7 /* MyGUI_SubSkin.cpp */; };
+		517015441BD0FA22007147E7 /* MyGUI_SubWidgetBinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E31BD0FA22007147E7 /* MyGUI_SubWidgetBinding.cpp */; };
+		517015451BD0FA22007147E7 /* MyGUI_SubWidgetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E41BD0FA22007147E7 /* MyGUI_SubWidgetManager.cpp */; };
+		517015461BD0FA22007147E7 /* MyGUI_TabControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E51BD0FA22007147E7 /* MyGUI_TabControl.cpp */; };
+		517015471BD0FA22007147E7 /* MyGUI_TabItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E61BD0FA22007147E7 /* MyGUI_TabItem.cpp */; };
+		517015481BD0FA22007147E7 /* MyGUI_TextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E71BD0FA22007147E7 /* MyGUI_TextBox.cpp */; };
+		517015491BD0FA22007147E7 /* MyGUI_TextIterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E81BD0FA22007147E7 /* MyGUI_TextIterator.cpp */; };
+		5170154A1BD0FA22007147E7 /* MyGUI_TextureUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014E91BD0FA22007147E7 /* MyGUI_TextureUtility.cpp */; };
+		5170154B1BD0FA22007147E7 /* MyGUI_TextView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EA1BD0FA22007147E7 /* MyGUI_TextView.cpp */; };
+		5170154C1BD0FA22007147E7 /* MyGUI_TileRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EB1BD0FA22007147E7 /* MyGUI_TileRect.cpp */; };
+		5170154D1BD0FA22007147E7 /* MyGUI_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EC1BD0FA22007147E7 /* MyGUI_Timer.cpp */; };
+		5170154E1BD0FA22007147E7 /* MyGUI_ToolTipManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014ED1BD0FA22007147E7 /* MyGUI_ToolTipManager.cpp */; };
+		5170154F1BD0FA22007147E7 /* MyGUI_UString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EE1BD0FA22007147E7 /* MyGUI_UString.cpp */; };
+		517015501BD0FA22007147E7 /* MyGUI_Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014EF1BD0FA22007147E7 /* MyGUI_Widget.cpp */; };
+		517015511BD0FA22007147E7 /* MyGUI_WidgetInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F01BD0FA22007147E7 /* MyGUI_WidgetInput.cpp */; };
+		517015521BD0FA22007147E7 /* MyGUI_WidgetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F11BD0FA22007147E7 /* MyGUI_WidgetManager.cpp */; };
+		517015531BD0FA22007147E7 /* MyGUI_WidgetUserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F21BD0FA22007147E7 /* MyGUI_WidgetUserData.cpp */; };
+		517015541BD0FA22007147E7 /* MyGUI_Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F31BD0FA22007147E7 /* MyGUI_Window.cpp */; };
+		517015551BD0FA22007147E7 /* MyGUI_WindowsClipboardHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F41BD0FA22007147E7 /* MyGUI_WindowsClipboardHandler.cpp */; };
+		517015561BD0FA22007147E7 /* MyGUI_XmlDocument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014F51BD0FA22007147E7 /* MyGUI_XmlDocument.cpp */; };
+		517015731BD0FE2B007147E7 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = 517015711BD0FE2B007147E7 /* glew.c */; };
+		518FF29D1BE8F3940050E90A /* XeBezier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2701BE8F3940050E90A /* XeBezier.cpp */; };
+		518FF29E1BE8F3940050E90A /* XeMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF27C1BE8F3940050E90A /* XeMatrix.cpp */; };
+		518FF29F1BE8F3940050E90A /* XeNoisePerlin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF27E1BE8F3940050E90A /* XeNoisePerlin.cpp */; };
+		518FF2A01BE8F3940050E90A /* XePlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2811BE8F3940050E90A /* XePlane.cpp */; };
+		518FF2A11BE8F3940050E90A /* XePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2831BE8F3940050E90A /* XePoint.cpp */; };
+		518FF2A21BE8F3940050E90A /* XeQuater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2861BE8F3940050E90A /* XeQuater.cpp */; };
+		518FF2A31BE8F3940050E90A /* XeRandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2881BE8F3940050E90A /* XeRandom.cpp */; };
+		518FF2A41BE8F3940050E90A /* XeRay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF28A1BE8F3940050E90A /* XeRay.cpp */; };
+		518FF2A51BE8F3940050E90A /* XeRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF28C1BE8F3940050E90A /* XeRectangle.cpp */; };
+		518FF2A61BE8F3940050E90A /* XeTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2911BE8F3940050E90A /* XeTimer.cpp */; };
+		518FF2A71BE8F3940050E90A /* XeTriangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2931BE8F3940050E90A /* XeTriangle.cpp */; };
+		518FF2A81BE8F3940050E90A /* XeVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2951BE8F3940050E90A /* XeVector.cpp */; };
+		518FF2A91BE8F3940050E90A /* XeVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2971BE8F3940050E90A /* XeVertex.cpp */; };
+		518FF2AA1BE8F3940050E90A /* XeVertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2991BE8F3940050E90A /* XeVertexBuffer.cpp */; };
+		518FF2AB1BE8F3940050E90A /* XeVoronoi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF29B1BE8F3940050E90A /* XeVoronoi.cpp */; };
+		518FF2AD1BE8F4110050E90A /* XeLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2AC1BE8F4110050E90A /* XeLog.cpp */; };
+		518FF2BE1BE909AE0050E90A /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2B91BE909AE0050E90A /* json_reader.cpp */; };
+		518FF2BF1BE909AE0050E90A /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2BB1BE909AE0050E90A /* json_value.cpp */; };
+		518FF2C01BE909AE0050E90A /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 518FF2BC1BE909AE0050E90A /* json_valueiterator.inl */; };
+		518FF2C11BE909AE0050E90A /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2BD1BE909AE0050E90A /* json_writer.cpp */; };
+		518FF2C81BE90F2B0050E90A /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2C61BE90F2B0050E90A /* tinyxml2.cpp */; };
+		518FF3051BE910990050E90A /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2CA1BE910990050E90A /* lapi.c */; };
+		518FF3061BE910990050E90A /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2CC1BE910990050E90A /* lauxlib.c */; };
+		518FF3071BE910990050E90A /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2CE1BE910990050E90A /* lbaselib.c */; };
+		518FF3081BE910990050E90A /* lbitlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2CF1BE910990050E90A /* lbitlib.c */; };
+		518FF3091BE910990050E90A /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2D01BE910990050E90A /* lcode.c */; };
+		518FF30A1BE910990050E90A /* lcorolib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2D21BE910990050E90A /* lcorolib.c */; };
+		518FF30B1BE910990050E90A /* lctype.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2D31BE910990050E90A /* lctype.c */; };
+		518FF30C1BE910990050E90A /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2D51BE910990050E90A /* ldblib.c */; };
+		518FF30D1BE910990050E90A /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2D61BE910990050E90A /* ldebug.c */; };
+		518FF30E1BE910990050E90A /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2D81BE910990050E90A /* ldo.c */; };
+		518FF30F1BE910990050E90A /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2DA1BE910990050E90A /* ldump.c */; };
+		518FF3101BE910990050E90A /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2DB1BE910990050E90A /* lfunc.c */; };
+		518FF3111BE910990050E90A /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2DD1BE910990050E90A /* lgc.c */; };
+		518FF3121BE910990050E90A /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2DF1BE910990050E90A /* linit.c */; };
+		518FF3131BE910990050E90A /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2E01BE910990050E90A /* liolib.c */; };
+		518FF3141BE910990050E90A /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2E11BE910990050E90A /* llex.c */; };
+		518FF3151BE910990050E90A /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2E41BE910990050E90A /* lmathlib.c */; };
+		518FF3161BE910990050E90A /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2E51BE910990050E90A /* lmem.c */; };
+		518FF3171BE910990050E90A /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2E71BE910990050E90A /* loadlib.c */; };
+		518FF3181BE910990050E90A /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2E81BE910990050E90A /* lobject.c */; };
+		518FF3191BE910990050E90A /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2EA1BE910990050E90A /* lopcodes.c */; };
+		518FF31A1BE910990050E90A /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2EC1BE910990050E90A /* loslib.c */; };
+		518FF31B1BE910990050E90A /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2ED1BE910990050E90A /* lparser.c */; };
+		518FF31C1BE910990050E90A /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2F01BE910990050E90A /* lstate.c */; };
+		518FF31D1BE910990050E90A /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2F21BE910990050E90A /* lstring.c */; };
+		518FF31E1BE910990050E90A /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2F41BE910990050E90A /* lstrlib.c */; };
+		518FF31F1BE910990050E90A /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2F51BE910990050E90A /* ltable.c */; };
+		518FF3201BE910990050E90A /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2F71BE910990050E90A /* ltablib.c */; };
+		518FF3211BE910990050E90A /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2F81BE910990050E90A /* ltm.c */; };
+		518FF3221BE910990050E90A /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF2FE1BE910990050E90A /* lundump.c */; };
+		518FF3231BE910990050E90A /* lutf8lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF3001BE910990050E90A /* lutf8lib.c */; };
+		518FF3241BE910990050E90A /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF3011BE910990050E90A /* lvm.c */; };
+		518FF3251BE910990050E90A /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF3031BE910990050E90A /* lzio.c */; };
 		51929E721BD0EB83006EEBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E711BD0EB83006EEBD9 /* main.m */; };
 		51929E751BD0EB83006EEBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E741BD0EB83006EEBD9 /* AppDelegate.m */; };
 		51929E781BD0EB83006EEBD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E771BD0EB83006EEBD9 /* ViewController.m */; };
 		51929E7B1BD0EB83006EEBD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51929E791BD0EB83006EEBD9 /* Main.storyboard */; };
 		51929E7D1BD0EB83006EEBD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */; };
 		51929E801BD0EB83006EEBD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7E1BD0EB83006EEBD9 /* LaunchScreen.storyboard */; };
+		51E6EB841BEBA2C400EA4490 /* MyGUIDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB761BEBA2C400EA4490 /* MyGUIDataManager.cpp */; };
+		51E6EB851BEBA2C400EA4490 /* MyGUIPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB7A1BEBA2C400EA4490 /* MyGUIPlatform.cpp */; };
+		51E6EB861BEBA2C400EA4490 /* MyGUIRenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB7C1BEBA2C400EA4490 /* MyGUIRenderManager.cpp */; };
+		51E6EB871BEBA2C400EA4490 /* MyGUIRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB7E1BEBA2C400EA4490 /* MyGUIRTTexture.cpp */; };
+		51E6EB881BEBA2C400EA4490 /* MyGUITexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB801BEBA2C400EA4490 /* MyGUITexture.cpp */; };
+		51E6EB891BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB821BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp */; };
 		9D26DC962C8699AB2E958F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF93D00016124A5688E76782 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -396,22 +450,132 @@
 		517014F31BD0FA22007147E7 /* MyGUI_Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_Window.cpp; path = "../../deps/mygui-MyGUI3.2.2/MyGUIEngine/src/MyGUI_Window.cpp"; sourceTree = "<group>"; };
 		517014F41BD0FA22007147E7 /* MyGUI_WindowsClipboardHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_WindowsClipboardHandler.cpp; path = "../../deps/mygui-MyGUI3.2.2/MyGUIEngine/src/MyGUI_WindowsClipboardHandler.cpp"; sourceTree = "<group>"; };
 		517014F51BD0FA22007147E7 /* MyGUI_XmlDocument.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_XmlDocument.cpp; path = "../../deps/mygui-MyGUI3.2.2/MyGUIEngine/src/MyGUI_XmlDocument.cpp"; sourceTree = "<group>"; };
-		517015591BD0FA8E007147E7 /* MyGUI_OpenGLDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLDataManager.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLDataManager.h"; sourceTree = "<group>"; };
-		5170155A1BD0FA8E007147E7 /* MyGUI_OpenGLDiagnostic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLDiagnostic.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLDiagnostic.h"; sourceTree = "<group>"; };
-		5170155B1BD0FA8E007147E7 /* MyGUI_OpenGLImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLImageLoader.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLImageLoader.h"; sourceTree = "<group>"; };
-		5170155C1BD0FA8E007147E7 /* MyGUI_OpenGLPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLPlatform.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLPlatform.h"; sourceTree = "<group>"; };
-		5170155D1BD0FA8E007147E7 /* MyGUI_OpenGLRenderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLRenderManager.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLRenderManager.h"; sourceTree = "<group>"; };
-		5170155E1BD0FA8E007147E7 /* MyGUI_OpenGLRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLRTTexture.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLRTTexture.h"; sourceTree = "<group>"; };
-		5170155F1BD0FA8E007147E7 /* MyGUI_OpenGLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLTexture.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLTexture.h"; sourceTree = "<group>"; };
-		517015601BD0FA8E007147E7 /* MyGUI_OpenGLVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_OpenGLVertexBuffer.h; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/include/MyGUI_OpenGLVertexBuffer.h"; sourceTree = "<group>"; };
-		517015611BD0FAA6007147E7 /* MyGUI_OpenGLDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_OpenGLDataManager.cpp; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/src/MyGUI_OpenGLDataManager.cpp"; sourceTree = "<group>"; };
-		517015621BD0FAA6007147E7 /* MyGUI_OpenGLPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_OpenGLPlatform.cpp; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/src/MyGUI_OpenGLPlatform.cpp"; sourceTree = "<group>"; };
-		517015631BD0FAA6007147E7 /* MyGUI_OpenGLRenderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_OpenGLRenderManager.cpp; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/src/MyGUI_OpenGLRenderManager.cpp"; sourceTree = "<group>"; };
-		517015641BD0FAA6007147E7 /* MyGUI_OpenGLRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_OpenGLRTTexture.cpp; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/src/MyGUI_OpenGLRTTexture.cpp"; sourceTree = "<group>"; };
-		517015651BD0FAA6007147E7 /* MyGUI_OpenGLTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_OpenGLTexture.cpp; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/src/MyGUI_OpenGLTexture.cpp"; sourceTree = "<group>"; };
-		517015661BD0FAA6007147E7 /* MyGUI_OpenGLVertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUI_OpenGLVertexBuffer.cpp; path = "../../deps/mygui-MyGUI3.2.2/Platforms/OpenGL/OpenGLPlatform/src/MyGUI_OpenGLVertexBuffer.cpp"; sourceTree = "<group>"; };
 		517015711BD0FE2B007147E7 /* glew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glew.c; path = ../../deps/glew/GL/glew.c; sourceTree = "<group>"; };
 		517015721BD0FE2B007147E7 /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glew.h; path = ../../deps/glew/GL/glew.h; sourceTree = "<group>"; };
+		518FF2701BE8F3940050E90A /* XeBezier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeBezier.cpp; path = ../../engine/XeBezier.cpp; sourceTree = "<group>"; };
+		518FF2711BE8F3940050E90A /* XeBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeBezier.h; path = ../../engine/XeBezier.h; sourceTree = "<group>"; };
+		518FF2721BE8F3940050E90A /* XeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeDefine.h; path = ../../engine/XeDefine.h; sourceTree = "<group>"; };
+		518FF2731BE8F3940050E90A /* XeEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeEngine.h; path = ../../engine/XeEngine.h; sourceTree = "<group>"; };
+		518FF2741BE8F3940050E90A /* XeGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeGC.h; path = ../../engine/XeGC.h; sourceTree = "<group>"; };
+		518FF2751BE8F3940050E90A /* XeIRenderScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeIRenderScene.h; path = ../../engine/XeIRenderScene.h; sourceTree = "<group>"; };
+		518FF2761BE8F3940050E90A /* XeIRenderTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeIRenderTarget.h; path = ../../engine/XeIRenderTarget.h; sourceTree = "<group>"; };
+		518FF2771BE8F3940050E90A /* XeITexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeITexture.h; path = ../../engine/XeITexture.h; sourceTree = "<group>"; };
+		518FF2781BE8F3940050E90A /* XeIVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeIVertexBuffer.h; path = ../../engine/XeIVertexBuffer.h; sourceTree = "<group>"; };
+		518FF2791BE8F3940050E90A /* XeLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeLog.h; path = ../../engine/XeLog.h; sourceTree = "<group>"; };
+		518FF27A1BE8F3940050E90A /* XeMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeMaterial.h; path = ../../engine/XeMaterial.h; sourceTree = "<group>"; };
+		518FF27B1BE8F3940050E90A /* XeMathDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeMathDef.h; path = ../../engine/XeMathDef.h; sourceTree = "<group>"; };
+		518FF27C1BE8F3940050E90A /* XeMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeMatrix.cpp; path = ../../engine/XeMatrix.cpp; sourceTree = "<group>"; };
+		518FF27D1BE8F3940050E90A /* XeMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeMatrix.h; path = ../../engine/XeMatrix.h; sourceTree = "<group>"; };
+		518FF27E1BE8F3940050E90A /* XeNoisePerlin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeNoisePerlin.cpp; path = ../../engine/XeNoisePerlin.cpp; sourceTree = "<group>"; };
+		518FF27F1BE8F3940050E90A /* XeNoisePerlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeNoisePerlin.h; path = ../../engine/XeNoisePerlin.h; sourceTree = "<group>"; };
+		518FF2801BE8F3940050E90A /* XePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XePass.h; path = ../../engine/XePass.h; sourceTree = "<group>"; };
+		518FF2811BE8F3940050E90A /* XePlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XePlane.cpp; path = ../../engine/XePlane.cpp; sourceTree = "<group>"; };
+		518FF2821BE8F3940050E90A /* XePlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XePlane.h; path = ../../engine/XePlane.h; sourceTree = "<group>"; };
+		518FF2831BE8F3940050E90A /* XePoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XePoint.cpp; path = ../../engine/XePoint.cpp; sourceTree = "<group>"; };
+		518FF2841BE8F3940050E90A /* XePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XePoint.h; path = ../../engine/XePoint.h; sourceTree = "<group>"; };
+		518FF2851BE8F3940050E90A /* XePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XePool.h; path = ../../engine/XePool.h; sourceTree = "<group>"; };
+		518FF2861BE8F3940050E90A /* XeQuater.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeQuater.cpp; path = ../../engine/XeQuater.cpp; sourceTree = "<group>"; };
+		518FF2871BE8F3940050E90A /* XeQuater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeQuater.h; path = ../../engine/XeQuater.h; sourceTree = "<group>"; };
+		518FF2881BE8F3940050E90A /* XeRandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeRandom.cpp; path = ../../engine/XeRandom.cpp; sourceTree = "<group>"; };
+		518FF2891BE8F3940050E90A /* XeRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeRandom.h; path = ../../engine/XeRandom.h; sourceTree = "<group>"; };
+		518FF28A1BE8F3940050E90A /* XeRay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeRay.cpp; path = ../../engine/XeRay.cpp; sourceTree = "<group>"; };
+		518FF28B1BE8F3940050E90A /* XeRay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeRay.h; path = ../../engine/XeRay.h; sourceTree = "<group>"; };
+		518FF28C1BE8F3940050E90A /* XeRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeRectangle.cpp; path = ../../engine/XeRectangle.cpp; sourceTree = "<group>"; };
+		518FF28D1BE8F3940050E90A /* XeRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeRectangle.h; path = ../../engine/XeRectangle.h; sourceTree = "<group>"; };
+		518FF28E1BE8F3940050E90A /* XeRenderFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeRenderFormat.h; path = ../../engine/XeRenderFormat.h; sourceTree = "<group>"; };
+		518FF28F1BE8F3940050E90A /* XeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeSingleton.h; path = ../../engine/XeSingleton.h; sourceTree = "<group>"; };
+		518FF2901BE8F3940050E90A /* XeTechnique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeTechnique.h; path = ../../engine/XeTechnique.h; sourceTree = "<group>"; };
+		518FF2911BE8F3940050E90A /* XeTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeTimer.cpp; path = ../../engine/XeTimer.cpp; sourceTree = "<group>"; };
+		518FF2921BE8F3940050E90A /* XeTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeTimer.h; path = ../../engine/XeTimer.h; sourceTree = "<group>"; };
+		518FF2931BE8F3940050E90A /* XeTriangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeTriangle.cpp; path = ../../engine/XeTriangle.cpp; sourceTree = "<group>"; };
+		518FF2941BE8F3940050E90A /* XeTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeTriangle.h; path = ../../engine/XeTriangle.h; sourceTree = "<group>"; };
+		518FF2951BE8F3940050E90A /* XeVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeVector.cpp; path = ../../engine/XeVector.cpp; sourceTree = "<group>"; };
+		518FF2961BE8F3940050E90A /* XeVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeVector.h; path = ../../engine/XeVector.h; sourceTree = "<group>"; };
+		518FF2971BE8F3940050E90A /* XeVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeVertex.cpp; path = ../../engine/XeVertex.cpp; sourceTree = "<group>"; };
+		518FF2981BE8F3940050E90A /* XeVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeVertex.h; path = ../../engine/XeVertex.h; sourceTree = "<group>"; };
+		518FF2991BE8F3940050E90A /* XeVertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeVertexBuffer.cpp; path = ../../engine/XeVertexBuffer.cpp; sourceTree = "<group>"; };
+		518FF29A1BE8F3940050E90A /* XeVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeVertexBuffer.h; path = ../../engine/XeVertexBuffer.h; sourceTree = "<group>"; };
+		518FF29B1BE8F3940050E90A /* XeVoronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeVoronoi.cpp; path = ../../engine/XeVoronoi.cpp; sourceTree = "<group>"; };
+		518FF29C1BE8F3940050E90A /* XeVoronoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeVoronoi.h; path = ../../engine/XeVoronoi.h; sourceTree = "<group>"; };
+		518FF2AC1BE8F4110050E90A /* XeLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeLog.cpp; path = ../../engine/app/ios/XeLog.cpp; sourceTree = "<group>"; };
+		518FF2AF1BE909990050E90A /* assertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = assertions.h; path = ../../deps/jsoncpp/include/json/assertions.h; sourceTree = "<group>"; };
+		518FF2B01BE909990050E90A /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = autolink.h; path = ../../deps/jsoncpp/include/json/autolink.h; sourceTree = "<group>"; };
+		518FF2B21BE909990050E90A /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = features.h; path = ../../deps/jsoncpp/include/json/features.h; sourceTree = "<group>"; };
+		518FF2B31BE909990050E90A /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = forwards.h; path = ../../deps/jsoncpp/include/json/forwards.h; sourceTree = "<group>"; };
+		518FF2B41BE909990050E90A /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = json.h; path = ../../deps/jsoncpp/include/json/json.h; sourceTree = "<group>"; };
+		518FF2B51BE909990050E90A /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = reader.h; path = ../../deps/jsoncpp/include/json/reader.h; sourceTree = "<group>"; };
+		518FF2B61BE909990050E90A /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = value.h; path = ../../deps/jsoncpp/include/json/value.h; sourceTree = "<group>"; };
+		518FF2B71BE909990050E90A /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../../deps/jsoncpp/include/json/version.h; sourceTree = "<group>"; };
+		518FF2B81BE909990050E90A /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = writer.h; path = ../../deps/jsoncpp/include/json/writer.h; sourceTree = "<group>"; };
+		518FF2B91BE909AE0050E90A /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_reader.cpp; path = ../../deps/jsoncpp/src/lib_json/json_reader.cpp; sourceTree = "<group>"; };
+		518FF2BA1BE909AE0050E90A /* json_tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = json_tool.h; path = ../../deps/jsoncpp/src/lib_json/json_tool.h; sourceTree = "<group>"; };
+		518FF2BB1BE909AE0050E90A /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_value.cpp; path = ../../deps/jsoncpp/src/lib_json/json_value.cpp; sourceTree = "<group>"; };
+		518FF2BC1BE909AE0050E90A /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_valueiterator.inl; path = ../../deps/jsoncpp/src/lib_json/json_valueiterator.inl; sourceTree = "<group>"; };
+		518FF2BD1BE909AE0050E90A /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json_writer.cpp; path = ../../deps/jsoncpp/src/lib_json/json_writer.cpp; sourceTree = "<group>"; };
+		518FF2C21BE90A340050E90A /* config_json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config_json.h; path = ../../deps/jsoncpp/include/json/config_json.h; sourceTree = "<group>"; };
+		518FF2C31BE90A570050E90A /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glxew.h; path = ../../deps/glew/GL/glxew.h; sourceTree = "<group>"; };
+		518FF2C41BE90A570050E90A /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wglew.h; path = ../../deps/glew/GL/wglew.h; sourceTree = "<group>"; };
+		518FF2C61BE90F2B0050E90A /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml2.cpp; path = ../../deps/tinyxml2/tinyxml2.cpp; sourceTree = "<group>"; };
+		518FF2C71BE90F2B0050E90A /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinyxml2.h; path = ../../deps/tinyxml2/tinyxml2.h; sourceTree = "<group>"; };
+		518FF2CA1BE910990050E90A /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = ../../deps/lua/src/lapi.c; sourceTree = "<group>"; };
+		518FF2CB1BE910990050E90A /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lapi.h; path = ../../deps/lua/src/lapi.h; sourceTree = "<group>"; };
+		518FF2CC1BE910990050E90A /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lauxlib.c; path = ../../deps/lua/src/lauxlib.c; sourceTree = "<group>"; };
+		518FF2CD1BE910990050E90A /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lauxlib.h; path = ../../deps/lua/src/lauxlib.h; sourceTree = "<group>"; };
+		518FF2CE1BE910990050E90A /* lbaselib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lbaselib.c; path = ../../deps/lua/src/lbaselib.c; sourceTree = "<group>"; };
+		518FF2CF1BE910990050E90A /* lbitlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lbitlib.c; path = ../../deps/lua/src/lbitlib.c; sourceTree = "<group>"; };
+		518FF2D01BE910990050E90A /* lcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lcode.c; path = ../../deps/lua/src/lcode.c; sourceTree = "<group>"; };
+		518FF2D11BE910990050E90A /* lcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lcode.h; path = ../../deps/lua/src/lcode.h; sourceTree = "<group>"; };
+		518FF2D21BE910990050E90A /* lcorolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lcorolib.c; path = ../../deps/lua/src/lcorolib.c; sourceTree = "<group>"; };
+		518FF2D31BE910990050E90A /* lctype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lctype.c; path = ../../deps/lua/src/lctype.c; sourceTree = "<group>"; };
+		518FF2D41BE910990050E90A /* lctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lctype.h; path = ../../deps/lua/src/lctype.h; sourceTree = "<group>"; };
+		518FF2D51BE910990050E90A /* ldblib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldblib.c; path = ../../deps/lua/src/ldblib.c; sourceTree = "<group>"; };
+		518FF2D61BE910990050E90A /* ldebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldebug.c; path = ../../deps/lua/src/ldebug.c; sourceTree = "<group>"; };
+		518FF2D71BE910990050E90A /* ldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ldebug.h; path = ../../deps/lua/src/ldebug.h; sourceTree = "<group>"; };
+		518FF2D81BE910990050E90A /* ldo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldo.c; path = ../../deps/lua/src/ldo.c; sourceTree = "<group>"; };
+		518FF2D91BE910990050E90A /* ldo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ldo.h; path = ../../deps/lua/src/ldo.h; sourceTree = "<group>"; };
+		518FF2DA1BE910990050E90A /* ldump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldump.c; path = ../../deps/lua/src/ldump.c; sourceTree = "<group>"; };
+		518FF2DB1BE910990050E90A /* lfunc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfunc.c; path = ../../deps/lua/src/lfunc.c; sourceTree = "<group>"; };
+		518FF2DC1BE910990050E90A /* lfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfunc.h; path = ../../deps/lua/src/lfunc.h; sourceTree = "<group>"; };
+		518FF2DD1BE910990050E90A /* lgc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgc.c; path = ../../deps/lua/src/lgc.c; sourceTree = "<group>"; };
+		518FF2DE1BE910990050E90A /* lgc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lgc.h; path = ../../deps/lua/src/lgc.h; sourceTree = "<group>"; };
+		518FF2DF1BE910990050E90A /* linit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = linit.c; path = ../../deps/lua/src/linit.c; sourceTree = "<group>"; };
+		518FF2E01BE910990050E90A /* liolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = liolib.c; path = ../../deps/lua/src/liolib.c; sourceTree = "<group>"; };
+		518FF2E11BE910990050E90A /* llex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = llex.c; path = ../../deps/lua/src/llex.c; sourceTree = "<group>"; };
+		518FF2E21BE910990050E90A /* llex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = llex.h; path = ../../deps/lua/src/llex.h; sourceTree = "<group>"; };
+		518FF2E31BE910990050E90A /* llimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = llimits.h; path = ../../deps/lua/src/llimits.h; sourceTree = "<group>"; };
+		518FF2E41BE910990050E90A /* lmathlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmathlib.c; path = ../../deps/lua/src/lmathlib.c; sourceTree = "<group>"; };
+		518FF2E51BE910990050E90A /* lmem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmem.c; path = ../../deps/lua/src/lmem.c; sourceTree = "<group>"; };
+		518FF2E61BE910990050E90A /* lmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lmem.h; path = ../../deps/lua/src/lmem.h; sourceTree = "<group>"; };
+		518FF2E71BE910990050E90A /* loadlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loadlib.c; path = ../../deps/lua/src/loadlib.c; sourceTree = "<group>"; };
+		518FF2E81BE910990050E90A /* lobject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lobject.c; path = ../../deps/lua/src/lobject.c; sourceTree = "<group>"; };
+		518FF2E91BE910990050E90A /* lobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lobject.h; path = ../../deps/lua/src/lobject.h; sourceTree = "<group>"; };
+		518FF2EA1BE910990050E90A /* lopcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lopcodes.c; path = ../../deps/lua/src/lopcodes.c; sourceTree = "<group>"; };
+		518FF2EB1BE910990050E90A /* lopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lopcodes.h; path = ../../deps/lua/src/lopcodes.h; sourceTree = "<group>"; };
+		518FF2EC1BE910990050E90A /* loslib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loslib.c; path = ../../deps/lua/src/loslib.c; sourceTree = "<group>"; };
+		518FF2ED1BE910990050E90A /* lparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lparser.c; path = ../../deps/lua/src/lparser.c; sourceTree = "<group>"; };
+		518FF2EE1BE910990050E90A /* lparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lparser.h; path = ../../deps/lua/src/lparser.h; sourceTree = "<group>"; };
+		518FF2EF1BE910990050E90A /* lprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lprefix.h; path = ../../deps/lua/src/lprefix.h; sourceTree = "<group>"; };
+		518FF2F01BE910990050E90A /* lstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstate.c; path = ../../deps/lua/src/lstate.c; sourceTree = "<group>"; };
+		518FF2F11BE910990050E90A /* lstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lstate.h; path = ../../deps/lua/src/lstate.h; sourceTree = "<group>"; };
+		518FF2F21BE910990050E90A /* lstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstring.c; path = ../../deps/lua/src/lstring.c; sourceTree = "<group>"; };
+		518FF2F31BE910990050E90A /* lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lstring.h; path = ../../deps/lua/src/lstring.h; sourceTree = "<group>"; };
+		518FF2F41BE910990050E90A /* lstrlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstrlib.c; path = ../../deps/lua/src/lstrlib.c; sourceTree = "<group>"; };
+		518FF2F51BE910990050E90A /* ltable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltable.c; path = ../../deps/lua/src/ltable.c; sourceTree = "<group>"; };
+		518FF2F61BE910990050E90A /* ltable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ltable.h; path = ../../deps/lua/src/ltable.h; sourceTree = "<group>"; };
+		518FF2F71BE910990050E90A /* ltablib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltablib.c; path = ../../deps/lua/src/ltablib.c; sourceTree = "<group>"; };
+		518FF2F81BE910990050E90A /* ltm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltm.c; path = ../../deps/lua/src/ltm.c; sourceTree = "<group>"; };
+		518FF2F91BE910990050E90A /* ltm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ltm.h; path = ../../deps/lua/src/ltm.h; sourceTree = "<group>"; };
+		518FF2FA1BE910990050E90A /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = ../../deps/lua/src/lua.h; sourceTree = "<group>"; };
+		518FF2FB1BE910990050E90A /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lua.hpp; path = ../../deps/lua/src/lua.hpp; sourceTree = "<group>"; };
+		518FF2FC1BE910990050E90A /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luaconf.h; path = ../../deps/lua/src/luaconf.h; sourceTree = "<group>"; };
+		518FF2FD1BE910990050E90A /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lualib.h; path = ../../deps/lua/src/lualib.h; sourceTree = "<group>"; };
+		518FF2FE1BE910990050E90A /* lundump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lundump.c; path = ../../deps/lua/src/lundump.c; sourceTree = "<group>"; };
+		518FF2FF1BE910990050E90A /* lundump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lundump.h; path = ../../deps/lua/src/lundump.h; sourceTree = "<group>"; };
+		518FF3001BE910990050E90A /* lutf8lib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lutf8lib.c; path = ../../deps/lua/src/lutf8lib.c; sourceTree = "<group>"; };
+		518FF3011BE910990050E90A /* lvm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lvm.c; path = ../../deps/lua/src/lvm.c; sourceTree = "<group>"; };
+		518FF3021BE910990050E90A /* lvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lvm.h; path = ../../deps/lua/src/lvm.h; sourceTree = "<group>"; };
+		518FF3031BE910990050E90A /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lzio.c; path = ../../deps/lua/src/lzio.c; sourceTree = "<group>"; };
+		518FF3041BE910990050E90A /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lzio.h; path = ../../deps/lua/src/lzio.h; sourceTree = "<group>"; };
 		51929E6D1BD0EB83006EEBD9 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51929E711BD0EB83006EEBD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51929E731BD0EB83006EEBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -422,6 +586,20 @@
 		51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51929E7F1BD0EB83006EEBD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51929E811BD0EB83006EEBD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51E6EB761BEBA2C400EA4490 /* MyGUIDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIDataManager.cpp; path = ../../engine/MyGUI/MyGUIDataManager.cpp; sourceTree = "<group>"; };
+		51E6EB771BEBA2C400EA4490 /* MyGUIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIDataManager.h; path = ../../engine/MyGUI/MyGUIDataManager.h; sourceTree = "<group>"; };
+		51E6EB781BEBA2C400EA4490 /* MyGUIDiagnostic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIDiagnostic.h; path = ../../engine/MyGUI/MyGUIDiagnostic.h; sourceTree = "<group>"; };
+		51E6EB791BEBA2C400EA4490 /* MyGUIImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIImageLoader.h; path = ../../engine/MyGUI/MyGUIImageLoader.h; sourceTree = "<group>"; };
+		51E6EB7A1BEBA2C400EA4490 /* MyGUIPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIPlatform.cpp; path = ../../engine/MyGUI/MyGUIPlatform.cpp; sourceTree = "<group>"; };
+		51E6EB7B1BEBA2C400EA4490 /* MyGUIPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIPlatform.h; path = ../../engine/MyGUI/MyGUIPlatform.h; sourceTree = "<group>"; };
+		51E6EB7C1BEBA2C400EA4490 /* MyGUIRenderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIRenderManager.cpp; path = ../../engine/MyGUI/MyGUIRenderManager.cpp; sourceTree = "<group>"; };
+		51E6EB7D1BEBA2C400EA4490 /* MyGUIRenderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIRenderManager.h; path = ../../engine/MyGUI/MyGUIRenderManager.h; sourceTree = "<group>"; };
+		51E6EB7E1BEBA2C400EA4490 /* MyGUIRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIRTTexture.cpp; path = ../../engine/MyGUI/MyGUIRTTexture.cpp; sourceTree = "<group>"; };
+		51E6EB7F1BEBA2C400EA4490 /* MyGUIRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIRTTexture.h; path = ../../engine/MyGUI/MyGUIRTTexture.h; sourceTree = "<group>"; };
+		51E6EB801BEBA2C400EA4490 /* MyGUITexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUITexture.cpp; path = ../../engine/MyGUI/MyGUITexture.cpp; sourceTree = "<group>"; };
+		51E6EB811BEBA2C400EA4490 /* MyGUITexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUITexture.h; path = ../../engine/MyGUI/MyGUITexture.h; sourceTree = "<group>"; };
+		51E6EB821BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIVertexBuffer.cpp; path = ../../engine/MyGUI/MyGUIVertexBuffer.cpp; sourceTree = "<group>"; };
+		51E6EB831BEBA2C400EA4490 /* MyGUIVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIVertexBuffer.h; path = ../../engine/MyGUI/MyGUIVertexBuffer.h; sourceTree = "<group>"; };
 		731FE65753D10496910FB67B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9759956B9EE3469CA3E2206 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EF93D00016124A5688E76782 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -461,7 +639,6 @@
 		517013E31BD0F961007147E7 /* MyGUI */ = {
 			isa = PBXGroup;
 			children = (
-				517013E51BD0F983007147E7 /* GLES */,
 				517013E41BD0F97C007147E7 /* Engine */,
 			);
 			name = MyGUI;
@@ -474,15 +651,6 @@
 				517013E71BD0F9CE007147E7 /* Src */,
 			);
 			name = Engine;
-			sourceTree = "<group>";
-		};
-		517013E51BD0F983007147E7 /* GLES */ = {
-			isa = PBXGroup;
-			children = (
-				517015571BD0FA5A007147E7 /* Include */,
-				517015581BD0FA68007147E7 /* Src */,
-			);
-			name = GLES;
 			sourceTree = "<group>";
 		};
 		517013E61BD0F9C1007147E7 /* Include */ = {
@@ -769,37 +937,56 @@
 			name = Src;
 			sourceTree = "<group>";
 		};
-		517015571BD0FA5A007147E7 /* Include */ = {
-			isa = PBXGroup;
-			children = (
-				517015591BD0FA8E007147E7 /* MyGUI_OpenGLDataManager.h */,
-				5170155A1BD0FA8E007147E7 /* MyGUI_OpenGLDiagnostic.h */,
-				5170155B1BD0FA8E007147E7 /* MyGUI_OpenGLImageLoader.h */,
-				5170155C1BD0FA8E007147E7 /* MyGUI_OpenGLPlatform.h */,
-				5170155D1BD0FA8E007147E7 /* MyGUI_OpenGLRenderManager.h */,
-				5170155E1BD0FA8E007147E7 /* MyGUI_OpenGLRTTexture.h */,
-				5170155F1BD0FA8E007147E7 /* MyGUI_OpenGLTexture.h */,
-				517015601BD0FA8E007147E7 /* MyGUI_OpenGLVertexBuffer.h */,
-			);
-			name = Include;
-			sourceTree = "<group>";
-		};
-		517015581BD0FA68007147E7 /* Src */ = {
-			isa = PBXGroup;
-			children = (
-				517015611BD0FAA6007147E7 /* MyGUI_OpenGLDataManager.cpp */,
-				517015621BD0FAA6007147E7 /* MyGUI_OpenGLPlatform.cpp */,
-				517015631BD0FAA6007147E7 /* MyGUI_OpenGLRenderManager.cpp */,
-				517015641BD0FAA6007147E7 /* MyGUI_OpenGLRTTexture.cpp */,
-				517015651BD0FAA6007147E7 /* MyGUI_OpenGLTexture.cpp */,
-				517015661BD0FAA6007147E7 /* MyGUI_OpenGLVertexBuffer.cpp */,
-			);
-			name = Src;
-			sourceTree = "<group>";
-		};
 		5170156D1BD0FB98007147E7 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				51E6EB751BEB9F8900EA4490 /* MyGUI */,
+				518FF2701BE8F3940050E90A /* XeBezier.cpp */,
+				518FF2711BE8F3940050E90A /* XeBezier.h */,
+				518FF2721BE8F3940050E90A /* XeDefine.h */,
+				518FF2731BE8F3940050E90A /* XeEngine.h */,
+				518FF2741BE8F3940050E90A /* XeGC.h */,
+				518FF2751BE8F3940050E90A /* XeIRenderScene.h */,
+				518FF2761BE8F3940050E90A /* XeIRenderTarget.h */,
+				518FF2771BE8F3940050E90A /* XeITexture.h */,
+				518FF2781BE8F3940050E90A /* XeIVertexBuffer.h */,
+				518FF2AC1BE8F4110050E90A /* XeLog.cpp */,
+				518FF2791BE8F3940050E90A /* XeLog.h */,
+				518FF27A1BE8F3940050E90A /* XeMaterial.h */,
+				518FF27B1BE8F3940050E90A /* XeMathDef.h */,
+				518FF27C1BE8F3940050E90A /* XeMatrix.cpp */,
+				518FF27D1BE8F3940050E90A /* XeMatrix.h */,
+				518FF27E1BE8F3940050E90A /* XeNoisePerlin.cpp */,
+				518FF27F1BE8F3940050E90A /* XeNoisePerlin.h */,
+				518FF2801BE8F3940050E90A /* XePass.h */,
+				518FF2811BE8F3940050E90A /* XePlane.cpp */,
+				518FF2821BE8F3940050E90A /* XePlane.h */,
+				518FF2831BE8F3940050E90A /* XePoint.cpp */,
+				518FF2841BE8F3940050E90A /* XePoint.h */,
+				518FF2851BE8F3940050E90A /* XePool.h */,
+				518FF2861BE8F3940050E90A /* XeQuater.cpp */,
+				518FF2871BE8F3940050E90A /* XeQuater.h */,
+				518FF2881BE8F3940050E90A /* XeRandom.cpp */,
+				518FF2891BE8F3940050E90A /* XeRandom.h */,
+				518FF28A1BE8F3940050E90A /* XeRay.cpp */,
+				518FF28B1BE8F3940050E90A /* XeRay.h */,
+				518FF28C1BE8F3940050E90A /* XeRectangle.cpp */,
+				518FF28D1BE8F3940050E90A /* XeRectangle.h */,
+				518FF28E1BE8F3940050E90A /* XeRenderFormat.h */,
+				518FF28F1BE8F3940050E90A /* XeSingleton.h */,
+				518FF2901BE8F3940050E90A /* XeTechnique.h */,
+				518FF2911BE8F3940050E90A /* XeTimer.cpp */,
+				518FF2921BE8F3940050E90A /* XeTimer.h */,
+				518FF2931BE8F3940050E90A /* XeTriangle.cpp */,
+				518FF2941BE8F3940050E90A /* XeTriangle.h */,
+				518FF2951BE8F3940050E90A /* XeVector.cpp */,
+				518FF2961BE8F3940050E90A /* XeVector.h */,
+				518FF2971BE8F3940050E90A /* XeVertex.cpp */,
+				518FF2981BE8F3940050E90A /* XeVertex.h */,
+				518FF2991BE8F3940050E90A /* XeVertexBuffer.cpp */,
+				518FF29A1BE8F3940050E90A /* XeVertexBuffer.h */,
+				518FF29B1BE8F3940050E90A /* XeVoronoi.cpp */,
+				518FF29C1BE8F3940050E90A /* XeVoronoi.h */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -814,6 +1001,9 @@
 		5170156F1BD0FD8D007147E7 /* Deps */ = {
 			isa = PBXGroup;
 			children = (
+				518FF2C91BE90FBA0050E90A /* lua */,
+				518FF2C51BE90EE90050E90A /* tinyxml */,
+				518FF2AE1BE9096C0050E90A /* json */,
 				517015701BD0FD9A007147E7 /* glew */,
 			);
 			name = Deps;
@@ -822,10 +1012,109 @@
 		517015701BD0FD9A007147E7 /* glew */ = {
 			isa = PBXGroup;
 			children = (
+				518FF2C31BE90A570050E90A /* glxew.h */,
+				518FF2C41BE90A570050E90A /* wglew.h */,
 				517015711BD0FE2B007147E7 /* glew.c */,
 				517015721BD0FE2B007147E7 /* glew.h */,
 			);
 			name = glew;
+			sourceTree = "<group>";
+		};
+		518FF2AE1BE9096C0050E90A /* json */ = {
+			isa = PBXGroup;
+			children = (
+				518FF2C21BE90A340050E90A /* config_json.h */,
+				518FF2B91BE909AE0050E90A /* json_reader.cpp */,
+				518FF2BA1BE909AE0050E90A /* json_tool.h */,
+				518FF2BB1BE909AE0050E90A /* json_value.cpp */,
+				518FF2BC1BE909AE0050E90A /* json_valueiterator.inl */,
+				518FF2BD1BE909AE0050E90A /* json_writer.cpp */,
+				518FF2AF1BE909990050E90A /* assertions.h */,
+				518FF2B01BE909990050E90A /* autolink.h */,
+				518FF2B21BE909990050E90A /* features.h */,
+				518FF2B31BE909990050E90A /* forwards.h */,
+				518FF2B41BE909990050E90A /* json.h */,
+				518FF2B51BE909990050E90A /* reader.h */,
+				518FF2B61BE909990050E90A /* value.h */,
+				518FF2B71BE909990050E90A /* version.h */,
+				518FF2B81BE909990050E90A /* writer.h */,
+			);
+			name = json;
+			sourceTree = "<group>";
+		};
+		518FF2C51BE90EE90050E90A /* tinyxml */ = {
+			isa = PBXGroup;
+			children = (
+				518FF2C61BE90F2B0050E90A /* tinyxml2.cpp */,
+				518FF2C71BE90F2B0050E90A /* tinyxml2.h */,
+			);
+			name = tinyxml;
+			sourceTree = "<group>";
+		};
+		518FF2C91BE90FBA0050E90A /* lua */ = {
+			isa = PBXGroup;
+			children = (
+				518FF2CA1BE910990050E90A /* lapi.c */,
+				518FF2CB1BE910990050E90A /* lapi.h */,
+				518FF2CC1BE910990050E90A /* lauxlib.c */,
+				518FF2CD1BE910990050E90A /* lauxlib.h */,
+				518FF2CE1BE910990050E90A /* lbaselib.c */,
+				518FF2CF1BE910990050E90A /* lbitlib.c */,
+				518FF2D01BE910990050E90A /* lcode.c */,
+				518FF2D11BE910990050E90A /* lcode.h */,
+				518FF2D21BE910990050E90A /* lcorolib.c */,
+				518FF2D31BE910990050E90A /* lctype.c */,
+				518FF2D41BE910990050E90A /* lctype.h */,
+				518FF2D51BE910990050E90A /* ldblib.c */,
+				518FF2D61BE910990050E90A /* ldebug.c */,
+				518FF2D71BE910990050E90A /* ldebug.h */,
+				518FF2D81BE910990050E90A /* ldo.c */,
+				518FF2D91BE910990050E90A /* ldo.h */,
+				518FF2DA1BE910990050E90A /* ldump.c */,
+				518FF2DB1BE910990050E90A /* lfunc.c */,
+				518FF2DC1BE910990050E90A /* lfunc.h */,
+				518FF2DD1BE910990050E90A /* lgc.c */,
+				518FF2DE1BE910990050E90A /* lgc.h */,
+				518FF2DF1BE910990050E90A /* linit.c */,
+				518FF2E01BE910990050E90A /* liolib.c */,
+				518FF2E11BE910990050E90A /* llex.c */,
+				518FF2E21BE910990050E90A /* llex.h */,
+				518FF2E31BE910990050E90A /* llimits.h */,
+				518FF2E41BE910990050E90A /* lmathlib.c */,
+				518FF2E51BE910990050E90A /* lmem.c */,
+				518FF2E61BE910990050E90A /* lmem.h */,
+				518FF2E71BE910990050E90A /* loadlib.c */,
+				518FF2E81BE910990050E90A /* lobject.c */,
+				518FF2E91BE910990050E90A /* lobject.h */,
+				518FF2EA1BE910990050E90A /* lopcodes.c */,
+				518FF2EB1BE910990050E90A /* lopcodes.h */,
+				518FF2EC1BE910990050E90A /* loslib.c */,
+				518FF2ED1BE910990050E90A /* lparser.c */,
+				518FF2EE1BE910990050E90A /* lparser.h */,
+				518FF2EF1BE910990050E90A /* lprefix.h */,
+				518FF2F01BE910990050E90A /* lstate.c */,
+				518FF2F11BE910990050E90A /* lstate.h */,
+				518FF2F21BE910990050E90A /* lstring.c */,
+				518FF2F31BE910990050E90A /* lstring.h */,
+				518FF2F41BE910990050E90A /* lstrlib.c */,
+				518FF2F51BE910990050E90A /* ltable.c */,
+				518FF2F61BE910990050E90A /* ltable.h */,
+				518FF2F71BE910990050E90A /* ltablib.c */,
+				518FF2F81BE910990050E90A /* ltm.c */,
+				518FF2F91BE910990050E90A /* ltm.h */,
+				518FF2FA1BE910990050E90A /* lua.h */,
+				518FF2FB1BE910990050E90A /* lua.hpp */,
+				518FF2FC1BE910990050E90A /* luaconf.h */,
+				518FF2FD1BE910990050E90A /* lualib.h */,
+				518FF2FE1BE910990050E90A /* lundump.c */,
+				518FF2FF1BE910990050E90A /* lundump.h */,
+				518FF3001BE910990050E90A /* lutf8lib.c */,
+				518FF3011BE910990050E90A /* lvm.c */,
+				518FF3021BE910990050E90A /* lvm.h */,
+				518FF3031BE910990050E90A /* lzio.c */,
+				518FF3041BE910990050E90A /* lzio.h */,
+			);
+			name = lua;
 			sourceTree = "<group>";
 		};
 		51929E641BD0EB83006EEBD9 = {
@@ -874,6 +1163,27 @@
 				51929E711BD0EB83006EEBD9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		51E6EB751BEB9F8900EA4490 /* MyGUI */ = {
+			isa = PBXGroup;
+			children = (
+				51E6EB761BEBA2C400EA4490 /* MyGUIDataManager.cpp */,
+				51E6EB771BEBA2C400EA4490 /* MyGUIDataManager.h */,
+				51E6EB781BEBA2C400EA4490 /* MyGUIDiagnostic.h */,
+				51E6EB791BEBA2C400EA4490 /* MyGUIImageLoader.h */,
+				51E6EB7A1BEBA2C400EA4490 /* MyGUIPlatform.cpp */,
+				51E6EB7B1BEBA2C400EA4490 /* MyGUIPlatform.h */,
+				51E6EB7C1BEBA2C400EA4490 /* MyGUIRenderManager.cpp */,
+				51E6EB7D1BEBA2C400EA4490 /* MyGUIRenderManager.h */,
+				51E6EB7E1BEBA2C400EA4490 /* MyGUIRTTexture.cpp */,
+				51E6EB7F1BEBA2C400EA4490 /* MyGUIRTTexture.h */,
+				51E6EB801BEBA2C400EA4490 /* MyGUITexture.cpp */,
+				51E6EB811BEBA2C400EA4490 /* MyGUITexture.h */,
+				51E6EB821BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp */,
+				51E6EB831BEBA2C400EA4490 /* MyGUIVertexBuffer.h */,
+			);
+			name = MyGUI;
 			sourceTree = "<group>";
 		};
 		89DE8B32A8B2AF1060F5A83A /* Frameworks */ = {
@@ -947,6 +1257,7 @@
 				51929E801BD0EB83006EEBD9 /* LaunchScreen.storyboard in Resources */,
 				51929E7D1BD0EB83006EEBD9 /* Assets.xcassets in Resources */,
 				51929E7B1BD0EB83006EEBD9 /* Main.storyboard in Resources */,
+				518FF2C01BE909AE0050E90A /* json_valueiterator.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,61 +1301,96 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518FF2BE1BE909AE0050E90A /* json_reader.cpp in Sources */,
 				5170154F1BD0FA22007147E7 /* MyGUI_UString.cpp in Sources */,
+				518FF30C1BE910990050E90A /* ldblib.c in Sources */,
 				5170153D1BD0FA22007147E7 /* MyGUI_ScrollViewBase.cpp in Sources */,
 				517015141BD0FA22007147E7 /* MyGUI_GeometryUtility.cpp in Sources */,
 				517015211BD0FA22007147E7 /* MyGUI_LogSource.cpp in Sources */,
 				517015511BD0FA22007147E7 /* MyGUI_WidgetInput.cpp in Sources */,
+				518FF29E1BE8F3940050E90A /* XeMatrix.cpp in Sources */,
+				518FF3161BE910990050E90A /* lmem.c in Sources */,
 				517015121BD0FA22007147E7 /* MyGUI_FileLogListener.cpp in Sources */,
+				518FF3251BE910990050E90A /* lzio.c in Sources */,
+				518FF3111BE910990050E90A /* lgc.c in Sources */,
 				5170152D1BD0FA22007147E7 /* MyGUI_PopupMenu.cpp in Sources */,
 				517014F71BD0FA22007147E7 /* MyGUI_Any.cpp in Sources */,
+				518FF3211BE910990050E90A /* ltm.c in Sources */,
+				518FF3141BE910990050E90A /* llex.c in Sources */,
+				518FF3121BE910990050E90A /* linit.c in Sources */,
 				517015041BD0FA22007147E7 /* MyGUI_ControllerManager.cpp in Sources */,
+				518FF31F1BE910990050E90A /* ltable.c in Sources */,
+				518FF30D1BE910990050E90A /* ldebug.c in Sources */,
+				518FF3181BE910990050E90A /* lobject.c in Sources */,
 				517014FE1BD0FA22007147E7 /* MyGUI_Colour.cpp in Sources */,
+				518FF2A41BE8F3940050E90A /* XeRay.cpp in Sources */,
+				518FF2AA1BE8F3940050E90A /* XeVertexBuffer.cpp in Sources */,
+				518FF2A91BE8F3940050E90A /* XeVertex.cpp in Sources */,
 				517015471BD0FA22007147E7 /* MyGUI_TabItem.cpp in Sources */,
 				517015231BD0FA22007147E7 /* MyGUI_MaskPickInfo.cpp in Sources */,
+				518FF2A61BE8F3940050E90A /* XeTimer.cpp in Sources */,
 				517015131BD0FA22007147E7 /* MyGUI_FontManager.cpp in Sources */,
+				51E6EB881BEBA2C400EA4490 /* MyGUITexture.cpp in Sources */,
 				517015171BD0FA22007147E7 /* MyGUI_InputManager.cpp in Sources */,
 				517015031BD0FA22007147E7 /* MyGUI_ControllerFadeAlpha.cpp in Sources */,
+				518FF2AB1BE8F3940050E90A /* XeVoronoi.cpp in Sources */,
 				5170152C1BD0FA22007147E7 /* MyGUI_PolygonalSkin.cpp in Sources */,
 				5170153B1BD0FA22007147E7 /* MyGUI_ScrollBar.cpp in Sources */,
-				5170156C1BD0FAA6007147E7 /* MyGUI_OpenGLVertexBuffer.cpp in Sources */,
 				517015441BD0FA22007147E7 /* MyGUI_SubWidgetBinding.cpp in Sources */,
 				517015361BD0FA22007147E7 /* MyGUI_ResourceManualFont.cpp in Sources */,
 				517015091BD0FA22007147E7 /* MyGUI_DataMemoryStream.cpp in Sources */,
+				518FF3241BE910990050E90A /* lvm.c in Sources */,
 				5170151C1BD0FA22007147E7 /* MyGUI_LayerNode.cpp in Sources */,
 				517015411BD0FA22007147E7 /* MyGUI_SkinItem.cpp in Sources */,
+				518FF2C11BE909AE0050E90A /* json_writer.cpp in Sources */,
+				518FF3151BE910990050E90A /* lmathlib.c in Sources */,
+				518FF30E1BE910990050E90A /* ldo.c in Sources */,
+				518FF2A51BE8F3940050E90A /* XeRectangle.cpp in Sources */,
+				518FF2BF1BE909AE0050E90A /* json_value.cpp in Sources */,
+				518FF3061BE910990050E90A /* lauxlib.c in Sources */,
 				517015261BD0FA22007147E7 /* MyGUI_MenuItem.cpp in Sources */,
 				5170150B1BD0FA22007147E7 /* MyGUI_DDContainer.cpp in Sources */,
 				517015151BD0FA22007147E7 /* MyGUI_Gui.cpp in Sources */,
 				517015561BD0FA22007147E7 /* MyGUI_XmlDocument.cpp in Sources */,
+				518FF3191BE910990050E90A /* lopcodes.c in Sources */,
+				518FF3051BE910990050E90A /* lapi.c in Sources */,
 				517015221BD0FA22007147E7 /* MyGUI_MainSkin.cpp in Sources */,
 				517015161BD0FA22007147E7 /* MyGUI_ImageBox.cpp in Sources */,
 				517015351BD0FA22007147E7 /* MyGUI_ResourceManager.cpp in Sources */,
 				517015111BD0FA22007147E7 /* MyGUI_FactoryManager.cpp in Sources */,
 				517014F81BD0FA22007147E7 /* MyGUI_BackwardCompatibility.cpp in Sources */,
+				518FF31C1BE910990050E90A /* lstate.c in Sources */,
 				5170151D1BD0FA22007147E7 /* MyGUI_LayoutManager.cpp in Sources */,
 				517014FC1BD0FA22007147E7 /* MyGUI_ChildSkinInfo.cpp in Sources */,
 				517015271BD0FA22007147E7 /* MyGUI_MultiListBox.cpp in Sources */,
 				5170154D1BD0FA22007147E7 /* MyGUI_Timer.cpp in Sources */,
 				517015481BD0FA22007147E7 /* MyGUI_TextBox.cpp in Sources */,
-				517015671BD0FAA6007147E7 /* MyGUI_OpenGLDataManager.cpp in Sources */,
 				517015391BD0FA22007147E7 /* MyGUI_ResourceTrueTypeFont.cpp in Sources */,
 				517014FA1BD0FA22007147E7 /* MyGUI_Button.cpp in Sources */,
+				518FF29D1BE8F3940050E90A /* XeBezier.cpp in Sources */,
+				518FF2A81BE8F3940050E90A /* XeVector.cpp in Sources */,
 				5170150C1BD0FA22007147E7 /* MyGUI_DynLib.cpp in Sources */,
-				517015691BD0FAA6007147E7 /* MyGUI_OpenGLRenderManager.cpp in Sources */,
+				518FF29F1BE8F3940050E90A /* XeNoisePerlin.cpp in Sources */,
 				5170152A1BD0FA22007147E7 /* MyGUI_PluginManager.cpp in Sources */,
 				5170150F1BD0FA22007147E7 /* MyGUI_EditText.cpp in Sources */,
+				51E6EB891BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp in Sources */,
 				517015301BD0FA22007147E7 /* MyGUI_RenderItem.cpp in Sources */,
 				517015321BD0FA22007147E7 /* MyGUI_ResourceImageSet.cpp in Sources */,
+				51E6EB861BEBA2C400EA4490 /* MyGUIRenderManager.cpp in Sources */,
 				517015401BD0FA22007147E7 /* MyGUI_SimpleText.cpp in Sources */,
 				517015341BD0FA22007147E7 /* MyGUI_ResourceLayout.cpp in Sources */,
-				517015681BD0FAA6007147E7 /* MyGUI_OpenGLPlatform.cpp in Sources */,
 				517015081BD0FA22007147E7 /* MyGUI_DataManager.cpp in Sources */,
 				517015501BD0FA22007147E7 /* MyGUI_Widget.cpp in Sources */,
 				517015191BD0FA22007147E7 /* MyGUI_LanguageManager.cpp in Sources */,
 				517015291BD0FA22007147E7 /* MyGUI_OverlappedLayer.cpp in Sources */,
+				518FF3221BE910990050E90A /* lundump.c in Sources */,
+				518FF3081BE910990050E90A /* lbitlib.c in Sources */,
 				517015541BD0FA22007147E7 /* MyGUI_Window.cpp in Sources */,
+				518FF2A01BE8F3940050E90A /* XePlane.cpp in Sources */,
+				518FF2C81BE90F2B0050E90A /* tinyxml2.cpp in Sources */,
 				517015101BD0FA22007147E7 /* MyGUI_Exception.cpp in Sources */,
+				518FF31B1BE910990050E90A /* lparser.c in Sources */,
+				518FF3231BE910990050E90A /* lutf8lib.c in Sources */,
 				5170151B1BD0FA22007147E7 /* MyGUI_LayerManager.cpp in Sources */,
 				517015281BD0FA22007147E7 /* MyGUI_MultiListItem.cpp in Sources */,
 				5170154A1BD0FA22007147E7 /* MyGUI_TextureUtility.cpp in Sources */,
@@ -1056,46 +1402,64 @@
 				5170153E1BD0FA22007147E7 /* MyGUI_SharedLayer.cpp in Sources */,
 				517013E21BD0F4A5007147E7 /* test.cpp in Sources */,
 				517014F61BD0FA22007147E7 /* MyGUI_ActionController.cpp in Sources */,
+				518FF2AD1BE8F4110050E90A /* XeLog.cpp in Sources */,
 				517015181BD0FA22007147E7 /* MyGUI_ItemBox.cpp in Sources */,
 				517015371BD0FA22007147E7 /* MyGUI_ResourceManualPointer.cpp in Sources */,
+				518FF3071BE910990050E90A /* lbaselib.c in Sources */,
 				517015331BD0FA22007147E7 /* MyGUI_ResourceImageSetPointer.cpp in Sources */,
 				5170151A1BD0FA22007147E7 /* MyGUI_LayerItem.cpp in Sources */,
 				517015381BD0FA22007147E7 /* MyGUI_ResourceSkin.cpp in Sources */,
 				517015051BD0FA22007147E7 /* MyGUI_ControllerPosition.cpp in Sources */,
+				518FF2A31BE8F3940050E90A /* XeRandom.cpp in Sources */,
 				5170153C1BD0FA22007147E7 /* MyGUI_ScrollView.cpp in Sources */,
 				517015451BD0FA22007147E7 /* MyGUI_SubWidgetManager.cpp in Sources */,
 				517014FD1BD0FA22007147E7 /* MyGUI_ClipboardManager.cpp in Sources */,
 				5170154C1BD0FA22007147E7 /* MyGUI_TileRect.cpp in Sources */,
+				518FF3101BE910990050E90A /* lfunc.c in Sources */,
 				5170152B1BD0FA22007147E7 /* MyGUI_PointerManager.cpp in Sources */,
+				518FF3201BE910990050E90A /* ltablib.c in Sources */,
 				517015431BD0FA22007147E7 /* MyGUI_SubSkin.cpp in Sources */,
+				518FF31D1BE910990050E90A /* lstring.c in Sources */,
+				51E6EB871BEBA2C400EA4490 /* MyGUIRTTexture.cpp in Sources */,
 				517015521BD0FA22007147E7 /* MyGUI_WidgetManager.cpp in Sources */,
+				518FF3131BE910990050E90A /* liolib.c in Sources */,
 				517015311BD0FA22007147E7 /* MyGUI_RenderManager.cpp in Sources */,
 				517015551BD0FA22007147E7 /* MyGUI_WindowsClipboardHandler.cpp in Sources */,
 				517015201BD0FA22007147E7 /* MyGUI_LogManager.cpp in Sources */,
 				517015461BD0FA22007147E7 /* MyGUI_TabControl.cpp in Sources */,
 				517015061BD0FA22007147E7 /* MyGUI_ControllerRepeatClick.cpp in Sources */,
+				518FF3091BE910990050E90A /* lcode.c in Sources */,
 				5170150D1BD0FA22007147E7 /* MyGUI_DynLibManager.cpp in Sources */,
 				51929E751BD0EB83006EEBD9 /* AppDelegate.m in Sources */,
 				517015731BD0FE2B007147E7 /* glew.c in Sources */,
 				5170152F1BD0FA22007147E7 /* MyGUI_ProgressBar.cpp in Sources */,
 				5170154B1BD0FA22007147E7 /* MyGUI_TextView.cpp in Sources */,
+				518FF3171BE910990050E90A /* loadlib.c in Sources */,
+				518FF30A1BE910990050E90A /* lcorolib.c in Sources */,
 				5170151E1BD0FA22007147E7 /* MyGUI_LevelLogFilter.cpp in Sources */,
-				5170156A1BD0FAA6007147E7 /* MyGUI_OpenGLRTTexture.cpp in Sources */,
+				518FF2A21BE8F3940050E90A /* XeQuater.cpp in Sources */,
+				518FF30B1BE910990050E90A /* lctype.c in Sources */,
 				5170154E1BD0FA22007147E7 /* MyGUI_ToolTipManager.cpp in Sources */,
 				5170150E1BD0FA22007147E7 /* MyGUI_EditBox.cpp in Sources */,
+				518FF2A11BE8F3940050E90A /* XePoint.cpp in Sources */,
+				518FF2A71BE8F3940050E90A /* XeTriangle.cpp in Sources */,
 				517015251BD0FA22007147E7 /* MyGUI_MenuControl.cpp in Sources */,
+				518FF30F1BE910990050E90A /* ldump.c in Sources */,
 				5170153A1BD0FA22007147E7 /* MyGUI_RotatingSkin.cpp in Sources */,
 				517015241BD0FA22007147E7 /* MyGUI_MenuBar.cpp in Sources */,
 				517015011BD0FA22007147E7 /* MyGUI_Constants.cpp in Sources */,
 				5170151F1BD0FA22007147E7 /* MyGUI_ListBox.cpp in Sources */,
 				5170152E1BD0FA22007147E7 /* MyGUI_Precompiled.cpp in Sources */,
 				517015421BD0FA22007147E7 /* MyGUI_SkinManager.cpp in Sources */,
-				5170156B1BD0FAA6007147E7 /* MyGUI_OpenGLTexture.cpp in Sources */,
 				517014F91BD0FA22007147E7 /* MyGUI_BiIndexBase.cpp in Sources */,
 				5170150A1BD0FA22007147E7 /* MyGUI_DataStream.cpp in Sources */,
+				518FF31A1BE910990050E90A /* loslib.c in Sources */,
+				51E6EB841BEBA2C400EA4490 /* MyGUIDataManager.cpp in Sources */,
+				518FF31E1BE910990050E90A /* lstrlib.c in Sources */,
 				517014FF1BD0FA22007147E7 /* MyGUI_ComboBox.cpp in Sources */,
 				517015001BD0FA22007147E7 /* MyGUI_ConsoleLogListener.cpp in Sources */,
 				51929E721BD0EB83006EEBD9 /* main.m in Sources */,
+				51E6EB851BEBA2C400EA4490 /* MyGUIPlatform.cpp in Sources */,
 				5170153F1BD0FA22007147E7 /* MyGUI_SharedLayerNode.cpp in Sources */,
 				517015071BD0FA22007147E7 /* MyGUI_DataFileStream.cpp in Sources */,
 			);
@@ -1217,18 +1581,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../engine/app/ios",
+					"$(SRCROOT)/../../deps/mygui-MyGUI3.2.2",
+					"$(SRCROOT)/../../deps/mygui-MyGUI3.2.2/Common",
+					"$(SRCROOT)/../../deps/mygui-MyGUI3.2.2/MyGUIEngine/include",
+					"$(SRCROOT)/../../deps/freetype/include",
+					"$(SRCROOT)/../../deps/glew",
+					"$(SRCROOT)/../../deps/jsoncpp/include",
+					"$(SRCROOT)/../../deps/lua",
+					"$(SRCROOT)/../../deps/tinyxml2",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"~/Documents/game/client/deps/glew",
-					"~/Documents/game/client/deps/mygui-MyGUI3.2.2",
-					"~/Documents/game/client/deps/mygui-MyGUI3.2.2/Common",
-					"~/Documents/game/client/deps/mygui-MyGUI3.2.2/MyGUIEngine/include",
 				);
 				INFOPLIST_FILE = Game/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "~/Documents/game/client/deps/freetype";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Game;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REZ_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -1244,18 +1614,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../engine/app/ios",
+					"$(SRCROOT)/../../deps/mygui-MyGUI3.2.2",
+					"$(SRCROOT)/../../deps/mygui-MyGUI3.2.2/Common",
+					"$(SRCROOT)/../../deps/mygui-MyGUI3.2.2/MyGUIEngine/include",
+					"$(SRCROOT)/../../deps/freetype/include",
+					"$(SRCROOT)/../../deps/glew",
+					"$(SRCROOT)/../../deps/jsoncpp/include",
+					"$(SRCROOT)/../../deps/lua",
+					"$(SRCROOT)/../../deps/tinyxml2",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"~/Documents/game/client/deps/glew",
-					"~/Documents/game/client/deps/mygui-MyGUI3.2.2",
-					"~/Documents/game/client/deps/mygui-MyGUI3.2.2/Common",
-					"~/Documents/game/client/deps/mygui-MyGUI3.2.2/MyGUIEngine/include",
 				);
 				INFOPLIST_FILE = Game/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "~/Documents/game/client/deps/freetype";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Game;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REZ_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

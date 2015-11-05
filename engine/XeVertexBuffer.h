@@ -15,12 +15,12 @@ class CVertexBuffer : IVertexBuffer
 {
 public:
 	CVertexBuffer();
-	virtual ~IVertexBuffer();
+	virtual ~CVertexBuffer();
 
 	virtual void setVertexCount(int value);
 	virtual int getVertexCount();
 
-	virtual Vertex* lock();
+	virtual CVertex* lock();
 	virtual void unlock();
 };
 
