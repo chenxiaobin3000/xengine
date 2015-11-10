@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5109CE4C1BF1914E00E7EDF3 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5109CE4B1BF1914E00E7EDF3 /* ViewController.mm */; };
+		5109CE4E1BF1945A00E7EDF3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */; };
 		517013DE1BD0F41D007147E7 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517013DD1BD0F41D007147E7 /* libfreetype.a */; };
 		517013E21BD0F4A5007147E7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517013E01BD0F4A5007147E7 /* test.cpp */; };
 		517014F61BD0FA22007147E7 /* MyGUI_ActionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014951BD0FA22007147E7 /* MyGUI_ActionController.cpp */; };
@@ -163,23 +165,18 @@
 		518FF3251BE910990050E90A /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF3031BE910990050E90A /* lzio.c */; };
 		51929E721BD0EB83006EEBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E711BD0EB83006EEBD9 /* main.m */; };
 		51929E751BD0EB83006EEBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E741BD0EB83006EEBD9 /* AppDelegate.m */; };
-		51929E781BD0EB83006EEBD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E771BD0EB83006EEBD9 /* ViewController.m */; };
 		51929E7B1BD0EB83006EEBD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51929E791BD0EB83006EEBD9 /* Main.storyboard */; };
 		51929E7D1BD0EB83006EEBD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */; };
 		51929E801BD0EB83006EEBD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7E1BD0EB83006EEBD9 /* LaunchScreen.storyboard */; };
-		51E6EB841BEBA2C400EA4490 /* MyGUIDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB761BEBA2C400EA4490 /* MyGUIDataManager.cpp */; };
-		51E6EB851BEBA2C400EA4490 /* MyGUIPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB7A1BEBA2C400EA4490 /* MyGUIPlatform.cpp */; };
-		51E6EB861BEBA2C400EA4490 /* MyGUIRenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB7C1BEBA2C400EA4490 /* MyGUIRenderManager.cpp */; };
-		51E6EB871BEBA2C400EA4490 /* MyGUIRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB7E1BEBA2C400EA4490 /* MyGUIRTTexture.cpp */; };
-		51E6EB881BEBA2C400EA4490 /* MyGUITexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB801BEBA2C400EA4490 /* MyGUITexture.cpp */; };
-		51E6EB891BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EB821BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp */; };
 		9D26DC962C8699AB2E958F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF93D00016124A5688E76782 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5109CE4B1BF1914E00E7EDF3 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		517013DD1BD0F41D007147E7 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../../deps/freetype/libfreetype.a; sourceTree = "<group>"; };
 		517013E01BD0F4A5007147E7 /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test.cpp; path = src/test.cpp; sourceTree = "<group>"; };
-		517013E11BD0F4A5007147E7 /* test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = test.hpp; path = src/test.hpp; sourceTree = "<group>"; };
+		517013E11BD0F4A5007147E7 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = test.h; path = src/test.h; sourceTree = "<group>"; };
 		517013E81BD0FA03007147E7 /* MyGUI_ActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_ActionController.h; path = "../../deps/mygui-MyGUI3.2.2/MyGUIEngine/include/MyGUI_ActionController.h"; sourceTree = "<group>"; };
 		517013E91BD0FA03007147E7 /* MyGUI_Align.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_Align.h; path = "../../deps/mygui-MyGUI3.2.2/MyGUIEngine/include/MyGUI_Align.h"; sourceTree = "<group>"; };
 		517013EA1BD0FA03007147E7 /* MyGUI_Allocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUI_Allocator.h; path = "../../deps/mygui-MyGUI3.2.2/MyGUIEngine/include/MyGUI_Allocator.h"; sourceTree = "<group>"; };
@@ -581,25 +578,10 @@
 		51929E731BD0EB83006EEBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		51929E741BD0EB83006EEBD9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		51929E761BD0EB83006EEBD9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		51929E771BD0EB83006EEBD9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		51929E7A1BD0EB83006EEBD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51929E7F1BD0EB83006EEBD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51929E811BD0EB83006EEBD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51E6EB761BEBA2C400EA4490 /* MyGUIDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIDataManager.cpp; path = ../../engine/MyGUI/MyGUIDataManager.cpp; sourceTree = "<group>"; };
-		51E6EB771BEBA2C400EA4490 /* MyGUIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIDataManager.h; path = ../../engine/MyGUI/MyGUIDataManager.h; sourceTree = "<group>"; };
-		51E6EB781BEBA2C400EA4490 /* MyGUIDiagnostic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIDiagnostic.h; path = ../../engine/MyGUI/MyGUIDiagnostic.h; sourceTree = "<group>"; };
-		51E6EB791BEBA2C400EA4490 /* MyGUIImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIImageLoader.h; path = ../../engine/MyGUI/MyGUIImageLoader.h; sourceTree = "<group>"; };
-		51E6EB7A1BEBA2C400EA4490 /* MyGUIPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIPlatform.cpp; path = ../../engine/MyGUI/MyGUIPlatform.cpp; sourceTree = "<group>"; };
-		51E6EB7B1BEBA2C400EA4490 /* MyGUIPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIPlatform.h; path = ../../engine/MyGUI/MyGUIPlatform.h; sourceTree = "<group>"; };
-		51E6EB7C1BEBA2C400EA4490 /* MyGUIRenderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIRenderManager.cpp; path = ../../engine/MyGUI/MyGUIRenderManager.cpp; sourceTree = "<group>"; };
-		51E6EB7D1BEBA2C400EA4490 /* MyGUIRenderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIRenderManager.h; path = ../../engine/MyGUI/MyGUIRenderManager.h; sourceTree = "<group>"; };
-		51E6EB7E1BEBA2C400EA4490 /* MyGUIRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIRTTexture.cpp; path = ../../engine/MyGUI/MyGUIRTTexture.cpp; sourceTree = "<group>"; };
-		51E6EB7F1BEBA2C400EA4490 /* MyGUIRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIRTTexture.h; path = ../../engine/MyGUI/MyGUIRTTexture.h; sourceTree = "<group>"; };
-		51E6EB801BEBA2C400EA4490 /* MyGUITexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUITexture.cpp; path = ../../engine/MyGUI/MyGUITexture.cpp; sourceTree = "<group>"; };
-		51E6EB811BEBA2C400EA4490 /* MyGUITexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUITexture.h; path = ../../engine/MyGUI/MyGUITexture.h; sourceTree = "<group>"; };
-		51E6EB821BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyGUIVertexBuffer.cpp; path = ../../engine/MyGUI/MyGUIVertexBuffer.cpp; sourceTree = "<group>"; };
-		51E6EB831BEBA2C400EA4490 /* MyGUIVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGUIVertexBuffer.h; path = ../../engine/MyGUI/MyGUIVertexBuffer.h; sourceTree = "<group>"; };
 		731FE65753D10496910FB67B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9759956B9EE3469CA3E2206 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EF93D00016124A5688E76782 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -610,6 +592,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5109CE4E1BF1945A00E7EDF3 /* GLKit.framework in Frameworks */,
 				9D26DC962C8699AB2E958F0C /* libPods.a in Frameworks */,
 				517013DE1BD0F41D007147E7 /* libfreetype.a in Frameworks */,
 			);
@@ -631,7 +614,7 @@
 			isa = PBXGroup;
 			children = (
 				517013E01BD0F4A5007147E7 /* test.cpp */,
-				517013E11BD0F4A5007147E7 /* test.hpp */,
+				517013E11BD0F4A5007147E7 /* test.h */,
 			);
 			name = Src;
 			sourceTree = "<group>";
@@ -1146,7 +1129,7 @@
 				51929E731BD0EB83006EEBD9 /* AppDelegate.h */,
 				51929E741BD0EB83006EEBD9 /* AppDelegate.m */,
 				51929E761BD0EB83006EEBD9 /* ViewController.h */,
-				51929E771BD0EB83006EEBD9 /* ViewController.m */,
+				5109CE4B1BF1914E00E7EDF3 /* ViewController.mm */,
 				51929E791BD0EB83006EEBD9 /* Main.storyboard */,
 				51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */,
 				51929E7E1BD0EB83006EEBD9 /* LaunchScreen.storyboard */,
@@ -1168,20 +1151,6 @@
 		51E6EB751BEB9F8900EA4490 /* MyGUI */ = {
 			isa = PBXGroup;
 			children = (
-				51E6EB761BEBA2C400EA4490 /* MyGUIDataManager.cpp */,
-				51E6EB771BEBA2C400EA4490 /* MyGUIDataManager.h */,
-				51E6EB781BEBA2C400EA4490 /* MyGUIDiagnostic.h */,
-				51E6EB791BEBA2C400EA4490 /* MyGUIImageLoader.h */,
-				51E6EB7A1BEBA2C400EA4490 /* MyGUIPlatform.cpp */,
-				51E6EB7B1BEBA2C400EA4490 /* MyGUIPlatform.h */,
-				51E6EB7C1BEBA2C400EA4490 /* MyGUIRenderManager.cpp */,
-				51E6EB7D1BEBA2C400EA4490 /* MyGUIRenderManager.h */,
-				51E6EB7E1BEBA2C400EA4490 /* MyGUIRTTexture.cpp */,
-				51E6EB7F1BEBA2C400EA4490 /* MyGUIRTTexture.h */,
-				51E6EB801BEBA2C400EA4490 /* MyGUITexture.cpp */,
-				51E6EB811BEBA2C400EA4490 /* MyGUITexture.h */,
-				51E6EB821BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp */,
-				51E6EB831BEBA2C400EA4490 /* MyGUIVertexBuffer.h */,
 			);
 			name = MyGUI;
 			sourceTree = "<group>";
@@ -1189,6 +1158,7 @@
 		89DE8B32A8B2AF1060F5A83A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */,
 				517013DD1BD0F41D007147E7 /* libfreetype.a */,
 				EF93D00016124A5688E76782 /* libPods.a */,
 			);
@@ -1330,7 +1300,6 @@
 				517015231BD0FA22007147E7 /* MyGUI_MaskPickInfo.cpp in Sources */,
 				518FF2A61BE8F3940050E90A /* XeTimer.cpp in Sources */,
 				517015131BD0FA22007147E7 /* MyGUI_FontManager.cpp in Sources */,
-				51E6EB881BEBA2C400EA4490 /* MyGUITexture.cpp in Sources */,
 				517015171BD0FA22007147E7 /* MyGUI_InputManager.cpp in Sources */,
 				517015031BD0FA22007147E7 /* MyGUI_ControllerFadeAlpha.cpp in Sources */,
 				518FF2AB1BE8F3940050E90A /* XeVoronoi.cpp in Sources */,
@@ -1344,6 +1313,7 @@
 				517015411BD0FA22007147E7 /* MyGUI_SkinItem.cpp in Sources */,
 				518FF2C11BE909AE0050E90A /* json_writer.cpp in Sources */,
 				518FF3151BE910990050E90A /* lmathlib.c in Sources */,
+				5109CE4C1BF1914E00E7EDF3 /* ViewController.mm in Sources */,
 				518FF30E1BE910990050E90A /* ldo.c in Sources */,
 				518FF2A51BE8F3940050E90A /* XeRectangle.cpp in Sources */,
 				518FF2BF1BE909AE0050E90A /* json_value.cpp in Sources */,
@@ -1373,10 +1343,8 @@
 				518FF29F1BE8F3940050E90A /* XeNoisePerlin.cpp in Sources */,
 				5170152A1BD0FA22007147E7 /* MyGUI_PluginManager.cpp in Sources */,
 				5170150F1BD0FA22007147E7 /* MyGUI_EditText.cpp in Sources */,
-				51E6EB891BEBA2C400EA4490 /* MyGUIVertexBuffer.cpp in Sources */,
 				517015301BD0FA22007147E7 /* MyGUI_RenderItem.cpp in Sources */,
 				517015321BD0FA22007147E7 /* MyGUI_ResourceImageSet.cpp in Sources */,
-				51E6EB861BEBA2C400EA4490 /* MyGUIRenderManager.cpp in Sources */,
 				517015401BD0FA22007147E7 /* MyGUI_SimpleText.cpp in Sources */,
 				517015341BD0FA22007147E7 /* MyGUI_ResourceLayout.cpp in Sources */,
 				517015081BD0FA22007147E7 /* MyGUI_DataManager.cpp in Sources */,
@@ -1397,7 +1365,6 @@
 				517015021BD0FA22007147E7 /* MyGUI_ControllerEdgeHide.cpp in Sources */,
 				517015491BD0FA22007147E7 /* MyGUI_TextIterator.cpp in Sources */,
 				517014FB1BD0FA22007147E7 /* MyGUI_Canvas.cpp in Sources */,
-				51929E781BD0EB83006EEBD9 /* ViewController.m in Sources */,
 				517015531BD0FA22007147E7 /* MyGUI_WidgetUserData.cpp in Sources */,
 				5170153E1BD0FA22007147E7 /* MyGUI_SharedLayer.cpp in Sources */,
 				517013E21BD0F4A5007147E7 /* test.cpp in Sources */,
@@ -1420,7 +1387,6 @@
 				518FF3201BE910990050E90A /* ltablib.c in Sources */,
 				517015431BD0FA22007147E7 /* MyGUI_SubSkin.cpp in Sources */,
 				518FF31D1BE910990050E90A /* lstring.c in Sources */,
-				51E6EB871BEBA2C400EA4490 /* MyGUIRTTexture.cpp in Sources */,
 				517015521BD0FA22007147E7 /* MyGUI_WidgetManager.cpp in Sources */,
 				518FF3131BE910990050E90A /* liolib.c in Sources */,
 				517015311BD0FA22007147E7 /* MyGUI_RenderManager.cpp in Sources */,
@@ -1454,12 +1420,10 @@
 				517014F91BD0FA22007147E7 /* MyGUI_BiIndexBase.cpp in Sources */,
 				5170150A1BD0FA22007147E7 /* MyGUI_DataStream.cpp in Sources */,
 				518FF31A1BE910990050E90A /* loslib.c in Sources */,
-				51E6EB841BEBA2C400EA4490 /* MyGUIDataManager.cpp in Sources */,
 				518FF31E1BE910990050E90A /* lstrlib.c in Sources */,
 				517014FF1BD0FA22007147E7 /* MyGUI_ComboBox.cpp in Sources */,
 				517015001BD0FA22007147E7 /* MyGUI_ConsoleLogListener.cpp in Sources */,
 				51929E721BD0EB83006EEBD9 /* main.m in Sources */,
-				51E6EB851BEBA2C400EA4490 /* MyGUIPlatform.cpp in Sources */,
 				5170153F1BD0FA22007147E7 /* MyGUI_SharedLayerNode.cpp in Sources */,
 				517015071BD0FA22007147E7 /* MyGUI_DataFileStream.cpp in Sources */,
 			);
