@@ -7,8 +7,11 @@
 #ifndef _XEIRENDERTARGET_H_
 #define _XEIRENDERTARGET_H_
 
+#include "XeICamera.h"
+
 namespace XE {
 
+// 基础渲染元素
 class IRenderTarget
 {
 public:
@@ -17,6 +20,8 @@ public:
 	virtual void Begin() = 0;
 	virtual void End() = 0;
 	virtual void Render() = 0;
+
+	virtual void Lookat(ICamera* pCamera) = 0;
 };
 
 }

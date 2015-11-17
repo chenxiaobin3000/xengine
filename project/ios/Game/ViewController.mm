@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UITextViewDelegate>
+@interface ViewController ()
 
 @property (strong, nonatomic) EAGLContext *context;
 
@@ -31,7 +31,6 @@
     // 初始化gles
     [EAGLContext setCurrentContext:self.context];
 
-    //[self initTextView];
     [self initGame];
 }
 
@@ -60,13 +59,13 @@
 //        return;
 //    }
 //    
-//#ifndef kScreenLandscape
+//#ifndef SCREEN_LANDSCAPE
 //    XI::SetScreenWidth(self.view.bounds.size.width);
 //    XI::SetScreenHeight(self.view.bounds.size.height);
 //#else
 //    XI::SetScreenWidth(self.view.bounds.size.height);
 //    XI::SetScreenHeight(self.view.bounds.size.width);
-//#endif //kScreenLandscape
+//#endif //SCREEN_LANDSCAPE
 //    XI::SetScreenScale([[UIScreen mainScreen] scale]);
 //    
 //    XCli::CApp::GetSingleton().Init();
@@ -86,11 +85,11 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-#ifndef kScreenLandscape
+#ifndef SCREEN_LANDSCAPE
     return UIInterfaceOrientationMaskPortrait;
 #else
     return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
-#endif //kScreenLandscape
+#endif //SCREEN_LANDSCAPE
 }
 
 @end

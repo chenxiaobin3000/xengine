@@ -1,0 +1,20 @@
+// include
+$#include "stdafx.h"
+$#include "XeLuaInterface.h"
+$using namespace XE;
+$#pragma warning(disable:4800)
+
+// interface
+$pfile "pkg/XeLuaInterface.pkg"
+
+// math
+$pfile "pkg/XeVertex.pkg"
+$pfile "pkg/XeQuater.pkg"
+
+// scene
+$pfile "pkg/XeSceneObject.pkg"
+$pfile "pkg/XeEntity.pkg"
+$pfile "pkg/XeDynamicEntity.pkg"
+$pfile "pkg/XeMoveEntity.pkg"
+
+$pfile "pkg/XeScene.pkg"

@@ -7,9 +7,12 @@
 #ifndef _XEIRENDERSCENE_H_
 #define _XEIRENDERSCENE_H_
 
+#include "XeIRenderTarget.h"
+
+// 渲染情景：ui、3d
 namespace XE {
 
-class IRenderScene
+class IRenderScene : IRenderTarget
 {
 public:
 	virtual ~IRenderScene() {}
