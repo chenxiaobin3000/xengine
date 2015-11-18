@@ -6,9 +6,9 @@
 //  Copyright © 2015年 xe. All rights reserved.
 //
 
-#ifndef test_hpp
-#define test_hpp
+#ifndef test_h
+#define test_h
 
-#include <stdio.h>
+void InitTest();
 
-#endif /* test_hpp */
+#endif /* test_h */

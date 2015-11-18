@@ -167,6 +167,9 @@
 		51929E751BD0EB83006EEBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E741BD0EB83006EEBD9 /* AppDelegate.m */; };
 		51929E7D1BD0EB83006EEBD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */; };
 		51929E801BD0EB83006EEBD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7E1BD0EB83006EEBD9 /* LaunchScreen.storyboard */; };
+		51EB37871BFC21B40004BB29 /* XeEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EB37831BFC21B40004BB29 /* XeEngine.cpp */; };
+		51EB378A1BFC243E0004BB29 /* CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EB37891BFC243E0004BB29 /* CommonFunction.m */; };
+		51EB378D1BFC4FD60004BB29 /* XeConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EB378B1BFC4FD60004BB29 /* XeConfig.cpp */; };
 		9D26DC962C8699AB2E958F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF93D00016124A5688E76782 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -580,6 +583,15 @@
 		51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51929E7F1BD0EB83006EEBD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51929E811BD0EB83006EEBD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51EB37821BFC206D0004BB29 /* game_prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game_prefix.pch; sourceTree = "<group>"; };
+		51EB37831BFC21B40004BB29 /* XeEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeEngine.cpp; path = ../../engine/XeEngine.cpp; sourceTree = "<group>"; };
+		51EB37841BFC21B40004BB29 /* XeICamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeICamera.h; path = ../../engine/XeICamera.h; sourceTree = "<group>"; };
+		51EB37851BFC21B40004BB29 /* XeRenderScene3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeRenderScene3D.h; path = ../../engine/XeRenderScene3D.h; sourceTree = "<group>"; };
+		51EB37861BFC21B40004BB29 /* XeRenderSceneUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeRenderSceneUI.h; path = ../../engine/XeRenderSceneUI.h; sourceTree = "<group>"; };
+		51EB37881BFC243E0004BB29 /* CommonFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFunction.h; sourceTree = "<group>"; };
+		51EB37891BFC243E0004BB29 /* CommonFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFunction.m; sourceTree = "<group>"; };
+		51EB378B1BFC4FD60004BB29 /* XeConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeConfig.cpp; path = ../../engine/XeConfig.cpp; sourceTree = "<group>"; };
+		51EB378C1BFC4FD60004BB29 /* XeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeConfig.h; path = ../../engine/XeConfig.h; sourceTree = "<group>"; };
 		731FE65753D10496910FB67B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9759956B9EE3469CA3E2206 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EF93D00016124A5688E76782 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -922,6 +934,12 @@
 			isa = PBXGroup;
 			children = (
 				51E6EB751BEB9F8900EA4490 /* MyGUI */,
+				51EB378B1BFC4FD60004BB29 /* XeConfig.cpp */,
+				51EB378C1BFC4FD60004BB29 /* XeConfig.h */,
+				51EB37831BFC21B40004BB29 /* XeEngine.cpp */,
+				51EB37841BFC21B40004BB29 /* XeICamera.h */,
+				51EB37851BFC21B40004BB29 /* XeRenderScene3D.h */,
+				51EB37861BFC21B40004BB29 /* XeRenderSceneUI.h */,
 				518FF2701BE8F3940050E90A /* XeBezier.cpp */,
 				518FF2711BE8F3940050E90A /* XeBezier.h */,
 				518FF2721BE8F3940050E90A /* XeDefine.h */,
@@ -1126,6 +1144,8 @@
 				517013DF1BD0F487007147E7 /* Src */,
 				51929E731BD0EB83006EEBD9 /* AppDelegate.h */,
 				51929E741BD0EB83006EEBD9 /* AppDelegate.m */,
+				51EB37881BFC243E0004BB29 /* CommonFunction.h */,
+				51EB37891BFC243E0004BB29 /* CommonFunction.m */,
 				51929E761BD0EB83006EEBD9 /* ViewController.h */,
 				5109CE4B1BF1914E00E7EDF3 /* ViewController.mm */,
 				51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */,
@@ -1141,6 +1161,7 @@
 			isa = PBXGroup;
 			children = (
 				51929E711BD0EB83006EEBD9 /* main.m */,
+				51EB37821BFC206D0004BB29 /* game_prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1271,11 +1292,14 @@
 				5170154F1BD0FA22007147E7 /* MyGUI_UString.cpp in Sources */,
 				518FF30C1BE910990050E90A /* ldblib.c in Sources */,
 				5170153D1BD0FA22007147E7 /* MyGUI_ScrollViewBase.cpp in Sources */,
+				51EB378D1BFC4FD60004BB29 /* XeConfig.cpp in Sources */,
+				51EB37871BFC21B40004BB29 /* XeEngine.cpp in Sources */,
 				517015141BD0FA22007147E7 /* MyGUI_GeometryUtility.cpp in Sources */,
 				517015211BD0FA22007147E7 /* MyGUI_LogSource.cpp in Sources */,
 				517015511BD0FA22007147E7 /* MyGUI_WidgetInput.cpp in Sources */,
 				518FF29E1BE8F3940050E90A /* XeMatrix.cpp in Sources */,
 				518FF3161BE910990050E90A /* lmem.c in Sources */,
+				51EB378A1BFC243E0004BB29 /* CommonFunction.m in Sources */,
 				517015121BD0FA22007147E7 /* MyGUI_FileLogListener.cpp in Sources */,
 				518FF3251BE910990050E90A /* lzio.c in Sources */,
 				518FF3111BE910990050E90A /* lgc.c in Sources */,
@@ -1526,6 +1550,7 @@
 			baseConfigurationReference = 731FE65753D10496910FB67B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Game/game_prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1559,6 +1584,7 @@
 			baseConfigurationReference = D9759956B9EE3469CA3E2206 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Game/game_prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",

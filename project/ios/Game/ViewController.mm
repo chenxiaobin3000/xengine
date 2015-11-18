@@ -6,7 +6,14 @@
 //  Copyright © 2015年 xe. All rights reserved.
 //
 
+#import "stdafx.h"
 #import "ViewController.h"
+#import "CommonFunction.h"
+
+#import "XeEngine.h"
+#import "test.h"
+
+static XE::CEngine* ENGINE = nil;
 
 @interface ViewController ()
 
@@ -31,58 +38,32 @@
     // 初始化gles
     [EAGLContext setCurrentContext:self.context];
 
+    ENGINE = XE::CEngine::CSingleton::GetSingletonPtr();
+    
     [self initGame];
+    
+    InitTest();
 }
 
 - (void)dealloc {
     NSLog(@"game quit\n");
-//    if (s_pIOSNativeInterface) {
-//        XI::DetachInterface();
-//        delete s_pIOSNativeInterface;
-//        s_pIOSNativeInterface = NULL;
-//    }
-//    
-//    XCli::CApp::GetSingleton().Quit();
-//    XCli::CApp::GetSingleton().Free();
     
+    ENGINE->Free();
+
     if ([EAGLContext currentContext] == self.context) {
         [EAGLContext setCurrentContext:nil];
     }
 }
 
 - (void)initGame {
-//    const char* szPath = XI::GetWritablePath();
-//    if (szPath) {
-//        XLOG("game init %s\n", szPath);
-//    } else {
-//        XLOG("game init err\n");
-//        return;
-//    }
-//    
-//#ifndef SCREEN_LANDSCAPE
-//    XI::SetScreenWidth(self.view.bounds.size.width);
-//    XI::SetScreenHeight(self.view.bounds.size.height);
-//#else
-//    XI::SetScreenWidth(self.view.bounds.size.height);
-//    XI::SetScreenHeight(self.view.bounds.size.width);
-//#endif //SCREEN_LANDSCAPE
-//    XI::SetScreenScale([[UIScreen mainScreen] scale]);
-//    
-//    XCli::CApp::GetSingleton().Init();
-//    
-//    s_pIOSNativeInterface = new IOSNativeInterface;
-//    if (s_pIOSNativeInterface) {
-//        s_pIOSNativeInterface->Init(self);
-//        XI::AttachInterface(s_pIOSNativeInterface);
-//    }
+    NSString* path = [CommonFunction getWritePath];
+    std::string strPath = [path UTF8String];
+    strPath.append("/");
+    
+    ENGINE->Init(strPath.c_str());
 }
 
-#pragma mark - GLKView and GLKViewController delegate methods
-
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-    //usleep(17000);
-    //XCli::CApp::GetSingleton().Run();
-}
+#pragma mark - UIViewController
 
 - (NSUInteger)supportedInterfaceOrientations {
 #ifndef SCREEN_LANDSCAPE
@@ -90,6 +71,12 @@
 #else
     return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
 #endif //SCREEN_LANDSCAPE
+}
+
+#pragma mark - GLKView and GLKViewController delegate methods
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+    ENGINE->Render();
 }
 
 @end

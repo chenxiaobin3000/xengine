@@ -28,4 +28,3 @@ void CVertexBuffer::unlock() {
 }
 	
 }
-

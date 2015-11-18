@@ -7,3 +7,7 @@
 //
 
 #include "test.h"
+
+void InitTest() {
+    
+}
