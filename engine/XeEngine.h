@@ -28,6 +28,9 @@ public:
 	bool Reset();
 
 	bool Render();
+
+private:
+	
 };
 
 }
