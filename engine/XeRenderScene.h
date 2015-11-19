@@ -4,21 +4,21 @@
  * data: 2015-11-10
  */
 
-#ifndef _XERENDERSCENEUI_H_
-#define _XERENDERSCENEUI_H_
+#ifndef _XERENDERSCENE_H_
+#define _XERENDERSCENE_H_
 
 #include "XeIRenderTarget.h"
 
-// 3d渲染情景
+// 渲染情景
 namespace XE {
 
-class CRenderScene3D : IRenderTarget
+class CRenderScene : IRenderTarget
 {
 public:
-	CRenderScene3D();
-	virtual ~CRenderScene3D();
+	CRenderScene();
+	virtual ~CRenderScene();
 };
 
 }
 
-#endif //_XERENDERSCENEUI_H_
+#endif //_XERENDERSCENE_H_

@@ -4,21 +4,21 @@
  * data: 2015-11-10
  */
 
-#ifndef _XERENDERSCENEUI_H_
-#define _XERENDERSCENEUI_H_
+#ifndef _XERENDERUI_H_
+#define _XERENDERUI_H_
 
 #include "XeIRenderTarget.h"
 
-// ui渲染情景
+// ui渲染
 namespace XE {
 
-class CRenderSceneUI : IRenderTarget
+class CRenderUI : IRenderTarget
 {
 public:
-	CRenderSceneUI();
-	virtual ~CRenderSceneUI();
+	CRenderUI();
+	virtual ~CRenderUI();
 };
 
 }
 
-#endif //_XERENDERSCENEUI_H_
+#endif //_XERENDERUI_H_

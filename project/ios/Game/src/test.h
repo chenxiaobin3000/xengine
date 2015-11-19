@@ -11,4 +11,6 @@
 
 void InitTest();
 
+void RenderTest();
+
 #endif /* test_h */

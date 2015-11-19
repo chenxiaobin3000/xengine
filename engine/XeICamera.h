@@ -14,6 +14,8 @@ class ICamera
 public:
 	virtual ~ICamera() {}
 
+	virtual void Lookat() = 0;
+		
 	virtual float getWidth() = 0;
 	virtual float getHeight() = 0;
 	virtual float getLeft() = 0;

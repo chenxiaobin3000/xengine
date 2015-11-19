@@ -19,9 +19,12 @@ public:
 
 	virtual void Begin() = 0;
 	virtual void End() = 0;
-	virtual void Render() = 0;
+	virtual void Render(ICamera* pCamera) = 0;
 
-	virtual void Lookat(ICamera* pCamera) = 0;
+	virtual void SetVisible(bool b) = 0;
+	virtual bool IsVisible() = 0;
+	virtual void SetVisibleForShadow(bool b) = 0;
+	virtual bool IsVisibleForShadow() = 0;
 };
 
 }

@@ -78,6 +78,7 @@ static XE::CEngine* ENGINE = nil;
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     ENGINE->Render();
+    RenderTest();
 }
 
 @end

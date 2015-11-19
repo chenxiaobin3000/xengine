@@ -38,6 +38,31 @@ bool CEngine::Render() {
 		glFrontFace(GL_CW);
 	}
 
+	// 开启阴影
+	/*	if (CConfig::GetUseShadow()) {
+		setTechnique(shadow);
+		shadow_list = getShadowList();
+		foreach (shadow) {
+			foreach (object) {
+				object->Begin();
+				object->Render(Camera);
+				object->End();
+			}
+		}
+	}
+
+	setTechnique(normal);
+	camera = getMainCamera();
+	camera->Lookat();
+
+	foreach (object) {
+		object->Begin();
+		object->Render(camera);
+		object->End();
+	}
+
+	render_list->render();
+	*/
 	return true;
 }
 	
