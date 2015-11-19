@@ -3,6 +3,7 @@
 
 namespace XE {
 
+bool CConfig::s_bScreenLandscape = false;
 bool CConfig::s_bMouse2Touch = false;
 bool CConfig::s_bUseShadow = false;
 bool CConfig::s_bLocalMode = false;
@@ -28,6 +29,14 @@ CConfig::~CConfig() {
 	
 }
 
+void CConfig::SetScreenLandscape(bool b) {
+	s_bScreenLandscape = b;
+}
+
+bool CConfig::GetScreenLandscape() {
+	return s_bScreenLandscape;
+}
+	
 void CConfig::SetMouse2Touch(bool b) {
 	s_bMouse2Touch = b;
 }

@@ -15,6 +15,9 @@ public:
 	CConfig();
 	virtual ~CConfig();
 
+	static void SetScreenLandscape(bool b);
+	static bool GetScreenLandscape();
+	
 	static void SetMouse2Touch(bool b);
 	static bool GetMouse2Touch();
 	
@@ -64,6 +67,7 @@ public:
 	static bool GetPassName();
 	
 private:
+	static bool					s_bScreenLandscape;		// 是否横屏
 	static bool					s_bMouse2Touch;			// 用鼠标模拟触摸
 	static bool					s_bUseShadow;			// 开启阴影
 
