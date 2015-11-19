@@ -7,12 +7,12 @@
 #ifndef _XERENDERSCENEUI_H_
 #define _XERENDERSCENEUI_H_
 
-#include "XeIRenderScene.h"
+#include "XeIRenderTarget.h"
 
 // ui渲染情景
 namespace XE {
 
-class CRenderSceneUI : IRenderScene
+class CRenderSceneUI : IRenderTarget
 {
 public:
 	CRenderSceneUI();

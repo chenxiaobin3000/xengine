@@ -8,6 +8,10 @@
 
 #include "test.h"
 
-void InitTest() {
+void MakeCube() {
     
+}
+
+void InitTest() {
+    MakeCube();
 }

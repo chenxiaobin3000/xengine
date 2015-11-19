@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "XeEngine.h"
+#include "XeConfig.h"
 
 namespace XE {
 
@@ -30,12 +31,12 @@ bool CEngine::Render() {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-#ifdef DISABLE_CULL
-	glDisable(GL_CULL_FACE);
-#else
-	glEnable(GL_CULL_FACE);
-	glFrontFace(GL_CW);
-#endif //DISABLE_CULL
+   	if (CConfig::GetDisableCull()) {
+		glDisable(GL_CULL_FACE);
+	} else {
+		glEnable(GL_CULL_FACE);
+		glFrontFace(GL_CW);
+	}
 
 	return true;
 }

@@ -11,6 +11,7 @@
 #import "CommonFunction.h"
 
 #import "XeEngine.h"
+#import "XeConfig.h"
 #import "test.h"
 
 static XE::CEngine* ENGINE = nil;
@@ -39,7 +40,6 @@ static XE::CEngine* ENGINE = nil;
     [EAGLContext setCurrentContext:self.context];
 
     ENGINE = XE::CEngine::CSingleton::GetSingletonPtr();
-    
     [self initGame];
     
     InitTest();
@@ -66,11 +66,12 @@ static XE::CEngine* ENGINE = nil;
 #pragma mark - UIViewController
 
 - (NSUInteger)supportedInterfaceOrientations {
-#ifndef SCREEN_LANDSCAPE
-    return UIInterfaceOrientationMaskPortrait;
-#else
-    return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
-#endif //SCREEN_LANDSCAPE
+    bool b = XE::CConfig::GetScreenLandscape();
+    if (b) {
+        return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+    } else {
+        return UIInterfaceOrientationMaskPortrait;
+    }
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods

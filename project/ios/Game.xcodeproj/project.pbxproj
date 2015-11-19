@@ -164,7 +164,7 @@
 		518FF3241BE910990050E90A /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF3011BE910990050E90A /* lvm.c */; };
 		518FF3251BE910990050E90A /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 518FF3031BE910990050E90A /* lzio.c */; };
 		51929E721BD0EB83006EEBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E711BD0EB83006EEBD9 /* main.m */; };
-		51929E751BD0EB83006EEBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E741BD0EB83006EEBD9 /* AppDelegate.m */; };
+		51929E751BD0EB83006EEBD9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51929E741BD0EB83006EEBD9 /* AppDelegate.mm */; };
 		51929E7D1BD0EB83006EEBD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */; };
 		51929E801BD0EB83006EEBD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7E1BD0EB83006EEBD9 /* LaunchScreen.storyboard */; };
 		51EB37871BFC21B40004BB29 /* XeEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EB37831BFC21B40004BB29 /* XeEngine.cpp */; };
@@ -578,7 +578,7 @@
 		51929E6D1BD0EB83006EEBD9 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51929E711BD0EB83006EEBD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51929E731BD0EB83006EEBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		51929E741BD0EB83006EEBD9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		51929E741BD0EB83006EEBD9 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		51929E761BD0EB83006EEBD9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51929E7F1BD0EB83006EEBD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1143,7 +1143,7 @@
 			children = (
 				517013DF1BD0F487007147E7 /* Src */,
 				51929E731BD0EB83006EEBD9 /* AppDelegate.h */,
-				51929E741BD0EB83006EEBD9 /* AppDelegate.m */,
+				51929E741BD0EB83006EEBD9 /* AppDelegate.mm */,
 				51EB37881BFC243E0004BB29 /* CommonFunction.h */,
 				51EB37891BFC243E0004BB29 /* CommonFunction.m */,
 				51929E761BD0EB83006EEBD9 /* ViewController.h */,
@@ -1416,7 +1416,7 @@
 				517015061BD0FA22007147E7 /* MyGUI_ControllerRepeatClick.cpp in Sources */,
 				518FF3091BE910990050E90A /* lcode.c in Sources */,
 				5170150D1BD0FA22007147E7 /* MyGUI_DynLibManager.cpp in Sources */,
-				51929E751BD0EB83006EEBD9 /* AppDelegate.m in Sources */,
+				51929E751BD0EB83006EEBD9 /* AppDelegate.mm in Sources */,
 				517015731BD0FE2B007147E7 /* glew.c in Sources */,
 				5170152F1BD0FA22007147E7 /* MyGUI_ProgressBar.cpp in Sources */,
 				5170154B1BD0FA22007147E7 /* MyGUI_TextView.cpp in Sources */,
