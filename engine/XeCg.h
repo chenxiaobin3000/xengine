@@ -1,23 +1,33 @@
-#pragma once
 
-#include "XeGlesCgParam.h"
-#include "XeCg.h"
+/**
+ * desc: 
+ * auth: chenxiaobin
+ * data: 2015-11-19
+ */
 
-#ifdef PLATFORM_OPENGLES
+#ifndef _XECG_H_
+#define _XECG_H_
+
+#include "XeCgParam.h"
 
 namespace XE {
 
-class CGlesCg :
-	public CCg
-,	public CPool<CGlesCg, 1024>
+class CCg
 {
-	friend class CGlesCgProgram;
+	friend class CCgParam;
+	friend class CCgProgram;
 
 public:
-	CGlesCg();
-	virtual ~CGlesCg();
+	enum ECgType {
+		E_CgVertex,
+		E_CgFragment
+	};
+	
+public:
+	CCg();
+	virtual ~CCg();
 
-	virtual bool Deserialize(const char* szPath, const char* szMain);
+	virtual bool Read(ECgType eType, const char* szPath, const char* szMain);
 
 	virtual void Reset();
 
@@ -34,15 +44,11 @@ private:
 
 	bool InitFragment(const char* szPath);
 
-public:
-	static const char*			s_szVertexFlag;
-	static const char*			s_szFragmentFlag;
-	static const char*			s_szMain;
-
 private:
 	GLuint						m_nShaderID;
+	CCgParamList				m_CgParamList;
 };
 
 }
 
-#endif //PLATFORM_OPENGLES
+#endif //_XECG_H_

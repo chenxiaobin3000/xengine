@@ -1,24 +1,21 @@
 #include "stdafx.h"
-#include "XeGlesCgProgram.h"
-
-#ifdef PLATFORM_OPENGLES
+#include "XeCgProgram.h"
 
 namespace XE {
 
-const char* CGlesCgProgram::s_szAttribVertex	= "Position";
-const char* CGlesCgProgram::s_szAttribTexCoord	= "Texcoord";
-const char* CGlesCgProgram::s_szAttribNormal	= "Normal";
-const char* CGlesCgProgram::s_szAttribColor		= "Color";
+const char* CCgProgram::s_szAttribVertex	= "Position";
+const char* CCgProgram::s_szAttribTexCoord	= "Texcoord";
+const char* CCgProgram::s_szAttribNormal	= "Normal";
 
-CGlesCgProgram::CGlesCgProgram() : m_nProgramID(0) {
+CCgProgram::CCgProgram() : m_nProgramID(0) {
 	
 }
 
-CGlesCgProgram::~CGlesCgProgram() {
+CCgProgram::~CCgProgram() {
 	auto ite = m_pCgList.begin();
 	auto end = m_pCgList.end();
 	for (; end!=ite; ++ite) {
-		glDetachShader(m_nProgramID, ((CGlesCg*)*ite)->m_nShaderID);
+		glDetachShader(m_nProgramID, ((CCg*)*ite)->m_nShaderID);
 	}
 	if (0 != m_nProgramID) {
 		glDeleteProgram(m_nProgramID);
@@ -27,7 +24,7 @@ CGlesCgProgram::~CGlesCgProgram() {
 	Reset();
 }
 
-void CGlesCgProgram::Bind(CPass* pPass) {
+void CCgProgram::Bind(CPass* pPass) {
 	if (0 != m_nProgramID) {
 		glUseProgram(m_nProgramID);
 		auto ite = m_pCgList.begin();
@@ -38,11 +35,11 @@ void CGlesCgProgram::Bind(CPass* pPass) {
 	}
 }
 
-void CGlesCgProgram::UnBind() {
+void CCgProgram::UnBind() {
 
 }
 
-bool CGlesCgProgram::Compile() {
+bool CCgProgram::Compile() {
 	if (m_pCgList.empty()) {
 		return true;
 	}
@@ -84,7 +81,7 @@ bool CGlesCgProgram::Compile() {
 	return true;
 }
 
-bool CGlesCgProgram::Reset() {
+bool CCgProgram::Reset() {
 	auto ite = m_pCgList.begin();
 	auto end = m_pCgList.end();
 	for (; end!=ite; ++ite) {
@@ -96,5 +93,3 @@ bool CGlesCgProgram::Reset() {
 }
 
 }
-
-#endif //PLATFORM_OPENGLES

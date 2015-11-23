@@ -39,7 +39,7 @@ bool CEngine::Render() {
 	}
 
 	// 开启阴影
-	/*	if (CConfig::GetUseShadow()) {
+/*	if (CConfig::GetUseShadow()) {
 		setTechnique(shadow);
 		shadow_list = getShadowList();
 		foreach (shadow) {
@@ -62,7 +62,7 @@ bool CEngine::Render() {
 	}
 
 	render_list->render();
-	*/
+*/
 	return true;
 }
 	

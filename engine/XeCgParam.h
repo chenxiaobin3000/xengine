@@ -1,28 +1,46 @@
-#pragma once
+/**
+ * desc: 
+ * auth: chenxiaobin
+ * data: 2015-11-20
+ */
 
-#include "XePool.h"
-#include "XeCgParam.h"
+#ifndef _XECGPARAM_H_
+#define _XECGPARAM_H_
 
-#ifdef PLATFORM_OPENGLES
+#include "XeIRenderObject.h"
 
 namespace XE {
 
-class CGlesCgParam :
-	public CCgParam
-,	public CPool<CGlesCgParam, 1024>
+enum ECgParamType {
+	E_ModelViewProj,			// 变换矩阵
+	E_LightMatrix,				// 光照矩阵
+	E_EyePosition,				// 摄像机位置
+	E_AmbiColor,				// 环境光
+	E_LightColor,				// 光源颜色
+	E_LightPosition,			// 光源位置
+	E_MaterialD,				// 漫反射
+	E_MaterialA,				// 环境反射
+	E_MaterialS,				// 镜面反射
+	E_MaterialE,				// 自发光
+	E_FogColor,					// 雾颜色
+	E_Samp0,					// 第一层纹理采样器
+	E_SampDepth,				// 深度纹理采样器
+	E_ParamNum					// 参数类型数
+};
+	
+class CCgParam
 {
 public:
-	CGlesCgParam();
-	virtual ~CGlesCgParam();
+	CCgParam();
+	virtual ~CCgParam();
 
-	bool InitParamID(GLuint nProgramID);
-
-	virtual bool SetParam(CPass* pPass);
+	bool SetParam(GLuint nProgramID, IRenderObject* pObject);
 
 private:
 	GLint						m_nParamID;
+	ECgParamType				m_eSetType;
 };
 
 }
 
-#endif //PLATFORM_OPENGLES
+#endif //_XECGPARAM_H_

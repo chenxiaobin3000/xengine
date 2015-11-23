@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "XeVertexBuffer.h"
+#include "XeCgProgram.h"
 
 namespace XE {
 
@@ -27,15 +28,15 @@ CVertexBuffer::~CVertexBuffer() {
 
 void CVertexBuffer::Render() {
 	glBindBuffer(GL_ARRAY_BUFFER, m_nVBOVertices);
-	glVertexAttribPointer(CGlesCgProgram::E_ATTRIB_VERTEX, 3, GL_FLOAT, 
+	glVertexAttribPointer(CCgProgram::E_ATTRIB_VERTEX, 3, GL_FLOAT,
 		GL_FALSE, 0, NULL);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_nVBOTexCoords);
-	glVertexAttribPointer(CGlesCgProgram::E_ATTRIB_TEXCOORD, 2, GL_FLOAT, 
+	glVertexAttribPointer(CCgProgram::E_ATTRIB_TEXCOORD, 2, GL_FLOAT,
 		GL_FALSE, 0, NULL);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_nVBONormals);
-	glVertexAttribPointer(CGlesCgProgram::E_ATTRIB_NORMAL, 3, GL_FLOAT, 
+	glVertexAttribPointer(CCgProgram::E_ATTRIB_NORMAL, 3, GL_FLOAT,
 		GL_FALSE, 0, NULL);
 
 	int nSize;
@@ -48,9 +49,9 @@ void CVertexBuffer::Render() {
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glDisableVertexAttribArray(CGlesCgProgram::E_ATTRIB_VERTEX);
-	glDisableVertexAttribArray(CGlesCgProgram::E_ATTRIB_TEXCOORD);
-	glDisableVertexAttribArray(CGlesCgProgram::E_ATTRIB_NORMAL);
+	glDisableVertexAttribArray(CCgProgram::E_ATTRIB_VERTEX);
+	glDisableVertexAttribArray(CCgProgram::E_ATTRIB_TEXCOORD);
+	glDisableVertexAttribArray(CCgProgram::E_ATTRIB_NORMAL);
 }
 	
 bool CVertexBuffer::SetCount(int nVertexCount, int nIndexCount) {

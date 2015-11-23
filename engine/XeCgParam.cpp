@@ -1,89 +1,78 @@
 #include "stdafx.h"
-#include "XeGlesCgParam.h"
-#include "XeGlesRenderSystem.h"
-#include "XeGlesTexture.h"
-#include "XeGlesCg.h"
-#include "XePass.h"
-#include "XeLight.h"
-#include "XeScene.h"
-#include "XeXmlLabel.h"
-
-#ifdef PLATFORM_OPENGLES
+#include "XeCgParam.h"
 
 namespace XE {
 
-CGlesCgParam::CGlesCgParam() : m_nParamID(-1) {
+CCgParam::CCgParam() : m_nParamID(-1) {
 
 }
 
-CGlesCgParam::~CGlesCgParam() {
+CCgParam::~CCgParam() {
 
 }
 
-bool CGlesCgParam::InitParamID(GLuint nProgramID) {
-	bool bRet = true;
-	switch (m_eSetType) {
-	case E_ModelViewProj:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_MODEL_VIEW_PROJ);
-		break;
-
-	case E_LightMatrix:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_LIGHT_MATRIX);
-		break;
-
-	case E_EyePosition:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_EYE_POSITION);
-		break;
-
-	case E_AmbiColor:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_AMBI_COLOR);
-		break;
-
-	case E_LightColor:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_LIGHT_COLOR);
-		break;
-
-	case E_LightPosition:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_LIGHT_POSITION);
-		break;
-
-	case E_MaterialD:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_D);
-		break;
-
-	case E_MaterialA:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_A);
-		break;
-
-	case E_MaterialS:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_S);
-		break;
-
-	case E_MaterialE:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_E);
-		break;
-
-	case E_FogColor:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_FOG_COLOR);
-		break;
-
-	case E_Samp0:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_SAMP0);
-		break;
-
-	case E_SampDepth:
-		m_nParamID = glGetUniformLocation(nProgramID, XML_SAMP_DEPTH);
-		break;
-
-	default:
-		bRet = false;
-	}
-	return bRet;
-}
-
-bool CGlesCgParam::SetParam(CPass* pPass) {
+bool CCgParam::SetParam(GLuint nProgramID, IRenderObjecr* pObject) {
 	if (-1 == m_nParamID) {
-		return false;
+		bool bRet = true;
+		switch (m_eSetType) {
+		case E_ModelViewProj:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_MODEL_VIEW_PROJ);
+			break;
+
+		case E_LightMatrix:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_LIGHT_MATRIX);
+			break;
+
+		case E_EyePosition:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_EYE_POSITION);
+			break;
+
+		case E_AmbiColor:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_AMBI_COLOR);
+			break;
+
+		case E_LightColor:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_LIGHT_COLOR);
+			break;
+
+		case E_LightPosition:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_LIGHT_POSITION);
+			break;
+
+		case E_MaterialD:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_D);
+			break;
+
+		case E_MaterialA:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_A);
+			break;
+
+		case E_MaterialS:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_S);
+			break;
+
+		case E_MaterialE:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_MATERIAL_E);
+			break;
+
+		case E_FogColor:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_FOG_COLOR);
+			break;
+
+		case E_Samp0:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_SAMP0);
+			break;
+
+		case E_SampDepth:
+			m_nParamID = glGetUniformLocation(nProgramID, XML_SAMP_DEPTH);
+			break;
+
+		default:
+			bRet = false;
+		}
+		if (!bRet) {
+			return bRet;
+		}
 	}
 
 	float tmp[4];
@@ -185,5 +174,3 @@ bool CGlesCgParam::SetParam(CPass* pPass) {
 }
 
 }
-
-#endif //PLATFORM_OPENGLES

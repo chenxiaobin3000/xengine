@@ -1,39 +1,23 @@
 #include "stdafx.h"
-#include "XeGlesCg.h"
-#include "XeGlesRenderSystem.h"
-#include "XeResManager.h"
-
-#ifdef PLATFORM_OPENGLES
+#include "XeCg.h"
 
 namespace XE {
 
-const char*		CGlesCg::s_szVertexFlag		= "_v.glsl";
-const char*		CGlesCg::s_szFragmentFlag	= "_f.glsl";
-const char*		CGlesCg::s_szMain			= "main";
-
-CGlesCg::CGlesCg() : m_nShaderID(0) {
+CCg::CCg() : m_nShaderID(0) {
 
 }
 
-CGlesCg::~CGlesCg() {
-	// FreeList<CCgParam>(m_CgParamList); 基类已释放
+CCg::~CCg() {
+    FreeList<CCgParam>(m_CgParamList);
 
 	if (0 != m_nShaderID) {
 		glDeleteShader(m_nShaderID);
 	}
 }
 
-bool CGlesCg::Deserialize(const char* szPath, const char* szMain) {
-	if (strstr(szPath, s_szVertexFlag)) {
-		m_eType = E_CgVertex;
-	} else if (strstr(szPath, s_szFragmentFlag)) {
-		m_eType = E_CgFragment;
-	} else {
-		return false;
-	}
-
+bool CCg::Read(ECgType eType, const char* szPath, const char* szMain) {
 	bool bRet = false;
-	switch (m_eType) {
+	switch (eType) {
 	case E_CgVertex:
 		bRet = InitVertex(szPath);
 		break;
@@ -48,11 +32,11 @@ bool CGlesCg::Deserialize(const char* szPath, const char* szMain) {
 	return bRet;
 }
 
-void CGlesCg::Reset() {
+void CCg::Reset() {
 	m_nShaderID = 0;
 }
 
-void CGlesCg::Bind(CPass* pPass) {
+void CCg::Bind(CPass* pPass) {
 	auto ite = m_CgParamList.begin();
 	auto end = m_CgParamList.end();
 	for (; end!=ite; ++ite) {
@@ -60,23 +44,23 @@ void CGlesCg::Bind(CPass* pPass) {
 	}
 }
 
-void CGlesCg::UnBind() {
+void CCg::UnBind() {
 
 }
 
-void CGlesCg::AddParam(CCgParam* p) {
+void CCg::AddParam(CCgParam* p) {
 	m_CgParamList.PUSH(p);
 }
 
-void CGlesCg::InitParam(GLuint nProgramID) {
+void CCg::InitParam(GLuint nProgramID) {
 	auto ite = m_CgParamList.begin();
 	auto end = m_CgParamList.end();
 	for (; end!=ite; ++ite) {
-		((CGlesCgParam*)(*ite))->InitParamID(nProgramID);
+		((CCgParam*)(*ite))->InitParamID(nProgramID);
 	}
 }
 
-bool CGlesCg::InitVertex(const char* szPath) {
+bool CCg::InitVertex(const char* szPath) {
 	CMemFile file;
 	byte* buffer = NULL;
 	unsigned int size = 0;
@@ -105,7 +89,7 @@ bool CGlesCg::InitVertex(const char* szPath) {
 	return true;
 }
 
-bool CGlesCg::InitFragment(const char* szPath) {
+bool CCg::InitFragment(const char* szPath) {
 	CMemFile file;
 	byte* buffer = NULL;
 	unsigned int size = 0;

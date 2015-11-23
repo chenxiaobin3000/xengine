@@ -1,27 +1,28 @@
-#pragma once
+/**
+ * desc: 
+ * auth: chenxiaobin
+ * data: 2015-11-20
+ */
 
-#include "XeGlesCg.h"
-#include "XeCgProgram.h"
+#ifndef _XECGPROGRAM_H_
+#define _XECGPROGRAM_H_
 
-#ifdef PLATFORM_OPENGLES
+#include "XeCg.h"
 
 namespace XE {
 
-class CGlesCgProgram :
-	public CCgProgram
-,	public CPool<CGlesCgProgram, 256>
+class CCgProgram
 {
 public:
 	enum EAttribID {
 		E_ATTRIB_VERTEX,
 		E_ATTRIB_TEXCOORD,
 		E_ATTRIB_NORMAL,
-		E_ATTRIB_COLOR,
 	};
 
 public:
-	CGlesCgProgram();
-	virtual ~CGlesCgProgram();
+	CCgProgram();
+	virtual ~CCgProgram();
 
 	virtual void Bind(CPass* pPass);
 
@@ -35,11 +36,10 @@ private:
 	static const char*			s_szAttribVertex;
 	static const char*			s_szAttribTexCoord;
 	static const char*			s_szAttribNormal;
-	static const char*			s_szAttribColor;
 
 	GLuint						m_nProgramID;
 };
 
 }
 
-#endif //PLATFORM_OPENGLES
+#endif //_XECGPROGRAM_H_
