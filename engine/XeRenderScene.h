@@ -7,12 +7,12 @@
 #ifndef _XERENDERSCENE_H_
 #define _XERENDERSCENE_H_
 
-#include "XeIRenderTarget.h"
+#include "XeIRenderEnv.h"
 
 // 渲染情景
 namespace XE {
 
-class CRenderScene : IRenderTarget
+class CRenderScene : IRenderEnv
 {
 public:
 	CRenderScene();

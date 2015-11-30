@@ -24,20 +24,27 @@ public:
 	CCgProgram();
 	virtual ~CCgProgram();
 
-	virtual void Bind(CPass* pPass);
+	void Bind(IRenderEnv* pEnv);
 
-	virtual void UnBind();
+	void UnBind();
 
-	virtual bool Compile();
+	void SetTarget(IRenderTarget* pTarget);
+	
+	bool Compile();
 
-	virtual bool Reset();
+	bool Reset();
 
+	void AddCg(CCg* pCg);
+
+    void ClearCg();
+    
 private:
 	static const char*			s_szAttribVertex;
 	static const char*			s_szAttribTexCoord;
 	static const char*			s_szAttribNormal;
 
 	GLuint						m_nProgramID;
+    std::vector<CCg*>           m_pCgList;
 };
 
 }

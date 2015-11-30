@@ -19,7 +19,6 @@ public:
 
 public:
 	virtual ~IFile() {}
-	virtual bool ReadFile() = 0;
 	virtual bool Open(const char* name, EFileMode mode) = 0;
 	virtual void Close() = 0;
 	virtual bool Read(byte* buffer, unsigned int size) = 0;

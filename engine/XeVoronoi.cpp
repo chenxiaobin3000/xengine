@@ -20,7 +20,7 @@ void CVoronoi::AddPoint(int x, int y, byte data) {
 	p.x = x;
 	p.y = y;
 	p.data = data;
-	m_List.PUSH(p);
+	m_List.XEPUSH(p);
 }
 
 void CVoronoi::Clear() {

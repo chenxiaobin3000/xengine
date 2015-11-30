@@ -9,17 +9,43 @@
 
 // 辅助函数宏
 #ifdef _DEBUG
-#	define XELOG		XE::XLog
-#	define XEASSERT		assert
-#	define NEW_LOG(x)	new x//; XELOG("new file: %s:%d\n", __FILE__, __LINE__)
-#	define PUSH(x)		push_back(x)//; XELOG("push file: %s:%d\n", __FILE__, __LINE__)
-#	define INSERT(x)	insert(x)//; XELOG("insert file: %s:%d\n", __FILE__, __LINE__)
+#	define XELOG            XE::XLog
+#	define XEASSERT(x)		assert(x)
+#	define XENEW(x)         new x
+#	define XEDELETE(x)      delete x
+#	define XEPUSH(x)		push_back(x)
+#	define XEINSERT(x)      insert(x)
 #else
-#	define XELOG
-#	define XEASSERT
-#	define NEW_LOG(x)	new x
-#	define PUSH(x)		push_back(x)
-#	define INSERT(x)	insert(x)
+#	define XELOG(...)
+#	define XEASSERT(x)
+#	define XENEW(x)         new x
+#	define XEDELETE(x)      delete x
+#	define XEPUSH(x)		push_back(x)
+#	define XEINSERT(x)      insert(x)
 #endif //_DEBUG
+
+namespace XE {
+
+template<typename T>
+inline static void FreeList(std::vector<T*>& list) {
+	auto ite = list.begin();
+	auto end = list.end();
+	for (; end!=ite; ++ite) {
+		delete(*ite);
+	}
+	list.clear();
+}
+
+template<typename T>
+inline static void FreeList(std::list<T*>& list) {
+	auto ite = list.begin();
+	auto end = list.end();
+	for (; end!=ite; ++ite) {
+		delete(*ite);
+	}
+	list.clear();
+}
+
+}
 
 #endif //_XEDEFINE_H_

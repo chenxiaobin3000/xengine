@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "XeCg.h"
+#include "XeXFile.h"
 
 namespace XE {
 
@@ -8,22 +9,36 @@ CCg::CCg() : m_nShaderID(0) {
 }
 
 CCg::~CCg() {
-    FreeList<CCgParam>(m_CgParamList);
+    FreeList<CCgParam>(m_EnvParamList);
+	FreeList<CCgParam>(m_TargetParamList);
 
 	if (0 != m_nShaderID) {
 		glDeleteShader(m_nShaderID);
 	}
 }
 
-bool CCg::Read(ECgType eType, const char* szPath, const char* szMain) {
+void CCg::OnComplete(GLuint nProgramID) {
+	auto ite = m_EnvParamList.begin();
+	auto end = m_EnvParamList.end();
+	for (; end!=ite; ++ite) {
+		(*ite)->Init(nProgramID);
+	}
+	auto ite1 = m_TargetParamList.begin();
+	auto end1 = m_TargetParamList.end();
+	for (; end1!=ite1; ++ite1) {
+		(*ite1)->Init(nProgramID);
+	}
+}
+		
+bool CCg::Read(ECgType eType, const char* szPath) {
 	bool bRet = false;
 	switch (eType) {
 	case E_CgVertex:
-		bRet = InitVertex(szPath);
+		bRet = Init(GL_VERTEX_SHADER, szPath);
 		break;
 
 	case E_CgFragment:
-		bRet = InitFragment(szPath);
+		bRet = Init(GL_FRAGMENT_SHADER, szPath);
 		break;
 
 	default:
@@ -36,11 +51,11 @@ void CCg::Reset() {
 	m_nShaderID = 0;
 }
 
-void CCg::Bind(CPass* pPass) {
-	auto ite = m_CgParamList.begin();
-	auto end = m_CgParamList.end();
+void CCg::Bind(IRenderEnv* pEnv) {
+	auto ite = m_EnvParamList.begin();
+	auto end = m_EnvParamList.end();
 	for (; end!=ite; ++ite) {
-		(*ite)->SetParam(pPass);
+		(*ite)->SetEnv(pEnv);
 	}
 }
 
@@ -48,23 +63,47 @@ void CCg::UnBind() {
 
 }
 
-void CCg::AddParam(CCgParam* p) {
-	m_CgParamList.PUSH(p);
-}
-
-void CCg::InitParam(GLuint nProgramID) {
-	auto ite = m_CgParamList.begin();
-	auto end = m_CgParamList.end();
+void CCg::SetTarget(IRenderTarget* pTarget) {
+   	auto ite = m_TargetParamList.begin();
+	auto end = m_TargetParamList.end();
 	for (; end!=ite; ++ite) {
-		((CCgParam*)(*ite))->InitParamID(nProgramID);
+		(*ite)->SetTarget(pTarget);
+	}
+}
+	
+void CCg::AddParam(CCgParam* p) {
+	switch (p->GetType()) {
+	case E_LightMatrix:
+	case E_EyePosition:
+	case E_AmbiColor:
+	case E_LightColor:
+	case E_LightPosition:
+	case E_SampDepth:
+		m_EnvParamList.XEPUSH(p);
+		break;
+
+	case E_ModelViewProj:
+	case E_MaterialDiffuse:
+	case E_MaterialAmbient:
+	case E_MaterialSpecular:
+	case E_MaterialEmissive:
+	case E_Samp0:
+		m_TargetParamList.XEPUSH(p);
+		break;
+
+	default:
+		break;
 	}
 }
 
-bool CCg::InitVertex(const char* szPath) {
-	CMemFile file;
+GLuint CCg::GetShaderID() {
+	return m_nShaderID;
+}
+		
+bool CCg::Init(GLenum type, const char* szPath) {
 	byte* buffer = NULL;
 	unsigned int size = 0;
-	if (!CResManager::LoadTxtFile(szPath, buffer, size, file)) {
+	if (!CXFile::ReadFile(szPath, buffer, size)) {
 		return false;
 	}
 
@@ -82,42 +121,14 @@ bool CCg::InitVertex(const char* szPath) {
 		glGetShaderInfoLog(m_nShaderID, maxLength, &maxLength, &infoLog[0]);
 
 		std::string str(infoLog.begin(), infoLog.end());
-		XELOG("glsl err vertex shader: %s\n%s\n", szPath, str.c_str());
+		XELOG("glsl err shader: %s\n%s\n", szPath, str.c_str());
+
+		XEDELETE(buffer);
 		return false;
 	}
 
-	return true;
-}
-
-bool CCg::InitFragment(const char* szPath) {
-	CMemFile file;
-	byte* buffer = NULL;
-	unsigned int size = 0;
-	if (!CResManager::LoadTxtFile(szPath, buffer, size, file)) {
-		return false;
-	}
-
-	m_nShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(m_nShaderID, 1, (const GLchar**)&buffer, NULL);
-	glCompileShader(m_nShaderID);
-
-	GLint bCompile;
-	glGetShaderiv(m_nShaderID, GL_COMPILE_STATUS, &bCompile);
-	if (!bCompile) {
-		GLint maxLength = 0;
-		glGetShaderiv(m_nShaderID, GL_INFO_LOG_LENGTH, &maxLength);
-
-		std::vector<GLchar> infoLog(maxLength);
-		glGetShaderInfoLog(m_nShaderID, maxLength, &maxLength, &infoLog[0]);
-
-		std::string str(infoLog.begin(), infoLog.end());
-		XELOG("glsl err fragment shader: %s\n%s\n", szPath, str.c_str());
-		return false;
-	}
-
+	XEDELETE(buffer);
 	return true;
 }
 
 }
-
-#endif //PLATFORM_OPENGLES

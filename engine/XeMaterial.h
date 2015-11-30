@@ -2,12 +2,13 @@
  * desc: 
  * auth: chenxiaobin
  * data: 2015-10-23
-
+ */
+/*
 vertex_program vname {
     source vpath
 
     params {
-        param_named_auto worldViewProj worldviewproj_matrix
+        param_named_auto modelViewProj modelviewproj_matrix
 		param_named_auto texelOffsets int 0
     }
 }
@@ -35,17 +36,26 @@ material kname {
         }
     }
 }
- */
+*/
 
 #ifndef _XEMATERIAL_H_
 #define _XEMATERIAL_H_
+
+#include "XeTechnique.h"
+#include "XeTechniqueManager.h"
 
 namespace XE {
 
 class CMaterial
 {
 public:
-	
+	CMaterial();
+	virtual ~CMaterial();
+
+	CTechnique* GetTechnique(ETechniqueType type);
+
+private:
+	std::vector<CTechnique*>	m_pTechniqueList;
 };
 
 }

@@ -59,14 +59,14 @@ public:
 	}
 
 	int Reg() {
-		T* p = NEW_LOG(T);
+		T* p = XENEW(T);
 		return Reg(p);
 	}
 
 	int Reg(T* p) {
-		CGCCount<T>* pT = NEW_LOG(CGCCount<T>(p));
-		m_CountMap.INSERT(GCCMapValue(m_nKeyIndex, pT));
-		m_PtrMap.INSERT(GCPMapValue(p, m_nKeyIndex));
+		CGCCount<T>* pT = XENEW(CGCCount<T>(p));
+		m_CountMap.XEINSERT(GCCMapValue(m_nKeyIndex, pT));
+		m_PtrMap.XEINSERT(GCPMapValue(p, m_nKeyIndex));
 		return m_nKeyIndex++;
 	}
 

@@ -7,24 +7,35 @@
 #ifndef _XERENDEROBJECT_H_
 #define _XERENDEROBJECT_H_
 
-#include "XeIRenderObject.h"
+#include "XeIRenderTarget.h"
+#include "XeMatrix.h"
+#include "XeMaterial.h"
 
 namespace XE {
 
-class CRenderObject : public IRenderObject
+class CRenderObject : public IRenderTarget
 {
 public:
 	CRenderObject();
-	virtual ~IRenderTarget();
+	virtual ~CRenderObject();
 
 	virtual void Begin();
 	virtual void End();
-	virtual void Render(ICamera* pCamera);
+	virtual void Render(IRenderEnv* pEnv);
 
 	virtual void SetVisible(bool b);
 	virtual bool IsVisible();
 	virtual void SetVisibleForShadow(bool b);
 	virtual bool IsVisibleForShadow();
+
+	virtual CMatrix& GetModelViewProj();
+
+private:
+	bool						m_bVisible;
+	bool						m_bVisibleForShadow;
+
+	CMatrix						m_ModelViewProj;
+	CMaterial*					m_pMaterial;
 };
 
 }

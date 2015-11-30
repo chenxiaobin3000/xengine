@@ -18,13 +18,11 @@ public:
 
 	virtual void Render() = 0;
 	
-	virtual void SetVertexCount(int value) = 0;
+    virtual bool SetCount(int nVertexCount, int nIndexCount) = 0;
 	virtual int GetVertexCount() = 0;
+	virtual int GetIndexCount() = 0;
 
-	virtual void SetHasIndex(bool b) = 0;
-	virtual bool IsHasIndex() = 0;
-	
-	virtual bool Lock(float*& pVertexs, float*& pTexCoords, float*& pNormals, float*& pColors, unsigned int*& pIndexs) = 0;
+	virtual bool Lock(float*& pVertexs, float*& pTexCoords, float*& pNormals, unsigned int*& pIndexs) = 0;
 	virtual void Unlock() = 0;
 };
 

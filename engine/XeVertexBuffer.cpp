@@ -39,8 +39,7 @@ void CVertexBuffer::Render() {
 	glVertexAttribPointer(CCgProgram::E_ATTRIB_NORMAL, 3, GL_FLOAT,
 		GL_FALSE, 0, NULL);
 
-	int nSize;
-	if (0 != m_nIndexCount) {
+	if (0 == m_nIndexCount) {
 		if (0 != m_nVertexCount) {
 			glDrawArrays(GL_TRIANGLES, 0, m_nVertexCount);
 		}
@@ -65,9 +64,9 @@ bool CVertexBuffer::SetCount(int nVertexCount, int nIndexCount) {
 		glGenBuffers(1, &m_nVBOVertices);
 		glGenBuffers(1, &m_nVBOTexCoords);
 		glGenBuffers(1, &m_nVBONormals);
-		m_pVBOVertices	= NEW_LOG(float[m_nVertexCount*3]);
-		m_pVBOTexCoords	= NEW_LOG(float[m_nVertexCount*2]);
-		m_pVBONormals	= NEW_LOG(float[m_nVertexCount*3]);
+		m_pVBOVertices	= XENEW(float[m_nVertexCount*3]);
+		m_pVBOTexCoords	= XENEW(float[m_nVertexCount*2]);
+		m_pVBONormals	= XENEW(float[m_nVertexCount*3]);
 		if (0 == m_nVBOVertices || 0 == m_nVBOTexCoords 
 	   	|| 0 == m_nVBONormals || !m_pVBOVertices 
    		|| !m_pVBOTexCoords ||  !m_pVBONormals) {
@@ -77,7 +76,7 @@ bool CVertexBuffer::SetCount(int nVertexCount, int nIndexCount) {
 
 	// 处理索引
 	if (0 != m_nIndexCount || !m_pIndexList) {
-		m_pIndexList = NEW_LOG(GLuint[m_nIndexCount * 3]);
+		m_pIndexList = XENEW(GLuint[m_nIndexCount * 3]);
 		if (!m_pIndexList) {
 			return false;
 		}
@@ -99,6 +98,7 @@ bool CVertexBuffer::Lock(float*& pVertexs, float*& pTexCoords, float*& pNormals,
 	pTexCoords = m_pVBOTexCoords;
 	pNormals = m_pVBONormals;
 	pIndexs = m_pIndexList;
+	return true;
 }
 
 void CVertexBuffer::Unlock() {

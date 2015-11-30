@@ -47,14 +47,14 @@ public:
 			if (0 == num) {
 				num = (int)m_using.size();
 			}
-			byte* pMem = NEW_LOG(byte[sizeof(T)*num]);
+			byte* pMem = XENEW(byte[sizeof(T)*num]);
 			if (!pMem) {
 				return false;
 			}
-			m_ptr.PUSH(SPtr(pMem, num));
+			m_ptr.XEPUSH(SPtr(pMem, num));
 			T* ptr = (T*)pMem;
 			for (int i=0; i<num; ++i) {
-				m_reserve.PUSH(ptr++);
+				m_reserve.XEPUSH(ptr++);
 			}
 		}
 		return true;
@@ -66,14 +66,14 @@ public:
 		}
 		T* ptr = m_reserve.back();
 		m_reserve.pop_back();
-		m_using.INSERT(TYPENAME PoolMap::value_type(ptr, ptr));
+		m_using.XEINSERT(TYPENAME PoolMap::value_type(ptr, ptr));
 		return ptr;
 	}
 
 	void Free(void* p) {
 		auto ite = m_using.find((T*)p);
 		if (m_using.end() != ite) {
-			m_reserve.PUSH(ite->first);
+			m_reserve.XEPUSH(ite->first);
 			m_using.erase(ite);
 		}
 	}

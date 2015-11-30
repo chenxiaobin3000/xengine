@@ -1,4 +1,3 @@
-
 /**
  * desc: 
  * auth: chenxiaobin
@@ -8,15 +7,14 @@
 #ifndef _XECG_H_
 #define _XECG_H_
 
+#include "XeCgProgramListener.h"
 #include "XeCgParam.h"
 
 namespace XE {
 
-class CCg
+class CCg :
+	public CCgProgramListener
 {
-	friend class CCgParam;
-	friend class CCgProgram;
-
 public:
 	enum ECgType {
 		E_CgVertex,
@@ -27,26 +25,29 @@ public:
 	CCg();
 	virtual ~CCg();
 
-	virtual bool Read(ECgType eType, const char* szPath, const char* szMain);
+	virtual void OnComplete(GLuint nProgramID);
+		
+	bool Read(ECgType eType, const char* szPath);
 
-	virtual void Reset();
+	void Reset();
 
-	virtual void Bind(CPass* pPass);
+	void Bind(IRenderEnv* pEnv);
 
-	virtual void UnBind();
+	void UnBind();
 
-	virtual void AddParam(CCgParam* p);
+	void SetTarget(IRenderTarget* pTarget);
+	
+	void AddParam(CCgParam* p);
 
-	void InitParam(GLuint nProgramID);
+	GLuint GetShaderID();
 
 private:
-	bool InitVertex(const char* szPath);
-
-	bool InitFragment(const char* szPath);
+	bool Init(GLenum type, const char* szPath);
 
 private:
 	GLuint						m_nShaderID;
-	CCgParamList				m_CgParamList;
+	std::vector<CCgParam*>		m_EnvParamList;
+	std::vector<CCgParam*>		m_TargetParamList;
 };
 
 }

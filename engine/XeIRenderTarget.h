@@ -7,10 +7,11 @@
 #ifndef _XEIRENDERTARGET_H_
 #define _XEIRENDERTARGET_H_
 
-#include "XeICamera.h"
-
 namespace XE {
 
+class IRenderEnv;
+class CMatrix;
+	
 // 基础渲染元素
 class IRenderTarget
 {
@@ -19,12 +20,14 @@ public:
 
 	virtual void Begin() = 0;
 	virtual void End() = 0;
-	virtual void Render(ICamera* pCamera) = 0;
+	virtual void Render(IRenderEnv* pEnv) = 0;
 
 	virtual void SetVisible(bool b) = 0;
 	virtual bool IsVisible() = 0;
 	virtual void SetVisibleForShadow(bool b) = 0;
 	virtual bool IsVisibleForShadow() = 0;
+
+	virtual CMatrix& GetModelViewProj() = 0;
 };
 
 }

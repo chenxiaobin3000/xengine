@@ -15,7 +15,7 @@ CCgProgram::~CCgProgram() {
 	auto ite = m_pCgList.begin();
 	auto end = m_pCgList.end();
 	for (; end!=ite; ++ite) {
-		glDetachShader(m_nProgramID, ((CCg*)*ite)->m_nShaderID);
+		glDetachShader(m_nProgramID, (*ite)->GetShaderID());
 	}
 	if (0 != m_nProgramID) {
 		glDeleteProgram(m_nProgramID);
@@ -24,13 +24,13 @@ CCgProgram::~CCgProgram() {
 	Reset();
 }
 
-void CCgProgram::Bind(CPass* pPass) {
+void CCgProgram::Bind(IRenderEnv* pEnv) {
 	if (0 != m_nProgramID) {
 		glUseProgram(m_nProgramID);
 		auto ite = m_pCgList.begin();
 		auto end = m_pCgList.end();
 		for (; end!=ite; ++ite) {
-			(*ite)->Bind(pPass);
+			(*ite)->Bind(pEnv);
 		}
 	}
 }
@@ -39,6 +39,17 @@ void CCgProgram::UnBind() {
 
 }
 
+void CCgProgram::SetTarget(IRenderTarget* pTarget) {
+	if (0 != m_nProgramID) {
+		glUseProgram(m_nProgramID);
+		auto ite = m_pCgList.begin();
+		auto end = m_pCgList.end();
+		for (; end!=ite; ++ite) {
+			(*ite)->SetTarget(pTarget);
+		}
+	}
+}
+	
 bool CCgProgram::Compile() {
 	if (m_pCgList.empty()) {
 		return true;
@@ -50,7 +61,7 @@ bool CCgProgram::Compile() {
 	auto ite = m_pCgList.begin();
 	auto end = m_pCgList.end();
 	for (; end!=ite; ++ite) {
-		glAttachShader(m_nProgramID, ((CGlesCg*)*ite)->m_nShaderID);
+		glAttachShader(m_nProgramID, (*ite)->GetShaderID());
 	}
 
 	// bind attribute locations
@@ -73,9 +84,8 @@ bool CCgProgram::Compile() {
 		return false;
 	}
 
-	ite = m_pCgList.begin();
 	for (; end!=ite; ++ite) {
-		((CGlesCg*)*ite)->InitParam(m_nProgramID);
+	    (*ite)->OnComplete(m_nProgramID);
 	}
 
 	return true;
@@ -92,4 +102,17 @@ bool CCgProgram::Reset() {
 	return true;
 }
 
+void CCgProgram::AddCg(CCg* pCg) {
+	m_pCgList.XEPUSH(pCg);
+}
+
+void CCgProgram::ClearCg() {
+    auto ite = m_pCgList.begin();
+    auto end = m_pCgList.end();
+    for (; end!=ite; ++ite) {
+        XEDELETE(*ite);
+    }
+    m_pCgList.clear();
+}
+    
 }

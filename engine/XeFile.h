@@ -20,7 +20,7 @@ public:
 
 	static bool IsExist(const char* name);
 
-	static bool ReadBinary(const char* name, byte*& buffer, unsigned int& size);
+	static bool ReadFile(const char* name, byte*& buffer, unsigned int& size);
 
 	static bool ReadText(const char* name, byte*& buffer, unsigned int& size);
 	

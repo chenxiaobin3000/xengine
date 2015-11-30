@@ -20,7 +20,7 @@ bool CFile::IsExist(const char* name) {
 	return false;
 }
 
-bool CFile::ReadBinary(const char* name, byte*& buffer, unsigned int& size) {
+bool CFile::ReadFile(const char* name, byte*& buffer, unsigned int& size) {
 	CFile file;
 	if (!CFile::IsExist(name)) {
 		return false;
@@ -31,7 +31,7 @@ bool CFile::ReadBinary(const char* name, byte*& buffer, unsigned int& size) {
 	}
 
 	size = file.Size();
-   	buffer = NEW_LOG(byte[m_nSize]);
+   	buffer = XENEW(byte[size]);
 	if (!buffer) {
 		size = 0;
 		file.Close();
@@ -58,7 +58,7 @@ bool CFile::ReadText(const char* name, byte*& buffer, unsigned int& size) {
 	}
 
 	size = file.Size() + 1;
-	buffer = NEW_LOG(byte[m_nSize]);
+	buffer = XENEW(byte[size]);
 	if (!buffer) {
 		size = 0;
 		file.Close();
@@ -76,7 +76,7 @@ bool CFile::ReadText(const char* name, byte*& buffer, unsigned int& size) {
 }
 
 bool CFile::Open(const char* name, EFileMode mode) {
-	int len = strlen(name);
+	int len = (int)strlen(name);
 	if ('\\' == name[len-1] || '/' == name[len-1]) {
 		return false;
 	}
@@ -124,14 +124,14 @@ bool CFile::Write(const byte* buffer, unsigned int size) {
 }
 
 unsigned int CFile::Size() {
-	int length = 0;
+	long length = 0;
 	if (m_fp) {
-		int offset = ftell(m_fp);
+		long offset = ftell(m_fp);
 		fseek(m_fp, 0, SEEK_END);
 		length = ftell(m_fp);
 		fseek(m_fp, offset, SEEK_SET);
 	}
-	return length;
+	return (unsigned int)length;
 }
 
 }
