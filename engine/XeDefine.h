@@ -7,6 +7,8 @@
 #ifndef _XEDEFINE_H_
 #define _XEDEFINE_H_
 
+#define _DEBUG
+
 // 辅助函数宏
 #ifdef _DEBUG
 #	define XELOG            XE::XLog

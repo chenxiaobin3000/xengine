@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initConfig];
     
+    NSLog(@"width: %.02f, height: %.02f", SCREEN_WIDTH, SCREEN_HEIGHT);
     [self setWindow:[[UIWindow alloc] initWithFrame:SCREEN_BOUNDS]];
     
     ViewController* root = [[ViewController alloc] init];

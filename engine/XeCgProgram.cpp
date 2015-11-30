@@ -4,7 +4,7 @@
 namespace XE {
 
 const char* CCgProgram::s_szAttribVertex	= "Position";
-const char* CCgProgram::s_szAttribTexCoord	= "Texcoord";
+const char* CCgProgram::s_szAttribTexCoord	= "TexCoord";
 const char* CCgProgram::s_szAttribNormal	= "Normal";
 
 CCgProgram::CCgProgram() : m_nProgramID(0) {
@@ -80,10 +80,12 @@ bool CCgProgram::Compile() {
 		glGetProgramInfoLog(m_nProgramID, maxLength, &maxLength, &infoLog[0]);
 
 		std::string str(infoLog.begin(), infoLog.end());
-		XELOG("glsl err program: %s\n", str.c_str());
+		XELOG("glsl err program: %s", str.c_str());
 		return false;
 	}
 
+    ite = m_pCgList.begin();
+    end = m_pCgList.end();
 	for (; end!=ite; ++ite) {
 	    (*ite)->OnComplete(m_nProgramID);
 	}

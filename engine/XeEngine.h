@@ -21,7 +21,7 @@ private:
 	virtual ~CEngine();
 
 public:
-	bool Init(const char* szResPath);
+	bool Init();
 
 	virtual void Free();
 

@@ -39,6 +39,7 @@ static XE::CEngine* ENGINE = nil;
     // 初始化gles
     [EAGLContext setCurrentContext:self.context];
 
+    NSLog(@"game init\n");
     ENGINE = XE::CEngine::CSingleton::GetSingletonPtr();
     [self initGame];
     
@@ -56,11 +57,7 @@ static XE::CEngine* ENGINE = nil;
 }
 
 - (void)initGame {
-    NSString* path = [CommonFunction getWritePath];
-    std::string strPath = [path UTF8String];
-    strPath.append("/");
-    
-    ENGINE->Init(strPath.c_str());
+    ENGINE->Init();
 }
 
 #pragma mark - UIViewController
@@ -77,7 +74,7 @@ static XE::CEngine* ENGINE = nil;
 #pragma mark - GLKView and GLKViewController delegate methods
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-    ENGINE->Render();
+    //ENGINE->Render();
     RenderTest();
 }
 

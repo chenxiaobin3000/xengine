@@ -12,7 +12,7 @@ CEngine::~CEngine() {
 
 }
 
-bool CEngine::Init(const char* szResPath) {
+bool CEngine::Init() {
 	return false;
 }
 

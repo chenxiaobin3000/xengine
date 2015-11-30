@@ -35,9 +35,8 @@ bool CXFile::ReadText(const char* name, byte*& buffer, unsigned int& size) {
 }
 
 const char* CXFile::GetWritablePath() {
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	s_strTmp = [documentsDirectory UTF8String];
+	NSString* paths = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"res"];
+	s_strTmp = [paths UTF8String];
 	s_strTmp.append("/");
 	return s_strTmp.c_str();
 }

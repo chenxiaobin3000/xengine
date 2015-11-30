@@ -18,15 +18,19 @@ CVertexBuffer::CVertexBuffer() : m_nVertexCount(0),
 
 CVertexBuffer::~CVertexBuffer() {
 	if (0 != m_nVBOVertices)	{ glDeleteBuffers(1, &m_nVBOVertices); }
-	if (m_pVBOVertices)			{ delete m_pVBOVertices; }
+	if (m_pVBOVertices)			{ XEDELETE(m_pVBOVertices); }
 	if (0 != m_nVBOTexCoords)	{ glDeleteBuffers(1, &m_nVBOTexCoords); }
-	if (m_pVBOTexCoords)		{ delete m_pVBOTexCoords; }
+	if (m_pVBOTexCoords)		{ XEDELETE(m_pVBOTexCoords); }
 	if (0 != m_nVBONormals)		{ glDeleteBuffers(1, &m_nVBONormals); }
-	if (m_pVBONormals)			{ delete m_pVBONormals; }
-	if (m_pIndexList)			{ delete m_pIndexList; }
+	if (m_pVBONormals)			{ XEDELETE(m_pVBONormals); }
+	if (m_pIndexList)			{ XEDELETE(m_pIndexList); }
 }
 
 void CVertexBuffer::Render() {
+    glEnableVertexAttribArray(CCgProgram::E_ATTRIB_VERTEX);
+    glEnableVertexAttribArray(CCgProgram::E_ATTRIB_TEXCOORD);
+    glEnableVertexAttribArray(CCgProgram::E_ATTRIB_NORMAL);
+    
 	glBindBuffer(GL_ARRAY_BUFFER, m_nVBOVertices);
 	glVertexAttribPointer(CCgProgram::E_ATTRIB_VERTEX, 3, GL_FLOAT,
 		GL_FALSE, 0, NULL);
@@ -75,7 +79,7 @@ bool CVertexBuffer::SetCount(int nVertexCount, int nIndexCount) {
 	}
 
 	// 处理索引
-	if (0 != m_nIndexCount || !m_pIndexList) {
+	if (0 != m_nIndexCount && !m_pIndexList) {
 		m_pIndexList = XENEW(GLuint[m_nIndexCount * 3]);
 		if (!m_pIndexList) {
 			return false;
@@ -94,6 +98,11 @@ int CVertexBuffer::GetIndexCount() {
 }
 
 bool CVertexBuffer::Lock(float*& pVertexs, float*& pTexCoords, float*& pNormals, unsigned int*& pIndexs) {
+    if (0 == m_nVBOVertices || 0 == m_nVBOTexCoords
+    || 0 == m_nVBONormals || !m_pVBOVertices
+    || !m_pVBOTexCoords ||  !m_pVBONormals) {
+        return false;
+    }
 	pVertexs = m_pVBOVertices;
 	pTexCoords = m_pVBOTexCoords;
 	pNormals = m_pVBONormals;
@@ -113,6 +122,8 @@ void CVertexBuffer::Unlock() {
 	glBindBuffer(GL_ARRAY_BUFFER, m_nVBONormals);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*m_nVertexCount*3, 
 		m_pVBONormals, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 	
 }

@@ -11,7 +11,7 @@ void XLog(const char* format, ...) {
 	vsprintf(tmp, format, ap);
 	va_end(ap);
 
-	printf("%s", tmp);
+	printf("%s\n", tmp);
 }
 
 }

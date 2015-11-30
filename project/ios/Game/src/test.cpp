@@ -17,6 +17,7 @@ static CVertexBuffer* s_buffer = NULL;
 static CCgProgram* s_program = NULL;
 
 void MakeCube() {
+    XELOG("make cube");
     float* pVertexs;
     float* pTexcoords;
     float* pNormals;
@@ -25,23 +26,28 @@ void MakeCube() {
     if (s_buffer->Lock(pVertexs, pTexcoords, pNormals, pIndexs)) {
         pVertexs[0] = 0.0f; pVertexs[1] = 0.0f; pVertexs[2] = 0.0f;
         pVertexs[3] = 0.0f; pVertexs[4] = 1.0f; pVertexs[5] = 0.0f;
-        pVertexs[6] = 1.0f; pVertexs[7] = 1.0f; pVertexs[8] = 0.0f;
+        pVertexs[6] = 1.0f; pVertexs[7] = 0.0f; pVertexs[8] = 0.0f;
+        ZeroMemory(pTexcoords, sizeof(float)*2*3);
+        ZeroMemory(pNormals, sizeof(float)*3*3);
+        s_buffer->Unlock();
     }
 }
 
 void InitCg() {
+    XELOG("init cg");
     CCg* p = new CCg;
-    p->Read(CCg::E_CgVertex, "testVertex.glsl");
+    p->Read(CCg::E_CgVertex, "test.vert");
     s_program->AddCg(p);
     
     p = new CCg;
-    p->Read(CCg::E_CgFragment, "testFragment.glsl");
+    p->Read(CCg::E_CgFragment, "test.frag");
     s_program->AddCg(p);
     
     s_program->Compile();
 }
 
 void InitTest() {
+    XELOG("init test");
 	//static CRenderScene CRenderScene;
 	//static CCamera camera;
 	//scene.Render(camera);
@@ -53,8 +59,19 @@ void InitTest() {
     InitCg();
 }
 
+void InitLook() {
+//    GLfloat projection[16] = {1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1};
+//
+//    float ymax, xmax;
+//    ymax = info.fViewNear * tanf(45.0f * PI / 360.0f);
+//    xmax = ymax * info.fScreenWidth/info.fScreenHeight;
+//    glhOrtho(projection, -xmax, xmax, -ymax, ymax, info.fViewNear, info.fViewFar);
+}
+
 void RenderTest() {
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glViewport(0, 0, (GLsizei)640, (GLsizei)480);
+    
+    glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
     
@@ -63,6 +80,8 @@ void RenderTest() {
    	glDisable(GL_CULL_FACE);
     //glEnable(GL_CULL_FACE);
     //glFrontFace(GL_CW);
+    
+    InitLook();
     
     s_program->Bind(NULL);
     s_buffer->Render();

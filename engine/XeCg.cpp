@@ -103,11 +103,11 @@ GLuint CCg::GetShaderID() {
 bool CCg::Init(GLenum type, const char* szPath) {
 	byte* buffer = NULL;
 	unsigned int size = 0;
-	if (!CXFile::ReadFile(szPath, buffer, size)) {
+	if (!CXFile::ReadText(szPath, buffer, size)) {
 		return false;
 	}
 
-	m_nShaderID = glCreateShader(GL_VERTEX_SHADER);
+	m_nShaderID = glCreateShader(type);
 	glShaderSource(m_nShaderID, 1, (const GLchar**)&buffer, NULL);
 	glCompileShader(m_nShaderID);
 
@@ -121,7 +121,7 @@ bool CCg::Init(GLenum type, const char* szPath) {
 		glGetShaderInfoLog(m_nShaderID, maxLength, &maxLength, &infoLog[0]);
 
 		std::string str(infoLog.begin(), infoLog.end());
-		XELOG("glsl err shader: %s\n%s\n", szPath, str.c_str());
+		XELOG("glsl err shader: %s\nerror: %s", szPath, str.c_str());
 
 		XEDELETE(buffer);
 		return false;
