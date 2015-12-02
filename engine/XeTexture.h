@@ -18,21 +18,26 @@ public:
 	CTexture();
 	virtual ~CTexture();
 
-	// 绑定纹理
-	virtual void Bind(int id);
-
-	virtual void UnBind(int id);
-
-/*	virtual bool LoadRGB(byte* rgb, int width, int height);
-
-	virtual bool Deserialize(const char* path, const char* szLocalPath);
-
+	virtual bool Create(byte* rgb, int width, int height, EPixelFormat format);
+	virtual bool Load(const char* path);
 	virtual void Save(const char* path);
 
-	void SetTexture(GLuint id);
+	virtual void Destroy();
 
+	virtual void* Lock();
+	virtual void UnLock();
+
+	// 绑定纹理
+	virtual void Bind();
+	virtual void UnBind();
+
+	virtual int GetWidth();
+	virtual int GetHeight();
+	virtual EPixelFormat GetFormat();
+	
+	void SetTexture(GLuint id);
 	GLuint GetTexture();
-*/
+
 private:
 	GLuint						m_nTextureID;
 	int							m_nWidth;

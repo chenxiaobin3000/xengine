@@ -101,7 +101,7 @@ public:
 
 private:
 	// 不支持数组申请
-	void* operator new[](size_t s) { return NULL; }
+    void* operator new[](size_t s) { void* p = NULL; return p; }
 	void operator delete[](void* p) {}
 
 protected:

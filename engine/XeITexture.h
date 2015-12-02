@@ -38,11 +38,9 @@ public:
 public:
 	virtual ~ITexture() {}
 	
-	virtual const std::string& GetName() const = 0;
-
-	virtual void Create(byte* rgb, int width, int height, EPixelFormat format) = 0;
-	virtual void Load(const std::string& path) = 0;
-	virtual void Save(const std::string& path) = 0;
+	virtual bool Create(byte* rgb, int width, int height, EPixelFormat format) = 0;
+	virtual bool Load(const char* path) = 0;
+	virtual void Save(const char* path) = 0;
 
 	virtual void SetInvalidateListener(ITextureInvalidateListener* listener) {}
 
@@ -50,7 +48,6 @@ public:
 
 	virtual void* Lock() = 0;
 	virtual void UnLock() = 0;
-	virtual bool IsLocked() = 0;
 
 	virtual int GetWidth() = 0;
 	virtual int GetHeight() = 0;

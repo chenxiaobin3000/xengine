@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5109CE4C1BF1914E00E7EDF3 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5109CE4B1BF1914E00E7EDF3 /* ViewController.mm */; };
 		5109CE4E1BF1945A00E7EDF3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */; };
+		510E53221C0DB3F900C3B58C /* XeImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510E53211C0DB3F900C3B58C /* XeImage.mm */; };
 		517013DE1BD0F41D007147E7 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517013DD1BD0F41D007147E7 /* libfreetype.a */; };
 		517013E21BD0F4A5007147E7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517013E01BD0F4A5007147E7 /* test.cpp */; };
 		517014F61BD0FA22007147E7 /* MyGUI_ActionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517014951BD0FA22007147E7 /* MyGUI_ActionController.cpp */; };
@@ -171,8 +171,9 @@
 		51929E721BD0EB83006EEBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51929E711BD0EB83006EEBD9 /* main.m */; };
 		51929E751BD0EB83006EEBD9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51929E741BD0EB83006EEBD9 /* AppDelegate.mm */; };
 		51929E7D1BD0EB83006EEBD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */; };
+		51EAE0011C0EE9180034DF1D /* CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EADFFE1C0EE9180034DF1D /* CommonFunction.m */; };
+		51EAE0021C0EE9180034DF1D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51EAE0001C0EE9180034DF1D /* ViewController.mm */; };
 		51EB37871BFC21B40004BB29 /* XeEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EB37831BFC21B40004BB29 /* XeEngine.cpp */; };
-		51EB378A1BFC243E0004BB29 /* CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EB37891BFC243E0004BB29 /* CommonFunction.m */; };
 		51EB378D1BFC4FD60004BB29 /* XeConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EB378B1BFC4FD60004BB29 /* XeConfig.cpp */; };
 		51F8712D1C0C01F2008EDAAD /* XeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F871231C0C01F2008EDAAD /* XeCamera.cpp */; };
 		51F8712E1C0C01F2008EDAAD /* XePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F871271C0C01F2008EDAAD /* XePass.cpp */; };
@@ -185,8 +186,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5109CE4B1BF1914E00E7EDF3 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		510E53201C0DB3E600C3B58C /* XeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeImage.h; path = ../../engine/XeImage.h; sourceTree = "<group>"; };
+		510E53211C0DB3F900C3B58C /* XeImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = XeImage.mm; path = ../../engine/app/ios/XeImage.mm; sourceTree = "<group>"; };
 		516F4B031C0568C20046DCAD /* XeIRenderEnv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeIRenderEnv.h; path = ../../engine/XeIRenderEnv.h; sourceTree = "<group>"; };
 		517013DD1BD0F41D007147E7 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../../deps/freetype/libfreetype.a; sourceTree = "<group>"; };
 		517013E01BD0F4A5007147E7 /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test.cpp; path = src/test.cpp; sourceTree = "<group>"; };
@@ -605,14 +607,17 @@
 		51929E711BD0EB83006EEBD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51929E731BD0EB83006EEBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		51929E741BD0EB83006EEBD9 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		51929E761BD0EB83006EEBD9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51929E811BD0EB83006EEBD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51EADFFD1C0EE9180034DF1D /* CommonFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonFunction.h; path = src/CommonFunction.h; sourceTree = "<group>"; };
+		51EADFFE1C0EE9180034DF1D /* CommonFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonFunction.m; path = src/CommonFunction.m; sourceTree = "<group>"; };
+		51EADFFF1C0EE9180034DF1D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = src/ViewController.h; sourceTree = "<group>"; };
+		51EAE0001C0EE9180034DF1D /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = src/ViewController.mm; sourceTree = "<group>"; };
+		51EAE0141C0EEB2C0034DF1D /* libz.1.2.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.8.dylib; path = ../../../../../../../usr/local/lib/libz.1.2.8.dylib; sourceTree = "<group>"; };
+		51EAE0161C0EEBB10034DF1D /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = ../../../../../../../usr/local/lib/libz.a; sourceTree = "<group>"; };
 		51EB37821BFC206D0004BB29 /* game_prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game_prefix.pch; sourceTree = "<group>"; };
 		51EB37831BFC21B40004BB29 /* XeEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeEngine.cpp; path = ../../engine/XeEngine.cpp; sourceTree = "<group>"; };
 		51EB37841BFC21B40004BB29 /* XeICamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeICamera.h; path = ../../engine/XeICamera.h; sourceTree = "<group>"; };
-		51EB37881BFC243E0004BB29 /* CommonFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFunction.h; sourceTree = "<group>"; };
-		51EB37891BFC243E0004BB29 /* CommonFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFunction.m; sourceTree = "<group>"; };
 		51EB378B1BFC4FD60004BB29 /* XeConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeConfig.cpp; path = ../../engine/XeConfig.cpp; sourceTree = "<group>"; };
 		51EB378C1BFC4FD60004BB29 /* XeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeConfig.h; path = ../../engine/XeConfig.h; sourceTree = "<group>"; };
 		51F871231C0C01F2008EDAAD /* XeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeCamera.cpp; path = ../../engine/XeCamera.cpp; sourceTree = "<group>"; };
@@ -659,6 +664,10 @@
 		517013DF1BD0F487007147E7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				51EADFFD1C0EE9180034DF1D /* CommonFunction.h */,
+				51EADFFE1C0EE9180034DF1D /* CommonFunction.m */,
+				51EADFFF1C0EE9180034DF1D /* ViewController.h */,
+				51EAE0001C0EE9180034DF1D /* ViewController.mm */,
 				517013E01BD0F4A5007147E7 /* test.cpp */,
 				517013E11BD0F4A5007147E7 /* test.h */,
 			);
@@ -993,6 +1002,8 @@
 				518FF2741BE8F3940050E90A /* XeGC.h */,
 				51EB37841BFC21B40004BB29 /* XeICamera.h */,
 				518FA8DD1BFF1CDC0053CC08 /* XeIFile.h */,
+				510E53201C0DB3E600C3B58C /* XeImage.h */,
+				510E53211C0DB3F900C3B58C /* XeImage.mm */,
 				516F4B031C0568C20046DCAD /* XeIRenderEnv.h */,
 				518FF2761BE8F3940050E90A /* XeIRenderTarget.h */,
 				518FF2771BE8F3940050E90A /* XeITexture.h */,
@@ -1204,15 +1215,11 @@
 			isa = PBXGroup;
 			children = (
 				517013DF1BD0F487007147E7 /* Src */,
+				51929E701BD0EB83006EEBD9 /* Supporting Files */,
 				51929E731BD0EB83006EEBD9 /* AppDelegate.h */,
 				51929E741BD0EB83006EEBD9 /* AppDelegate.mm */,
-				51EB37881BFC243E0004BB29 /* CommonFunction.h */,
-				51EB37891BFC243E0004BB29 /* CommonFunction.m */,
-				51929E761BD0EB83006EEBD9 /* ViewController.h */,
-				5109CE4B1BF1914E00E7EDF3 /* ViewController.mm */,
 				51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */,
 				51929E811BD0EB83006EEBD9 /* Info.plist */,
-				51929E701BD0EB83006EEBD9 /* Supporting Files */,
 			);
 			name = App;
 			path = Game;
@@ -1237,6 +1244,8 @@
 		89DE8B32A8B2AF1060F5A83A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51EAE0161C0EEBB10034DF1D /* libz.a */,
+				51EAE0141C0EEB2C0034DF1D /* libz.1.2.8.dylib */,
 				5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */,
 				517013DD1BD0F41D007147E7 /* libfreetype.a */,
 				EF93D00016124A5688E76782 /* libPods.a */,
@@ -1370,13 +1379,13 @@
 				51EB37871BFC21B40004BB29 /* XeEngine.cpp in Sources */,
 				517015141BD0FA22007147E7 /* MyGUI_GeometryUtility.cpp in Sources */,
 				51F8712E1C0C01F2008EDAAD /* XePass.cpp in Sources */,
+				51EAE0021C0EE9180034DF1D /* ViewController.mm in Sources */,
 				517015211BD0FA22007147E7 /* MyGUI_LogSource.cpp in Sources */,
 				51F8712D1C0C01F2008EDAAD /* XeCamera.cpp in Sources */,
 				517015511BD0FA22007147E7 /* MyGUI_WidgetInput.cpp in Sources */,
 				518FF29E1BE8F3940050E90A /* XeMatrix.cpp in Sources */,
 				518FF3161BE910990050E90A /* lmem.c in Sources */,
 				51F871301C0C01F2008EDAAD /* XeTechniqueManager.cpp in Sources */,
-				51EB378A1BFC243E0004BB29 /* CommonFunction.m in Sources */,
 				517015121BD0FA22007147E7 /* MyGUI_FileLogListener.cpp in Sources */,
 				518FF3251BE910990050E90A /* lzio.c in Sources */,
 				51F871311C0C01F2008EDAAD /* XeTexture.cpp in Sources */,
@@ -1411,7 +1420,6 @@
 				517015411BD0FA22007147E7 /* MyGUI_SkinItem.cpp in Sources */,
 				518FF2C11BE909AE0050E90A /* json_writer.cpp in Sources */,
 				518FF3151BE910990050E90A /* lmathlib.c in Sources */,
-				5109CE4C1BF1914E00E7EDF3 /* ViewController.mm in Sources */,
 				518FF30E1BE910990050E90A /* ldo.c in Sources */,
 				518FF2A51BE8F3940050E90A /* XeRectangle.cpp in Sources */,
 				518FF2BF1BE909AE0050E90A /* json_value.cpp in Sources */,
@@ -1475,6 +1483,7 @@
 				517015181BD0FA22007147E7 /* MyGUI_ItemBox.cpp in Sources */,
 				517015371BD0FA22007147E7 /* MyGUI_ResourceManualPointer.cpp in Sources */,
 				518FF3071BE910990050E90A /* lbaselib.c in Sources */,
+				510E53221C0DB3F900C3B58C /* XeImage.mm in Sources */,
 				517015331BD0FA22007147E7 /* MyGUI_ResourceImageSetPointer.cpp in Sources */,
 				518FA8E21BFF1CDC0053CC08 /* XeCgProgram.cpp in Sources */,
 				5170151A1BD0FA22007147E7 /* MyGUI_LayerItem.cpp in Sources */,
@@ -1527,6 +1536,7 @@
 				5170150A1BD0FA22007147E7 /* MyGUI_DataStream.cpp in Sources */,
 				518FF31A1BE910990050E90A /* loslib.c in Sources */,
 				518FF31E1BE910990050E90A /* lstrlib.c in Sources */,
+				51EAE0011C0EE9180034DF1D /* CommonFunction.m in Sources */,
 				517014FF1BD0FA22007147E7 /* MyGUI_ComboBox.cpp in Sources */,
 				517015001BD0FA22007147E7 /* MyGUI_ConsoleLogListener.cpp in Sources */,
 				51929E721BD0EB83006EEBD9 /* main.m in Sources */,

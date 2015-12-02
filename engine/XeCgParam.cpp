@@ -162,8 +162,8 @@ bool CCgParam::SetEnv(IRenderEnv* pEnv) {
 		glActiveTexture(GL_TEXTURE1);
 		pTexture = pEnv->GetDepthTexture();
 		if (pTexture) {
-			pTexture->Bind(CTexture::E_Depth);
-			glUniform1i(m_nParamID, 1);
+			pTexture->Bind();
+			glUniform1i(m_nParamID, E_SamplerShadow);
 		}
 		break;
 
@@ -235,8 +235,8 @@ bool CCgParam::SetPass(CPass* pPass) {
 		glActiveTexture(GL_TEXTURE0);
 		pTexture = pPass->GetTexture();
 		if (pTexture) {
-			pTexture->Bind(CTexture::E_Normal);
-			glUniform1i(m_nParamID, 0);
+			pTexture->Bind();
+			glUniform1i(m_nParamID, E_SamplerNormal);
 		}
 		break;
 

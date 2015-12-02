@@ -28,6 +28,12 @@ enum ECgParamType {
 	E_ParamNum					// 参数类型数
 };
 
+// glsl纹理采样器id
+enum ESampler {
+    E_SamplerNormal,            //
+    E_SamplerShadow             //
+};
+
 class CPass;
 
 class CCgParam

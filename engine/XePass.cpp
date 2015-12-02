@@ -3,7 +3,14 @@
 
 namespace XE {
 
-CPass::CPass() {
+CPass::CPass() : m_pCgProgram(NULL),
+				 m_bBindTexture(false),
+				 m_pOriginalTexture(NULL),
+				 m_pTexture(NULL),
+				 m_pDepthTexture(NULL),
+				 m_bAlpha(false),
+				 m_eSrcBlend(E_One),
+				 m_eDstBlend(E_Zero) {
 	
 }
 
@@ -11,6 +18,29 @@ CPass::~CPass() {
 	
 }
 
+bool CPass::Init(const char* szTexPath, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, const char* szCgProgram, bool bAlpha, EAlphaBlend eSrcBlend, EAlphaBlend eDstBlend) {
+    if (szTexPath) {
+		m_pOriginalTexture = XENEW(CTexture);
+		if (!m_pOriginalTexture) {
+			return false;
+		}
+		if (!m_pOriginalTexture->Load(szTexPath)) {
+			XEDELETE(m_pOriginalTexture);
+			return false;
+		}
+		m_pTexture = m_pOriginalTexture;
+	}
+	m_bBindTexture		= bBindTexture;
+	m_MaterialDiffuse	= Diffuse;
+	m_MaterialAmbient	= Ambient;
+	m_MaterialSpecular	= Specular;
+	m_MaterialEmissive	= Emissive;
+	m_bAlpha			= bAlpha;
+	m_eSrcBlend			= eSrcBlend;
+	m_eDstBlend			= eDstBlend;
+    return true;
+}
+    
 CCgProgram* CPass::GetCgProgram() {
 	return m_pCgProgram;
 }

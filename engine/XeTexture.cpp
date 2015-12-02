@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "XeTexture.h"
+#include "XeImage.h"
 
 namespace XE {
 
@@ -13,17 +14,7 @@ CTexture::~CTexture() {
 	}
 }
 
-void CTexture::Bind(int id) {
-	if (0 != m_nTextureID) {
-		glBindTexture(GL_TEXTURE_2D, m_nTextureID);
-	}
-}
-
-void CTexture::UnBind(int id) {
-
-}
-/*
-bool CTexture::LoadRGB(byte* rgb, int width, int height) {
+bool CTexture::Create(byte* rgb, int width, int height, EPixelFormat format) {
 	if (0 != m_nTextureID) {
 		return false;
 	}
@@ -41,26 +32,24 @@ bool CTexture::LoadRGB(byte* rgb, int width, int height) {
 	return true;
 }
 
-bool CTexture::Deserialize(const char* path, const char* szLocalPath) {
+bool CTexture::Load(const char* path) {
 	if (0 != m_nTextureID) {
 		return false;
 	}
 
-	// ¼ÓÔØÎÄ¼þ
+	// åŠ è½½æ–‡ä»¶
 	CImage image;
-	if (!image.Deserialize(path, path)) {
+	if (!image.Load(path)) {
 		return false;
 	}
 
 	byte* rgb	= image.GetBits();
-	int width	= image.GetWidth();
-	int height	= image.GetHeight();
-	m_nWidth	= width;
-	m_nHeight	= height;
+	m_nWidth	= image.GetWidth();
+	m_nHeight	= image.GetHeight();
 
 	glGenTextures(1, &m_nTextureID);
 	glBindTexture(GL_TEXTURE_2D, m_nTextureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, rgb);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_nWidth, m_nHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, rgb);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -73,6 +62,40 @@ void CTexture::Save(const char* path) {
 
 }
 
+void CTexture::Destroy() {
+	
+}
+
+void* CTexture::Lock() {
+	return NULL;
+}
+
+void CTexture::UnLock() {
+	
+}
+
+void CTexture::Bind() {
+	if (0 != m_nTextureID) {
+		glBindTexture(GL_TEXTURE_2D, m_nTextureID);
+	}
+}
+
+void CTexture::UnBind() {
+
+}
+
+int CTexture::GetWidth() {
+	return m_nWidth;
+}
+
+int CTexture::GetHeight() {
+	return m_nHeight;
+}
+
+EPixelFormat CTexture::GetFormat() {
+	return EPixelFormatUnknow;
+}
+	
 void CTexture::SetTexture(GLuint id) {
 	m_nTextureID = id;
 }
@@ -80,5 +103,5 @@ void CTexture::SetTexture(GLuint id) {
 GLuint CTexture::GetTexture() {
 	return m_nTextureID;
 }
-*/
+
 }

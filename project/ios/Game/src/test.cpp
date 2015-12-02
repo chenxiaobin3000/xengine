@@ -10,11 +10,13 @@
 #include "../../../../engine/app/ios/stdafx.h"
 #include "../../../../engine/XeVertexBuffer.h"
 #include "../../../../engine/XeCgProgram.h"
+#include "../../../../engine/XePass.h"
 
 using namespace XE;
 
 static CVertexBuffer* s_buffer = NULL;
 static CCgProgram* s_program = NULL;
+static CTexture* s_texture = NULL;
 
 void MakeCube() {
     XELOG("make cube");
@@ -27,7 +29,9 @@ void MakeCube() {
         pVertexs[0] = 0.0f; pVertexs[1] = 0.0f; pVertexs[2] = 0.0f;
         pVertexs[3] = 0.0f; pVertexs[4] = 1.0f; pVertexs[5] = 0.0f;
         pVertexs[6] = 1.0f; pVertexs[7] = 0.0f; pVertexs[8] = 0.0f;
-        ZeroMemory(pTexcoords, sizeof(float)*2*3);
+        pTexcoords[0] = 0.0f; pTexcoords[1] = 0.0f;
+        pTexcoords[2] = 0.0f; pTexcoords[3] = 1.0f;
+        pTexcoords[4] = 1.0f; pTexcoords[5] = 0.0f;
         ZeroMemory(pNormals, sizeof(float)*3*3);
         s_buffer->Unlock();
     }
@@ -43,6 +47,14 @@ void InitCg() {
     p->Read(CCg::E_CgFragment, "test.frag");
     s_program->AddCg(p);
     
+    CPass* pass = new CPass;
+    CColorF color;
+    pass->Init("logo.pvr.ccz", true, color, color, color, color, "");
+    
+    CCgParam* param = new CCgParam("Samp0");
+    param->SetPass(pass);
+    p->AddParam(param);
+    
     s_program->Compile();
 }
 
@@ -52,11 +64,13 @@ void InitTest() {
 	//static CCamera camera;
 	//scene.Render(camera);
 
-    s_buffer = new CVertexBuffer();
-    s_program = new CCgProgram();
+    s_buffer = new CVertexBuffer;
+    s_program = new CCgProgram;
+    s_texture = new CTexture;
     
     MakeCube();
     InitCg();
+    s_texture->Load("logo.pvr.ccz");
 }
 
 void InitLook() {
