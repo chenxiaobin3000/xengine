@@ -11,7 +11,7 @@
 
 // 辅助函数宏
 #ifdef _DEBUG
-#	define XELOG            XE::XLog
+#	define XELOG           XE::XLog
 #	define XEASSERT(x)     assert(x)
 #	define XENEW(x)        new x
 #	define XEDELETE(x)     delete x; x=NULL
@@ -25,6 +25,14 @@
 #	define XEPUSH(x)       push_back(x)
 #	define XEINSERT(x)     insert(x)
 #endif //_DEBUG
+
+#ifndef MIN
+#define MIN(x,y) (((x) > (y)) ? (y) : (x))
+#endif //MIN
+
+#ifndef MAX
+#define MAX(x,y) (((x) < (y)) ? (y) : (x))
+#endif //MAX
 
 namespace XE {
 

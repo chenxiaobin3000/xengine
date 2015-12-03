@@ -18,6 +18,7 @@ typedef unsigned char				byte;
 #include <time.h>
 #include <math.h>
 #include <ctype.h>
+#include <assert.h>
 
 // std
 #include <string>

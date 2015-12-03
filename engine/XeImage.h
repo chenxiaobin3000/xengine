@@ -12,6 +12,13 @@ namespace XE {
 class CImage
 {
 public:
+	enum EFormat {
+		E_Unknown,
+		E_Pvr,
+		E_Etc
+	};
+	
+public:
 	CImage();
 	virtual ~CImage();
 
@@ -24,6 +31,22 @@ public:
 	byte* GetBits();
 
 private:
+	EFormat DetectFormat(const unsigned char* buffer, ssize_t size);
+
+	bool IsPvr(const unsigned char* buffer, ssize_t size);
+
+	bool IsEtc(const unsigned char* buffer, ssize_t size);
+
+	bool InitWithPVRData(const unsigned char* buffer, ssize_t size);
+
+	bool InitWithPVRv2Data(const unsigned char* buffer, ssize_t size);
+
+	bool InitWithPVRv3Data(const unsigned char* buffer, ssize_t size);
+
+	bool InitWithETCData(const unsigned char* buffer, ssize_t size);
+	
+private:
+	EFormat						m_eFormat;
 	int							m_nWidth;
 	int							m_nHeight;
 	byte*						m_pBits;
