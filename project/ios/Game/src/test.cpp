@@ -16,7 +16,6 @@ using namespace XE;
 
 static CVertexBuffer* s_buffer = NULL;
 static CCgProgram* s_program = NULL;
-static CTexture* s_texture = NULL;
 
 void MakeCube() {
     XELOG("make cube");
@@ -24,15 +23,23 @@ void MakeCube() {
     float* pTexcoords;
     float* pNormals;
     unsigned int* pIndexs;
-    s_buffer->SetCount(3, 0);
+    s_buffer->SetCount(6, 0);
     if (s_buffer->Lock(pVertexs, pTexcoords, pNormals, pIndexs)) {
         pVertexs[0] = 0.0f; pVertexs[1] = 0.0f; pVertexs[2] = 0.0f;
         pVertexs[3] = 0.0f; pVertexs[4] = 1.0f; pVertexs[5] = 0.0f;
         pVertexs[6] = 1.0f; pVertexs[7] = 0.0f; pVertexs[8] = 0.0f;
-        pTexcoords[0] = 0.0f; pTexcoords[1] = 0.0f;
-        pTexcoords[2] = 0.0f; pTexcoords[3] = 1.0f;
-        pTexcoords[4] = 1.0f; pTexcoords[5] = 0.0f;
+        pTexcoords[0] = 0.0f; pTexcoords[1] = 1.0f;
+        pTexcoords[2] = 0.0f; pTexcoords[3] = 0.0f;
+        pTexcoords[4] = 1.0f; pTexcoords[5] = 1.0f;
         ZeroMemory(pNormals, sizeof(float)*3*3);
+        
+        pVertexs[9] = 0.0f; pVertexs[10] = 1.0f; pVertexs[11] = 0.0f;
+        pVertexs[12] = 1.0f; pVertexs[13] = 0.0f; pVertexs[14] = 0.0f;
+        pVertexs[15] = 1.0f; pVertexs[16] = 1.0f; pVertexs[17] = 0.0f;
+        pTexcoords[6] = 0.0f; pTexcoords[7] = 0.0f;
+        pTexcoords[8] = 1.0f; pTexcoords[9] = 1.0f;
+        pTexcoords[10] = 1.0f; pTexcoords[11] = 0.0f;
+        ZeroMemory(pNormals+9, sizeof(float)*3*3);
         s_buffer->Unlock();
     }
 }
@@ -49,7 +56,7 @@ void InitCg() {
     
     CPass* pass = new CPass;
     CColorF color;
-    pass->Init("logo.pvr.ccz", true, color, color, color, color, "");
+    pass->Init("logo-hd.pvr.ccz", true, color, color, color, color, "");
     
     CCgParam* param = new CCgParam("Samp0");
     param->SetPass(pass);
@@ -66,11 +73,9 @@ void InitTest() {
 
     s_buffer = new CVertexBuffer;
     s_program = new CCgProgram;
-    s_texture = new CTexture;
     
     MakeCube();
     InitCg();
-    s_texture->Load("logo.pvr.ccz");
 }
 
 void InitLook() {

@@ -24,6 +24,8 @@ public:
 
 	bool Load(const char* path);
 	
+    EFormat GetFormat();
+    
 	int GetWidth();
 
 	int GetHeight();

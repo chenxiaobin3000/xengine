@@ -8,7 +8,6 @@ namespace XE {
 static const int MIPMAP_MAX = 16;
 
 static const int PVR_TEXTURE_FLAG_TYPE_MASK = 0xff;
-static bool _PVRHaveAlphaPremultiplied = false;
 
 // Values taken from PVRTexture.h from http://www.imgtec.com
 enum class PVR2TextureFlag {
@@ -186,7 +185,11 @@ bool CImage::Load(const char* path) {
 
     return bRet;
 }
-	
+
+CImage::EFormat CImage::GetFormat() {
+    return m_eFormat;
+}
+
 int CImage::GetWidth() {
     return m_nWidth;
 }
@@ -265,7 +268,7 @@ bool CImage::InitWithPVRv2Data(const unsigned char* buffer, ssize_t size) {
     m_pBits = static_cast<unsigned char*>(malloc(_dataLen * sizeof(unsigned char)));
     memcpy(m_pBits, (unsigned char*)buffer + sizeof(PVRv2TexHeader), _dataLen);
     
-    int bpp = 1;
+    int bpp = 8;
     
     // Calculate the data size for each texture level and respect the minimum number of blocks
     while (dataOffset < dataLength) {
@@ -328,10 +331,7 @@ bool CImage::InitWithPVRv3Data(const unsigned char* buffer, ssize_t size) {
     
     PVR3TexturePixelFormat pixelFormat = static_cast<PVR3TexturePixelFormat>(header->pixelFormat);
     
-    int bpp = 1;
-    
-    // flags
-    int flags = CC_SWAP_INT32_LITTLE_TO_HOST(header->flags);
+    int bpp = 8;
     
     // sizing
     int width = CC_SWAP_INT32_LITTLE_TO_HOST(header->width);
