@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "XeAABB.h"
 #include "XeRay.h"
-#include "XeMathDef.h"
+#include "XeMath.h"
 
 namespace XE {
 
@@ -143,7 +143,7 @@ bool CAABB::Contain(const COBB& pIBB) {
 }
 
 void CAABB::Render(byte r, byte g, byte b) {
-	CVertex v1, v2;
+/*	CVertex v1, v2;
 
 	// 下层
 	v1.Set(m_Min.x, m_Min.y, m_Min.z);
@@ -194,7 +194,7 @@ void CAABB::Render(byte r, byte g, byte b) {
 
 	v1.Set(m_Max.x, m_Max.y, m_Min.z);
 	v2.Set(m_Max.x, m_Max.y, m_Max.z);
-	CLineBuffer::GetSingleton().DrawLine(v1, v2, r, g, b);
+	CLineBuffer::GetSingleton().DrawLine(v1, v2, r, g, b);*/
 }
 
 void CAABB::SetPosition(const CVertex& v) {

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "XePlane.h"
-#include "XeMathDef.h"
+#include "XeMath.h"
 
 namespace XE {
 

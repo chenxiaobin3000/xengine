@@ -75,4 +75,6 @@ public:
 	CVertex						m_Max;					// 最大值
 };
 
+}
+
 #endif //_XEAABB_H_

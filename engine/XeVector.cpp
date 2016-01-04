@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "XeVector.h"
-#include "XeMathDef.h"
+#include "XeMath.h"
 
 namespace XE {
 

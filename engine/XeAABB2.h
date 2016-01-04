@@ -4,12 +4,15 @@
  * data: 2015-12-21
  */
 
+#ifndef _XEAABB2_H_
+#define _XEAABB2_H_
+
+#include "XeVertex.h"
 #include "XePoint.h"
 #include "XeColor.h"
 
 namespace XE {
 
-class CVertex;
 class CRay;
 class CAABB;
 class COBB;
@@ -85,3 +88,5 @@ public:
 };
 
 }
+
+#endif //_XEAABB2_H_

@@ -7,28 +7,30 @@
 #ifndef _XECAMERA_H_
 #define _XECAMERA_H_
 
+#include "XeRenderObject.h"
 #include "XeMatrix.h"
-//#include "XeCameraGrid.h"
+#include "XePoint.h"
+#include "XePlane.h"
 
 namespace XE {
 
-class CBillBoard;
+// é•œå¤´é€è§†ç±»å‹
+enum ECameraPerspectiveType {
+	ECPT_Perspective,		// é€è§†æ¨¡å¼
+	ECPT_Ortho				// æ­£äº¤æ¨¡å¼
+};
 
-class CCamera
+class CCamera : public CRenderObject
 {
 public:
-/*	CCamera(float vx, float vy, float vz, float width, float height, float zn, float zf);
-	virtual ~CCamera();
+	CCamera(CVertex& forward, CPoint& screen, float zn, float zf);
+	CCamera(float vx, float vy, float vz, float width, float height, float zn, float zf);
+    virtual ~CCamera();
 
-	virtual void Render(CSceneObject* pCamera, ERenderType eType);
+	virtual void Render(CCamera* camera);
 
-	// »ñÈ¡ÀàĞÍ
-	virtual ESceneObjectType GetType() {
-		return E_Camera;
-	}
-
-	void SetCanLook(bool bCanLook);
-
+	void Lookat();
+	
 	void SetPerspectiveType(ECameraPerspectiveType type);
 
 	ECameraPerspectiveType GetPerspectiveType();
@@ -41,61 +43,40 @@ public:
 
 	float zf();
 
-	// ×ø±ê±ä»»
+	CMatrix& GetRenderMatrix();
+	
+	// åæ ‡è½¬æ¢
 	CVertex& World2Screen(CVertex& WorldVertex);
 
 	CVertex& Screen2World(CVertex& ScreenVertex);
 
-	CVertex& GetGridPosition();
-
-	// °ó¶¨¸ñ×Ó²ßÂÔ
-	bool IsAttachGrid();
-
-	void AttachGrid(CCameraGrid* ob);
-
-	void DetachGrid();
-
-	PROPERTY(ShowGrid, bool, m_bShowGrid);
-
 protected:
-	virtual void GenerateAABB() {}
-
-	// ÊÓ×¶²ÃÇĞº¯Êı
+	// è§†é”¥è£åˆ‡å‡½æ•°
 	virtual void GenerateViewCone(float width, float height);
 
-public:
-	static const float			s_pn;					// Í¶Ó°×ø±ê×î½üÖµ
-	static const float			s_pf;					// Í¶Ó°×ø±ê×îÔ¶Öµ
+	void TransformMatrix(GLfloat* pFrom, CMatrix* pTo);
 
-private:
-	static const float			s_fGridDistance;		// Ç°·½¸ñ×ÓÏÔÊ¾¾àÀë
-	static const float			s_fCameraWidth;			// äÖÈ¾Ê±ÓÃµÄ´úÌæÎï
-	static const float			s_fCameraHeight;		// äÖÈ¾Ê±ÓÃµÄ´úÌæÎï
-	static const char*			s_szMatePath;			// äÖÈ¾Ê±ÓÃµÄ´úÌæÎï
+public:
+	static const float			s_pn;					// æŠ•å½±åæ ‡æœ€è¿‘å€¼
+	static const float			s_pf;					// æŠ•å½±åæ ‡æœ€è¿œå€¼
 
 protected:
-	ECameraPerspectiveType		m_ePerspectiveType;		// Í¸ÊÓÀàĞÍ
-	float						m_fScreenWidth;			// ÆÁÄ»¿í
-	float						m_fScreenHeight;		// ÆÁÄ»¸ß
-	float						m_fViewNear;			// ÊÓ×¶½ü
-	float						m_fViewFar;				// ÊÓ×¶Ô¶
+	ECameraPerspectiveType		m_ePerspectiveType;		// é€è§†ç±»å‹
+	float						m_fScreenWidth;			// å±å¹•å®½
+	float						m_fScreenHeight;		// å±å¹•é«˜
+	float						m_fViewNear;			// è§†é”¥è¿‘
+	float						m_fViewFar;				// è§†é”¥è¿œ
+	CMatrix						m_RenderMatrix;			// å˜æ¢çŸ©é˜µ
 
-	CVertex						m_WorldVertex;			// ÊÀ½ç×ø±ê£¨ÁÙÊ±±£´æ£©
-	CVertex						m_ScreenVertex;			// ÆÁÄ»×ø±ê£¨ÁÙÊ±±£´æ£©
-	CVertex						m_GridVertex;			// ¸ñ×Ó×ø±ê£¨ÁÙÊ±±£´æ£©
+	CVertex						m_WorldVertex;			// ä¸–ç•Œåæ ‡ï¼ˆä¸´æ—¶ä¿å­˜ï¼‰
+	CVertex						m_ScreenVertex;			// å±å¹•åæ ‡ï¼ˆä¸´æ—¶ä¿å­˜ï¼‰
 
-	CPlane						m_NearPlane;			// ½ü½ØÃæ
-	CPlane						m_FarPlane;				// Ô¶½ØÃæ
-	CPlane						m_LeftPlane;			// ×ó½ØÃæ
-	CPlane						m_RightPlane;			// ÓÒ½ØÃæ
-	CPlane						m_UpPlane;				// ÉÏ½ØÃæ
-	CPlane						m_DownPlane;			// ÏÂ½ØÃæ
-
-	bool						m_bShowGrid;			// ÏÔÊ¾¸ñ×Ó
-	CCameraGrid*				m_pCameraGrid;			// ÉãÏñ»ú¸ñ×Ó²ßÂÔ
-	CVertexList					m_LineList;				// »­Ïß
-
-	CBillBoard*					m_pBillBoard;			// äÖÈ¾Ê±ÓÃµÄ´úÌæÎï*/
+	CPlane						m_NearPlane;			// è¿‘æˆªé¢
+	CPlane						m_FarPlane;				// è¿œæˆªé¢
+	CPlane						m_LeftPlane;			// å·¦æˆªé¢
+	CPlane						m_RightPlane;			// å³æˆªé¢
+	CPlane						m_UpPlane;				// ä¸Šæˆªé¢
+	CPlane						m_DownPlane;			// ä¸‹æˆªé¢
 };
 
 }

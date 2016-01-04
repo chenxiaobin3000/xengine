@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "XeMatrix.h"
-#include "XeMathDef.h"
+#include "XeMath.h"
 #include "XeQuater.h"
 #include "XeVector.h"
 

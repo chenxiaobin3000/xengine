@@ -9,7 +9,7 @@
 
 namespace XE {
 
-class IRenderEnv;
+class CCamera;
 class CMatrix;
 	
 // 基础渲染元素
@@ -18,9 +18,8 @@ class IRenderTarget
 public:
 	virtual ~IRenderTarget() {}
 
-	virtual void Begin() = 0;
-	virtual void End() = 0;
-	virtual void Render(IRenderEnv* pEnv) = 0;
+	virtual void Render(CCamera* camera) = 0;
+	virtual void Draw() = 0;
 
 	virtual void SetVisible(bool b) = 0;
 	virtual bool IsVisible() = 0;

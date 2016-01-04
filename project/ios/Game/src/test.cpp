@@ -11,11 +11,66 @@
 #include "../../../../engine/XeVertexBuffer.h"
 #include "../../../../engine/XeCgProgram.h"
 #include "../../../../engine/XePass.h"
+#include "../../../../engine/XeCamera.h"
 
 using namespace XE;
 
-static CVertexBuffer* s_buffer = NULL;
 static CCgProgram* s_program = NULL;
+static CCamera* s_camera = NULL;
+static CRenderObject* s_object = NULL;
+
+void MakeCube();
+void InitCg();
+void Rotate();
+
+void InitTest() {
+    XELOG("init test");
+	//static CRenderScene CRenderScene;
+	//static CCamera camera;
+	//scene.Render(camera);
+
+    s_program = new CCgProgram;
+	s_object = new CRenderObject;
+
+	CVertex f(0,0,-1);
+	CPoint s(480,320);
+	s_camera = new CCamera(f, s, 10, 500);
+    s_camera->SetPosition(0, 0, 1);
+    
+    MakeCube();
+    InitCg();
+}
+
+void RenderTest() {
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    
+    glDisable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
+    //glFrontFace(GL_CW);
+    
+    glViewport(0, 0, (GLsizei)480, (GLsizei)320);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    Rotate();
+	s_camera->Lookat();
+
+	// -- render object --
+	//for () {
+        s_object->Render(s_camera);
+	//}
+	
+	// -- render buffer --
+    s_program->Bind(NULL);
+	//for (object) {
+        s_program->SetTarget(s_object);
+        // for (object->buffer) {
+		    s_object->Draw();
+        //}
+	//}
+    s_program->UnBind();
+}
 
 void MakeCube() {
     XELOG("make cube");
@@ -23,8 +78,9 @@ void MakeCube() {
     float* pTexcoords;
     float* pNormals;
     unsigned int* pIndexs;
-    s_buffer->SetCount(6, 0);
-    if (s_buffer->Lock(pVertexs, pTexcoords, pNormals, pIndexs)) {
+    CVertexBuffer* buffer = new CVertexBuffer;
+    buffer->SetCount(6, 0);
+    if (buffer->Lock(pVertexs, pTexcoords, pNormals, pIndexs)) {
         pVertexs[0] = 0.0f; pVertexs[1] = 0.0f; pVertexs[2] = 0.0f;
         pVertexs[3] = 0.0f; pVertexs[4] = 1.0f; pVertexs[5] = 0.0f;
         pVertexs[6] = 1.0f; pVertexs[7] = 0.0f; pVertexs[8] = 0.0f;
@@ -40,16 +96,25 @@ void MakeCube() {
         pTexcoords[8] = 1.0f; pTexcoords[9] = 1.0f;
         pTexcoords[10] = 1.0f; pTexcoords[11] = 0.0f;
         ZeroMemory(pNormals+9, sizeof(float)*3*3);
-        s_buffer->Unlock();
+        buffer->Unlock();
     }
+    s_object->m_pVerBufferList.push_back(buffer);
 }
 
 void InitCg() {
     XELOG("init cg");
-    CCg* p = new CCg;
+    CCg* p = NULL;
+    CCgParam* param = NULL;
+    
+    //--------
+    p = new CCg;
     p->Read(CCg::E_CgVertex, "test.vert");
     s_program->AddCg(p);
     
+    param = new CCgParam("ModelViewProj");
+    p->AddParam(param);
+    
+    //--------
     p = new CCg;
     p->Read(CCg::E_CgFragment, "test.frag");
     s_program->AddCg(p);
@@ -58,51 +123,19 @@ void InitCg() {
     CColorF color;
     pass->Init("logo-hd.pvr.ccz", true, color, color, color, color, "");
     
-    CCgParam* param = new CCgParam("Samp0");
+    param = new CCgParam("Samp0");
     param->SetPass(pass);
     p->AddParam(param);
     
+    //--------
     s_program->Compile();
 }
 
-void InitTest() {
-    XELOG("init test");
-	//static CRenderScene CRenderScene;
-	//static CCamera camera;
-	//scene.Render(camera);
-
-    s_buffer = new CVertexBuffer;
-    s_program = new CCgProgram;
-    
-    MakeCube();
-    InitCg();
-}
-
-void InitLook() {
-//    GLfloat projection[16] = {1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1};
-//
-//    float ymax, xmax;
-//    ymax = info.fViewNear * tanf(45.0f * PI / 360.0f);
-//    xmax = ymax * info.fScreenWidth/info.fScreenHeight;
-//    glhOrtho(projection, -xmax, xmax, -ymax, ymax, info.fViewNear, info.fViewFar);
-}
-
-void RenderTest() {
-    glViewport(0, 0, (GLsizei)640, (GLsizei)480);
-    
-    glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-   	glDisable(GL_CULL_FACE);
-    //glEnable(GL_CULL_FACE);
-    //glFrontFace(GL_CW);
-    
-    InitLook();
-    
-    s_program->Bind(NULL);
-    s_buffer->Render();
-    s_program->UnBind();
+void Rotate() {
+    static float s_R = 0;
+//    s_R -= 0.01f;
+//    if (s_R < 0) {
+//        s_R = 1;
+//    }
+    s_camera->SetPosition(0,0,1);
 }

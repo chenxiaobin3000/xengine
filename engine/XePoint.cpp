@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "XePoint.h"
-#include "XeMathDef.h"
+#include "XeMath.h"
 #include "XeTriangle.h"
 #include "XeRectangle.h"
 

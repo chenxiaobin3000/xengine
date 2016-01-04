@@ -25,7 +25,7 @@ CCgProgram::~CCgProgram() {
 }
 
 void CCgProgram::Bind(IRenderEnv* pEnv) {
-	if (0 != m_nProgramID) {
+	if (0 != m_nProgramID && NULL != pEnv) {
 		glUseProgram(m_nProgramID);
 		auto ite = m_pCgList.begin();
 		auto end = m_pCgList.end();
@@ -40,7 +40,7 @@ void CCgProgram::UnBind() {
 }
 
 void CCgProgram::SetTarget(IRenderTarget* pTarget) {
-	if (0 != m_nProgramID) {
+	if (0 != m_nProgramID && NULL != pTarget) {
 		glUseProgram(m_nProgramID);
 		auto ite = m_pCgList.begin();
 		auto end = m_pCgList.end();

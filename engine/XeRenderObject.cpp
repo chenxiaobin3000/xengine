@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "XeRenderObject.h"
+#include "XeMath.h"
+#include "XeVector.h"
+#include "XeCamera.h"
 
 namespace XE {
 
@@ -20,21 +23,23 @@ CRenderObject::CRenderObject() : m_bVisible(false),
 }
 
 CRenderObject::~CRenderObject() {
-
+	FreeList<CVertexBuffer>(m_pVerBufferList);
 }
 
-void CRenderObject::Begin() {
-
+void CRenderObject::Render(CCamera* camera) {
+	CMatrix& m = camera->GetRenderMatrix();
+	m_ModelViewProj = m_Matrix;
+	m_ModelViewProj.CrossMult(m);
 }
 
-void CRenderObject::End() {
-
+void CRenderObject::Draw() {
+	auto ite = m_pVerBufferList.begin();
+	auto end = m_pVerBufferList.end();
+	for (; end!=ite; ++ite) {
+		(*ite)->Render();
+	}
 }
-
-void CRenderObject::Render(IRenderEnv* pEnv) {
-
-}
-
+	
 void CRenderObject::SetVisible(bool b) {
 	m_bVisible = b;
 }
@@ -66,10 +71,6 @@ void CRenderObject::SetPosition(float x, float y, float z) {
 	m_Forward.y = m_Position.y + m_LocalForward.y;
 	m_Forward.z = m_Position.z + m_LocalForward.z;
 	m_Matrix.VertToTM(m_Position);
-
-	if (m_pBody) {
-		m_pBody->SetPosition(x, y, z);
-	}
 }	
 
 void CRenderObject::SetRotation(const CQuater& q) {
@@ -86,9 +87,6 @@ void CRenderObject::SetRotation(const CQuater& q) {
 	m_Rotation = q;
 
 	GenerateAABB();
-	if (m_pBody) {
-		*(m_pBody->GetAABB()) = m_AABB;
-	}
 }
 
 void CRenderObject::Move(const CVertex& v) {
@@ -110,10 +108,6 @@ void CRenderObject::Move(float x, float y, float z) {
 	m_Position += forward;
 	m_Forward  += forward;
 	m_Matrix.Move(forward.x, forward.y, forward.z);
-
-	if (m_pBody) {
-		m_pBody->SetPosition(m_Position);
-	}
 }
 
 void CRenderObject::Roll(float fAngle) {
@@ -127,9 +121,6 @@ void CRenderObject::Roll(float fAngle) {
 	m_Matrix.RotationPart(m_Rotation);
 
 	GenerateAABB();
-	if (m_pBody) {
-		*(m_pBody->GetAABB()) = m_AABB;
-	}
 }
 
 void CRenderObject::Pitch(float fAngle) {
@@ -149,9 +140,6 @@ void CRenderObject::Pitch(float fAngle) {
 	m_Matrix.RotationPart(m_Rotation);
 
 	GenerateAABB();
-	if (m_pBody) {
-		*(m_pBody->GetAABB()) = m_AABB;
-	}
 }
 
 void CRenderObject::Yaw(float fAngle) {
@@ -168,9 +156,6 @@ void CRenderObject::Yaw(float fAngle) {
 	m_Matrix.RotationPart(m_Rotation);
 
 	GenerateAABB();
-	if (m_pBody) {
-		*(m_pBody->GetAABB()) = m_AABB;
-	}
 }
 
 void CRenderObject::Turn2Face(CVertex& pos, EBillBoardType type) {
@@ -180,7 +165,7 @@ void CRenderObject::Turn2Face(CVertex& pos, EBillBoardType type) {
 	}
 
 	m_Matrix.Identity();
-	m_LocalForward = CSceneObject::s_DefaultForward;
+	m_LocalForward = CRenderObject::s_DefaultForward;
 
 	// 目标点到摄像机的投影向量
 	CVertex proj(pos.x-m_Position.x, 
@@ -253,5 +238,50 @@ CQuater& CRenderObject::GetRotation() {
 CAABB& CRenderObject::GetAABB() {
 	return m_AABB;
 }
-	
+
+void CRenderObject::GenerateAABB() {
+
+}
+
+void CRenderObject::_World2Screen(CVertex& ScreenVertex, CVertex& WorldVertex, 
+	float width, float height, CMatrix& CameraMatrix) {
+	CVector v;
+	v.Set(WorldVertex.x, WorldVertex.y, WorldVertex.z, 1.0f);
+	CameraMatrix.VectMult(v);
+	if (IsFloatEqual(v.w, 0.0f)) {
+		ScreenVertex.x = v.x;
+		ScreenVertex.y = v.y;
+		ScreenVertex.z = v.z;
+	} else {
+		v.w = 1/v.w;
+		ScreenVertex.x = v.x * v.w;
+		ScreenVertex.y = v.y * v.w;
+		ScreenVertex.z = v.z * v.w;
+	}
+	ScreenVertex.x = (ScreenVertex.x+1) / 2 * width;
+	ScreenVertex.y = (ScreenVertex.y+1) / 2 * height;
+	ScreenVertex.z = ScreenVertex.z;
+}
+
+void CRenderObject::_Screen2World(CVertex& WorldVertex, CVertex& ScreenVertex, 
+	float width, float height, CMatrix& CameraMatrix) {
+	CVector v;
+	v.Set((ScreenVertex.x*2-width) / width, 
+		(ScreenVertex.y*2-height) / height, 
+		ScreenVertex.z, 1.0f);
+	CMatrix m(CameraMatrix);
+	m.Inverse();
+	m.VectMult(v);
+	if (IsFloatEqual(v.w, 0.0f)) {
+		WorldVertex.x = v.x;
+		WorldVertex.y = v.y;
+		WorldVertex.z = v.z;
+	} else {
+		v.w = 1/v.w;
+		WorldVertex.x = v.x * v.w;
+		WorldVertex.y = v.y * v.w;
+		WorldVertex.z = v.z * v.w;
+	}
+}
+
 }

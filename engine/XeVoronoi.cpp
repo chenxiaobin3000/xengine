@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "XeVoronoi.h"
-#include "XeMathDef.h"
+#include "XeMath.h"
 
 namespace XE {
 

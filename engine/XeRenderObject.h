@@ -10,8 +10,17 @@
 #include "XeIRenderTarget.h"
 #include "XeMatrix.h"
 #include "XeMaterial.h"
+#include "XeQuater.h"
+#include "XeAABB.h"
+#include "XeVertexBuffer.h"
 
 namespace XE {
+
+// 公告板类型
+enum EBillBoardType {
+	EBBT_Cylindrical,		// 圆柱
+	EBBT_Spherical			// 球形
+};
 
 class CRenderObject : public IRenderTarget
 {
@@ -19,9 +28,8 @@ public:
 	CRenderObject();
 	virtual ~CRenderObject();
 
-	virtual void Begin();
-	virtual void End();
-	virtual void Render(IRenderEnv* pEnv);
+	virtual void Render(CCamera* camera);
+	virtual void Draw();
 
 	virtual void SetVisible(bool b);
 	virtual bool IsVisible();
@@ -53,6 +61,16 @@ public:
 	CQuater& GetRotation();
 	CAABB& GetAABB();
 
+protected:
+	virtual void GenerateAABB();
+	
+	// 坐标变换
+	void _World2Screen(CVertex& ScreenVertex, CVertex& WorldVertex, 
+					   float width, float height, CMatrix& CameraMatrix);
+
+	void _Screen2World(CVertex& WorldVertex, CVertex& ScreenVertex, 
+		float width, float height, CMatrix& CameraMatrix);
+	
 public:
 	static const CVertex		s_DefaultForward;
 	static const CVertex		s_DefaultBack;
@@ -61,12 +79,14 @@ public:
 	static const CVertex		s_DefaultUp;
 	static const CVertex		s_DefaultDown;
 
-private:
+//protected:
+public:
 	bool						m_bVisible;				// 可视
 	bool						m_bVisibleForShadow;	// 是否生成影子
 
-	CMatrix						m_ModelViewProj;
-	CMaterial*					m_pMaterial;
+	CMatrix						m_ModelViewProj;		// 世界矩阵(临时)
+    std::vector<CVertexBuffer*>	m_pVerBufferList;		// 顶点
+	CMaterial*					m_pMaterial;			// 材质
 
 	CVertex						m_LocalForward;			// 前方向(本地坐标)
 	CVertex						m_LocalUp;				// 上方向(本地坐标)
@@ -74,6 +94,8 @@ private:
 	CVertex						m_Position;				// 当前坐标
 	CQuater						m_Rotation;				// 旋转
 	CMatrix						m_Matrix;				// 变换矩阵
+
+	CAABB						m_AABB;					// 包围盒
 };
 
 }
