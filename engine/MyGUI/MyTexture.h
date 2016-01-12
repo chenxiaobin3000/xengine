@@ -1,27 +1,24 @@
-/*!
-	@file
-	@author		George Evmenov
-	@date		07/2009
-*/
+/**
+ * desc: 
+ * auth: chenxiaobin
+ * data: 2016-01- 6
+ */
 
-#ifndef MYGUI_OPENGL_TEXTURE_H_
-#define MYGUI_OPENGL_TEXTURE_H_
+#ifndef _MY_TEXTURE_H_
+#define _MY_TEXTURE_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_ITexture.h"
 #include "MyGUI_RenderFormat.h"
-#include "MyGUI_OpenGLImageLoader.h"
+#include "XeTexture.h"
 
-namespace MyGUI
-{
+namespace MyGUI {
 
-	class OpenGLRTTexture;
-
-	class OpenGLTexture : public ITexture
+	class MyTexture : public ITexture
 	{
 	public:
-		OpenGLTexture(const std::string& _name, OpenGLImageLoader* _loader);
-		virtual ~OpenGLTexture();
+		MyTexture(const std::string& _name);
+		virtual ~MyTexture();
 
 		virtual const std::string& getName() const;
 
@@ -44,34 +41,21 @@ namespace MyGUI
 
 		virtual IRenderTarget* getRenderTarget();
 
-	/*internal:*/
-		unsigned int getTextureID() const;
-		void setUsage(TextureUsage _usage);
-		void createManual(int _width, int _height, TextureUsage _usage, PixelFormat _format, void* _data);
-
-	private:
-		void _create();
-
+        int getTextureID();
+        
 	private:
 		std::string mName;
-		int mWidth;
-		int mHeight;
 		int mPixelFormat;
 		int mInternalPixelFormat;
 		int mUsage;
 		int mAccess;
 		size_t mNumElemBytes;
-		size_t mDataSize;
-		unsigned int mTextureID;
-		unsigned int mPboID;
 		bool mLock;
-		void* mBuffer;
 		PixelFormat mOriginalFormat;
 		TextureUsage mOriginalUsage;
-		OpenGLImageLoader* mImageLoader;
-		OpenGLRTTexture* mRenderTarget;
+		XE::CTexture* mTexture;
 	};
 
 } // namespace MyGUI
 
-#endif // MYGUI_OPENGL_TEXTURE_H_
+#endif // _MY_TEXTURE_H_

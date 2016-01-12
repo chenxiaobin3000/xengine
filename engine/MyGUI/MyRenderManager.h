@@ -1,53 +1,51 @@
-/*!
-	@file
-	@author		George Evmenov
-	@date		07/2009
-*/
+/**
+ * desc: 
+ * auth: chenxiaobin
+ * data: 2016-01- 7
+ */
 
-#ifndef MYGUI_OPENGL_RENDER_MANAGER_H_
-#define MYGUI_OPENGL_RENDER_MANAGER_H_
+#ifndef _MY_RENDER_MANAGER_H_
+#define _MY_RENDER_MANAGER_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_RenderFormat.h"
 #include "MyGUI_IVertexBuffer.h"
 #include "MyGUI_RenderManager.h"
-#include "MyGUI_OpenGLImageLoader.h"
 
-namespace MyGUI
-{
+namespace MyGUI {
 
-	class OpenGLRenderManager :
+	class MyRenderManager :
 		public RenderManager,
 		public IRenderTarget
 	{
 	public:
-		OpenGLRenderManager();
+		MyRenderManager();
 
-		void initialise(OpenGLImageLoader* _loader = 0);
+		void initialise();
 		void shutdown();
 
-		static OpenGLRenderManager& getInstance();
-		static OpenGLRenderManager* getInstancePtr();
+		static MyRenderManager& getInstance();
+		static MyRenderManager* getInstancePtr();
 
-		/** @see OpenGLRenderManager::getViewSize */
+		/** @see MyRenderManager::getViewSize */
 		virtual const IntSize& getViewSize() const;
 
-		/** @see OpenGLRenderManager::getVertexFormat */
+		/** @see MyRenderManager::getVertexFormat */
 		virtual VertexColourType getVertexFormat();
 
-		/** @see OpenGLRenderManager::isFormatSupported */
+		/** @see MyRenderManager::isFormatSupported */
 		virtual bool isFormatSupported(PixelFormat _format, TextureUsage _usage);
 
-		/** @see OpenGLRenderManager::createVertexBuffer */
+		/** @see MyRenderManager::createVertexBuffer */
 		virtual IVertexBuffer* createVertexBuffer();
-		/** @see OpenGLRenderManager::destroyVertexBuffer */
+		/** @see MyRenderManager::destroyVertexBuffer */
 		virtual void destroyVertexBuffer(IVertexBuffer* _buffer);
 
-		/** @see OpenGLRenderManager::createTexture */
+		/** @see MyRenderManager::createTexture */
 		virtual ITexture* createTexture(const std::string& _name);
-		/** @see OpenGLRenderManager::destroyTexture */
+		/** @see MyRenderManager::destroyTexture */
 		virtual void destroyTexture(ITexture* _texture);
-		/** @see OpenGLRenderManager::getTexture */
+		/** @see MyRenderManager::getTexture */
 		virtual ITexture* getTexture(const std::string& _name);
 
 
@@ -77,7 +75,6 @@ namespace MyGUI
 
 		typedef std::map<std::string, ITexture*> MapTexture;
 		MapTexture mTextures;
-		OpenGLImageLoader* mImageLoader;
 		bool mPboIsSupported;
 
 		bool mIsInitialise;
@@ -85,4 +82,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // MYGUI_OPENGL_RENDER_MANAGER_H_
+#endif // _MY_RENDER_MANAGER_H_
