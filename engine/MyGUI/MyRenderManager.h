@@ -66,7 +66,10 @@ namespace MyGUI {
 
 	private:
 		void destroyAllResources();
-
+        GLuint BuildShader(const char* source, GLenum shaderType) const;
+        GLuint BuildProgram(const char* vertexShaderSource,
+                            const char* fragmentShaderSource) const;
+        
 	private:
 		IntSize mViewSize;
 		bool mUpdate;
@@ -78,7 +81,15 @@ namespace MyGUI {
 		bool mPboIsSupported;
 
 		bool mIsInitialise;
-	};
+        
+        GLuint _positionSlot;
+        GLuint _colorSlot;
+        GLuint _texSlot;
+        
+        GLuint mProgram;
+        GLuint mVertShader;
+        GLuint mFragShader;
+    };
 
 } // namespace MyGUI
 
