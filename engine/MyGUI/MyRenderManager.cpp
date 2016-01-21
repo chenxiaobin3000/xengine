@@ -6,34 +6,6 @@
 #include "MyGUI_Gui.h"
 #include "MyGUI_Timer.h"
 
-const char* vShader = " \n\
-\n\
-attribute vec3 a_position;                             \n\
-attribute vec4 a_color;                                \n\
-attribute vec2 a_texCoord;                             \n\
-uniform        mat4 u_MVPMatrix;                       \n\
-\n\
-varying lowp vec4 v_fragmentColor;                     \n\
-varying mediump vec2 v_texCoord;                       \n\
-\n\
-void main()                                            \n\
-{                                                      \n\
-gl_Position = (vec4(a_position,1));                    \n\
-v_fragmentColor = a_color;                             \n\
-v_texCoord = a_texCoord;                               \n\
-}                                                      \n\
-";
-
-const char* fShader = " \n\
-precision lowp float;                                  \n\
-varying vec4 v_fragmentColor;                          \n\
-varying vec2 v_texCoord;                               \n\
-uniform sampler2D u_texture;                           \n\
-void main(void) {                                      \n\
-    gl_FragColor = texture2D(u_texture, v_texCoord);   \n\
-}                                                      \n\
-";
-
 namespace MyGUI {
 
 	MyRenderManager& MyRenderManager::getInstance() {
@@ -53,8 +25,6 @@ namespace MyGUI {
 	void MyRenderManager::initialise() {
 		mVertexFormat = VertexColourType::ColourABGR;
 		mUpdate = false;
-        mProgram = BuildProgram(vShader, fShader);
-
 		mIsInitialise = true;
 	}
 
@@ -71,41 +41,6 @@ namespace MyGUI {
 		delete _buffer;
 	}
 
-    GLuint MyRenderManager::BuildShader(const char* source, GLenum shaderType) const {
-        GLuint shaderHandle = glCreateShader(shaderType);
-        glShaderSource(shaderHandle, 1, &source, 0);
-        glCompileShader(shaderHandle);
-        
-        GLint compileSuccess;
-        glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &compileSuccess);
-        
-        if (compileSuccess == GL_FALSE) {
-            GLchar messages[256];
-            glGetShaderInfoLog(shaderHandle, sizeof(messages), 0, &messages[0]);
-        }
-        
-        return shaderHandle;
-    }
-    
-    GLuint MyRenderManager::BuildProgram(const char* vertexShaderSource, const char* fragmentShaderSource) const {
-        GLuint vertexShader = BuildShader(vertexShaderSource, GL_VERTEX_SHADER);
-        GLuint fragmentShader = BuildShader(fragmentShaderSource, GL_FRAGMENT_SHADER);
-        
-        GLuint programHandle = glCreateProgram();
-        glAttachShader(programHandle, vertexShader);
-        glAttachShader(programHandle, fragmentShader);
-        glLinkProgram(programHandle);
-        
-        GLint linkSuccess;
-        glGetProgramiv(programHandle, GL_LINK_STATUS, &linkSuccess);
-        if (linkSuccess == GL_FALSE) {
-            GLchar messages[256];
-            glGetProgramInfoLog(programHandle, sizeof(messages), 0, &messages[0]);
-        }
-        
-        return programHandle;
-    }
-
 	void MyRenderManager::doRender(IVertexBuffer* _buffer, ITexture* _texture, size_t _count) {
 		MyVertexBuffer* buffer = static_cast<MyVertexBuffer*>(_buffer);
 		unsigned int buffer_id = buffer->getBufferID();
@@ -118,48 +53,72 @@ namespace MyGUI {
 
 		glBindTexture(GL_TEXTURE_2D, texture_id);
 		glBindBuffer(GL_ARRAY_BUFFER, buffer_id);
-        
-        GLuint positionSlot = glGetAttribLocation(mProgram, "a_position");
-        GLuint colorSlot = glGetAttribLocation(mProgram, "a_color");
-        GLuint texSlot = glGetAttribLocation(mProgram, "a_texCoord");
-        GLuint textureUniform = glGetUniformLocation(mProgram, "u_texture");
-        
-        glEnableVertexAttribArray(positionSlot);
-        glEnableVertexAttribArray(colorSlot);
-        glEnableVertexAttribArray(texSlot);
-        
-        glUseProgram(mProgram);
-        
-#define kQuadSize sizeof(Vertex)
-        
-        size_t offset = 0;
-        int diff = offsetof(Vertex, x);
-        glVertexAttribPointer(positionSlot, 3, GL_FLOAT, GL_FALSE, kQuadSize, (void*) (offset + diff));
-        
-        diff = offsetof(Vertex, colour);
-        glVertexAttribPointer(colorSlot, 4, GL_UNSIGNED_BYTE, GL_TRUE, kQuadSize, (void*) (offset + diff));
-        
-        diff = offsetof(Vertex, u);
-        glVertexAttribPointer(texSlot, 2, GL_FLOAT, GL_FALSE, kQuadSize, (void*) (offset + diff));
-        
-        glUniform1i(textureUniform, 0);
-        
-        glDrawArrays(GL_TRIANGLES, 0, _count);
-        
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindTexture(GL_TEXTURE_2D, 0);
-        
+
+		// enable vertex arrays
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+		// before draw, specify vertex and index arrays with their offsets
+		size_t offset = 0;
+		glVertexPointer(3, GL_FLOAT, sizeof(Vertex), (void*)offset);
+		offset += (sizeof(float) * 3);
+		glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Vertex), (void*)offset);
+		offset += (4);
+		glTexCoordPointer(2, GL_FLOAT, sizeof(Vertex), (void*)offset);
+
+		glDrawArrays(GL_TRIANGLES, 0, _count);
+
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+		glDisableClientState(GL_COLOR_ARRAY);
+		glDisableClientState(GL_VERTEX_ARRAY);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void MyRenderManager::begin() {
-        glClearColor(0.8, 0.8, 0.8, 1);
-        glClear(GL_COLOR_BUFFER_BIT);
-        glDisable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	}
+		//save current attributes
+		//glPushClientAttrib(GL_CLIENT_ALL_ATTRIB_BITS);
+		//glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+		//glPolygonMode(GL_FRONT, GL_FILL);
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+		//glOrtho(-1, 1, -1, 1, -1, 1);
+
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glLoadIdentity();
+
+		glDisable(GL_LIGHTING);
+		glDisable(GL_DEPTH_TEST);
+		glDisable(GL_FOG);
+		glDisable(GL_TEXTURE_GEN_S);
+		glDisable(GL_TEXTURE_GEN_T);
+		glDisable(GL_TEXTURE_GEN_R);
+
+		//glFrontFace(GL_CW);
+		//glCullFace(GL_BACK);
+		//glEnable(GL_CULL_FACE);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+		glEnable(GL_TEXTURE_2D);
+	}
 
 	void MyRenderManager::end() {
-		
+		glPopMatrix();
+		glMatrixMode(GL_PROJECTION);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+
+		//restore former attributes
+		//glPopAttrib();
+		//glPopClientAttrib();
 	}
 
 	const RenderTargetInfo& MyRenderManager::getInfo() {
@@ -226,7 +185,7 @@ namespace MyGUI {
 	}
 
 	ITexture* MyRenderManager::createTexture(const std::string& _name) {
-		MyTexture* texture = new MyTexture(_name);
+		OpenGLTexture* texture = new OpenGLTexture(_name, mImageLoader);
 		mTextures[_name] = texture;
 		return texture;
 	}
