@@ -61,4 +61,8 @@ namespace MyGUI {
 		MyRenderManager::getInstance().doRender(_buffer, _texture, _count);
 	}
 
+    const RenderTargetInfo& MyRTTexture::getInfo() {
+        return mRenderTargetInfo;
+    }
+    
 } // namespace MyGUI

@@ -48,7 +48,6 @@ namespace MyGUI {
 		/** @see MyRenderManager::getTexture */
 		virtual ITexture* getTexture(const std::string& _name);
 
-
 		/** @see IRenderTarget::begin */
 		virtual void begin();
 		/** @see IRenderTarget::end */
@@ -57,7 +56,6 @@ namespace MyGUI {
 		virtual void doRender(IVertexBuffer* _buffer, ITexture* _texture, size_t _count);
 		/** @see IRenderTarget::getInfo */
 		virtual const RenderTargetInfo& getInfo();
-
 
 	/*internal:*/
 		void drawOneFrame();

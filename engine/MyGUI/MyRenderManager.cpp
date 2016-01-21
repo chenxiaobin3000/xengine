@@ -148,7 +148,6 @@ namespace MyGUI {
         
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindTexture(GL_TEXTURE_2D, 0);
-        
 	}
 
 	void MyRenderManager::begin() {
@@ -156,7 +155,8 @@ namespace MyGUI {
         glClear(GL_COLOR_BUFFER_BIT);
         glDisable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	}
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    }
 
 	void MyRenderManager::end() {
 		

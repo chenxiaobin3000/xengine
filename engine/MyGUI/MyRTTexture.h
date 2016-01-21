@@ -26,11 +26,8 @@ namespace MyGUI {
 
 		virtual void doRender(IVertexBuffer* _buffer, ITexture* _texture, size_t _count);
 
-		virtual const RenderTargetInfo& getInfo()
-		{
-			return mRenderTargetInfo;
-		}
-
+        virtual const RenderTargetInfo& getInfo();
+        
 	private:
 		RenderTargetInfo mRenderTargetInfo;
 		unsigned int mTextureID;
