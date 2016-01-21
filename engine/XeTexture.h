@@ -8,6 +8,7 @@
 #define _XE_TEXTURE_H_
 
 #include "XeITexture.h"
+#include "XeImage.h"
 
 namespace XE {
 
@@ -18,7 +19,7 @@ public:
 	CTexture();
 	virtual ~CTexture();
 
-	virtual bool Create(byte* rgb, int width, int height, EPixelFormat format);
+    virtual bool Create(byte* rgb, int width, int height, EPixelFormat pixel, EImageFormat image);
 	virtual bool Load(const char* path);
 	virtual void Save(const char* path);
 

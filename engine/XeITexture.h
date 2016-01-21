@@ -16,7 +16,14 @@ enum EPixelFormat {
 	EPixelFormatR8G8B8,			// 24-bit pixel format, 8 bits for r,g,b.
 	EPixelFormatR8G8B8A8		// 32-bit pixel format, 8 bits for r,g,b,alpha.
 };
-	
+
+enum EImageFormat {
+    EImageFormatUnknown,
+    EImageFormatPvr,
+    EImageFormatEtc,
+    EImageFormatMemory
+};
+
 class ITexture;
 
 class ITextureInvalidateListener
@@ -38,7 +45,7 @@ public:
 public:
 	virtual ~ITexture() {}
 	
-	virtual bool Create(byte* rgb, int width, int height, EPixelFormat format) = 0;
+	virtual bool Create(byte* rgb, int width, int height, EPixelFormat pixel, EImageFormat image) = 0;
 	virtual bool Load(const char* path) = 0;
 	virtual void Save(const char* path) = 0;
 

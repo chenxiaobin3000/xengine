@@ -7,24 +7,19 @@
 #ifndef _XEIMAGE_H_
 #define _XEIMAGE_H_
 
+#include "XeITexture.h"
+
 namespace XE {
 
 class CImage
 {
-public:
-	enum EFormat {
-		E_Unknown,
-		E_Pvr,
-		E_Etc
-	};
-	
 public:
 	CImage();
 	virtual ~CImage();
 
 	bool Load(const char* path);
 	
-    EFormat GetFormat();
+    EImageFormat GetFormat();
     
 	int GetWidth();
 
@@ -33,7 +28,7 @@ public:
 	byte* GetBits();
 
 private:
-	EFormat DetectFormat(const unsigned char* buffer, ssize_t size);
+	EImageFormat DetectFormat(const unsigned char* buffer, ssize_t size);
 
 	bool IsPvr(const unsigned char* buffer, ssize_t size);
 
@@ -48,7 +43,7 @@ private:
 	bool InitWithETCData(const unsigned char* buffer, ssize_t size);
 	
 private:
-	EFormat						m_eFormat;
+	EImageFormat				m_eFormat;
 	int							m_nWidth;
 	int							m_nHeight;
 	byte*						m_pBits;

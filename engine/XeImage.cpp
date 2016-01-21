@@ -131,7 +131,7 @@ typedef struct {
 
 //pvr structure end
 
-CImage::CImage() : m_eFormat(E_Unknown),
+CImage::CImage() : m_eFormat(EImageFormatUnknown),
 				   m_nWidth(0),
 				   m_nHeight(0),
 				   m_pBits(NULL) {
@@ -168,10 +168,10 @@ bool CImage::Load(const char* path) {
 	
 	m_eFormat = DetectFormat(unpackedData, unpackedLen);
 	switch (m_eFormat) {
-	case E_Pvr:
+	case EImageFormatPvr:
 		bRet = InitWithPVRData(unpackedData, unpackedLen);
 		break;
-	case E_Etc:
+	case EImageFormatEtc:
 		bRet = InitWithETCData(unpackedData, unpackedLen);
 		break;
 	default:
@@ -186,7 +186,7 @@ bool CImage::Load(const char* path) {
     return bRet;
 }
 
-CImage::EFormat CImage::GetFormat() {
+EImageFormat CImage::GetFormat() {
     return m_eFormat;
 }
 
@@ -202,13 +202,13 @@ byte* CImage::GetBits() {
     return m_pBits;
 }
 
-CImage::EFormat CImage::DetectFormat(const unsigned char* buffer, ssize_t size) {
+EImageFormat CImage::DetectFormat(const unsigned char* buffer, ssize_t size) {
     if (IsPvr(buffer, size)) {
-        return E_Pvr;
+        return EImageFormatPvr;
     } else if (IsEtc(buffer, size)) {
-        return E_Etc;
+        return EImageFormatEtc;
     } else {
-        return E_Unknown;
+        return EImageFormatUnknown;
     }
 }
 
@@ -250,7 +250,7 @@ bool CImage::InitWithPVRv2Data(const unsigned char* buffer, ssize_t size) {
     PVR2TexturePixelFormat formatFlags = static_cast<PVR2TexturePixelFormat>(flags & PVR_TEXTURE_FLAG_TYPE_MASK);
     bool flipped = (flags & (unsigned int)PVR2TextureFlag::VerticalFlip) ? true : false;
     if (flipped) {
-        XELOG("cocos2d: WARNING: Image is flipped. Regenerate it using PVRTexTool");
+        XELOG("WARNING: Image is flipped. Regenerate it using PVRTexTool");
     }
 
     //Reset num of mipmaps
@@ -325,7 +325,7 @@ bool CImage::InitWithPVRv3Data(const unsigned char* buffer, ssize_t size) {
     
     // validate version
     if (CC_SWAP_INT32_BIG_TO_HOST(header->version) != 0x50565203) {
-        XELOG("cocos2d: WARNING: pvr file version mismatch");
+        XELOG("WARNING: pvr file version mismatch");
         return false;
     }
     

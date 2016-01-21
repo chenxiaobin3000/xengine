@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "XeTexture.h"
-#include "XeImage.h"
 
 namespace XE {
 
@@ -14,7 +13,7 @@ CTexture::~CTexture() {
 	}
 }
 
-bool CTexture::Create(byte* rgb, int width, int height, EPixelFormat format) {
+bool CTexture::Create(byte* rgb, int width, int height, EPixelFormat pixel, EImageFormat image) {
 	if (0 != m_nTextureID) {
 		return false;
 	}
@@ -23,7 +22,23 @@ bool CTexture::Create(byte* rgb, int width, int height, EPixelFormat format) {
 	m_nHeight = height;
 	glGenTextures(1, &m_nTextureID);
 	glBindTexture(GL_TEXTURE_2D, m_nTextureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, rgb);
+
+    switch (image) {
+    case EImageFormatPvr:
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_nWidth, m_nHeight, 0, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4, rgb);
+        break;
+		
+    case EImageFormatEtc:
+        break;
+		
+	case EImageFormatMemory:
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_nWidth, m_nHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, rgb);
+		break;
+		
+    default:
+        break;
+    }
+
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -43,31 +58,12 @@ bool CTexture::Load(const char* path) {
 		return false;
 	}
 
-    CImage::EFormat format = image.GetFormat();
-	byte* rgb   = image.GetBits();
-	m_nWidth	= image.GetWidth();
-	m_nHeight	= image.GetHeight();
-
-	glGenTextures(1, &m_nTextureID);
-	glBindTexture(GL_TEXTURE_2D, m_nTextureID);
-    
-    switch (format) {
-    case CImage::E_Pvr:
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_nWidth, m_nHeight, 0, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4, rgb);
-        break;
-    case CImage::E_Etc:
-        break;
-    default:
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_nWidth, m_nHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, rgb);
-        break;
-    }
-    
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-	return true;
+    EImageFormat format = image.GetFormat();
+	byte* rgb = image.GetBits();
+	if (NULL == rgb) {
+		return false;
+	}
+	return Create(rgb, image.GetWidth(), image.GetHeight(), EPixelFormatUnknow, format);
 }
 
 void CTexture::Save(const char* path) {
