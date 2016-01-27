@@ -11,7 +11,7 @@
 
 #import "XeConfig.h"
 
-@interface AppDelegate () <UIApplicationDelegate>
+@interface AppDelegate() <UIApplicationDelegate>
 
 @end
 

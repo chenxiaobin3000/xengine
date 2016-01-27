@@ -15,27 +15,36 @@
 // 渲染情景
 namespace XE {
 
-class CRenderScene : IRenderEnv
+class CRenderScene : public IRenderEnv
 {
 public:
 	CRenderScene();
 	virtual ~CRenderScene();
 
+    virtual void Render(CCamera* camera);
+    virtual void Draw();
+    
+    virtual void SetVisible(bool b);
+    virtual bool IsVisible();
+    virtual void SetVisibleForShadow(bool b);
+    virtual bool IsVisibleForShadow();
+    
+    virtual CMatrix& GetModelViewProj();
+
 	virtual CTexture* GetDepthTexture();
-
 	virtual CMatrix& GetCameraMatrix();
-	
 	virtual CMatrix& GetLightMatrix();
-
 	virtual CVertex& GetEyePosition();
-
 	virtual CColorF& GetAmbientColor();
-
 	virtual CColorF& GetLightColor();
-
 	virtual CVertex& GetLightPosition();
 
 private:
+	bool						m_bVisible;				// 可视
+	bool						m_bVisibleForShadow;	// 是否生成影子
+
+	CMatrix						m_ModelViewProj;		// 世界矩阵(临时)
+
 	CMatrix						m_CameraMatrix;
 	CMatrix						m_LightMatrix;
 	CVertex						m_EyePosition;

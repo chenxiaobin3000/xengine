@@ -144,15 +144,13 @@ namespace MyGUI {
         
         glUniform1i(textureUniform, 0);
         
-        glDrawArrays(GL_TRIANGLES, 0, _count);
+        glDrawArrays(GL_TRIANGLES, 0, (GLsizei)_count);
         
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void MyRenderManager::begin() {
-        glClearColor(0.8, 0.8, 0.8, 1);
-        glClear(GL_COLOR_BUFFER_BIT);
         glDisable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

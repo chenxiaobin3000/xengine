@@ -30,6 +30,8 @@ public:
 
 	void SetTarget(IRenderTarget* pTarget);
 	
+	void SetPass(CPass* pPass);
+	
 	bool Compile();
 
 	bool Reset();

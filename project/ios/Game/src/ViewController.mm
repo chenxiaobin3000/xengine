@@ -16,7 +16,7 @@
 
 static XE::CEngine* ENGINE = nil;
 
-@interface ViewController ()
+@interface ViewController()
 
 @property (strong, nonatomic) EAGLContext *context;
 

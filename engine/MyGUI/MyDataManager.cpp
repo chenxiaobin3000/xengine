@@ -1,31 +1,31 @@
 #include "stdafx.h"
 #include "MyDataManager.h"
 #include "MyGUI_DataFileStream.h"
-#include <fstream>
+#include "XeXFile.h"
 
 namespace MyGUI {
 	
-	MyDataManager& getInstance() {
+	MyDataManager& MyDataManager::getInstance() {
 		return *getInstancePtr();
 	}
 
-	MyDataManager* getInstancePtr() {
+	MyDataManager* MyDataManager::getInstancePtr() {
 		return static_cast<MyDataManager*>(DataManager::getInstancePtr());
 	}
 	
-	OpenGLESDataManager::OpenGLESDataManager() :
+	MyDataManager::MyDataManager() :
 		mIsInitialise(false) {
 	}
 
-	void OpenGLESDataManager::initialise() {
+	void MyDataManager::initialise() {
 		mIsInitialise = true;
 	}
 
-	void OpenGLESDataManager::shutdown() {
+	void MyDataManager::shutdown() {
 		mIsInitialise = false;
 	}
 
-	IDataStream* OpenGLESDataManager::getData(const std::string& _name) {
+	IDataStream* MyDataManager::getData(const std::string& _name) {
 		std::string filepath = getDataPath(_name);
 		if (filepath.empty()) {
 			return nullptr;
@@ -33,7 +33,6 @@ namespace MyGUI {
 
 		std::ifstream* stream = new std::ifstream();
 		stream->open(filepath.c_str(), std::ios_base::binary);
-
 		if (!stream->is_open()) {
 			delete stream;
 			return nullptr;
@@ -42,50 +41,26 @@ namespace MyGUI {
 		DataFileStream* data = new DataFileStream(stream);
 		return data;
 	}
-
-	bool OpenGLESDataManager::isDataExist(const std::string& _name) {
-		const VectorString& files = getDataListNames(_name);
-		return files.size() == 1;
+	
+	void MyDataManager::freeData(IDataStream* _data) {
+		delete _data;
 	}
 
-	const VectorString& OpenGLESDataManager::getDataListNames(const std::string& _pattern) {
+	bool MyDataManager::isDataExist(const std::string& _name) {
+		return XE::CXFile::IsExist(_name.c_str());
+	}
+
+	const VectorString& MyDataManager::getDataListNames(const std::string& _pattern) {
 		static VectorString result;
-		common::VectorWString wresult;
-		result.clear();
-
-		for (VectorArhivInfo::const_iterator item = mPaths.begin(); item != mPaths.end(); ++item) {
-			common::scanFolder(wresult, (*item).name, (*item).recursive, MyGUI::UString(_pattern).asWStr(), false);
-		}
-
-		for (common::VectorWString::const_iterator item = wresult.begin(); item != wresult.end(); ++item) {
-			result.push_back(MyGUI::UString(*item).asUTF8());
-		}
-
+        printf("getList: %s\n", _pattern.c_str());
 		return result;
 	}
 
-	const std::string& OpenGLESDataManager::getDataPath(const std::string& _name) {
-		static std::string path;
-		VectorString result;
-		common::VectorWString wresult;
-
-		for (VectorArhivInfo::const_iterator item = mPaths.begin(); item != mPaths.end(); ++item) {
-			common::scanFolder(wresult, (*item).name, (*item).recursive, MyGUI::UString(_name).asWStr(), true);
-		}
-
-		for (common::VectorWString::const_iterator item = wresult.begin(); item != wresult.end(); ++item) {
-			result.push_back(MyGUI::UString(*item).asUTF8());
-		}
-
-		path = result.size() == 1 ? result[0] : "";
-		return path;
-	}
-
-	void OpenGLESDataManager::addResourceLocation(const std::string& _name, bool _recursive) {
-		ArhivInfo info;
-		info.name = MyGUI::UString(_name).asWStr();
-		info.recursive = _recursive;
-		mPaths.push_back(info);
+	const std::string& MyDataManager::getDataPath(const std::string& _name) {
+        static std::string path;
+		path = XE::CXFile::GetWritablePath();
+		path += _name;
+        return path;
 	}
 
 } // namespace MyGUI

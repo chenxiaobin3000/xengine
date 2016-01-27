@@ -50,6 +50,17 @@ void CCgProgram::SetTarget(IRenderTarget* pTarget) {
 	}
 }
 	
+void CCgProgram::SetPass(CPass* pPass) {
+	if (0 != m_nProgramID && NULL != pPass) {
+		glUseProgram(m_nProgramID);
+		auto ite = m_pCgList.begin();
+		auto end = m_pCgList.end();
+		for (; end!=ite; ++ite) {
+			(*ite)->SetPass(pPass);
+		}
+	}
+}
+
 bool CCgProgram::Compile() {
 	if (m_pCgList.empty()) {
 		return true;

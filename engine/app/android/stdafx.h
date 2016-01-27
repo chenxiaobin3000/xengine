@@ -22,6 +22,7 @@ typedef unsigned char				byte;
 // std
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <vector>
 #include <list>
 #include <map>

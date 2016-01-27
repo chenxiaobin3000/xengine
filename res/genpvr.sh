@@ -15,9 +15,10 @@ rm -f *.plist
 find . -name \*.png | sed 's/\.png//g' | \
 xargs -I % -n 1 TexturePacker %.png \
 --data %-hd.plist \
---sheet %-hd.pvr.ccz \
+--sheet %.pvr.ccz \
 --allow-free-size \
 --disable-rotation \
+--size-constraints POT \
 --opt RGBA4444 \
 --premultiply-alpha \
 --dither-none-nn \

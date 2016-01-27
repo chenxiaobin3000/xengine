@@ -22,6 +22,11 @@ bool CTexture::Create(byte* rgb, int width, int height, EPixelFormat pixel, EIma
 	m_nHeight = height;
 	glGenTextures(1, &m_nTextureID);
 	glBindTexture(GL_TEXTURE_2D, m_nTextureID);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
     switch (image) {
     case EImageFormatPvr:
@@ -38,11 +43,6 @@ bool CTexture::Create(byte* rgb, int width, int height, EPixelFormat pixel, EIma
     default:
         break;
     }
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 	return true;
 }

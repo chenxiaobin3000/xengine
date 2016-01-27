@@ -37,6 +37,8 @@ public:
 
 	void SetTarget(IRenderTarget* pTarget);
 	
+	void SetPass(CPass* pPass);
+	
 	void AddParam(CCgParam* p);
 
 	GLuint GetShaderID();

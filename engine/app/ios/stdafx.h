@@ -18,11 +18,11 @@ typedef unsigned char				byte;
 #include <time.h>
 #include <math.h>
 #include <ctype.h>
-#include <assert.h>
 
 // std
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <vector>
 #include <list>
 #include <map>

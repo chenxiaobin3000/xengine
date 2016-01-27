@@ -12,67 +12,99 @@
 #include "../../../../engine/XeCgProgram.h"
 #include "../../../../engine/XePass.h"
 #include "../../../../engine/XeCamera.h"
+#include "../../../../engine/XeRenderScene.h"
+
+#include "../../../../deps/mygui/MyGUIEngine/include/MyGUI.h"
+#include "../../../../deps/mygui/MyGUIEngine/include/MyGUI_LogManager.h"
+#include "../../../../engine/MyGUI/MyPlatform.h"
 
 using namespace XE;
 
-static CCgProgram* s_program = NULL;
-static CCamera* s_camera = NULL;
-static CRenderObject* s_object = NULL;
+static int s_width = 480;
+static int s_height = 320;
 
-void MakeCube();
+static std::vector<CPass*> s_passList;
+static CCgProgram* s_program = NULL;
+static std::vector<CRenderObject*> s_objList;
+static CCamera* s_camera = NULL;
+static CRenderScene* s_scene = NULL;
+
+static MyGUI::Gui* s_gui;
+static MyGUI::MyPlatform* s_platform;
+
+void MakeCube(CRenderObject* obj, float x, float y, float z);
 void InitCg();
+void InitMyGUI();
 void Rotate();
 
 void InitTest() {
     XELOG("init test");
-	//static CRenderScene CRenderScene;
 	//static CCamera camera;
 	//scene.Render(camera);
 
     s_program = new CCgProgram;
-	s_object = new CRenderObject;
+    
+	CRenderObject* object1 = new CRenderObject;
+    MakeCube(object1, -0.3f, 0.0f, 0.0f);
+    s_objList.push_back(object1);
+    
+    CRenderObject* object2 = new CRenderObject;
+    MakeCube(object2, 0.3f, 0.0f, 0.0f);
+    s_objList.push_back(object2);
 
 	CVertex f(0,0,-1);
-	CPoint s(480,320);
+	CPoint s(s_width,s_height);
 	s_camera = new CCamera(f, s, 10, 500);
     s_camera->SetPosition(0, 0, 1);
     
-    MakeCube();
+    s_scene = new CRenderScene;
+    
     InitCg();
+    InitMyGUI();
 }
 
 void RenderTest() {
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
     
     glDisable(GL_CULL_FACE);
     //glEnable(GL_CULL_FACE);
     //glFrontFace(GL_CW);
-    
-    glViewport(0, 0, (GLsizei)480, (GLsizei)320);
+
+    glViewport(0, 0, (GLsizei)s_width, (GLsizei)s_height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     Rotate();
 	s_camera->Lookat();
 
 	// -- render object --
-	//for () {
-        s_object->Render(s_camera);
-	//}
+    auto ite = s_objList.begin();
+    auto end = s_objList.end();
+    for (; end!=ite; ++ite) {
+        (*ite)->Render(s_camera);
+	}
 	
 	// -- render buffer --
-    s_program->Bind(NULL);
-	//for (object) {
-        s_program->SetTarget(s_object);
-        // for (object->buffer) {
-		    s_object->Draw();
+    for (int i=0; i<2; ++i) {
+        s_program->SetPass(s_passList[i]);
+        s_program->Bind(s_scene);
+    
+        //ite = s_objList.begin();
+        //for (; end!=ite; ++ite) {
+            s_program->SetTarget(s_objList[i]);
+            s_objList[i]->Draw();
         //}
-	//}
-    s_program->UnBind();
+        s_program->UnBind();
+    }
+    
+    if (s_platform) {
+        s_platform->getRenderManagerPtr()->setViewSize(s_width, s_height);
+        s_platform->getRenderManagerPtr()->drawOneFrame();
+    }
 }
 
-void MakeCube() {
+void MakeCube(CRenderObject* obj, float x, float y, float z) {
     XELOG("make cube");
     float* pVertexs;
     float* pTexcoords;
@@ -80,31 +112,42 @@ void MakeCube() {
     unsigned int* pIndexs;
     CVertexBuffer* buffer = new CVertexBuffer;
     buffer->SetCount(6, 0);
+    float boxs = 0.5f;
     if (buffer->Lock(pVertexs, pTexcoords, pNormals, pIndexs)) {
-        pVertexs[0] = 0.0f; pVertexs[1] = 0.0f; pVertexs[2] = 0.0f;
-        pVertexs[3] = 0.0f; pVertexs[4] = 1.0f; pVertexs[5] = 0.0f;
-        pVertexs[6] = 1.0f; pVertexs[7] = 0.0f; pVertexs[8] = 0.0f;
+        pVertexs[0] = 0.0f+x; pVertexs[1] = 0.0f+y; pVertexs[2] = 0.0f+z;
+        pVertexs[3] = 0.0f+x; pVertexs[4] = boxs+y; pVertexs[5] = 0.0f+z;
+        pVertexs[6] = boxs+x; pVertexs[7] = 0.0f+y; pVertexs[8] = 0.0f+z;
         pTexcoords[0] = 0.0f; pTexcoords[1] = 1.0f;
         pTexcoords[2] = 0.0f; pTexcoords[3] = 0.0f;
         pTexcoords[4] = 1.0f; pTexcoords[5] = 1.0f;
         ZeroMemory(pNormals, sizeof(float)*3*3);
         
-        pVertexs[9] = 0.0f; pVertexs[10] = 1.0f; pVertexs[11] = 0.0f;
-        pVertexs[12] = 1.0f; pVertexs[13] = 0.0f; pVertexs[14] = 0.0f;
-        pVertexs[15] = 1.0f; pVertexs[16] = 1.0f; pVertexs[17] = 0.0f;
+        pVertexs[9]  = 0.0f+x; pVertexs[10] = boxs+y; pVertexs[11] = 0.0f+z;
+        pVertexs[12] = boxs+x; pVertexs[13] = 0.0f+y; pVertexs[14] = 0.0f+z;
+        pVertexs[15] = boxs+x; pVertexs[16] = boxs+y; pVertexs[17] = 0.0f+z;
         pTexcoords[6] = 0.0f; pTexcoords[7] = 0.0f;
         pTexcoords[8] = 1.0f; pTexcoords[9] = 1.0f;
         pTexcoords[10] = 1.0f; pTexcoords[11] = 0.0f;
         ZeroMemory(pNormals+9, sizeof(float)*3*3);
         buffer->Unlock();
     }
-    s_object->m_pVerBufferList.push_back(buffer);
+    obj->m_pVerBufferList.push_back(buffer);
 }
 
 void InitCg() {
     XELOG("init cg");
+    CColorF color;
+    CPass* pass1 = new CPass;
+    pass1->Init("logo.pvr.ccz", true, color, color, color, color, "");
+    s_passList.push_back(pass1);
+    CPass* pass2 = new CPass;
+    pass2->Init("HelpIcon.pvr.ccz", true, color, color, color, color, "");
+    s_passList.push_back(pass2);
+    
+    //--------
     CCg* p = NULL;
     CCgParam* param = NULL;
+    CCgParam* paramSamp0 = NULL;
     
     //--------
     p = new CCg;
@@ -119,16 +162,27 @@ void InitCg() {
     p->Read(CCg::E_CgFragment, "test.frag");
     s_program->AddCg(p);
     
-    CPass* pass = new CPass;
-    CColorF color;
-    pass->Init("logo-hd.pvr.ccz", true, color, color, color, color, "");
-    
-    param = new CCgParam("Samp0");
-    param->SetPass(pass);
-    p->AddParam(param);
+    paramSamp0 = new CCgParam("Samp0");
+    p->AddParam(paramSamp0);
     
     //--------
     s_program->Compile();
+}
+
+void InitMyGUI() {
+    s_platform = new MyGUI::MyPlatform();
+    s_platform->initialise();
+    
+    s_gui = new MyGUI::Gui();
+    s_gui->initialise();
+    
+    const MyGUI::VectorWidgetPtr& root = MyGUI::LayoutManager::getInstance().loadLayout("HelpPanel.layout");
+    if (root.size() == 1) {
+        root.at(0)->findWidget("Text")->castType<MyGUI::TextBox>()->setCaption("Sample colour picker implementation. Select text in EditBox and then select colour to colour selected part of text.");
+    }
+    
+    MyGUI::ButtonPtr button= s_gui->createWidget<MyGUI::Button>("Button",10,40,300,20,MyGUI::Align::Default,"Overlapped");
+    button->setCaption("exit");
 }
 
 void Rotate() {

@@ -3,7 +3,9 @@
 
 namespace XE {
 
-CRenderScene::CRenderScene() {
+CRenderScene::CRenderScene() :
+	m_bVisible(false),
+	m_bVisibleForShadow(false) {
 
 }
 
@@ -11,6 +13,34 @@ CRenderScene::~CRenderScene() {
 
 }
 
+void CRenderScene::Render(CCamera* camera) {
+
+}
+
+void CRenderScene::Draw() {
+
+}
+
+void CRenderScene::SetVisible(bool b) {
+
+}
+
+bool CRenderScene::IsVisible() {
+    return m_bVisible;
+}
+
+void CRenderScene::SetVisibleForShadow(bool b) {
+
+}
+
+bool CRenderScene::IsVisibleForShadow() {
+	return m_bVisibleForShadow;
+}
+
+CMatrix& CRenderScene::GetModelViewProj() {
+	return m_ModelViewProj;
+}
+    
 CTexture* CRenderScene::GetDepthTexture() {
 	return NULL;
 }

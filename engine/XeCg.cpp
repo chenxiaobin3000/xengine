@@ -71,6 +71,19 @@ void CCg::SetTarget(IRenderTarget* pTarget) {
 	}
 }
 	
+void CCg::SetPass(CPass* pPass) {
+	auto ite = m_EnvParamList.begin();
+	auto end = m_EnvParamList.end();
+	for (; end!=ite; ++ite) {
+		(*ite)->SetPass(pPass);
+	}
+	ite = m_TargetParamList.begin();
+	end = m_TargetParamList.end();
+	for (; end!=ite; ++ite) {
+		(*ite)->SetPass(pPass);
+	}
+}
+
 void CCg::AddParam(CCgParam* p) {
 	switch (p->GetType()) {
 	case E_LightMatrix:

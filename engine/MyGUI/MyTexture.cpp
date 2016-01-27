@@ -62,7 +62,7 @@ namespace MyGUI {
 			mPixelFormat = GL_RGBA;
 			mNumElemBytes = 4;
 		} else {
-
+            
 		}
 
 		mWidth = _width;
@@ -73,11 +73,7 @@ namespace MyGUI {
 		mOriginalFormat = _format;
 		mOriginalUsage = _usage;
 
-		int alignment = 0;
-		glGetIntegerv(GL_UNPACK_ALIGNMENT, (GLint *)&alignment);
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-		glGenTextures(1, (GLuint *)&mTextureID);
+        glGenTextures(1, (GLuint *)&mTextureID);
 		glBindTexture(GL_TEXTURE_2D, mTextureID);
 		
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -85,17 +81,8 @@ namespace MyGUI {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         
-		glTexImage2D(GL_TEXTURE_2D, 0, mInternalPixelFormat, mWidth, mHeight, 0, mPixelFormat, GL_UNSIGNED_BYTE, (GLvoid*)_data);
+		glTexImage2D(GL_TEXTURE_2D, 0, mInternalPixelFormat, mWidth, mHeight, 0, mPixelFormat, GL_UNSIGNED_SHORT_4_4_4_4, (GLvoid*)_data);
 		glBindTexture(GL_TEXTURE_2D, 0);
-
-#ifdef PixelBufferObjectSupported
-		if (!_data && OpenGLESRenderManager::getInstance().isPixelBufferObjectSupported()) {
-            glGenBuffers(1, (GLuint *)&mPboID);
-			glBindBuffer(GL_PIXEL_UNPACK_BUFFER, mPboID);
-			glBufferData(GL_PIXEL_UNPACK_BUFFER, mDataSize, 0, mUsage);
-			glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
-		}
-#endif
 	}
 
 	void MyTexture::destroy() {
@@ -137,21 +124,7 @@ namespace MyGUI {
 	
 	void* MyTexture::lock(TextureUsage _access) {
 		glBindTexture(GL_TEXTURE_2D, mTextureID);
-		if (!MyRenderManager::getInstance().isPixelBufferObjectSupported()) {
-			mBuffer = new unsigned char[mDataSize];
-		} else {
-#ifdef PixelBufferObjectSupported
-			glBindBuffer(GL_PIXEL_UNPACK_BUFFER, mPboID);
-            glBufferData(GL_PIXEL_UNPACK_BUFFER, mDataSize, 0, mUsage);
-
-            mBuffer = (GLubyte*)glMapBufferOES(GL_PIXEL_UNPACK_BUFFER_ARB, mAccess);
-			if (!mBuffer) {
-                glBindBuffer(GL_PIXEL_UNPACK_BUFFER_ARB, 0);
-				glBindTexture(GL_TEXTURE_2D, 0);
-			}
-#endif
-		}
-
+		mBuffer = new unsigned char[mDataSize];
 		mLock = true;
 		return mBuffer;
 	}
@@ -165,17 +138,8 @@ namespace MyGUI {
 			return;
 		}
 
-		if (!MyRenderManager::getInstance().isPixelBufferObjectSupported()) {
-			glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mWidth, mHeight, mPixelFormat, GL_UNSIGNED_BYTE, mBuffer);
-			delete (unsigned char*)mBuffer;
-		} else {
-#ifdef PixelBufferObjectSupported
-            glUnmapBufferOES(GL_PIXEL_UNPACK_BUFFER_ARB);
-			glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mWidth, mHeight, mPixelFormat, GL_UNSIGNED_BYTE, 0);
-
-            glBindBuffer(GL_PIXEL_UNPACK_BUFFER_ARB, 0);
-#endif
-		}
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mWidth, mHeight, mPixelFormat, GL_UNSIGNED_BYTE, mBuffer);
+        delete (unsigned char*)mBuffer;
 		
 		glBindTexture(GL_TEXTURE_2D, 0);
 		mBuffer = 0;
@@ -198,18 +162,29 @@ namespace MyGUI {
 		return mNumElemBytes;
 	}
 
+    bool replace(std::string& str, const std::string& from, const std::string& to) {
+        size_t start_pos = str.find(from);
+        if(start_pos == std::string::npos) {
+            return false;
+        }
+        str.replace(start_pos, from.length(), to);
+        return true;
+    }
+    
 	void MyTexture::loadFromFile(const std::string& _filename) {
 		destroy();
 
+        std::string path = _filename;
+        replace(path, ".png", ".pvr.ccz");
+        
         XE::CImage image;
-		if (image.Load(_filename.c_str())) {
+		if (image.Load(path.c_str())) {
             PixelFormat format = PixelFormat::R8G8B8A8;
 			int width = image.GetWidth();
 			int height = image.GetHeight();
 			void* data = image.GetBits();
 			if (data) {
 				createManual(width, height, TextureUsage::Static | TextureUsage::Write, format, data);
-				delete (unsigned char*)data;
 			}
 		}
 	}
