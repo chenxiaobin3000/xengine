@@ -701,12 +701,14 @@
 		517013DF1BD0F487007147E7 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				51929E731BD0EB83006EEBD9 /* AppDelegate.h */,
+				51929E741BD0EB83006EEBD9 /* AppDelegate.mm */,
 				51EADFFD1C0EE9180034DF1D /* CommonFunction.h */,
 				51EADFFE1C0EE9180034DF1D /* CommonFunction.m */,
 				51EADFFF1C0EE9180034DF1D /* ViewController.h */,
 				51EAE0001C0EE9180034DF1D /* ViewController.mm */,
-				517013E01BD0F4A5007147E7 /* test.cpp */,
 				517013E11BD0F4A5007147E7 /* test.h */,
+				517013E01BD0F4A5007147E7 /* test.cpp */,
 			);
 			name = Src;
 			sourceTree = "<group>";
@@ -1264,10 +1266,6 @@
 			children = (
 				517013DF1BD0F487007147E7 /* Src */,
 				51929E701BD0EB83006EEBD9 /* Supporting Files */,
-				51929E731BD0EB83006EEBD9 /* AppDelegate.h */,
-				51929E741BD0EB83006EEBD9 /* AppDelegate.mm */,
-				51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */,
-				51929E811BD0EB83006EEBD9 /* Info.plist */,
 			);
 			name = App;
 			path = Game;
@@ -1276,8 +1274,10 @@
 		51929E701BD0EB83006EEBD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				51929E711BD0EB83006EEBD9 /* main.m */,
+				51929E7C1BD0EB83006EEBD9 /* Assets.xcassets */,
+				51929E811BD0EB83006EEBD9 /* Info.plist */,
 				51EB37821BFC206D0004BB29 /* game_prefix.pch */,
+				51929E711BD0EB83006EEBD9 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

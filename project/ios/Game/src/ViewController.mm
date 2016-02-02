@@ -20,7 +20,8 @@
 static XE::CEngine* ENGINE = nil;
 
 @interface ViewController() <UITextViewDelegate> {
-    BOOL bKeyboardShow;
+    BOOL bKeyboardShow;     // 是否显示键盘
+    float fScale;           // 屏幕缩放比
 }
 
 @property (strong, nonatomic) EAGLContext* context;
@@ -36,6 +37,7 @@ static XE::CEngine* ENGINE = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    fScale = SCREEN_SCALE;
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     if (!self.context) {
         NSLog(@"Failed to create ES context");
@@ -54,7 +56,7 @@ static XE::CEngine* ENGINE = nil;
     [self initTextView];
     [self initGestureRecognizer];
     
-    InitTest(SCREEN_WIDTH, SCREEN_HEIGHT);
+    InitTest(SCREEN_WIDTH*fScale, SCREEN_HEIGHT*fScale);
 }
 
 - (void)dealloc {
@@ -68,7 +70,10 @@ static XE::CEngine* ENGINE = nil;
 }
 
 - (void)initGame {
-    ENGINE->Init();
+    XE::CConfig::SetScreenLandscape(true);
+//    XE::CConfig::SetMouse2Touch(true);
+    
+    ENGINE->Init(SCREEN_WIDTH*fScale, SCREEN_HEIGHT*fScale);
 }
 
 - (void)initTextView {
@@ -136,9 +141,9 @@ static XE::CEngine* ENGINE = nil;
 
 - (void)tapHandle:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:self.view];
-    MyGUI::InputManager::getInstance().injectMousePress(point.x, point.y, MyGUI::MouseButton::Left);
-    MyGUI::InputManager::getInstance().injectMouseRelease(point.x, point.y, MyGUI::MouseButton::Left);
-    NSLog(@"tap: %f, %f", point.x, point.y);
+    MyGUI::InputManager::getInstance().injectMousePress(point.x*fScale, point.y*fScale, MyGUI::MouseButton::Left);
+    MyGUI::InputManager::getInstance().injectMouseRelease(point.x*fScale, point.y*fScale, MyGUI::MouseButton::Left);
+    NSLog(@"tap x: %.02f, y: %.02f", point.x*fScale, point.y*fScale);
 }
 
 - (void)swipeHandle:(UISwipeGestureRecognizer *)sender {
@@ -149,17 +154,6 @@ static XE::CEngine* ENGINE = nil;
 //    MyGUI::InputManager::getInstance().injectMousePress(_absx, _absy, _id);
 //    MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
 //    MyGUI::InputManager::getInstance().injectMouseRelease(_absx, _absy, _id);
-}
-
-#pragma mark - UIViewController
-
-- (NSUInteger)supportedInterfaceOrientations {
-    bool b = XE::CConfig::GetScreenLandscape();
-    if (b) {
-        return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
-    } else {
-        return UIInterfaceOrientationMaskPortrait;
-    }
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods

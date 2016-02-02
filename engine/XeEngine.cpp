@@ -16,7 +16,7 @@ CEngine::~CEngine() {
 
 }
 
-bool CEngine::Init() {
+bool CEngine::Init(int width, int height) {
     m_pGUIPlatform = new MyGUI::MyPlatform();
     m_pGUIPlatform->initialise();
     

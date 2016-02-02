@@ -26,7 +26,7 @@ private:
 	virtual ~CEngine();
 
 public:
-	bool Init();
+	bool Init(int width, int height);
 
 	virtual void Free();
 

@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-#import "XeConfig.h"
-
 @interface AppDelegate() <UIApplicationDelegate>
 
 @end
@@ -18,9 +16,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self initConfig];
-    
-    NSLog(@"width: %.02f, height: %.02f", SCREEN_WIDTH, SCREEN_HEIGHT);
+    NSLog(@"width: %.02f, height: %.02f, scale: %.02f", SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_SCALE);
     [self setWindow:[[UIWindow alloc] initWithFrame:SCREEN_BOUNDS]];
     
     ViewController* root = [[ViewController alloc] init];
@@ -50,11 +46,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)initConfig {
-    XE::CConfig::SetScreenLandscape(true);
-    //    XE::CConfig::SetMouse2Touch(true);
 }
 
 @end

@@ -15,5 +15,6 @@
 #define SCREEN_BOUNDS       [[UIScreen mainScreen] bounds]
 #define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
+#define SCREEN_SCALE        [[UIScreen mainScreen] scale]
 
 #endif /* game_prefix_pch */

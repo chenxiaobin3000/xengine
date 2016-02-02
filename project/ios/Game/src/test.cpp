@@ -185,7 +185,7 @@ void InitMyGUI() {
         }
     };
     
-    MyGUI::ButtonPtr button= pGUI->createWidget<MyGUI::Button>("Button",10,40,300,20,MyGUI::Align::Default,"Overlapped");
+    MyGUI::ButtonPtr button= pGUI->createWidget<MyGUI::Button>("Button",10,40,300,80,MyGUI::Align::Default,"Overlapped");
     button->setCaption("exit");
     ButtonDelegate* delegate = new ButtonDelegate;
     button->eventMouseButtonClick = MyGUI::newDelegate(delegate, &ButtonDelegate::mousePressed);
