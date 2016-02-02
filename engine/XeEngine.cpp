@@ -2,9 +2,13 @@
 #include "XeEngine.h"
 #include "XeConfig.h"
 
+#include "MyGUI.h"
+#include "MyPlatform.h"
+
 namespace XE {
 
-CEngine::CEngine () {
+CEngine::CEngine () : m_pGUI(NULL),
+    m_pGUIPlatform(NULL) {
 
 }
 	
@@ -13,7 +17,13 @@ CEngine::~CEngine() {
 }
 
 bool CEngine::Init() {
-	return false;
+    m_pGUIPlatform = new MyGUI::MyPlatform();
+    m_pGUIPlatform->initialise();
+    
+    m_pGUI = new MyGUI::Gui();
+    m_pGUI->initialise();
+    
+	return true;
 }
 
 void CEngine::Free() {

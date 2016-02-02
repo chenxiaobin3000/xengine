@@ -9,7 +9,7 @@
 #ifndef test_h
 #define test_h
 
-void InitTest();
+void InitTest(int width, int height);
 
 void RenderTest();
 

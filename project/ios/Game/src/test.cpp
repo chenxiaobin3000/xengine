@@ -15,13 +15,12 @@
 #include "../../../../engine/XeRenderScene.h"
 
 #include "../../../../deps/mygui/MyGUIEngine/include/MyGUI.h"
-#include "../../../../deps/mygui/MyGUIEngine/include/MyGUI_LogManager.h"
 #include "../../../../engine/MyGUI/MyPlatform.h"
 
 using namespace XE;
 
-static int s_width = 480;
-static int s_height = 320;
+static int s_width = 0;
+static int s_height = 0;
 
 static std::vector<CPass*> s_passList;
 static CCgProgram* s_program = NULL;
@@ -29,16 +28,16 @@ static std::vector<CRenderObject*> s_objList;
 static CCamera* s_camera = NULL;
 static CRenderScene* s_scene = NULL;
 
-static MyGUI::Gui* s_gui;
-static MyGUI::MyPlatform* s_platform;
-
 void MakeCube(CRenderObject* obj, float x, float y, float z);
 void InitCg();
 void InitMyGUI();
 void Rotate();
 
-void InitTest() {
+void InitTest(int width, int height) {
     XELOG("init test");
+    s_width = width;
+    s_height = height;
+    
 	//static CCamera camera;
 	//scene.Render(camera);
 
@@ -98,9 +97,10 @@ void RenderTest() {
         s_program->UnBind();
     }
     
-    if (s_platform) {
-        s_platform->getRenderManagerPtr()->setViewSize(s_width, s_height);
-        s_platform->getRenderManagerPtr()->drawOneFrame();
+    MyGUI::MyRenderManager* pMgr = MyGUI::MyRenderManager::getInstancePtr();
+    if (pMgr) {
+        pMgr->setViewSize(s_width, s_height);
+        pMgr->drawOneFrame();
     }
 }
 
@@ -170,19 +170,25 @@ void InitCg() {
 }
 
 void InitMyGUI() {
-    s_platform = new MyGUI::MyPlatform();
-    s_platform->initialise();
-    
-    s_gui = new MyGUI::Gui();
-    s_gui->initialise();
+    MyGUI::Gui* pGUI = MyGUI::Gui::getInstancePtr();
+    MyGUI::PointerManager::getInstance().setVisible(false);
     
     const MyGUI::VectorWidgetPtr& root = MyGUI::LayoutManager::getInstance().loadLayout("HelpPanel.layout");
     if (root.size() == 1) {
         root.at(0)->findWidget("Text")->castType<MyGUI::TextBox>()->setCaption("Sample colour picker implementation. Select text in EditBox and then select colour to colour selected part of text.");
     }
     
-    MyGUI::ButtonPtr button= s_gui->createWidget<MyGUI::Button>("Button",10,40,300,20,MyGUI::Align::Default,"Overlapped");
+    class ButtonDelegate {
+    public:
+        void mousePressed(MyGUI::Widget* _widget) {
+            printf("click\n");
+        }
+    };
+    
+    MyGUI::ButtonPtr button= pGUI->createWidget<MyGUI::Button>("Button",10,40,300,20,MyGUI::Align::Default,"Overlapped");
     button->setCaption("exit");
+    ButtonDelegate* delegate = new ButtonDelegate;
+    button->eventMouseButtonClick = MyGUI::newDelegate(delegate, &ButtonDelegate::mousePressed);
 }
 
 void Rotate() {

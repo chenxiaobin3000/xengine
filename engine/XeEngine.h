@@ -9,6 +9,11 @@
 
 #include "XeSingleton.h"
 
+namespace MyGUI {
+    class Gui;
+    class MyPlatform;
+}
+
 namespace XE {
 
 class CEngine :
@@ -28,6 +33,10 @@ public:
 	bool Reset();
 
 	bool Render();
+
+private:
+    MyGUI::Gui*					m_pGUI;
+    MyGUI::MyPlatform*			m_pGUIPlatform;
 };
 
 }

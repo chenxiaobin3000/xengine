@@ -14,6 +14,8 @@
 
 @interface ViewController : GLKViewController
 
+- (void)setIMEKeyboardState:(BOOL)show;
+
 @end
 
 #endif //_VIEW_CONTROLLER_H_
