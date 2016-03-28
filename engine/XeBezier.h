@@ -7,13 +7,11 @@
 #ifndef _XEBEZIER_H_
 #define _XEBEZIER_H_
 
-#include "XePool.h"
 #include "XeVertex.h"
 
 namespace XE {
 
-class CBezier3 :
-	public CPool<CBezier3, 32>
+class CBezier3
 {
 public:
 	enum EPower {

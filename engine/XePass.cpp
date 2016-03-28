@@ -18,17 +18,9 @@ CPass::~CPass() {
 	
 }
 
-bool CPass::Init(const char* szTexPath, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, const char* szCgProgram, bool bAlpha, EAlphaBlend eSrcBlend, EAlphaBlend eDstBlend) {
-    if (szTexPath) {
-		m_pOriginalTexture = XENEW(CTexture);
-		if (!m_pOriginalTexture) {
-			return false;
-		}
-		if (!m_pOriginalTexture->Load(szTexPath)) {
-			XEDELETE(m_pOriginalTexture);
-			return false;
-		}
-		m_pTexture = m_pOriginalTexture;
+bool CPass::Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, const char* szCgProgram, bool bAlpha, EAlphaBlend eSrcBlend, EAlphaBlend eDstBlend) {
+    if (pTexture) {
+        m_pTexture = pTexture;
 	}
 	m_bBindTexture		= bBindTexture;
 	m_MaterialDiffuse	= Diffuse;

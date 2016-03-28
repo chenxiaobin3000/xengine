@@ -136,12 +136,31 @@ void MakeCube(CRenderObject* obj, float x, float y, float z) {
 
 void InitCg() {
     XELOG("init cg");
+    
+    CTexture* pTexture = XENEW(CTexture);
+    if (!pTexture) {
+        return;
+    }
+    if (!pTexture->Load("logo.pvr.ccz")) {
+        return;
+    }
+    
     CColorF color;
     CPass* pass1 = new CPass;
-    pass1->Init("logo.pvr.ccz", true, color, color, color, color, "");
+    pass1->Init(pTexture, true, color, color, color, color, "");
     s_passList.push_back(pass1);
+    
+        
+    pTexture = XENEW(CTexture);
+    if (!pTexture) {
+        return;
+    }
+    if (!pTexture->Load("HelpIcon.pvr.ccz")) {
+        return;
+    }
+
     CPass* pass2 = new CPass;
-    pass2->Init("HelpIcon.pvr.ccz", true, color, color, color, color, "");
+    pass2->Init(pTexture, true, color, color, color, color, "");
     s_passList.push_back(pass2);
     
     //--------
@@ -170,25 +189,31 @@ void InitCg() {
 }
 
 void InitMyGUI() {
-    MyGUI::Gui* pGUI = MyGUI::Gui::getInstancePtr();
     MyGUI::PointerManager::getInstance().setVisible(false);
     
     const MyGUI::VectorWidgetPtr& root = MyGUI::LayoutManager::getInstance().loadLayout("HelpPanel.layout");
     if (root.size() == 1) {
-        root.at(0)->findWidget("Text")->castType<MyGUI::TextBox>()->setCaption("Sample colour picker implementation. Select text in EditBox and then select colour to colour selected part of text.");
+        root.at(0)->findWidget("Text")->castType<MyGUI::EditBox>()->setCaption("Sample colour picker implementation");
     }
+  
+//    MyGUI::EditBox* edit = MyGUI::Gui::getInstance().createWidget<MyGUI::EditBox>("EditBoxStretch", MyGUI::IntCoord(10, 80, 600, 600), MyGUI::Align::Default, "Overlapped");
+//    edit->setCaption("some edit");
+//    edit->setTextAlign(MyGUI::Align::Center);
+//    edit->setEditMultiLine(true);
+//    edit->setFontHeight(80);
     
-    class ButtonDelegate {
-    public:
-        void mousePressed(MyGUI::Widget* _widget) {
-            printf("click\n");
-        }
-    };
-    
-    MyGUI::ButtonPtr button= pGUI->createWidget<MyGUI::Button>("Button",10,40,300,80,MyGUI::Align::Default,"Overlapped");
-    button->setCaption("exit");
-    ButtonDelegate* delegate = new ButtonDelegate;
-    button->eventMouseButtonClick = MyGUI::newDelegate(delegate, &ButtonDelegate::mousePressed);
+//    class ButtonDelegate {
+//    public:
+//        void mousePressed(MyGUI::Widget* _widget) {
+//            printf("click\n");
+//        }
+//    };
+//
+//    MyGUI::ButtonPtr button = root.at(0)->createWidget<MyGUI::Button>("Button",10,40,300,80,MyGUI::Align::Default,"Overlapped");
+//    button->setCaption("exit");
+//    button->setFontHeight(80);
+//    ButtonDelegate* delegate = new ButtonDelegate;
+//    button->eventMouseButtonClick += MyGUI::newDelegate(delegate, &ButtonDelegate::mousePressed);
 }
 
 void Rotate() {

@@ -184,6 +184,8 @@
 		51EDBC861C3CF7BD0044F860 /* MyTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EDBC801C3CF7BD0044F860 /* MyTexture.cpp */; };
 		51EDBC871C3CF7BD0044F860 /* MyVertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51EDBC821C3CF7BD0044F860 /* MyVertexBuffer.cpp */; };
 		51F30B671C38E5C900407A46 /* XeRenderScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F30B661C38E5C900407A46 /* XeRenderScene.cpp */; };
+		51F527581C7AB3FB00EF39D6 /* XeBone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F527531C7AB3FB00EF39D6 /* XeBone.cpp */; };
+		51F527591C7AB3FB00EF39D6 /* XeSkeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F527551C7AB3FB00EF39D6 /* XeSkeleton.cpp */; };
 		51F8712D1C0C01F2008EDAAD /* XeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F871231C0C01F2008EDAAD /* XeCamera.cpp */; };
 		51F8712E1C0C01F2008EDAAD /* XePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F871271C0C01F2008EDAAD /* XePass.cpp */; };
 		51F8712F1C0C01F2008EDAAD /* XeTechnique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F871281C0C01F2008EDAAD /* XeTechnique.cpp */; };
@@ -193,6 +195,11 @@
 		51F871361C0C35D7008EDAAD /* XeXFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51F871351C0C35D7008EDAAD /* XeXFile.mm */; };
 		51F9FA4E1C27DA72008A05FB /* XeAABB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F9FA491C27DA72008A05FB /* XeAABB.cpp */; };
 		51F9FA4F1C27DA72008A05FB /* XeAABB2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F9FA4B1C27DA72008A05FB /* XeAABB2.cpp */; };
+		51FAF5A01CA8C35D008B9DE8 /* XeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51FAF59E1CA8C35D008B9DE8 /* XeAction.cpp */; };
+		51FAF5AA1CA8CAC7008B9DE8 /* XeMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51FAF5A11CA8CAC7008B9DE8 /* XeMaterial.cpp */; };
+		51FAF5AB1CA8CAC7008B9DE8 /* XeMaterialLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51FAF5A21CA8CAC7008B9DE8 /* XeMaterialLoader.cpp */; };
+		51FAF5AD1CA8CAC7008B9DE8 /* XeSkinRenderObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51FAF5A61CA8CAC7008B9DE8 /* XeSkinRenderObject.cpp */; };
+		51FAF5B11CA8CEDA008B9DE8 /* XeSkinAssign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51FAF5AF1CA8CEDA008B9DE8 /* XeSkinAssign.cpp */; };
 		51FC69A31C55F8CE00AF5D60 /* MyDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51FC69A11C55F8CE00AF5D60 /* MyDataManager.cpp */; };
 		51FC69A61C560DAD00AF5D60 /* MyPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51FC69A41C560DAD00AF5D60 /* MyPlatform.cpp */; };
 		9D26DC962C8699AB2E958F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF93D00016124A5688E76782 /* libPods.a */; };
@@ -647,6 +654,10 @@
 		51EDBC821C3CF7BD0044F860 /* MyVertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyVertexBuffer.cpp; path = ../../engine/MyGUI/MyVertexBuffer.cpp; sourceTree = "<group>"; };
 		51EDBC831C3CF7BD0044F860 /* MyVertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyVertexBuffer.h; path = ../../engine/MyGUI/MyVertexBuffer.h; sourceTree = "<group>"; };
 		51F30B661C38E5C900407A46 /* XeRenderScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeRenderScene.cpp; path = ../../engine/XeRenderScene.cpp; sourceTree = "<group>"; };
+		51F527531C7AB3FB00EF39D6 /* XeBone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeBone.cpp; path = ../../engine/XeBone.cpp; sourceTree = "<group>"; };
+		51F527541C7AB3FB00EF39D6 /* XeBone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeBone.h; path = ../../engine/XeBone.h; sourceTree = "<group>"; };
+		51F527551C7AB3FB00EF39D6 /* XeSkeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeSkeleton.cpp; path = ../../engine/XeSkeleton.cpp; sourceTree = "<group>"; };
+		51F527561C7AB3FB00EF39D6 /* XeSkeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeSkeleton.h; path = ../../engine/XeSkeleton.h; sourceTree = "<group>"; };
 		51F871231C0C01F2008EDAAD /* XeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeCamera.cpp; path = ../../engine/XeCamera.cpp; sourceTree = "<group>"; };
 		51F871241C0C01F2008EDAAD /* XeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeCamera.h; path = ../../engine/XeCamera.h; sourceTree = "<group>"; };
 		51F871251C0C01F2008EDAAD /* XeCgProgramListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeCgProgramListener.h; path = ../../engine/XeCgProgramListener.h; sourceTree = "<group>"; };
@@ -665,6 +676,15 @@
 		51F9FA4B1C27DA72008A05FB /* XeAABB2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeAABB2.cpp; path = ../../engine/XeAABB2.cpp; sourceTree = "<group>"; };
 		51F9FA4C1C27DA72008A05FB /* XeAABB2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeAABB2.h; path = ../../engine/XeAABB2.h; sourceTree = "<group>"; };
 		51F9FA4D1C27DA72008A05FB /* XeOBB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeOBB.h; path = ../../engine/XeOBB.h; sourceTree = "<group>"; };
+		51FAF59E1CA8C35D008B9DE8 /* XeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeAction.cpp; path = ../../engine/XeAction.cpp; sourceTree = "<group>"; };
+		51FAF59F1CA8C35D008B9DE8 /* XeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeAction.h; path = ../../engine/XeAction.h; sourceTree = "<group>"; };
+		51FAF5A11CA8CAC7008B9DE8 /* XeMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeMaterial.cpp; path = ../../engine/XeMaterial.cpp; sourceTree = "<group>"; };
+		51FAF5A21CA8CAC7008B9DE8 /* XeMaterialLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeMaterialLoader.cpp; path = ../../engine/XeMaterialLoader.cpp; sourceTree = "<group>"; };
+		51FAF5A31CA8CAC7008B9DE8 /* XeMaterialLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeMaterialLoader.h; path = ../../engine/XeMaterialLoader.h; sourceTree = "<group>"; };
+		51FAF5A61CA8CAC7008B9DE8 /* XeSkinRenderObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeSkinRenderObject.cpp; path = ../../engine/XeSkinRenderObject.cpp; sourceTree = "<group>"; };
+		51FAF5A71CA8CAC7008B9DE8 /* XeSkinRenderObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeSkinRenderObject.h; path = ../../engine/XeSkinRenderObject.h; sourceTree = "<group>"; };
+		51FAF5AF1CA8CEDA008B9DE8 /* XeSkinAssign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeSkinAssign.cpp; path = ../../engine/XeSkinAssign.cpp; sourceTree = "<group>"; };
+		51FAF5B01CA8CEDA008B9DE8 /* XeSkinAssign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeSkinAssign.h; path = ../../engine/XeSkinAssign.h; sourceTree = "<group>"; };
 		51FC69A11C55F8CE00AF5D60 /* MyDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyDataManager.cpp; path = ../../engine/MyGUI/MyDataManager.cpp; sourceTree = "<group>"; };
 		51FC69A21C55F8CE00AF5D60 /* MyDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDataManager.h; path = ../../engine/MyGUI/MyDataManager.h; sourceTree = "<group>"; };
 		51FC69A41C560DAD00AF5D60 /* MyPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyPlatform.cpp; path = ../../engine/MyGUI/MyPlatform.cpp; sourceTree = "<group>"; };
@@ -1023,8 +1043,12 @@
 				51F9FA4A1C27DA72008A05FB /* XeAABB.h */,
 				51F9FA4B1C27DA72008A05FB /* XeAABB2.cpp */,
 				51F9FA4C1C27DA72008A05FB /* XeAABB2.h */,
+				51FAF59E1CA8C35D008B9DE8 /* XeAction.cpp */,
+				51FAF59F1CA8C35D008B9DE8 /* XeAction.h */,
 				518FF2701BE8F3940050E90A /* XeBezier.cpp */,
 				518FF2711BE8F3940050E90A /* XeBezier.h */,
+				51F527531C7AB3FB00EF39D6 /* XeBone.cpp */,
+				51F527541C7AB3FB00EF39D6 /* XeBone.h */,
 				51F871231C0C01F2008EDAAD /* XeCamera.cpp */,
 				51F871241C0C01F2008EDAAD /* XeCamera.h */,
 				518FA8D51BFF1CDC0053CC08 /* XeCg.cpp */,
@@ -1055,7 +1079,10 @@
 				518FF2781BE8F3940050E90A /* XeIVertexBuffer.h */,
 				518FF2AC1BE8F4110050E90A /* XeLog.cpp */,
 				518FF2791BE8F3940050E90A /* XeLog.h */,
+				51FAF5A11CA8CAC7008B9DE8 /* XeMaterial.cpp */,
 				518FF27A1BE8F3940050E90A /* XeMaterial.h */,
+				51FAF5A21CA8CAC7008B9DE8 /* XeMaterialLoader.cpp */,
+				51FAF5A31CA8CAC7008B9DE8 /* XeMaterialLoader.h */,
 				515293991C2C45A9009CE374 /* XeMath.cpp */,
 				5152939A1C2C45A9009CE374 /* XeMath.h */,
 				518FF27C1BE8F3940050E90A /* XeMatrix.cpp */,
@@ -1084,6 +1111,12 @@
 				518AA8C71BFDDD47004241D3 /* XeRenderScene.h */,
 				518AA8C81BFDDD47004241D3 /* XeRenderUI.h */,
 				518FF28F1BE8F3940050E90A /* XeSingleton.h */,
+				51F527551C7AB3FB00EF39D6 /* XeSkeleton.cpp */,
+				51F527561C7AB3FB00EF39D6 /* XeSkeleton.h */,
+				51FAF5AF1CA8CEDA008B9DE8 /* XeSkinAssign.cpp */,
+				51FAF5B01CA8CEDA008B9DE8 /* XeSkinAssign.h */,
+				51FAF5A61CA8CAC7008B9DE8 /* XeSkinRenderObject.cpp */,
+				51FAF5A71CA8CAC7008B9DE8 /* XeSkinRenderObject.h */,
 				51F871281C0C01F2008EDAAD /* XeTechnique.cpp */,
 				518FF2901BE8F3940050E90A /* XeTechnique.h */,
 				51F871291C0C01F2008EDAAD /* XeTechniqueManager.cpp */,
@@ -1486,6 +1519,7 @@
 				51AF94DE1C572412003266A3 /* MyGUI_ResourceSkin.cpp in Sources */,
 				51AF94CF1C572412003266A3 /* MyGUI_OverlappedLayer.cpp in Sources */,
 				518FF2AB1BE8F3940050E90A /* XeVoronoi.cpp in Sources */,
+				51FAF5B11CA8CEDA008B9DE8 /* XeSkinAssign.cpp in Sources */,
 				518FF3241BE910990050E90A /* lvm.c in Sources */,
 				51AF94D21C572412003266A3 /* MyGUI_PolygonalSkin.cpp in Sources */,
 				518FF2C11BE909AE0050E90A /* json_writer.cpp in Sources */,
@@ -1497,6 +1531,7 @@
 				51AF94CB1C572412003266A3 /* MyGUI_MenuControl.cpp in Sources */,
 				51AF94D11C572412003266A3 /* MyGUI_PointerManager.cpp in Sources */,
 				51AF94F11C572412003266A3 /* MyGUI_TextView.cpp in Sources */,
+				51FAF5AA1CA8CAC7008B9DE8 /* XeMaterial.cpp in Sources */,
 				51AF94A81C572412003266A3 /* MyGUI_ControllerEdgeHide.cpp in Sources */,
 				51AF94E91C572412003266A3 /* MyGUI_SubSkin.cpp in Sources */,
 				518FF2A51BE8F3940050E90A /* XeRectangle.cpp in Sources */,
@@ -1523,6 +1558,7 @@
 				51AF94CA1C572412003266A3 /* MyGUI_MenuBar.cpp in Sources */,
 				51AF94DA1C572412003266A3 /* MyGUI_ResourceLayout.cpp in Sources */,
 				51F9FA4E1C27DA72008A05FB /* XeAABB.cpp in Sources */,
+				51FAF5A01CA8C35D008B9DE8 /* XeAction.cpp in Sources */,
 				51AF94AF1C572412003266A3 /* MyGUI_DataMemoryStream.cpp in Sources */,
 				51AF94B51C572412003266A3 /* MyGUI_EditText.cpp in Sources */,
 				518FF29D1BE8F3940050E90A /* XeBezier.cpp in Sources */,
@@ -1536,6 +1572,7 @@
 				518FF3081BE910990050E90A /* lbitlib.c in Sources */,
 				518FF2A01BE8F3940050E90A /* XePlane.cpp in Sources */,
 				51AF94CE1C572412003266A3 /* MyGUI_MultiListItem.cpp in Sources */,
+				51F527591C7AB3FB00EF39D6 /* XeSkeleton.cpp in Sources */,
 				51AF94B41C572412003266A3 /* MyGUI_EditBox.cpp in Sources */,
 				518FF2C81BE90F2B0050E90A /* tinyxml2.cpp in Sources */,
 				51AF94C11C572412003266A3 /* MyGUI_LayerManager.cpp in Sources */,
@@ -1551,7 +1588,9 @@
 				517013E21BD0F4A5007147E7 /* test.cpp in Sources */,
 				51EAE01A1C0EF25F0034DF1D /* XeZipUtils.cpp in Sources */,
 				51AF94E71C572412003266A3 /* MyGUI_SkinItem.cpp in Sources */,
+				51FAF5AD1CA8CAC7008B9DE8 /* XeSkinRenderObject.cpp in Sources */,
 				51AF94F01C572412003266A3 /* MyGUI_TextureUtility.cpp in Sources */,
+				51FAF5AB1CA8CAC7008B9DE8 /* XeMaterialLoader.cpp in Sources */,
 				51AF94E61C572412003266A3 /* MyGUI_SimpleText.cpp in Sources */,
 				51AF94A91C572412003266A3 /* MyGUI_ControllerFadeAlpha.cpp in Sources */,
 				51AF94F61C572412003266A3 /* MyGUI_Widget.cpp in Sources */,
@@ -1594,6 +1633,7 @@
 				51AF94FC1C572412003266A3 /* MyGUI_XmlDocument.cpp in Sources */,
 				518FA8E41BFF1CDC0053CC08 /* XeRenderObject.cpp in Sources */,
 				51AF94E31C572412003266A3 /* MyGUI_ScrollViewBase.cpp in Sources */,
+				51F527581C7AB3FB00EF39D6 /* XeBone.cpp in Sources */,
 				518FF2A11BE8F3940050E90A /* XePoint.cpp in Sources */,
 				51AF94E81C572412003266A3 /* MyGUI_SkinManager.cpp in Sources */,
 				51AF94B81C572412003266A3 /* MyGUI_FileLogListener.cpp in Sources */,

@@ -27,14 +27,14 @@ enum EAlphaBlend {
     E_InvDstAlpha,
     E_BlendNum
 };
-    
+
 class CPass
 {
 public:
 	CPass();
 	virtual ~CPass();
 
-    bool Init(const char* szTexPath, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, const char* szCgProgram, bool bAlpha=false, EAlphaBlend eSrcBlend=E_One, EAlphaBlend eDstBlend=E_Zero);
+    bool Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, const char* szCgProgram, bool bAlpha=false, EAlphaBlend eSrcBlend=E_One, EAlphaBlend eDstBlend=E_Zero);
     
 	CCgProgram* GetCgProgram();
 

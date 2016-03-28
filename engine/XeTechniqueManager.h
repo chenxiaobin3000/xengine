@@ -1,5 +1,5 @@
 /**
- * desc: 
+ * desc: 设置当前渲染模式：正常，阴影
  * auth: chenxiaobin
  * data: 2015-11-28
  */
@@ -14,6 +14,7 @@ namespace XE {
 enum ETechniqueType {
 	E_TechniqueNormal,
 	E_TechniqueShadow,
+	E_TechniqueMax
 };
 	
 class CTechniqueManager :
