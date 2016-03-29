@@ -7,23 +7,25 @@
 //
 
 #include "test.h"
-#include "../../../../engine/app/ios/stdafx.h"
-#include "../../../../engine/XeVertexBuffer.h"
-#include "../../../../engine/XeCgProgram.h"
-#include "../../../../engine/XePass.h"
-#include "../../../../engine/XeCamera.h"
-#include "../../../../engine/XeRenderScene.h"
+#include "stdafx.h"
+#include "XeVertexBuffer.h"
+#include "XeCgProgram.h"
+#include "XePass.h"
+#include "XeCamera.h"
+#include "XeRenderScene.h"
+#include "XeMaterialLoader.h"
 
-#include "../../../../deps/mygui/MyGUIEngine/include/MyGUI.h"
-#include "../../../../engine/MyGUI/MyPlatform.h"
+#include "MyGUI.h"
+#include "MyPlatform.h"
 
 using namespace XE;
 
 static int s_width = 0;
 static int s_height = 0;
 
-static std::vector<CPass*> s_passList;
-static CCgProgram* s_program = NULL;
+//static std::vector<CPass*> s_passList;
+//static CCgProgram* s_program = NULL;
+static CMaterial* s_pMaterial;
 static std::vector<CRenderObject*> s_objList;
 static CCamera* s_camera = NULL;
 static CRenderScene* s_scene = NULL;
@@ -41,7 +43,7 @@ void InitTest(int width, int height) {
 	//static CCamera camera;
 	//scene.Render(camera);
 
-    s_program = new CCgProgram;
+//    s_program = new CCgProgram;
     
 	CRenderObject* object1 = new CRenderObject;
     MakeCube(object1, -0.3f, 0.0f, 0.0f);
@@ -86,15 +88,18 @@ void RenderTest() {
 	
 	// -- render buffer --
     for (int i=0; i<2; ++i) {
-        s_program->SetPass(s_passList[i]);
-        s_program->Bind(s_scene);
+//        s_program->SetPass(s_passList[i]);
+//        s_program->Bind(s_scene);
+        s_pMaterial->Bind(s_scene);
     
         //ite = s_objList.begin();
         //for (; end!=ite; ++ite) {
-            s_program->SetTarget(s_objList[i]);
+//            s_program->SetTarget(s_objList[i]);
+            s_pMaterial->SetTarget(s_objList[i]);
             s_objList[i]->Draw();
         //}
-        s_program->UnBind();
+//        s_program->UnBind();
+        s_pMaterial->UnBind();
     }
     
     MyGUI::MyRenderManager* pMgr = MyGUI::MyRenderManager::getInstancePtr();
@@ -136,6 +141,9 @@ void MakeCube(CRenderObject* obj, float x, float y, float z) {
 
 void InitCg() {
     XELOG("init cg");
+    s_pMaterial = CMaterialLoader::Load("material/light.material");
+    
+/*    CColorF color;
     
     CTexture* pTexture = XENEW(CTexture);
     if (!pTexture) {
@@ -145,12 +153,10 @@ void InitCg() {
         return;
     }
     
-    CColorF color;
     CPass* pass1 = new CPass;
-    pass1->Init(pTexture, true, color, color, color, color, "");
+    pass1->Init(pTexture, true, color, color, color, color, NULL);
     s_passList.push_back(pass1);
     
-        
     pTexture = XENEW(CTexture);
     if (!pTexture) {
         return;
@@ -160,7 +166,7 @@ void InitCg() {
     }
 
     CPass* pass2 = new CPass;
-    pass2->Init(pTexture, true, color, color, color, color, "");
+    pass2->Init(pTexture, true, color, color, color, color, NULL);
     s_passList.push_back(pass2);
     
     //--------
@@ -185,7 +191,7 @@ void InitCg() {
     p->AddParam(paramSamp0);
     
     //--------
-    s_program->Compile();
+    s_program->Compile();*/
 }
 
 void InitMyGUI() {
@@ -195,13 +201,14 @@ void InitMyGUI() {
     if (root.size() == 1) {
         root.at(0)->findWidget("Text")->castType<MyGUI::EditBox>()->setCaption("Sample colour picker implementation");
     }
-  
+    
 //    MyGUI::EditBox* edit = MyGUI::Gui::getInstance().createWidget<MyGUI::EditBox>("EditBoxStretch", MyGUI::IntCoord(10, 80, 600, 600), MyGUI::Align::Default, "Overlapped");
 //    edit->setCaption("some edit");
 //    edit->setTextAlign(MyGUI::Align::Center);
 //    edit->setEditMultiLine(true);
 //    edit->setFontHeight(80);
-    
+//
+//  ------------------------------------------
 //    class ButtonDelegate {
 //    public:
 //        void mousePressed(MyGUI::Widget* _widget) {
@@ -209,7 +216,7 @@ void InitMyGUI() {
 //        }
 //    };
 //
-//    MyGUI::ButtonPtr button = root.at(0)->createWidget<MyGUI::Button>("Button",10,40,300,80,MyGUI::Align::Default,"Overlapped");
+//    MyGUI::ButtonPtr button = MyGUI::Gui::getInstance().createWidget<MyGUI::Button>("Button",10,40,300,80,MyGUI::Align::Default,"Overlapped");
 //    button->setCaption("exit");
 //    button->setFontHeight(80);
 //    ButtonDelegate* delegate = new ButtonDelegate;

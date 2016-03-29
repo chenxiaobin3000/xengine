@@ -7,6 +7,7 @@
 #ifndef _XETECHNIQUE_H_
 #define _XETECHNIQUE_H_
 
+#include "XeCgProgram.h"
 #include "XePass.h"
 
 namespace XE {
@@ -17,10 +18,19 @@ public:
 	CTechnique();
 	virtual ~CTechnique();
 
-	std::vector<CPass*>& GetPassList();
+	void Bind(IRenderEnv* pEnv);
 
+	void UnBind();
+
+    void SetTarget(IRenderTarget* pTarget);
+    
+    void SetPass(CPass* pPass);
+    
+    CPass* GetPass();
+    
 private:
-	std::vector<CPass*>			m_pPassList;
+	CCgProgram*					m_pProgram;
+	CPass*						m_pPass;				// 目前只支持单pass
 };
 
 }

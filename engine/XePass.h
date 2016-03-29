@@ -34,7 +34,13 @@ public:
 	CPass();
 	virtual ~CPass();
 
-    bool Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, const char* szCgProgram, bool bAlpha=false, EAlphaBlend eSrcBlend=E_One, EAlphaBlend eDstBlend=E_Zero);
+    bool Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, CCgProgram* pCgProgram, bool bAlpha=false, EAlphaBlend eSrcBlend=E_One, EAlphaBlend eDstBlend=E_Zero);
+    
+    void Bind(IRenderEnv* pEnv);
+    
+    void UnBind();
+    
+    void SetTarget(IRenderTarget* pTarget);
     
 	CCgProgram* GetCgProgram();
 

@@ -17,10 +17,10 @@ CEngine::~CEngine() {
 }
 
 bool CEngine::Init(int width, int height) {
-    m_pGUIPlatform = new MyGUI::MyPlatform();
+    m_pGUIPlatform = XENEW(MyGUI::MyPlatform());
     m_pGUIPlatform->initialise();
     
-    m_pGUI = new MyGUI::Gui();
+    m_pGUI = XENEW(MyGUI::Gui());
     m_pGUI->initialise();
     
 	return true;
@@ -50,7 +50,7 @@ bool CEngine::Render() {
 
 	// 开启阴影
 /*	if (CConfig::GetUseShadow()) {
-		setTechnique(shadow);
+		xx-- setTechnique(shadow); --xx
 		shadow_list = getShadowList();
 		foreach (shadow) {
 			foreach (object) {
@@ -61,7 +61,7 @@ bool CEngine::Render() {
 		}
 	}
 
-	setTechnique(normal);
+	xx-- setTechnique(normal); --xx
 	camera = getMainCamera();
 	camera->Lookat();
 

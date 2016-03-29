@@ -15,10 +15,10 @@ CPass::CPass() : m_pCgProgram(NULL),
 }
 
 CPass::~CPass() {
-	
+    XEDELETE(m_pCgProgram);
 }
 
-bool CPass::Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, const char* szCgProgram, bool bAlpha, EAlphaBlend eSrcBlend, EAlphaBlend eDstBlend) {
+bool CPass::Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, CCgProgram* pCgProgram, bool bAlpha, EAlphaBlend eSrcBlend, EAlphaBlend eDstBlend) {
     if (pTexture) {
         m_pTexture = pTexture;
 	}
@@ -27,12 +27,32 @@ bool CPass::Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColor
 	m_MaterialAmbient	= Ambient;
 	m_MaterialSpecular	= Specular;
 	m_MaterialEmissive	= Emissive;
+    m_pCgProgram        = pCgProgram;
 	m_bAlpha			= bAlpha;
 	m_eSrcBlend			= eSrcBlend;
 	m_eDstBlend			= eDstBlend;
     return true;
 }
-    
+
+void CPass::Bind(IRenderEnv* pEnv) {
+    if (m_pCgProgram) {
+        m_pCgProgram->SetPass(this);
+        m_pCgProgram->Bind(pEnv);
+    }
+}
+
+void CPass::UnBind() {
+    if (m_pCgProgram) {
+        m_pCgProgram->UnBind();
+    }
+}
+
+void CPass::SetTarget(IRenderTarget* pTarget) {
+    if (m_pCgProgram) {
+        m_pCgProgram->SetTarget(pTarget);
+    }
+}
+
 CCgProgram* CPass::GetCgProgram() {
 	return m_pCgProgram;
 }

@@ -3,7 +3,11 @@
 
 namespace XE {
 
-CTexture::CTexture() : m_nTextureID(0), m_nWidth(0), m_nHeight(0) {
+CTexture::CTexture() : m_nTextureID(0),
+					   m_nWidth(0),
+					   m_nHeight(0),
+					   m_eFilter(E_Linear),
+					   m_eAddress(E_Clamp) {
 
 }
 
@@ -23,10 +27,10 @@ bool CTexture::Create(byte* rgb, int width, int height, EPixelFormat pixel, EIma
 	glGenTextures(1, &m_nTextureID);
 	glBindTexture(GL_TEXTURE_2D, m_nTextureID);
     
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, m_eFilter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, m_eFilter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, m_eAddress);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, m_eAddress);
 
     switch (image) {
     case EImageFormatPvr:
@@ -110,6 +114,22 @@ void CTexture::SetTexture(GLuint id) {
 
 GLuint CTexture::GetTexture() {
 	return m_nTextureID;
+}
+
+void CTexture::SetFilter(EFilter filter) {
+    m_eFilter = filter;
+}
+
+CTexture::EFilter CTexture::GetFilter() {
+    return m_eFilter;
+}
+
+void CTexture::SetAddress(EAddress address) {
+    m_eAddress = address;
+}
+
+CTexture::EAddress CTexture::GetAddress() {
+    return m_eAddress;
 }
 
 }

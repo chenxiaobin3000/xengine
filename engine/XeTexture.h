@@ -39,10 +39,18 @@ public:
 	void SetTexture(GLuint id);
 	GLuint GetTexture();
 
+    void SetFilter(EFilter filter);
+    EFilter GetFilter();
+    
+    void SetAddress(EAddress address);
+    EAddress GetAddress();
+    
 private:
 	GLuint						m_nTextureID;
 	int							m_nWidth;
 	int							m_nHeight;
+    EFilter                     m_eFilter;
+    EAddress                    m_eAddress;
 };
 
 }

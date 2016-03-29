@@ -8,7 +8,6 @@
 #define _XEMATERIAL_H_
 
 #include "XeTechnique.h"
-#include "XeTechniqueManager.h"
 
 namespace XE {
 
@@ -18,10 +17,18 @@ public:
 	CMaterial();
 	virtual ~CMaterial();
 
-	CTechnique* GetTechnique(ETechniqueType type);
+	void Bind(IRenderEnv* pEnv);
 
+	void UnBind();
+
+    void SetTarget(IRenderTarget* pTarget);
+    
+    void SetTechnique(CTechnique* pTechnique);
+    
+    CTechnique* GetTechnique();
+    
 private:
-	CTechnique*					m_pTechniqueList[E_TechniqueMax];
+	CTechnique*					m_pTechnique;			// 目前只支持单技术
 };
 
 }

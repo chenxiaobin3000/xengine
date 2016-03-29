@@ -40,6 +40,8 @@ namespace MyGUI {
 		virtual const std::string& getDataPath(const std::string& _name);
 
 	private:
+        static const char* s_szPath;
+        
 		bool mIsInitialise;
 	};
 

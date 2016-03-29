@@ -117,6 +117,7 @@ bool CCg::Init(GLenum type, const char* szPath) {
 	byte* buffer = NULL;
 	unsigned int size = 0;
 	if (!CXFile::ReadText(szPath, buffer, size)) {
+        XELOG("glsl file error: %s\n", szPath);
 		return false;
 	}
 

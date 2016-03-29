@@ -184,7 +184,7 @@ static XE::CEngine* ENGINE = nil;
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-    const char* text = [textView.text UTF8String];
+//    const char* text = [textView.text UTF8String];
 //    MyGUI::InputManager::getInstance().injectKeyPress(_key, _text);
 //    MyGUI::InputManager::getInstance().injectKeyRelease(_key);
 }

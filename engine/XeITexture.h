@@ -42,9 +42,19 @@ public:
 		E_Depth
 	};
 	
+    enum EFilter {
+        E_Nearest = GL_NEAREST,
+        E_Linear = GL_LINEAR
+    };
+    
+    enum EAddress {
+        E_Repeat = GL_REPEAT,
+        E_Clamp = GL_CLAMP_TO_EDGE
+    };
+    
 public:
 	virtual ~ITexture() {}
-	
+
 	virtual bool Create(byte* rgb, int width, int height, EPixelFormat pixel, EImageFormat image) = 0;
 	virtual bool Load(const char* path) = 0;
 	virtual void Save(const char* path) = 0;

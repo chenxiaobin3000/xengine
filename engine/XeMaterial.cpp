@@ -3,18 +3,38 @@
 
 namespace XE {
 
-CMaterial::CMaterial() {
-	ZeroMemory(m_pTechniqueList, sizeof(CTechnique*)*E_TechniqueMax);
+CMaterial::CMaterial() : m_pTechnique(NULL) {
+
 }
 
 CMaterial::~CMaterial() {
-	for (int i=0; i<E_TechniqueMax; ++i) {
-		XEDELETE(m_pTechniqueList[i]);
+	XEDELETE(m_pTechnique);
+}
+
+void CMaterial::Bind(IRenderEnv* pEnv) {
+	if (m_pTechnique) {
+		m_pTechnique->Bind(pEnv);
 	}
 }
 
-CTechnique* CMaterial::GetTechnique(ETechniqueType type) {
-	return m_pTechniqueList[type];
+void CMaterial::UnBind() {
+	if (m_pTechnique) {
+		m_pTechnique->UnBind();
+	}
+}
+
+void CMaterial::SetTarget(IRenderTarget* pTarget) {
+    if (m_pTechnique) {
+        m_pTechnique->SetTarget(pTarget);
+    }
+}
+
+void CMaterial::SetTechnique(CTechnique* pTechnique) {
+    m_pTechnique = pTechnique;
+}
+
+CTechnique* CMaterial::GetTechnique() {
+    return m_pTechnique;
 }
 
 }

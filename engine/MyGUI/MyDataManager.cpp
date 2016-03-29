@@ -5,6 +5,8 @@
 
 namespace MyGUI {
 	
+    const char* MyDataManager::s_szPath = "mygui/";
+    
 	MyDataManager& MyDataManager::getInstance() {
 		return *getInstancePtr();
 	}
@@ -59,6 +61,7 @@ namespace MyGUI {
 	const std::string& MyDataManager::getDataPath(const std::string& _name) {
         static std::string path;
 		path = XE::CXFile::GetWritablePath();
+        path += s_szPath;
 		path += _name;
         return path;
 	}
