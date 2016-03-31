@@ -6,16 +6,17 @@
 
 namespace XE {
 
-const CVertex CRenderObject::s_DefaultForward	( 1.0f,  0.0f,  0.0f);
-const CVertex CRenderObject::s_DefaultBack		(-1.0f,  0.0f,  0.0f);
-const CVertex CRenderObject::s_DefaultLeft		( 0.0f,  0.0f, -1.0f);
-const CVertex CRenderObject::s_DefaultRight		( 0.0f,  0.0f,  1.0f);
-const CVertex CRenderObject::s_DefaultUp			( 0.0f,  1.0f,  0.0f);
-const CVertex CRenderObject::s_DefaultDown		( 0.0f, -1.0f,  0.0f);
+const CVertex CRenderObject::s_DefaultForward   ( 1.0f,  0.0f,  0.0f);
+const CVertex CRenderObject::s_DefaultBack      (-1.0f,  0.0f,  0.0f);
+const CVertex CRenderObject::s_DefaultLeft      ( 0.0f,  0.0f, -1.0f);
+const CVertex CRenderObject::s_DefaultRight     ( 0.0f,  0.0f,  1.0f);
+const CVertex CRenderObject::s_DefaultUp        ( 0.0f,  1.0f,  0.0f);
+const CVertex CRenderObject::s_DefaultDown      ( 0.0f, -1.0f,  0.0f);
 
 CRenderObject::CRenderObject() : m_bVisible(false),
 								 m_bVisibleForShadow(false),
 								 m_pMaterial(NULL),
+								 m_pTexture(NULL),
 								 m_LocalForward(s_DefaultForward),
 								 m_Forward(s_DefaultForward),
 								 m_LocalUp(s_DefaultUp) {
@@ -24,6 +25,8 @@ CRenderObject::CRenderObject() : m_bVisible(false),
 
 CRenderObject::~CRenderObject() {
 	FreeList<CVertexBuffer>(m_pVerBufferList);
+    XEDELETE(m_pMaterial);
+    XEDELETE(m_pTexture);
 }
 
 void CRenderObject::Render(CCamera* camera) {
@@ -58,6 +61,22 @@ bool CRenderObject::IsVisibleForShadow() {
 
 CMatrix& CRenderObject::GetModelViewProj() {
 	return m_ModelViewProj;
+}
+
+void CRenderObject::SetMaterial(CMaterial* pMaterial) {
+    m_pMaterial = pMaterial;
+}
+
+CMaterial* CRenderObject::GetMaterial() {
+    return m_pMaterial;
+}
+
+void CRenderObject::SetTexture(CTexture* pTexture) {
+    m_pTexture = pTexture;
+}
+
+CTexture* CRenderObject::GetTexture() {
+    return m_pTexture;
 }
 
 void CRenderObject::SetPosition(const CVertex& v) {

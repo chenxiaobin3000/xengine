@@ -178,14 +178,24 @@ bool CCgParam::SetTarget(IRenderTarget* pTarget) {
 		return false;
 	}
 
+    CTexture* pTexture = NULL;
 	bool bRet = true;
 	switch (m_eType) {
 	case E_ModelViewProj:
 		glUniformMatrix4fv(m_nParamID, 1, GL_FALSE, pTarget->GetModelViewProj().m);
 		break;
 
-	default:
-		bRet = false;
+    case E_Samp0:
+        glActiveTexture(GL_TEXTURE0);
+        pTexture = pTarget->GetTexture();
+        if (pTexture) {
+            pTexture->Bind();
+            glUniform1i(m_nParamID, E_SamplerNormal);
+        }
+        break;
+        
+    default:
+        bRet = false;
 	}
 	return bRet;
 }

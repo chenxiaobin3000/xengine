@@ -37,7 +37,11 @@ public:
 	virtual bool IsVisibleForShadow();
 
 	virtual CMatrix& GetModelViewProj();
-
+    virtual void SetMaterial(CMaterial* pMaterial);
+    virtual CMaterial* GetMaterial();
+    virtual void SetTexture(CTexture* pTexture);
+    virtual CTexture* GetTexture();
+    
 	void SetPosition(const CVertex& v);
 	void SetPosition(float x, float y, float z);
 	void SetRotation(const CQuater& q);
@@ -87,6 +91,7 @@ public:
 	CMatrix						m_ModelViewProj;		// 世界矩阵(临时)
     std::vector<CVertexBuffer*>	m_pVerBufferList;		// 顶点
 	CMaterial*					m_pMaterial;			// 材质
+    CTexture*                   m_pTexture;             // 纹理
 
 	CVertex						m_LocalForward;			// 前方向(本地坐标)
 	CVertex						m_LocalUp;				// 上方向(本地坐标)

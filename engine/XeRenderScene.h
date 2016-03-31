@@ -30,6 +30,10 @@ public:
     virtual bool IsVisibleForShadow();
     
     virtual CMatrix& GetModelViewProj();
+    virtual void SetMaterial(CMaterial* pMaterial);
+    virtual CMaterial* GetMaterial();
+    virtual void SetTexture(CTexture* pTexture);
+    virtual CTexture* GetTexture();
 
 	virtual CTexture* GetDepthTexture();
 	virtual CMatrix& GetCameraMatrix();

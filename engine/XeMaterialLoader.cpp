@@ -228,7 +228,7 @@ CPass* CMaterialLoader::ParsePass(Json::Value& json, Json::Value& root) {
         XEDELETE(pFragment);
         return NULL;
     }
-    pPass->Init(pTexture, true, diffuse, ambient, specular, emissive, pProgram);
+    pPass->Init(pTexture, diffuse, ambient, specular, emissive, pProgram);
     return pPass;
 }
 

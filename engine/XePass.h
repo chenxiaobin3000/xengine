@@ -34,7 +34,7 @@ public:
 	CPass();
 	virtual ~CPass();
 
-    bool Init(CTexture* pTexture, bool bBindTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, CCgProgram* pCgProgram, bool bAlpha=false, EAlphaBlend eSrcBlend=E_One, EAlphaBlend eDstBlend=E_Zero);
+    bool Init(CTexture* pTexture, CColorF& Diffuse, CColorF& Ambient, CColorF& Specular, CColorF& Emissive, CCgProgram* pCgProgram, bool bAlpha=false, EAlphaBlend eSrcBlend=E_One, EAlphaBlend eDstBlend=E_Zero);
     
     void Bind(IRenderEnv* pEnv);
     
@@ -57,8 +57,6 @@ public:
 private:
 	CCgProgram*					m_pCgProgram;
     
-    bool						m_bBindTexture;			// 是否绑定纹理
-    CTexture*					m_pOriginalTexture;		// 原始纹理
     CTexture*					m_pTexture;				// 纹理
     CTexture*					m_pDepthTexture;		// 深度纹理
     

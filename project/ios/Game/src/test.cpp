@@ -23,8 +23,6 @@ using namespace XE;
 static int s_width = 0;
 static int s_height = 0;
 
-//static std::vector<CPass*> s_passList;
-//static CCgProgram* s_program = NULL;
 static CMaterial* s_pMaterial;
 static std::vector<CRenderObject*> s_objList;
 static CCamera* s_camera = NULL;
@@ -43,9 +41,7 @@ void InitTest(int width, int height) {
 	//static CCamera camera;
 	//scene.Render(camera);
 
-//    s_program = new CCgProgram;
-    
-	CRenderObject* object1 = new CRenderObject;
+    CRenderObject* object1 = new CRenderObject;
     MakeCube(object1, -0.3f, 0.0f, 0.0f);
     s_objList.push_back(object1);
     
@@ -88,17 +84,13 @@ void RenderTest() {
 	
 	// -- render buffer --
     for (int i=0; i<2; ++i) {
-//        s_program->SetPass(s_passList[i]);
-//        s_program->Bind(s_scene);
         s_pMaterial->Bind(s_scene);
     
         //ite = s_objList.begin();
         //for (; end!=ite; ++ite) {
-//            s_program->SetTarget(s_objList[i]);
             s_pMaterial->SetTarget(s_objList[i]);
             s_objList[i]->Draw();
         //}
-//        s_program->UnBind();
         s_pMaterial->UnBind();
     }
     
@@ -143,21 +135,7 @@ void InitCg() {
     XELOG("init cg");
     s_pMaterial = CMaterialLoader::Load("material/light.material");
     
-/*    CColorF color;
-    
     CTexture* pTexture = XENEW(CTexture);
-    if (!pTexture) {
-        return;
-    }
-    if (!pTexture->Load("logo.pvr.ccz")) {
-        return;
-    }
-    
-    CPass* pass1 = new CPass;
-    pass1->Init(pTexture, true, color, color, color, color, NULL);
-    s_passList.push_back(pass1);
-    
-    pTexture = XENEW(CTexture);
     if (!pTexture) {
         return;
     }
@@ -165,33 +143,7 @@ void InitCg() {
         return;
     }
 
-    CPass* pass2 = new CPass;
-    pass2->Init(pTexture, true, color, color, color, color, NULL);
-    s_passList.push_back(pass2);
-    
-    //--------
-    CCg* p = NULL;
-    CCgParam* param = NULL;
-    CCgParam* paramSamp0 = NULL;
-    
-    //--------
-    p = new CCg;
-    p->Read(CCg::E_CgVertex, "test.vert");
-    s_program->AddCg(p);
-    
-    param = new CCgParam("ModelViewProj");
-    p->AddParam(param);
-    
-    //--------
-    p = new CCg;
-    p->Read(CCg::E_CgFragment, "test.frag");
-    s_program->AddCg(p);
-    
-    paramSamp0 = new CCgParam("Samp0");
-    p->AddParam(paramSamp0);
-    
-    //--------
-    s_program->Compile();*/
+    s_objList[1]->SetTexture(pTexture);
 }
 
 void InitMyGUI() {
@@ -224,7 +176,7 @@ void InitMyGUI() {
 }
 
 void Rotate() {
-    static float s_R = 0;
+//    static float s_R = 0;
 //    s_R -= 0.01f;
 //    if (s_R < 0) {
 //        s_R = 1;

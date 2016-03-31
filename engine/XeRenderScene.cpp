@@ -40,7 +40,23 @@ bool CRenderScene::IsVisibleForShadow() {
 CMatrix& CRenderScene::GetModelViewProj() {
 	return m_ModelViewProj;
 }
-    
+
+void CRenderScene::SetMaterial(CMaterial* pMaterial) {
+
+}
+
+CMaterial* CRenderScene::GetMaterial() {
+    return NULL;
+}
+
+void CRenderScene::SetTexture(CTexture* pTexture) {
+
+}
+
+CTexture* CRenderScene::GetTexture() {
+    return NULL;
+}
+
 CTexture* CRenderScene::GetDepthTexture() {
 	return NULL;
 }

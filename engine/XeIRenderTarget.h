@@ -11,7 +11,9 @@ namespace XE {
 
 class CCamera;
 class CMatrix;
-	
+class CMaterial;
+class CTexture;
+
 // 基础渲染元素
 class IRenderTarget
 {
@@ -27,6 +29,10 @@ public:
 	virtual bool IsVisibleForShadow() = 0;
 
 	virtual CMatrix& GetModelViewProj() = 0;
+    virtual void SetMaterial(CMaterial* pMaterial) = 0;
+    virtual CMaterial* GetMaterial() = 0;
+    virtual void SetTexture(CTexture* pTexture) = 0;
+    virtual CTexture* GetTexture() = 0;
 };
 
 }
