@@ -57,9 +57,8 @@ void CVertexBuffer::Render() {
 	glDisableVertexAttribArray(CCgProgram::E_ATTRIB_NORMAL);
 }
 	
-bool CVertexBuffer::SetCount(int nVertexCount, int nIndexCount) {
+bool CVertexBuffer::SetVertexCount(int nVertexCount) {
 	m_nVertexCount = nVertexCount;
-	m_nIndexCount = nIndexCount;
 
 	// 生成顶点
 	if (0 == m_nVBOVertices || 0 == m_nVBOTexCoords 
@@ -78,6 +77,16 @@ bool CVertexBuffer::SetCount(int nVertexCount, int nIndexCount) {
 		}
 	}
 
+    return true;
+};
+	
+int CVertexBuffer::GetVertexCount() {
+    return m_nVertexCount;
+}
+
+bool CVertexBuffer::SetIndexCount(int nIndexCount) {
+	m_nIndexCount = nIndexCount;
+
 	// 处理索引
 	if (0 != m_nIndexCount && !m_pIndexList) {
 		m_pIndexList = XENEW(GLuint[m_nIndexCount * 3]);
@@ -88,10 +97,6 @@ bool CVertexBuffer::SetCount(int nVertexCount, int nIndexCount) {
 	
     return true;
 };
-	
-int CVertexBuffer::GetVertexCount() {
-    return m_nVertexCount;
-}
 
 int CVertexBuffer::GetIndexCount() {
 	return m_nIndexCount;

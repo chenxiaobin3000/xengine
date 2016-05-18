@@ -145,11 +145,12 @@ CImage::~CImage() {
 }
 
 bool CImage::Load(const char* path) {
-	bool bRet = false;
+    std::string str = "texture/";
+    str += path;
 	
 	byte* buffer;
 	unsigned int size;
-	if (!CXFile::ReadFile(path, buffer, size)) {
+	if (!CXFile::ReadFile(str.c_str(), buffer, size)) {
 		return false;
 	}
         
@@ -166,6 +167,7 @@ bool CImage::Load(const char* path) {
 		unpackedLen = size;
 	}
 	
+    bool bRet = false;
 	m_eFormat = DetectFormat(unpackedData, unpackedLen);
 	switch (m_eFormat) {
 	case EImageFormatPvr:

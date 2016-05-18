@@ -11,7 +11,7 @@
 
 namespace XE {
 
-class CVertexBuffer : IVertexBuffer
+class CVertexBuffer : public IVertexBuffer
 {
 public:
 	CVertexBuffer();
@@ -19,8 +19,9 @@ public:
 
 	virtual void Render();
 	
-	virtual bool SetCount(int nVertexCount, int nIndexCount);
+	virtual bool SetVertexCount(int nVertexCount);
 	virtual int GetVertexCount();
+	virtual bool SetIndexCount(int nIndexCount);
 	virtual int GetIndexCount();
 
 	virtual bool Lock(float*& pVertexs, float*& pTexCoords, float*& pNormals, unsigned int*& pIndexs);

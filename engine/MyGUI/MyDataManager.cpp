@@ -49,12 +49,23 @@ namespace MyGUI {
 	}
 
 	bool MyDataManager::isDataExist(const std::string& _name) {
-		return XE::CXFile::IsExist(_name.c_str());
+        bool bRet = false;
+        if (std::string::npos != _name.find(".png")) {
+            std::string str = "texture/";
+            str += _name;
+            bRet = XE::CXFile::IsExist(str.c_str());
+        } else {
+            bRet = XE::CXFile::IsExist(_name.c_str());
+        }
+        if (!bRet) {
+            printf("mygui data no found: %s\n", _name.c_str());
+        }
+		return bRet;
 	}
 
 	const VectorString& MyDataManager::getDataListNames(const std::string& _pattern) {
 		static VectorString result;
-        printf("getList: %s\n", _pattern.c_str());
+        printf("mygui get list: %s\n", _pattern.c_str());
 		return result;
 	}
 

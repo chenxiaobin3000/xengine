@@ -15,6 +15,14 @@ CAction::~CAction() {
 
 }
 
+void CAction::Init(int nTime) {
+    m_nTime = nTime;
+}
+
+void CAction::Insert(int nID, CAction::CKeyList& List) {
+    m_Track.XEINSERT(TrackMapValue(nID, List));
+}
+    
 bool CAction::GetKeyFrame(int nBoneID, int nFrame, CKeyFrame*& pCurrent, CKeyFrame*& pNext) {
 	pCurrent = NULL;
 	pNext = NULL;

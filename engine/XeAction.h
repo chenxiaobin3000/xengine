@@ -35,6 +35,10 @@ public:
 	CAction();
 	virtual ~CAction();
 
+    void Init(int nTime);
+
+    void Insert(int nID, CAction::CKeyList& List);
+    
 	bool GetKeyFrame(int nBoneID, int nFrame, CKeyFrame*& pCurrent, CKeyFrame*& pNext);
 
 	int GetTime();

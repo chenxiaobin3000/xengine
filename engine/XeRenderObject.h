@@ -41,7 +41,8 @@ public:
     virtual CMaterial* GetMaterial();
     virtual void SetTexture(CTexture* pTexture);
     virtual CTexture* GetTexture();
-    
+
+	void SetVertexBuffer(CVertexBuffer* pVertexBuffer);
 	void SetPosition(const CVertex& v);
 	void SetPosition(float x, float y, float z);
 	void SetRotation(const CQuater& q);
@@ -89,7 +90,7 @@ public:
 	bool						m_bVisibleForShadow;	// 是否生成影子
 
 	CMatrix						m_ModelViewProj;		// 世界矩阵(临时)
-    std::vector<CVertexBuffer*>	m_pVerBufferList;		// 顶点
+    CVertexBuffer*				m_pVertexBuffer;		// 顶点
 	CMaterial*					m_pMaterial;			// 材质
     CTexture*                   m_pTexture;             // 纹理
 

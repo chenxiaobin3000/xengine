@@ -1,18 +1,22 @@
 #include "stdafx.h"
 #include "XeSkinRenderObjectLoader.h"
+#include "XeSkeletonLoader.h"
+#include "XeXFile.h"
 
 namespace XE {
 
+const float CSkinRenderObjectLoader::s_fSkinMin = 0.01f;
+
 CSkinRenderObjectLoader::CSkinRenderObjectLoader() {
-	
+
 }
 
 CSkinRenderObjectLoader::~CSkinRenderObjectLoader() {
 	
 }
 
-CRenderObject* CSkinRenderObjectLoader::Load(const char* szName) {
-
+CSkinRenderObject* CSkinRenderObjectLoader::Load(const char* szName) {
+    return NULL;
 }
 
 bool CSkinRenderObjectLoader::LoadXml(const char* szPath) {
@@ -23,146 +27,103 @@ bool CSkinRenderObjectLoader::LoadXml(const char* szPath) {
 		return false;
 	}
 
-	TiXmlDocument doc;
-	if (!doc.Parse((const char*)buffer)) {
+    tinyxml2::XMLDocument doc;
+    tinyxml2::XMLError error = doc.Parse((const char*)buffer);
+    if (error != tinyxml2::XML_SUCCESS) {
 		XELOG("parse skin render object error: %s\n", szPath);
 		return false;
 	}
-	TiXmlElement* root = doc.RootElement();
+	tinyxml2::XMLElement* root = doc.RootElement();
 	if (!root) {
 		return false;
 	}
 
-	// sharedgeometry
-	TiXmlNode* pNode = root->FirstChild("sharedgeometry");
-	if (pNode) {
-		if (!LoadSharedGeometry(pNode->ToElement())) {
-			return false;
-		}
-	}
+    // renderbuffer
+	CVertexBuffer* pVertexBuffer = XENEW(CVertexBuffer);
+    if (!pVertexBuffer) {
+        return NULL;
+    }
 
-	// submeshes
-	pNode = root->FirstChild("submeshes");
-	if (!pNode) {
-		return false;
-	}
-	if (!LoadMesh(pNode)) {
-		return false;
-	}
+ 	CSkinRenderObject* pRenderObject = XENEW(CSkinRenderObject);
+    if (!pRenderObject) {
+        XEDELETE(pVertexBuffer);
+        return NULL;
+    }
+    pRenderObject->SetVertexBuffer(pVertexBuffer);
 
-	// material
-	m_strMaterialName = m_list[0]->GetMaterialName();
+    // sharedgeometry
+	tinyxml2::XMLElement* pGeometry = root->FirstChildElement("sharedgeometry");
+	if (!pGeometry) {
+        XELOG("parse skin render object no find geometry error: %s", szPath);
+		XEDELETE(pRenderObject);
+        return NULL;
+	}
+    if (!LoadSharedGeometry(pGeometry, pVertexBuffer)) {
+        XELOG("parse skin render object load geometry error: %s", szPath);
+		XEDELETE(pRenderObject);
+        return NULL;
+    }
+
+	// mesh
+    tinyxml2::XMLElement* pMesh = root->FirstChildElement("submeshes")->FirstChildElement("submesh");
+    if (!pMesh) {
+        XELOG("parse skin render object no find mesh error: %s", szPath);
+        XEDELETE(pRenderObject);
+        return NULL;
+    }
+    if (!LoadMesh(pMesh, pRenderObject, pVertexBuffer)) {
+        XELOG("parse skin render object load mesh error: %s", szPath);
+        XEDELETE(pRenderObject);
+        return NULL;
+    }
 
 	// skeleton
-	pNode = root->FirstChild("skeletonlink");
-	if (pNode) {
-		m_bSkeleton = true;
-		m_strSkeletonName = pNode->ToElement()->Attribute("name");
-	}
+	tinyxml2::XMLElement* pSkeletonLink = root->FirstChildElement("skeletonlink");
+	if (!pSkeletonLink) {
+        XELOG("parse skin render object no find skeleton link error: %s", szPath);
+        XEDELETE(pRenderObject);
+        return NULL;
+    }
+	const char* szSkeletonName = pSkeletonLink->Attribute("name");
+    if (!szSkeletonName) {
+        XELOG("parse render object no find skeleton error");
+        return NULL;
+    }
+    CSkeleton* pSkeleton = CSkeletonLoader::Load(szSkeletonName);
+    if (!pSkeleton) {
+        XELOG("parse render object load material error");
+        return NULL;
+    }
+    pRenderObject->SetSkeleton(pSkeleton);
 
 	// boneassignments
-	pNode = root->FirstChild("boneassignments");
-	if (pNode) {
-		LoadBoneAssignments(pNode->ToElement());
+	tinyxml2::XMLElement* pBoneAssignments = root->FirstChildElement("boneassignments");
+	if (!pBoneAssignments) {
+        XELOG("parse skin render object no find bone error: %s", szPath);
+        XEDELETE(pRenderObject);
+        return NULL;
+    }
+    if (!LoadBoneAssignments(pBoneAssignments, pRenderObject)) {
+        XELOG("parse skin render object load bone error: %s", szPath);
+        XEDELETE(pRenderObject);
+        return NULL;
 	}
 
 	return true;
 }
 
-bool CSkinRenderObjectLoader::LoadMesh(TiXmlNode* pMeshes) {
-	bool bRet = false;
-	TiXmlNode* pChild;
-	for (pChild = pMeshes->FirstChild(); pChild; pChild = pChild->NextSibling()) {
-		if (0 == strcmp(pChild->Value(), "submesh")) {
-			CSubMesh* pMesh = NEW_LOG(CSubMesh);
-			if (pMesh->LoadSubMesh(pChild->ToElement())) {
-				Insert(pMesh);
-				bRet = true;
-			} else {
-				delete pMesh;
-			}
+bool CSkinRenderObjectLoader::LoadBoneAssignments(tinyxml2::XMLElement*  pBoneAssignments, CSkinRenderObject* pRenderObject) {
+    CSkinAssign& list = pRenderObject->GetSkinAssign();
+    tinyxml2::XMLElement* pBone = pBoneAssignments->FirstChildElement();
+    for (; pBone; pBone = pBone->NextSiblingElement()) {
+        int nBID = pBone->IntAttribute("boneindex");
+        int nVID = pBone->IntAttribute("vertexindex");
+        float fWeight = pBone->FloatAttribute("weight");
+        if (fWeight > s_fSkinMin) {
+			list.Insert(nVID, nBID, fWeight);
 		}
-	}
-	return bRet;
-}
-
-bool CSkinRenderObjectLoader::LoadSharedGeometry(TiXmlElement* pGeometry) {
-	TiXmlNode*		pChild;
-	TiXmlNode*		pSubChild;
-	TiXmlNode*		pTmpNode;
-	TiXmlElement*	pChildElement;
-	double			dValue;
-	CVertex			vertex;
-	CPoint			point;
-
-	//geometry
-	int nVertex = atoi(pGeometry->Attribute("vertexcount"));
-	for (pChild = pGeometry->FirstChild(); pChild != 0; pChild = pChild->NextSibling()) {
-		TiXmlElement* pVertexbuffer = pChild->ToElement();
-		if (0 != strcmp(pVertexbuffer->Value(), "vertexbuffer")) {
-			continue;
-		}
-		if (pVertexbuffer->Attribute("positions")) {
-			for (pSubChild = pVertexbuffer->FirstChild(); pSubChild; pSubChild = pSubChild->NextSibling()) {
-				//positions
-				pChildElement = pSubChild->ToElement()->FirstChild("position")->ToElement();
-				pChildElement->Attribute(XML_X, &dValue);		vertex.x = (float)dValue;
-				pChildElement->Attribute(XML_Y, &dValue);		vertex.y = (float)dValue;
-				pChildElement->Attribute(XML_Z, &dValue);		vertex.z = (float)dValue;
-				m_PosList.PUSH(vertex);
-
-				//normals
-				pChildElement = pSubChild->ToElement()->FirstChild("normal")->ToElement();
-				pChildElement->Attribute(XML_X, &dValue);		vertex.x = (float)dValue;
-				pChildElement->Attribute(XML_Y, &dValue);		vertex.y = (float)dValue;
-				pChildElement->Attribute(XML_Z, &dValue);		vertex.z = (float)dValue;
-				m_NorList.PUSH(vertex);
-
-				//coords
-				pTmpNode = pSubChild->ToElement()->FirstChild("texcoord");
-				if (pTmpNode) {
-					pChildElement = pTmpNode->ToElement();
-					pChildElement->Attribute(XML_U, &dValue);		point.x = (float)dValue;
-					pChildElement->Attribute(XML_V, &dValue);		point.y = (float)dValue;
-					m_TexList.PUSH(point);
-				}
-			}
-		}
-
-		//texture_coords
-		else if (pVertexbuffer->Attribute("texture_coords")) {
-			for (pSubChild = pVertexbuffer->FirstChild(); pSubChild; pSubChild = pSubChild->NextSibling()) {
-				pChildElement = pSubChild->ToElement()->FirstChild("texcoord")->ToElement();
-				pChildElement->Attribute(XML_U, &dValue);		point.x = (float)dValue;
-				pChildElement->Attribute(XML_V, &dValue);		point.y = (float)dValue;
-				m_TexList.PUSH(point);
-			}
-		}
-	}
-
-	if (nVertex != m_PosList.size()
-	||  nVertex != m_NorList.size()
-	||  nVertex != m_TexList.size()) {
-		return false;
-	}
-	return true;
-}
-
-bool CSkinRenderObjectLoader::LoadBoneAssignments(TiXmlElement* pBoneAssignments) {
-	TiXmlNode*		pChild;
-	TiXmlElement*	pChildElement;
-	double			dValue;
-	int				nVID;
-	int				nBID;
-	for (pChild = pBoneAssignments->FirstChild(); pChild != 0; pChild = pChild->NextSibling()) {
-		pChildElement = pChild->ToElement();
-		pChildElement->Attribute("vertexindex", &nVID);
-		pChildElement->Attribute("boneindex", &nBID);
-		pChildElement->Attribute("weight", &dValue);
-		if (dValue > CSubMesh::s_fSkinMin) {
-			m_SkinAssign.Insert(nVID, nBID, (float)dValue);
-		}
-	}
+    }
+    
 	return true;
 }
 

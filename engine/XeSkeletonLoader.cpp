@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "XeSkeletonLoader.h"
+#include "XeBone.h"
+#include "XeXFile.h"
+#include "XeAction.h"
+#include "XeTimer.h"
 
 namespace XE {
 
@@ -10,158 +14,196 @@ CSkeletonLoader::~CSkeletonLoader() {
 }
 
 CSkeleton* CSkeletonLoader::Load(const char* szName) {
-		
+    return NULL;
 }
 
-bool CSkeleton::LoadXml(const char* szPath) {
-	byte* buffer = NULL;
+bool CSkeletonLoader::LoadXml(const char* szPath) {
+    byte* buffer = NULL;
 	unsigned int size = 0;
 	if (!CXFile::ReadText(szPath, buffer, size)) {
-		XELOG("load mesh err: %s\n", szPath);
+		XELOG("load skeleton error: %s", szPath);
 		return false;
 	}
 
-	TiXmlDocument doc;
-	if (!doc.Parse((const char*)buffer)) {
-		XELOG("parse mesh err: %s\n", szPath);
+    tinyxml2::XMLDocument doc;
+    tinyxml2::XMLError error = doc.Parse((const char*)buffer);
+    if (error != tinyxml2::XML_SUCCESS) {
+		XELOG("parse skeleton err: %s\n", szPath);
 		return false;
 	}
-	TiXmlElement* root = doc.RootElement();
+
+    tinyxml2::XMLElement* root = doc.RootElement();
 	if (!root) {
+        XELOG("parse skeleton get root error: %s", szPath);
+		return false;
+	}
+	if (0 != strcmp(root->Value(), "skeleton")) {
+        XELOG("parse skeleton find skeleton error: %s", szPath);
 		return false;
 	}
 
-	// sharedgeometry
-	TiXmlNode* pNode = root->FirstChild("sharedgeometry");
-	if (pNode) {
-		if (!LoadSharedGeometry(pNode->ToElement())) {
+    CSkeleton* pSkeleton = XENEW(CSkeleton);
+    if (!pSkeleton) {
+        return false;
+    }
+
+	if (!LoadSkeleton(root, pSkeleton)) {
+        XELOG("parse skeleton load skeleton error: %s", szPath);
+        XEDELETE(pSkeleton);
+		return false;
+	}
+    
+	return true;
+}
+
+bool CSkeletonLoader::LoadSkeleton(tinyxml2::XMLElement* pRoot, CSkeleton* pSkeleton) {
+	// bones
+	tinyxml2::XMLElement* pBones = pRoot->FirstChildElement("bones");
+	if (!pBones) {
+        XELOG("parse skeleton no find bones error");
+		return false;
+	}
+	int id = 0;
+	for (; pBones; pBones = pBones->NextSiblingElement()) {
+		CBone* pBone = XENEW(CBone);
+		pBone->m_nID = id++;
+		const char* name = pBones->Attribute("name");
+        tinyxml2::XMLElement* pChild = pBones->FirstChildElement();
+		for (; pChild; pChild = pChild->NextSiblingElement()) {
+			if (0 == strcmp(pChild->Value(), "position")) {
+				float x = pChild->FloatAttribute("x");
+				float y = pChild->FloatAttribute("y");
+				float z = pChild->FloatAttribute("z");
+				pBone->m_Init.pos.Set(x, y, z);
+			} else if (0 == strcmp(pChild->Value(), "rotation")) {
+				tinyxml2::XMLElement* axis = pChild->FirstChildElement("axis");
+				float angle = pChild->FloatAttribute("angle");
+				float x = axis->FloatAttribute("x");
+				float y = axis->FloatAttribute("y");
+				float z = axis->FloatAttribute("z");
+				pBone->m_Init.rot.FromAngleAxis(angle, x, y, z);
+			}
+			pBone->m_Pose = pBone->m_Init;
+		}
+		pSkeleton->AddBone(name, pBone);
+	}
+    CSkeleton::BoneMap& BoneMap = pSkeleton->GetBoneMap();
+
+	// bonehierarchy
+	tinyxml2::XMLElement* pBonehierarchy = pRoot->FirstChildElement("bonehierarchy");
+	if (!pBonehierarchy) {
+        XELOG("parse skeleton no find bonehierarchy error");
+		return false;
+	}
+	size_t i = 0;
+    tinyxml2::XMLElement* pChild = pBonehierarchy->FirstChildElement();
+	for (; pChild; pChild = pChild->NextSiblingElement()) {
+		const char* name = pChild->Attribute("bone");
+		const char* parent = pChild->Attribute("parent");
+		auto iteParent = BoneMap.find(parent);
+		auto iteChild = BoneMap.find(name);
+		if (BoneMap.end() == iteChild || BoneMap.end() == iteParent) {
+            XELOG("parse skeleton no find bonehierarchy2 error");
 			return false;
 		}
+		iteChild->second->m_pParent = iteParent->second;
+		iteChild->second->m_pNext = iteParent->second->m_pChild;
+		iteParent->second->m_pChild = iteChild->second;
+		++i;
 	}
-
-	// submeshes
-	pNode = root->FirstChild("submeshes");
-	if (!pNode) {
+	// 存在2根以上父节点为空的骨骼
+	if (BoneMap.size()-1 != i) {
+        XELOG("parse skeleton root bone too more error");
 		return false;
 	}
-	if (!LoadMesh(pNode)) {
+	auto ite = BoneMap.begin();
+	auto end = BoneMap.end();
+	for (; end!=ite; ++ite) {
+		if (!ite->second->m_pParent) {
+			pSkeleton->SetRootBone(ite->second);
+			break;
+		}
+	}
+	
+	// animations
+	tinyxml2::XMLElement* pAnimations = pRoot->FirstChildElement("animations");
+	if (!pAnimations) {
+        XELOG("parse skeleton no find animations error");
+		return false;
+	}
+	if (!LoadActions(pAnimations, pSkeleton)) {
+        XELOG("parse skeleton parse animations error");
 		return false;
 	}
 
-	// material
-	m_strMaterialName = m_list[0]->GetMaterialName();
-
-	// skeleton
-	pNode = root->FirstChild("skeletonlink");
-	if (pNode) {
-		m_bSkeleton = true;
-		m_strSkeletonName = pNode->ToElement()->Attribute("name");
-	}
-
-	// boneassignments
-	pNode = root->FirstChild("boneassignments");
-	if (pNode) {
-		LoadBoneAssignments(pNode->ToElement());
-	}
+	// set bone pose
+    pSkeleton->InitPose();
 
 	return true;
 }
 
-bool CSkeleton::LoadMesh(TiXmlNode* pMeshes) {
-	bool bRet = false;
-	TiXmlNode* pChild;
-	for (pChild = pMeshes->FirstChild(); pChild; pChild = pChild->NextSibling()) {
-		if (0 == strcmp(pChild->Value(), "submesh")) {
-			CSubMesh* pMesh = NEW_LOG(CSubMesh);
-			if (pMesh->LoadSubMesh(pChild->ToElement())) {
-				Insert(pMesh);
-				bRet = true;
-			} else {
-				delete pMesh;
-			}
+bool CSkeletonLoader::LoadActions(tinyxml2::XMLElement* pActions, CSkeleton* pSkeleton) {
+    tinyxml2::XMLElement* pChild = pActions->FirstChildElement();
+    for (; pChild; pChild = pChild->NextSiblingElement()) {
+		CAction* pAction = XENEW(CAction);
+		const char* szName = LoadAction(pChild, pSkeleton, pAction);
+		if (szName) {
+			pSkeleton->AddAction(szName, pAction);
+		} else {
+			delete pAction;
+            return false;
 		}
-	}
-	return bRet;
-}
-
-bool CSkeleton::LoadSharedGeometry(TiXmlElement* pGeometry) {
-	TiXmlNode*		pChild;
-	TiXmlNode*		pSubChild;
-	TiXmlNode*		pTmpNode;
-	TiXmlElement*	pChildElement;
-	double			dValue;
-	CVertex			vertex;
-	CPoint			point;
-
-	//geometry
-	int nVertex = atoi(pGeometry->Attribute("vertexcount"));
-	for (pChild = pGeometry->FirstChild(); pChild != 0; pChild = pChild->NextSibling()) {
-		TiXmlElement* pVertexbuffer = pChild->ToElement();
-		if (0 != strcmp(pVertexbuffer->Value(), "vertexbuffer")) {
-			continue;
-		}
-		if (pVertexbuffer->Attribute("positions")) {
-			for (pSubChild = pVertexbuffer->FirstChild(); pSubChild; pSubChild = pSubChild->NextSibling()) {
-				//positions
-				pChildElement = pSubChild->ToElement()->FirstChild("position")->ToElement();
-				pChildElement->Attribute(XML_X, &dValue);		vertex.x = (float)dValue;
-				pChildElement->Attribute(XML_Y, &dValue);		vertex.y = (float)dValue;
-				pChildElement->Attribute(XML_Z, &dValue);		vertex.z = (float)dValue;
-				m_PosList.PUSH(vertex);
-
-				//normals
-				pChildElement = pSubChild->ToElement()->FirstChild("normal")->ToElement();
-				pChildElement->Attribute(XML_X, &dValue);		vertex.x = (float)dValue;
-				pChildElement->Attribute(XML_Y, &dValue);		vertex.y = (float)dValue;
-				pChildElement->Attribute(XML_Z, &dValue);		vertex.z = (float)dValue;
-				m_NorList.PUSH(vertex);
-
-				//coords
-				pTmpNode = pSubChild->ToElement()->FirstChild("texcoord");
-				if (pTmpNode) {
-					pChildElement = pTmpNode->ToElement();
-					pChildElement->Attribute(XML_U, &dValue);		point.x = (float)dValue;
-					pChildElement->Attribute(XML_V, &dValue);		point.y = (float)dValue;
-					m_TexList.PUSH(point);
-				}
-			}
-		}
-
-		//texture_coords
-		else if (pVertexbuffer->Attribute("texture_coords")) {
-			for (pSubChild = pVertexbuffer->FirstChild(); pSubChild; pSubChild = pSubChild->NextSibling()) {
-				pChildElement = pSubChild->ToElement()->FirstChild("texcoord")->ToElement();
-				pChildElement->Attribute(XML_U, &dValue);		point.x = (float)dValue;
-				pChildElement->Attribute(XML_V, &dValue);		point.y = (float)dValue;
-				m_TexList.PUSH(point);
-			}
-		}
-	}
-
-	if (nVertex != m_PosList.size()
-	||  nVertex != m_NorList.size()
-	||  nVertex != m_TexList.size()) {
-		return false;
 	}
 	return true;
 }
 
-bool CSkeleton::LoadBoneAssignments(TiXmlElement* pBoneAssignments) {
-	TiXmlNode*		pChild;
-	TiXmlElement*	pChildElement;
-	double			dValue;
-	int				nVID;
-	int				nBID;
-	for (pChild = pBoneAssignments->FirstChild(); pChild != 0; pChild = pChild->NextSibling()) {
-		pChildElement = pChild->ToElement();
-		pChildElement->Attribute("vertexindex", &nVID);
-		pChildElement->Attribute("boneindex", &nBID);
-		pChildElement->Attribute("weight", &dValue);
-		if (dValue > CSubMesh::s_fSkinMin) {
-			m_SkinAssign.Insert(nVID, nBID, (float)dValue);
+const char* CSkeletonLoader::LoadAction(tinyxml2::XMLElement* pXml, CSkeleton* pSkeleton, CAction* pAction) {
+	CAction::CKeyList KeyFrameList;
+
+	// animation
+	const char* szName = pXml->Attribute("name");
+    if (!szName) {
+        XELOG("parse skeleton no find action name error");
+        return NULL;
+    }
+	float len = pXml->FloatAttribute("length");
+    int nTime = CTimer::Time2Frame(len);
+    pAction->Init(nTime);
+
+	// track
+    tinyxml2::XMLElement* pTrack = pXml->FirstChildElement("tracks")->FirstChildElement();
+	for (; pTrack; pTrack = pTrack->NextSiblingElement()) {
+		int nID = pSkeleton->GetBoneID(pTrack->Attribute("bone"));
+		KeyFrameList.clear();
+
+		// keyframe
+        tinyxml2::XMLElement* pKeyFrameXml = pTrack->FirstChildElement("keyframes")->FirstChildElement();
+		for (; pKeyFrameXml; pKeyFrameXml = pKeyFrameXml->NextSiblingElement()) {
+			CAction::CKeyFrame* pKeyFrame = XENEW(CAction::CKeyFrame);
+			float time = pKeyFrameXml->FloatAttribute("time");
+
+			tinyxml2::XMLElement* pTranslate = pKeyFrameXml->FirstChildElement("translate");
+
+			pKeyFrame->m_nTime = CTimer::Time2Frame(time);
+			pKeyFrame->m_Pos.x = pTranslate->FloatAttribute("x");
+			pKeyFrame->m_Pos.y = pTranslate->FloatAttribute("y");
+			pKeyFrame->m_Pos.z = pTranslate->FloatAttribute("z");
+
+			tinyxml2::XMLElement* pTmpElement = pKeyFrameXml->FirstChildElement("rotate");
+			float angle = pTmpElement->FloatAttribute("angle");
+
+			pTmpElement = pTmpElement->FirstChildElement("axis");
+			float x = pTmpElement->FloatAttribute("x");
+			float y = pTmpElement->FloatAttribute("y");
+			float z = pTmpElement->FloatAttribute("z");
+
+			pKeyFrame->m_Rot.FromAngleAxis(angle, x, y, z);
+			KeyFrameList.XEPUSH(pKeyFrame);
 		}
+
+		pAction->Insert(nID, KeyFrameList);
 	}
-	return true;
+	return szName;
 }
 
 }

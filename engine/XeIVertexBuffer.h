@@ -18,8 +18,9 @@ public:
 
 	virtual void Render() = 0;
 	
-    virtual bool SetCount(int nVertexCount, int nIndexCount) = 0;
+    virtual bool SetVertexCount(int nVertexCount) = 0;
 	virtual int GetVertexCount() = 0;
+    virtual bool SetIndexCount(int nIndexCount) = 0;
 	virtual int GetIndexCount() = 0;
 
 	virtual bool Lock(float*& pVertexs, float*& pTexCoords, float*& pNormals, unsigned int*& pIndexs) = 0;

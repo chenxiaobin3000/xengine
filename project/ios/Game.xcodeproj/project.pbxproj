@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5109CE4E1BF1945A00E7EDF3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */; };
+		5116E18C1CE97D9A0050D78F /* XeFaceIndex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5116E1881CE97D9A0050D78F /* XeFaceIndex.cpp */; };
+		5116E18D1CE97D9A0050D78F /* XeSkeletonLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5116E18A1CE97D9A0050D78F /* XeSkeletonLoader.cpp */; };
+		5136ACEC1CAE452400780851 /* XeSkinRenderObjectLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5136ACEA1CAE452300780851 /* XeSkinRenderObjectLoader.cpp */; };
+		5136ACEF1CAE577400780851 /* XeRenderObjectLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5136ACED1CAE577400780851 /* XeRenderObjectLoader.cpp */; };
 		5152939B1C2C45A9009CE374 /* XeMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 515293991C2C45A9009CE374 /* XeMath.cpp */; };
 		517013DE1BD0F41D007147E7 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 517013DD1BD0F41D007147E7 /* libfreetype.a */; };
 		517013E21BD0F4A5007147E7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 517013E01BD0F4A5007147E7 /* test.cpp */; };
@@ -208,6 +212,14 @@
 /* Begin PBXFileReference section */
 		5109CE4D1BF1945A00E7EDF3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		510E53201C0DB3E600C3B58C /* XeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeImage.h; path = ../../engine/XeImage.h; sourceTree = "<group>"; };
+		5116E1881CE97D9A0050D78F /* XeFaceIndex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeFaceIndex.cpp; path = ../../engine/XeFaceIndex.cpp; sourceTree = "<group>"; };
+		5116E1891CE97D9A0050D78F /* XeFaceIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeFaceIndex.h; path = ../../engine/XeFaceIndex.h; sourceTree = "<group>"; };
+		5116E18A1CE97D9A0050D78F /* XeSkeletonLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeSkeletonLoader.cpp; path = ../../engine/XeSkeletonLoader.cpp; sourceTree = "<group>"; };
+		5116E18B1CE97D9A0050D78F /* XeSkeletonLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeSkeletonLoader.h; path = ../../engine/XeSkeletonLoader.h; sourceTree = "<group>"; };
+		5136ACEA1CAE452300780851 /* XeSkinRenderObjectLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeSkinRenderObjectLoader.cpp; path = ../../engine/XeSkinRenderObjectLoader.cpp; sourceTree = "<group>"; };
+		5136ACEB1CAE452300780851 /* XeSkinRenderObjectLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeSkinRenderObjectLoader.h; path = ../../engine/XeSkinRenderObjectLoader.h; sourceTree = "<group>"; };
+		5136ACED1CAE577400780851 /* XeRenderObjectLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeRenderObjectLoader.cpp; path = ../../engine/XeRenderObjectLoader.cpp; sourceTree = "<group>"; };
+		5136ACEE1CAE577400780851 /* XeRenderObjectLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeRenderObjectLoader.h; path = ../../engine/XeRenderObjectLoader.h; sourceTree = "<group>"; };
 		515293991C2C45A9009CE374 /* XeMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XeMath.cpp; path = ../../engine/XeMath.cpp; sourceTree = "<group>"; };
 		5152939A1C2C45A9009CE374 /* XeMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeMath.h; path = ../../engine/XeMath.h; sourceTree = "<group>"; };
 		516F4B031C0568C20046DCAD /* XeIRenderEnv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XeIRenderEnv.h; path = ../../engine/XeIRenderEnv.h; sourceTree = "<group>"; };
@@ -1064,6 +1076,8 @@
 				518FF2721BE8F3940050E90A /* XeDefine.h */,
 				51EB37831BFC21B40004BB29 /* XeEngine.cpp */,
 				518FF2731BE8F3940050E90A /* XeEngine.h */,
+				5116E1881CE97D9A0050D78F /* XeFaceIndex.cpp */,
+				5116E1891CE97D9A0050D78F /* XeFaceIndex.h */,
 				518FA8DB1BFF1CDC0053CC08 /* XeFile.cpp */,
 				518FA8DC1BFF1CDC0053CC08 /* XeFile.h */,
 				518FF2741BE8F3940050E90A /* XeGC.h */,
@@ -1109,16 +1123,22 @@
 				518FF28D1BE8F3940050E90A /* XeRectangle.h */,
 				518FA8DE1BFF1CDC0053CC08 /* XeRenderObject.cpp */,
 				518FA8DF1BFF1CDC0053CC08 /* XeRenderObject.h */,
+				5136ACED1CAE577400780851 /* XeRenderObjectLoader.cpp */,
+				5136ACEE1CAE577400780851 /* XeRenderObjectLoader.h */,
 				51F30B661C38E5C900407A46 /* XeRenderScene.cpp */,
 				518AA8C71BFDDD47004241D3 /* XeRenderScene.h */,
 				518AA8C81BFDDD47004241D3 /* XeRenderUI.h */,
 				518FF28F1BE8F3940050E90A /* XeSingleton.h */,
 				51F527551C7AB3FB00EF39D6 /* XeSkeleton.cpp */,
 				51F527561C7AB3FB00EF39D6 /* XeSkeleton.h */,
+				5116E18A1CE97D9A0050D78F /* XeSkeletonLoader.cpp */,
+				5116E18B1CE97D9A0050D78F /* XeSkeletonLoader.h */,
 				51FAF5AF1CA8CEDA008B9DE8 /* XeSkinAssign.cpp */,
 				51FAF5B01CA8CEDA008B9DE8 /* XeSkinAssign.h */,
 				51FAF5A61CA8CAC7008B9DE8 /* XeSkinRenderObject.cpp */,
 				51FAF5A71CA8CAC7008B9DE8 /* XeSkinRenderObject.h */,
+				5136ACEA1CAE452300780851 /* XeSkinRenderObjectLoader.cpp */,
+				5136ACEB1CAE452300780851 /* XeSkinRenderObjectLoader.h */,
 				51F871281C0C01F2008EDAAD /* XeTechnique.cpp */,
 				518FF2901BE8F3940050E90A /* XeTechnique.h */,
 				51F8712B1C0C01F2008EDAAD /* XeTexture.cpp */,
@@ -1510,6 +1530,7 @@
 				51AF94E41C572412003266A3 /* MyGUI_SharedLayer.cpp in Sources */,
 				51F30B671C38E5C900407A46 /* XeRenderScene.cpp in Sources */,
 				518FF3181BE910990050E90A /* lobject.c in Sources */,
+				5116E18D1CE97D9A0050D78F /* XeSkeletonLoader.cpp in Sources */,
 				518FF2A41BE8F3940050E90A /* XeRay.cpp in Sources */,
 				518FF2AA1BE8F3940050E90A /* XeVertexBuffer.cpp in Sources */,
 				518FF2A91BE8F3940050E90A /* XeVertex.cpp in Sources */,
@@ -1548,6 +1569,7 @@
 				518FF3191BE910990050E90A /* lopcodes.c in Sources */,
 				518FF3051BE910990050E90A /* lapi.c in Sources */,
 				51AF94BB1C572412003266A3 /* MyGUI_Gui.cpp in Sources */,
+				5136ACEF1CAE577400780851 /* XeRenderObjectLoader.cpp in Sources */,
 				518FA8E11BFF1CDC0053CC08 /* XeCgParam.cpp in Sources */,
 				51EDBC871C3CF7BD0044F860 /* MyVertexBuffer.cpp in Sources */,
 				518FF31C1BE910990050E90A /* lstate.c in Sources */,
@@ -1586,6 +1608,7 @@
 				51AF94AE1C572412003266A3 /* MyGUI_DataManager.cpp in Sources */,
 				51AF94A61C572412003266A3 /* MyGUI_ConsoleLogListener.cpp in Sources */,
 				517013E21BD0F4A5007147E7 /* test.cpp in Sources */,
+				5116E18C1CE97D9A0050D78F /* XeFaceIndex.cpp in Sources */,
 				51EAE01A1C0EF25F0034DF1D /* XeZipUtils.cpp in Sources */,
 				51AF94E71C572412003266A3 /* MyGUI_SkinItem.cpp in Sources */,
 				51FAF5AD1CA8CAC7008B9DE8 /* XeSkinRenderObject.cpp in Sources */,
@@ -1636,6 +1659,7 @@
 				51F527581C7AB3FB00EF39D6 /* XeBone.cpp in Sources */,
 				518FF2A11BE8F3940050E90A /* XePoint.cpp in Sources */,
 				51AF94E81C572412003266A3 /* MyGUI_SkinManager.cpp in Sources */,
+				5136ACEC1CAE452400780851 /* XeSkinRenderObjectLoader.cpp in Sources */,
 				51AF94B81C572412003266A3 /* MyGUI_FileLogListener.cpp in Sources */,
 				518FF2A71BE8F3940050E90A /* XeTriangle.cpp in Sources */,
 				518FF30F1BE910990050E90A /* ldump.c in Sources */,

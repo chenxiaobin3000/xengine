@@ -8,6 +8,7 @@
 #define _XESKELETONLOADER_H_
 
 #include "XeSkeleton.h"
+#include "XeAction.h"
 
 namespace XE {
 
@@ -22,11 +23,11 @@ public:
 private:
 	static bool LoadXml(const char* szPath);
 
-	static bool LoadMesh(TiXmlNode* pMeshes);
+    static bool LoadSkeleton(tinyxml2::XMLElement* pRoot, CSkeleton* pSkeleton);
 
-	static bool LoadSharedGeometry(TiXmlElement* pGeometry);
+    static bool LoadActions(tinyxml2::XMLElement* pActions, CSkeleton* pSkeleton);
 
-	static bool LoadBoneAssignments(TiXmlElement* pBoneAssignments);
+	static const char* LoadAction(tinyxml2::XMLElement* pXml, CSkeleton* pSkeleton, CAction* pAction);
 };
 
 }

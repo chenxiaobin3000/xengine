@@ -14,9 +14,12 @@ CMaterialLoader::~CMaterialLoader() {
 }
 
 CMaterial* CMaterialLoader::Load(const char* szName) {
+    std::string str = "material/";
+    str += szName;
+    
 	byte* buffer = NULL;
 	unsigned int size = 0;
-	if (!CXFile::ReadText(szName, buffer, size)) {
+	if (!CXFile::ReadText(str.c_str(), buffer, size)) {
         XELOG("material file error: %s", szName);
 		return NULL;
 	}
@@ -29,7 +32,7 @@ CMaterial* CMaterialLoader::Load(const char* szName) {
 		return NULL;
 	}
     XEDELETE(buffer);
-    
+
     for (int i=0; i<root.size(); ++i) {
         Json::Value& value = root[i];
         std::string type = value["type"].asString();
@@ -140,9 +143,6 @@ CPass* CMaterialLoader::ParsePass(Json::Value& json, Json::Value& root) {
     Json::Value& specularJson = json["specular"];
     Json::Value& emissiveJson = json["emissive"];
     Json::Value& textureUnitJson = json["texture_unit"];
-    const char* texture = textureUnitJson["texture"].asCString();
-    std::string filter_mode = textureUnitJson["filter_mode"].asString();
-    std::string address_mode = textureUnitJson["address_mode"].asString();
     
     // 创建颜色
     CColorF diffuse = CColorF(diffuseJson[0].asFloat(),
@@ -166,27 +166,33 @@ CPass* CMaterialLoader::ParsePass(Json::Value& json, Json::Value& root) {
                                emissiveJson[3].asFloat());
     
     // 创建纹理
-    CTexture* pTexture = XENEW(CTexture);
-    if (!pTexture) {
-        return NULL;
-    }
-    
-    if (filter_mode == "nearest") {
-        pTexture->SetFilter(ITexture::E_Nearest);
-    } else if (filter_mode == "linear") {
-        pTexture->SetFilter(ITexture::E_Linear);
-    }
-    
-    if (address_mode == "repeat") {
-        pTexture->SetAddress(ITexture::E_Repeat);
-    } else if (address_mode == "clamp") {
-        pTexture->SetAddress(ITexture::E_Clamp);
-    }
-    
-    if (!pTexture->Load(texture)) {
-        XELOG("material parse pass load texture error: %s", texture);
-        XEDELETE(pTexture);
-        return NULL;
+    CTexture* pTexture = NULL;
+    if (!textureUnitJson.isNull()) {
+        const char* texture = textureUnitJson["texture"].asCString();
+        std::string filter_mode = textureUnitJson["filter_mode"].asString();
+        std::string address_mode = textureUnitJson["address_mode"].asString();
+        pTexture = XENEW(CTexture);
+        if (!pTexture) {
+            return NULL;
+        }
+        
+        if (filter_mode == "nearest") {
+            pTexture->SetFilter(ITexture::E_Nearest);
+        } else if (filter_mode == "linear") {
+            pTexture->SetFilter(ITexture::E_Linear);
+        }
+        
+        if (address_mode == "repeat") {
+            pTexture->SetAddress(ITexture::E_Repeat);
+        } else if (address_mode == "clamp") {
+            pTexture->SetAddress(ITexture::E_Clamp);
+        }
+        
+        if (!pTexture->Load(texture)) {
+            XELOG("material parse pass load texture error: %s", texture);
+            XEDELETE(pTexture);
+            return NULL;
+        }
     }
     
     // 创建program

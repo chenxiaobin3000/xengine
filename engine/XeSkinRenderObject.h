@@ -8,6 +8,7 @@
 #define _XESKINRENDEROBJECT_H_
 
 #include "XeRenderObject.h"
+#include "XeSkeleton.h"
 #include "XeSkinAssign.h"
 
 namespace XE {
@@ -18,8 +19,13 @@ public:
 	CSkinRenderObject();
 	virtual ~CSkinRenderObject();
 
+    void SetSkeleton(CSkeleton* pSkeleton);
+
+    CSkinAssign& GetSkinAssign();
+    
 private:
-	CSkinAssignList				m_pSkinAssignList;		// 蒙皮信息
+    CSkeleton*					m_pSkeleton;			// 骨骼信息
+	CSkinAssign					m_SkinAssign;			// 蒙皮信息
 	CMatrix*					m_pMatrixList;			// 骨骼变换阵
 };
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _STDAFX_H_
+#define _STDAFX_H_
 
 // 平台头文件
 #include <OpenGLES/ES2/gl.h>
@@ -53,3 +54,5 @@ extern "C" {
 // 
 #include "XeDefine.h"
 #include "XeLog.h"
+
+#endif //_STDAFX_H_

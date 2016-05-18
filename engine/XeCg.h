@@ -27,7 +27,7 @@ public:
 
 	virtual void OnComplete(GLuint nProgramID);
 		
-	bool Read(ECgType eType, const char* szPath);
+	bool Read(ECgType eType, const char* szName);
 
 	void Reset();
 

@@ -14,6 +14,11 @@ CSkeleton::~CSkeleton() {
 	delete[] m_pMatrixList;
 }
 
+void CSkeleton::InitPose() {
+    m_pRootBone->Derived();
+    m_pRootBone->BindPose();
+}
+
 bool CSkeleton::SetPose(const char* szAction, int nFrame) {
 	auto ite  = m_ActionMap.find(szAction);
 	if (m_ActionMap.end() == ite) {
@@ -35,6 +40,22 @@ bool CSkeleton::SetPose(const char* szAction, int nFrame) {
 	return true;
 }
 
+void CSkeleton::SetRootBone(CBone* pRoot) {
+    m_pRootBone = pRoot;
+}
+    
+void CSkeleton::AddBone(const char* szName, CBone* pBone) {
+	m_BoneMap.XEINSERT(BoneMapValue(szName, pBone));
+}
+
+void CSkeleton::AddAction(const char* szAction, CAction* pAction) {
+	m_ActionMap.XEINSERT(ActionMapValue(szAction, pAction));
+}
+
+CSkeleton::BoneMap& CSkeleton::GetBoneMap() {
+    return m_BoneMap;
+}
+  
 CMatrix* CSkeleton::GetMatrixList() const {
 	return m_pMatrixList;
 }

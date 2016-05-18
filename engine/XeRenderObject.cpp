@@ -15,6 +15,7 @@ const CVertex CRenderObject::s_DefaultDown      ( 0.0f, -1.0f,  0.0f);
 
 CRenderObject::CRenderObject() : m_bVisible(false),
 								 m_bVisibleForShadow(false),
+								 m_pVertexBuffer(NULL),
 								 m_pMaterial(NULL),
 								 m_pTexture(NULL),
 								 m_LocalForward(s_DefaultForward),
@@ -24,7 +25,7 @@ CRenderObject::CRenderObject() : m_bVisible(false),
 }
 
 CRenderObject::~CRenderObject() {
-	FreeList<CVertexBuffer>(m_pVerBufferList);
+	XEDELETE(m_pVertexBuffer);
     XEDELETE(m_pMaterial);
     XEDELETE(m_pTexture);
 }
@@ -36,10 +37,8 @@ void CRenderObject::Render(CCamera* camera) {
 }
 
 void CRenderObject::Draw() {
-	auto ite = m_pVerBufferList.begin();
-	auto end = m_pVerBufferList.end();
-	for (; end!=ite; ++ite) {
-		(*ite)->Render();
+	if (m_pVertexBuffer) {
+		m_pVertexBuffer->Render();
 	}
 }
 	
@@ -77,6 +76,10 @@ void CRenderObject::SetTexture(CTexture* pTexture) {
 
 CTexture* CRenderObject::GetTexture() {
     return m_pTexture;
+}
+
+void CRenderObject::SetVertexBuffer(CVertexBuffer* pVertexBuffer) {
+	m_pVertexBuffer = pVertexBuffer;
 }
 
 void CRenderObject::SetPosition(const CVertex& v) {

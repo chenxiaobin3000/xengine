@@ -30,15 +30,18 @@ void CCg::OnComplete(GLuint nProgramID) {
 	}
 }
 		
-bool CCg::Read(ECgType eType, const char* szPath) {
+bool CCg::Read(ECgType eType, const char* szName) {
+    std::string str = "glsl/";
+    str += szName;
+    
 	bool bRet = false;
 	switch (eType) {
 	case E_CgVertex:
-		bRet = Init(GL_VERTEX_SHADER, szPath);
+		bRet = Init(GL_VERTEX_SHADER, str.c_str());
 		break;
 
 	case E_CgFragment:
-		bRet = Init(GL_FRAGMENT_SHADER, szPath);
+		bRet = Init(GL_FRAGMENT_SHADER, str.c_str());
 		break;
 
 	default:

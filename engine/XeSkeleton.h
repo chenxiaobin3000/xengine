@@ -15,7 +15,7 @@ namespace XE {
 
 class CSkeleton
 {
-private:
+public:
 	struct SParam {
 		CAction					pAction;
 		int						nFrame;
@@ -31,12 +31,22 @@ public:
 	CSkeleton();
 	virtual ~CSkeleton();
 	
+    void InitPose();
+    
 	bool SetPose(const char* szAction, int nFrame);
+
+    void SetRootBone(CBone* pRoot);
+
+    void AddBone(const char* szName, CBone* pBone);
+
+    void AddAction(const char* szAction, CAction* pAction);
+
+    BoneMap& GetBoneMap();
 
 	CMatrix* GetMatrixList() const;
 
 	int GetBoneID(const char* szName) const;
-	
+
 private:
 	// 应用轨迹
 	static void ApplyTrack(CBone* pBone, void* pParam);
