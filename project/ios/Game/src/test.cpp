@@ -26,7 +26,6 @@ using namespace XE;
 static int s_width = 0;
 static int s_height = 0;
 
-static CMaterial* s_pMaterial;
 static std::vector<CRenderObject*> s_objList;
 static CCamera* s_camera = NULL;
 static CRenderScene* s_scene = NULL;
@@ -52,13 +51,19 @@ void InitTest(int width, int height) {
     MakeCube(object2, 0.3f, 0.0f, 0.0f);
     s_objList.push_back(object2);
 
-//    CRenderObject* object3 = CRenderObjectLoader::Load("man_arm.l.mesh.xml");
-//    s_objList.push_back(object3);
+    CRenderObject* object3 = CRenderObjectLoader::Load("man_arm.l.mesh.xml");
+    object3->SetPosition(0,0,0);
+    s_objList.push_back(object3);
     
-	CVertex f(0,0,-1);
+    CRenderObject* object4 = CRenderObjectLoader::Load("man_arm.r.mesh.xml");
+    object4->SetPosition(0,0,0);
+    s_objList.push_back(object4);
+    
+	CVertex f(0,0,0);
 	CPoint s(s_width,s_height);
-	s_camera = new CCamera(f, s, 10, 500);
-    s_camera->SetPosition(0, 0, 1);
+	s_camera = new CCamera(f, s, 1, 100);
+    s_camera->SetPosition(0,2,15);
+    s_camera->Turn2Face(0,0,0, EBBT_Cylindrical);
     
     s_scene = new CRenderScene;
     
@@ -89,15 +94,16 @@ void RenderTest() {
 	}
 	
 	// -- render buffer --
-    for (int i=0; i<2; ++i) {
-        s_pMaterial->Bind(s_scene);
+    int size = s_objList.size();
+    for (int i=0; i<size; ++i) {
+        s_objList[i]->GetMaterial()->Bind(s_scene);
     
         //ite = s_objList.begin();
         //for (; end!=ite; ++ite) {
-            s_pMaterial->SetTarget(s_objList[i]);
+            s_objList[i]->GetMaterial()->SetTarget(s_objList[i]);
             s_objList[i]->Draw();
         //}
-        s_pMaterial->UnBind();
+        s_objList[i]->GetMaterial()->UnBind();
     }
     
     MyGUI::MyRenderManager* pMgr = MyGUI::MyRenderManager::getInstancePtr();
@@ -107,17 +113,53 @@ void RenderTest() {
     }
 }
 
+void MoveTest(EMoveDir dir) {
+    static float s_X = 0.0f;
+    static float s_Y = 2.0f;
+    static float s_Z = 15.0f;
+    switch (dir) {
+        case E_XP:
+            s_X += 1.0f;
+            break;
+            
+        case E_XS:
+            s_X -= 1.0f;
+            break;
+            
+        case E_YP:
+            s_Y += 1.0f;
+            break;
+            
+        case E_YS:
+            s_Y -= 1.0f;
+            break;
+            
+        case E_ZP:
+            s_Z += 1.0f;
+            break;
+            
+        case E_ZS:
+            s_Z -= 1.0f;
+            break;
+            
+        default:
+            break;
+    }
+    s_camera->SetPosition(s_X, s_Y, s_Z);
+    s_camera->Turn2Face(0,0,0, EBBT_Cylindrical);
+}
+
 void MakeCube(CRenderObject* obj, float x, float y, float z) {
     XELOG("make cube");
     float* pVertexs;
     float* pTexcoords;
     float* pNormals;
     unsigned int* pIndexs;
-    obj->m_pVertexBuffer = new CVertexBuffer;
-    obj->m_pVertexBuffer->SetVertexCount(6);
+    CVertexBuffer* pVertexBuffer = new CVertexBuffer;
+    pVertexBuffer->SetVertexCount(6);
     //obj->m_pVertexBuffer->SetIndexCount(0);
     float boxs = 0.5f;
-    if (obj->m_pVertexBuffer->Lock(pVertexs, pTexcoords, pNormals, pIndexs)) {
+    if (pVertexBuffer->Lock(pVertexs, pTexcoords, pNormals, pIndexs)) {
         pVertexs[0] = 0.0f+x; pVertexs[1] = 0.0f+y; pVertexs[2] = 0.0f+z;
         pVertexs[3] = 0.0f+x; pVertexs[4] = boxs+y; pVertexs[5] = 0.0f+z;
         pVertexs[6] = boxs+x; pVertexs[7] = 0.0f+y; pVertexs[8] = 0.0f+z;
@@ -133,13 +175,14 @@ void MakeCube(CRenderObject* obj, float x, float y, float z) {
         pTexcoords[8] = 1.0f; pTexcoords[9] = 1.0f;
         pTexcoords[10] = 1.0f; pTexcoords[11] = 0.0f;
         ZeroMemory(pNormals+9, sizeof(float)*3*3);
-        obj->m_pVertexBuffer->Unlock();
+        pVertexBuffer->Unlock();
     }
+    obj->SetVertexBuffer(pVertexBuffer);
 }
 
 void InitMaterial() {
     XELOG("init material");
-    s_pMaterial = CMaterialLoader::Load("light.material");
+    CMaterial* pMaterial = CMaterialLoader::Load("light.material");
     
     CTexture* pTexture = XENEW(CTexture);
     if (!pTexture) {
@@ -149,6 +192,8 @@ void InitMaterial() {
         return;
     }
 
+    s_objList[0]->SetMaterial(pMaterial);
+    s_objList[1]->SetMaterial(pMaterial);
     s_objList[1]->SetTexture(pTexture);
 }
 
@@ -160,11 +205,11 @@ void InitMyGUI() {
         root.at(0)->findWidget("Text")->castType<MyGUI::EditBox>()->setCaption("Sample colour picker implementation");
     }
     
-    MyGUI::EditBox* edit = MyGUI::Gui::getInstance().createWidget<MyGUI::EditBox>("EditBoxStretch", MyGUI::IntCoord(10, 80, 600, 600), MyGUI::Align::Default, "Overlapped");
-    edit->setCaption("some edit");
-    edit->setTextAlign(MyGUI::Align::Center);
-    edit->setEditMultiLine(true);
-    edit->setFontHeight(80);
+//    MyGUI::EditBox* edit = MyGUI::Gui::getInstance().createWidget<MyGUI::EditBox>("EditBoxStretch", MyGUI::IntCoord(10, 80, 600, 600), MyGUI::Align::Default, "Overlapped");
+//    edit->setCaption("some edit");
+//    edit->setTextAlign(MyGUI::Align::Center);
+//    edit->setEditMultiLine(true);
+//    edit->setFontHeight(80);
 //
 //  ------------------------------------------
 //    class ButtonDelegate {
@@ -183,9 +228,10 @@ void InitMyGUI() {
 
 void Rotate() {
 //    static float s_R = 0;
-//    s_R -= 0.01f;
+//    s_R += 0.1f;
 //    if (s_R < 0) {
 //        s_R = 1;
 //    }
-    s_camera->SetPosition(0,0,1);
+//    s_camera->SetPosition(0,2,15);
+//    s_camera->Turn2Face(0,0,0, EBBT_Cylindrical);
 }

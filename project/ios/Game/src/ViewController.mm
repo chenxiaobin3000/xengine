@@ -20,15 +20,22 @@
 static XE::CEngine* ENGINE = nil;
 
 @interface ViewController() <UITextViewDelegate> {
-    BOOL bKeyboardShow;     // 是否显示键盘
-    float fScale;           // 屏幕缩放比
+    BOOL bKeyboardShow;             // 是否显示键盘
+    float fScreenScale;             // 屏幕缩放比
+    CGPoint fPanPoint;              // 拖拽位置
+    float fPinchScale;              // 手势缩放
 }
 
 @property (strong, nonatomic) EAGLContext* context;
 @property (strong, nonatomic) UITextView* textView;
-@property (strong, nonatomic) UITapGestureRecognizer* tap;      // 点击
-@property (strong, nonatomic) UISwipeGestureRecognizer* swipe;  // 滑动
-@property (strong, nonatomic) UIPanGestureRecognizer* pan;      // 拖拽
+@property (strong, nonatomic) UITapGestureRecognizer* signleTap;        // 单击
+@property (strong, nonatomic) UITapGestureRecognizer* doubleTap;        // 双击
+@property (strong, nonatomic) UISwipeGestureRecognizer* leftSwipe;      // 左滑动
+@property (strong, nonatomic) UISwipeGestureRecognizer* rightSwipe;     // 右滑动
+@property (strong, nonatomic) UISwipeGestureRecognizer* upSwipe;        // 上滑动
+@property (strong, nonatomic) UISwipeGestureRecognizer* downSwipe;      // 下滑动
+@property (strong, nonatomic) UIPanGestureRecognizer* pan;              // 拖拽
+@property (strong, nonatomic) UIPinchGestureRecognizer* pinch;          // 捏合
 
 @end
 
@@ -37,7 +44,9 @@ static XE::CEngine* ENGINE = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    fScale = SCREEN_SCALE;
+    fScreenScale = SCREEN_SCALE;
+    fPanPoint = CGPointMake(0, 0);
+    fPinchScale = 1.0f;
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     if (!self.context) {
         NSLog(@"Failed to create ES context");
@@ -56,7 +65,7 @@ static XE::CEngine* ENGINE = nil;
     [self initTextView];
     [self initGestureRecognizer];
     
-    InitTest(SCREEN_WIDTH*fScale, SCREEN_HEIGHT*fScale);
+    InitTest(SCREEN_WIDTH*fScreenScale, SCREEN_HEIGHT*fScreenScale);
 }
 
 - (void)dealloc {
@@ -73,7 +82,7 @@ static XE::CEngine* ENGINE = nil;
     XE::CConfig::SetScreenLandscape(true);
 //    XE::CConfig::SetMouse2Touch(true);
     
-    ENGINE->Init(SCREEN_WIDTH*fScale, SCREEN_HEIGHT*fScale);
+    ENGINE->Init(SCREEN_WIDTH*fScreenScale, SCREEN_HEIGHT*fScreenScale);
 }
 
 - (void)initTextView {
@@ -97,17 +106,48 @@ static XE::CEngine* ENGINE = nil;
 }
 
 - (void)initGestureRecognizer {
-    self.tap = [[UITapGestureRecognizer alloc] init];
-    self.swipe = [[UISwipeGestureRecognizer alloc] init];
+    self.signleTap = [[UITapGestureRecognizer alloc] init];
+    self.signleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.signleTap];
+    [self.signleTap addTarget:self action:@selector(singleTapHandle:)];
+    
+    self.doubleTap = [[UITapGestureRecognizer alloc] init];
+    self.doubleTap.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:self.doubleTap];
+    [self.doubleTap addTarget:self action:@selector(doubleTapHandle:)];
+    [self.signleTap requireGestureRecognizerToFail:self.doubleTap];
+    
+//    self.leftSwipe = [[UISwipeGestureRecognizer alloc] init];
+//    self.leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+//    [self.view addGestureRecognizer:self.leftSwipe];
+//    [self.leftSwipe addTarget:self action:@selector(leftSwipeHandle:)];
+//    
+//    self.rightSwipe = [[UISwipeGestureRecognizer alloc] init];
+//    self.rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+//    [self.view addGestureRecognizer:self.rightSwipe];
+//    [self.rightSwipe addTarget:self action:@selector(rightSwipeHandle:)];
+//    
+//    self.upSwipe = [[UISwipeGestureRecognizer alloc] init];
+//    self.upSwipe.direction = UISwipeGestureRecognizerDirectionUp;
+//    [self.view addGestureRecognizer:self.upSwipe];
+//    [self.upSwipe addTarget:self action:@selector(upSwipeHandle:)];
+//    
+//    self.downSwipe = [[UISwipeGestureRecognizer alloc] init];
+//    self.downSwipe.direction = UISwipeGestureRecognizerDirectionDown;
+//    [self.view addGestureRecognizer:self.downSwipe];
+//    [self.downSwipe addTarget:self action:@selector(downSwipeHandle:)];
+    
     self.pan = [[UIPanGestureRecognizer alloc] init];
-    
-    [self.view addGestureRecognizer:self.tap];
-    [self.view addGestureRecognizer:self.swipe];
     [self.view addGestureRecognizer:self.pan];
-    
-    [self.tap addTarget:self action:@selector(tapHandle:)];
-    [self.swipe addTarget:self action:@selector(swipeHandle:)];
     [self.pan addTarget:self action:@selector(panHandle:)];
+//    [self.pan requireGestureRecognizerToFail:self.leftSwipe];
+//    [self.pan requireGestureRecognizerToFail:self.rightSwipe];
+//    [self.pan requireGestureRecognizerToFail:self.upSwipe];
+//    [self.pan requireGestureRecognizerToFail:self.downSwipe];
+    
+    self.pinch = [[UIPinchGestureRecognizer alloc] init];
+    [self.view addGestureRecognizer:self.pinch];
+    [self.pinch addTarget:self action:@selector(pinchHandle:)];
 }
 
 - (void)setIMEKeyboardState:(BOOL)show {
@@ -139,21 +179,95 @@ static XE::CEngine* ENGINE = nil;
     [self.textView setFrame:textViewRect];
 }
 
-- (void)tapHandle:(UITapGestureRecognizer *)sender {
+- (void)singleTapHandle:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:self.view];
-    MyGUI::InputManager::getInstance().injectMousePress(point.x*fScale, point.y*fScale, MyGUI::MouseButton::Left);
-    MyGUI::InputManager::getInstance().injectMouseRelease(point.x*fScale, point.y*fScale, MyGUI::MouseButton::Left);
-    NSLog(@"tap x: %.02f, y: %.02f", point.x*fScale, point.y*fScale);
+    MyGUI::InputManager::getInstance().injectMousePress(point.x*fScreenScale, point.y*fScreenScale, MyGUI::MouseButton::Left);
+    MyGUI::InputManager::getInstance().injectMouseRelease(point.x*fScreenScale, point.y*fScreenScale, MyGUI::MouseButton::Left);
+    NSLog(@"tap x: %.02f, y: %.02f", point.x*fScreenScale, point.y*fScreenScale);
 }
 
-- (void)swipeHandle:(UISwipeGestureRecognizer *)sender {
+- (void)doubleTapHandle:(UITapGestureRecognizer *)sender {
+    CGPoint point = [sender locationInView:self.view];
+    NSLog(@"tap2 x: %.02f, y: %.02f", point.x*fScreenScale, point.y*fScreenScale);
+}
+
+- (void)leftSwipeHandle:(UISwipeGestureRecognizer *)sender {
+    CGPoint point = [sender locationInView:self.view];
 //    MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
+//    MoveTest(E_XP);
+    NSLog(@"swipe left x: %.02f, y: %.02f", point.x*fScreenScale, point.y*fScreenScale);
+}
+
+- (void)rightSwipeHandle:(UISwipeGestureRecognizer *)sender {
+    CGPoint point = [sender locationInView:self.view];
+//    MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
+//    MoveTest(E_XS);
+    NSLog(@"swipe right x: %.02f, y: %.02f", point.x*fScreenScale, point.y*fScreenScale);
+}
+
+- (void)upSwipeHandle:(UISwipeGestureRecognizer *)sender {
+    CGPoint point = [sender locationInView:self.view];
+//    MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
+//    MoveTest(E_YP);
+    NSLog(@"swipe up x: %.02f, y: %.02f", point.x*fScreenScale, point.y*fScreenScale);
+}
+
+- (void)downSwipeHandle:(UISwipeGestureRecognizer *)sender {
+    CGPoint point = [sender locationInView:self.view];
+//    MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
+//    MoveTest(E_YS);
+    NSLog(@"swipe down x: %.02f, y: %.02f", point.x*fScreenScale, point.y*fScreenScale);
 }
 
 - (void)panHandle:(UIPanGestureRecognizer *)sender {
+    if (UIGestureRecognizerStateBegan == [sender state]) {
+        fPanPoint = [sender locationInView:self.view];
+        return;
+    }
+    
+    CGPoint point = [sender locationInView:self.view];
+    float x = fPanPoint.x - point.x;
+    float y = fPanPoint.y - point.y;
+    if (x > 1.0f) {
+        MoveTest(E_XP);
+    } else if (x < -1.0f) {
+        MoveTest(E_XS);
+    }
+    
+    if (y > 1.0f) {
+        MoveTest(E_YP);
+    } else if (y < -1.0f) {
+        MoveTest(E_YS);
+    }
+    fPanPoint = point;
+    
 //    MyGUI::InputManager::getInstance().injectMousePress(_absx, _absy, _id);
 //    MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
 //    MyGUI::InputManager::getInstance().injectMouseRelease(_absx, _absy, _id);
+    NSLog(@"pan x: %.02f, y: %.02f", point.x*fScreenScale, point.y*fScreenScale);
+}
+
+- (void)pinchHandle:(UIPinchGestureRecognizer *)sender {
+    if(UIGestureRecognizerStateEnded == [sender state]) {
+        fPinchScale = 1.0f;
+        return;
+    }
+    
+    float originalScale = [sender scale];
+    float scale = 1.0f - (fPinchScale - originalScale);
+
+    fPinchScale = originalScale;
+    
+    if (scale > 1.0f) {
+        MoveTest(E_ZP);
+    } else {
+        MoveTest(E_ZS);
+    }
+    
+//    MyGUI::InputManager::getInstance().injectMousePress(_absx, _absy, _id);
+//    MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
+//    MyGUI::InputManager::getInstance().injectMouseRelease(_absx, _absy, _id);
+    NSLog(@"pinch scale: %.02f", scale);
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods

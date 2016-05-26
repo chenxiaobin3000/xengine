@@ -23,14 +23,14 @@ bool CSkinRenderObjectLoader::LoadXml(const char* szPath) {
 	byte* buffer = NULL;
 	unsigned int size = 0;
 	if (!CXFile::ReadText(szPath, buffer, size)) {
-		XELOG("load skin render object error: %s\n", szPath);
+		XELOG("error: load skin render object: %s\n", szPath);
 		return false;
 	}
 
     tinyxml2::XMLDocument doc;
     tinyxml2::XMLError error = doc.Parse((const char*)buffer);
     if (error != tinyxml2::XML_SUCCESS) {
-		XELOG("parse skin render object error: %s\n", szPath);
+		XELOG("error: parse skin render object: %s\n", szPath);
 		return false;
 	}
 	tinyxml2::XMLElement* root = doc.RootElement();
@@ -54,12 +54,12 @@ bool CSkinRenderObjectLoader::LoadXml(const char* szPath) {
     // sharedgeometry
 	tinyxml2::XMLElement* pGeometry = root->FirstChildElement("sharedgeometry");
 	if (!pGeometry) {
-        XELOG("parse skin render object no find geometry error: %s", szPath);
+        XELOG("error: parse skin render object no find geometry: %s", szPath);
 		XEDELETE(pRenderObject);
         return NULL;
 	}
     if (!LoadSharedGeometry(pGeometry, pVertexBuffer)) {
-        XELOG("parse skin render object load geometry error: %s", szPath);
+        XELOG("error: parse skin render object load geometry: %s", szPath);
 		XEDELETE(pRenderObject);
         return NULL;
     }
@@ -67,12 +67,12 @@ bool CSkinRenderObjectLoader::LoadXml(const char* szPath) {
 	// mesh
     tinyxml2::XMLElement* pMesh = root->FirstChildElement("submeshes")->FirstChildElement("submesh");
     if (!pMesh) {
-        XELOG("parse skin render object no find mesh error: %s", szPath);
+        XELOG("error: parse skin render object no find mesh: %s", szPath);
         XEDELETE(pRenderObject);
         return NULL;
     }
     if (!LoadMesh(pMesh, pRenderObject, pVertexBuffer)) {
-        XELOG("parse skin render object load mesh error: %s", szPath);
+        XELOG("error: parse skin render object load mesh: %s", szPath);
         XEDELETE(pRenderObject);
         return NULL;
     }
@@ -80,18 +80,18 @@ bool CSkinRenderObjectLoader::LoadXml(const char* szPath) {
 	// skeleton
 	tinyxml2::XMLElement* pSkeletonLink = root->FirstChildElement("skeletonlink");
 	if (!pSkeletonLink) {
-        XELOG("parse skin render object no find skeleton link error: %s", szPath);
+        XELOG("error: parse skin render object no find skeleton link: %s", szPath);
         XEDELETE(pRenderObject);
         return NULL;
     }
 	const char* szSkeletonName = pSkeletonLink->Attribute("name");
     if (!szSkeletonName) {
-        XELOG("parse render object no find skeleton error");
+        XELOG("error: parse render object no find skeleton");
         return NULL;
     }
     CSkeleton* pSkeleton = CSkeletonLoader::Load(szSkeletonName);
     if (!pSkeleton) {
-        XELOG("parse render object load material error");
+        XELOG("error: parse render object load material");
         return NULL;
     }
     pRenderObject->SetSkeleton(pSkeleton);
@@ -99,12 +99,12 @@ bool CSkinRenderObjectLoader::LoadXml(const char* szPath) {
 	// boneassignments
 	tinyxml2::XMLElement* pBoneAssignments = root->FirstChildElement("boneassignments");
 	if (!pBoneAssignments) {
-        XELOG("parse skin render object no find bone error: %s", szPath);
+        XELOG("error: parse skin render object no find bone: %s", szPath);
         XEDELETE(pRenderObject);
         return NULL;
     }
     if (!LoadBoneAssignments(pBoneAssignments, pRenderObject)) {
-        XELOG("parse skin render object load bone error: %s", szPath);
+        XELOG("error: parse skin render object load bone: %s", szPath);
         XEDELETE(pRenderObject);
         return NULL;
 	}

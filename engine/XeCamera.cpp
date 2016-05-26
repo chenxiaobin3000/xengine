@@ -44,11 +44,9 @@ void CCamera::Lookat() {
 	float ymax = m_fViewNear * tanf(45.0f * PI / 360.0f);
 	float xmax = ymax * m_fScreenWidth/m_fScreenHeight;
 	if (ECPT_Perspective == m_ePerspectiveType) {
-		glhFrustum(projection, -xmax, xmax, -ymax, ymax, 
-			m_fViewNear, m_fViewFar);
+		glhFrustum(projection, -xmax, xmax, -ymax, ymax, m_fViewNear, m_fViewFar);
 	} else {
-		glhOrtho(projection, -xmax, xmax, -ymax, ymax, 
-			m_fViewNear, m_fViewFar);
+		glhOrtho(projection, -xmax, xmax, -ymax, ymax, m_fViewNear, m_fViewFar);
 	}
 
 	GLfloat modelview[16] = {1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1};
@@ -61,7 +59,7 @@ void CCamera::Lookat() {
 	TransformMatrix(modelview, &tmp);
 	TransformMatrix(projection, &m_RenderMatrix);
 	m_RenderMatrix.CrossMult(tmp);
-	m_RenderMatrix.Transpose();
+	//m_RenderMatrix.Transpose(); // ios下不需要转置
 }
 	
 void CCamera::SetPerspectiveType(ECameraPerspectiveType type) {

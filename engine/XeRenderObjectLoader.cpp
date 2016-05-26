@@ -25,20 +25,20 @@ CRenderObject* CRenderObjectLoader::LoadXml(const char* szPath) {
 	byte* buffer = NULL;
 	unsigned int size = 0;
 	if (!CXFile::ReadText(szPath, buffer, size)) {
-		XELOG("load render object error: %s", szPath);
+		XELOG("error: load render object: %s", szPath);
 		return NULL;
 	}
 
 	tinyxml2::XMLDocument doc;
     tinyxml2::XMLError error = doc.Parse((const char*)buffer);
     if (error != tinyxml2::XML_SUCCESS) {
-        XELOG("parse render object error: %d, %s", error, szPath);
+        XELOG("error: parse render object: %d, %s", error, szPath);
         return NULL;
     }
 
 	tinyxml2::XMLElement* root = doc.RootElement();
 	if (!root) {
-		XELOG("parse render object get root error: %s", szPath);
+		XELOG("error: parse render object get root: %s", szPath);
 		return NULL;
 	}
 
@@ -58,12 +58,12 @@ CRenderObject* CRenderObjectLoader::LoadXml(const char* szPath) {
     // sharedgeometry
 	tinyxml2::XMLElement* pGeometry = root->FirstChildElement("sharedgeometry");
     if (!pGeometry) {
-        XELOG("parse render object no find geometry error: %s", szPath);
+        XELOG("error: parse render object no find geometry: %s", szPath);
 		XEDELETE(pRenderObject);
         return NULL;
     }
 	if (!LoadSharedGeometry(pGeometry, pVertexBuffer)) {
-		XELOG("parse render object load geometry error: %s", szPath);
+		XELOG("error: parse render object load geometry: %s", szPath);
 		XEDELETE(pRenderObject);
         return NULL;
 	}
@@ -71,12 +71,12 @@ CRenderObject* CRenderObjectLoader::LoadXml(const char* szPath) {
     // mesh
     tinyxml2::XMLElement* pMesh = root->FirstChildElement("submeshes")->FirstChildElement("submesh");
     if (!pMesh) {
-        XELOG("parse render object no find mesh error: %s", szPath);
+        XELOG("error: parse render object no find mesh: %s", szPath);
         XEDELETE(pRenderObject);
         return NULL;
     }
     if (!LoadMesh(pMesh, pRenderObject, pVertexBuffer)) {
-        XELOG("parse render object load mesh error: %s", szPath);
+        XELOG("error: parse render object load mesh: %s", szPath);
         XEDELETE(pRenderObject);
         return NULL;
     }
@@ -89,11 +89,11 @@ bool CRenderObjectLoader::LoadSharedGeometry(tinyxml2::XMLElement* pGeometry, CV
 	int nVertex = atoi(pGeometry->Attribute("vertexcount"));
 	tinyxml2::XMLElement* pVertexBufferXml = pGeometry->FirstChildElement("vertexbuffer");
 	if (!pVertexBufferXml) {
-		XELOG("parse render object no find vertex buffer error");
+		XELOG("error: parse render object no find vertex buffer");
 		return false;
 	}
     if (!pVertexBuffer->SetVertexCount(nVertex)) {
-        XELOG("parse render object set vertex count error");
+        XELOG("error: parse render object set vertex count");
 		return false;
     }
 
@@ -102,14 +102,14 @@ bool CRenderObjectLoader::LoadSharedGeometry(tinyxml2::XMLElement* pGeometry, CV
     float* pNormals = NULL;
     unsigned int* pIndexs = NULL;
     if (!pVertexBuffer->Lock(pVertexs, pTexCoords, pNormals, pIndexs)) {
-        XELOG("parse render object lock vertex error");
+        XELOG("error: parse render object lock vertex");
 		return false;
     }    
 
 	// vertex
 	tinyxml2::XMLElement* pVertex = pVertexBufferXml->FirstChildElement("vertex");
 	if (!pVertex) {
-		XELOG("parse render object no find vertex error");
+		XELOG("error: parse render object no find vertex");
 		return false;
 	}
 
@@ -122,7 +122,7 @@ bool CRenderObjectLoader::LoadSharedGeometry(tinyxml2::XMLElement* pGeometry, CV
 			pVertexs[i*3+1] = pPosition->FloatAttribute("y");
 			pVertexs[i*3+2] = pPosition->FloatAttribute("z");
 		} else {
-       		XELOG("parse render object no find position error");
+       		XELOG("error: parse render object no find position");
             return false;
         }
 
@@ -133,7 +133,7 @@ bool CRenderObjectLoader::LoadSharedGeometry(tinyxml2::XMLElement* pGeometry, CV
 			pNormals[i*3+1] = pNormal->FloatAttribute("y");
 			pNormals[i*3+2] = pNormal->FloatAttribute("z");
 		} else {
-       		XELOG("parse render object no find normal error");
+       		XELOG("error: parse render object no find normal");
             return false;
         }
 
@@ -143,7 +143,7 @@ bool CRenderObjectLoader::LoadSharedGeometry(tinyxml2::XMLElement* pGeometry, CV
 			pTexCoords[i*2] = pTexcoord->FloatAttribute("u");
 			pTexCoords[i*2+1] = pTexcoord->FloatAttribute("v");
 		} else {
-       		XELOG("parse render object no find position error");
+       		XELOG("error: parse render object no find position");
             return false;
         }
 	}
@@ -153,17 +153,15 @@ bool CRenderObjectLoader::LoadSharedGeometry(tinyxml2::XMLElement* pGeometry, CV
 }
 
 bool CRenderObjectLoader::LoadMesh(tinyxml2::XMLElement* pMesh, CRenderObject* pRenderObject, CVertexBuffer* pVertexBuffer) {
-	bool bRet = false;
-    
     // material
     const char* szMaterial = pMesh->Attribute("material");
     if (!szMaterial) {
-        XELOG("parse render object no find material error");
+        XELOG("error: parse render object no find material");
         return false;
     }
     CMaterial* pMaterial = CMaterialLoader::Load(szMaterial);
     if (!pMaterial) {
-        XELOG("parse render object load material error");
+        XELOG("error: parse render object load material");
         return false;
     }
     pRenderObject->SetMaterial(pMaterial);
@@ -171,13 +169,13 @@ bool CRenderObjectLoader::LoadMesh(tinyxml2::XMLElement* pMesh, CRenderObject* p
     // faces
     tinyxml2::XMLElement* pFaces = pMesh->FirstChildElement("faces");
     if (!pFaces) {
-        XELOG("parse render object no find face error");
+        XELOG("error: parse render object no find face");
         return false;
     }
     int nFaces = pFaces->IntAttribute("count");
 
     if (!pVertexBuffer->SetIndexCount(nFaces)) {
-        XELOG("parse render object set index count error");
+        XELOG("error: parse render object set index count");
         return false;
     }
     
@@ -186,11 +184,15 @@ bool CRenderObjectLoader::LoadMesh(tinyxml2::XMLElement* pMesh, CRenderObject* p
     float* pNormals = NULL;
     unsigned int* pIndexs = NULL;
     if (!pVertexBuffer->Lock(pVertexs, pTexCoords, pNormals, pIndexs)) {
-        XELOG("parse render object lock index error");
+        XELOG("error: parse render object lock index");
 		return false;
     }    
 
-    tinyxml2::XMLElement* pChild = pFaces->FirstChildElement("vertex");
+    tinyxml2::XMLElement* pChild = pFaces->FirstChildElement("face");
+    if (!pChild) {
+        XELOG("error: parse render object no find index count face");
+        return false;
+    }
     for (int i=0; pChild; ++i, pChild = pChild->NextSiblingElement()) {
         pIndexs[i*3] = pChild->IntAttribute("v1");
         pIndexs[i*3+1] = pChild->IntAttribute("v2");
@@ -198,7 +200,7 @@ bool CRenderObjectLoader::LoadMesh(tinyxml2::XMLElement* pMesh, CRenderObject* p
     }
 
     //pRenderBuffer->Unlock(); 不需要解锁
-	return bRet;
+	return true;
 }
 
 }

@@ -84,8 +84,7 @@ public:
 	static const CVertex		s_DefaultUp;
 	static const CVertex		s_DefaultDown;
 
-//protected:
-public:
+protected:
 	bool						m_bVisible;				// 可视
 	bool						m_bVisibleForShadow;	// 是否生成影子
 

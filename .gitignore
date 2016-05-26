@@ -1,4 +1,4 @@
-#
+#system
 tags.sh
 TAGS
 cscope.files
@@ -23,3 +23,5 @@ project/android/captures
 #deps
 deps
 
+#res
+res/texture

@@ -21,24 +21,24 @@ bool CSkeletonLoader::LoadXml(const char* szPath) {
     byte* buffer = NULL;
 	unsigned int size = 0;
 	if (!CXFile::ReadText(szPath, buffer, size)) {
-		XELOG("load skeleton error: %s", szPath);
+		XELOG("error: load skeleton: %s", szPath);
 		return false;
 	}
 
     tinyxml2::XMLDocument doc;
     tinyxml2::XMLError error = doc.Parse((const char*)buffer);
     if (error != tinyxml2::XML_SUCCESS) {
-		XELOG("parse skeleton err: %s\n", szPath);
+		XELOG("error: parse skeleton: %s\n", szPath);
 		return false;
 	}
 
     tinyxml2::XMLElement* root = doc.RootElement();
 	if (!root) {
-        XELOG("parse skeleton get root error: %s", szPath);
+        XELOG("error: parse skeleton get root: %s", szPath);
 		return false;
 	}
 	if (0 != strcmp(root->Value(), "skeleton")) {
-        XELOG("parse skeleton find skeleton error: %s", szPath);
+        XELOG("error: parse skeleton find skeleton: %s", szPath);
 		return false;
 	}
 
@@ -48,7 +48,7 @@ bool CSkeletonLoader::LoadXml(const char* szPath) {
     }
 
 	if (!LoadSkeleton(root, pSkeleton)) {
-        XELOG("parse skeleton load skeleton error: %s", szPath);
+        XELOG("error: parse skeleton load skeleton: %s", szPath);
         XEDELETE(pSkeleton);
 		return false;
 	}
@@ -60,7 +60,7 @@ bool CSkeletonLoader::LoadSkeleton(tinyxml2::XMLElement* pRoot, CSkeleton* pSkel
 	// bones
 	tinyxml2::XMLElement* pBones = pRoot->FirstChildElement("bones");
 	if (!pBones) {
-        XELOG("parse skeleton no find bones error");
+        XELOG("error: parse skeleton no find bones");
 		return false;
 	}
 	int id = 0;
@@ -92,7 +92,7 @@ bool CSkeletonLoader::LoadSkeleton(tinyxml2::XMLElement* pRoot, CSkeleton* pSkel
 	// bonehierarchy
 	tinyxml2::XMLElement* pBonehierarchy = pRoot->FirstChildElement("bonehierarchy");
 	if (!pBonehierarchy) {
-        XELOG("parse skeleton no find bonehierarchy error");
+        XELOG("error: parse skeleton no find bonehierarchy");
 		return false;
 	}
 	size_t i = 0;
@@ -103,7 +103,7 @@ bool CSkeletonLoader::LoadSkeleton(tinyxml2::XMLElement* pRoot, CSkeleton* pSkel
 		auto iteParent = BoneMap.find(parent);
 		auto iteChild = BoneMap.find(name);
 		if (BoneMap.end() == iteChild || BoneMap.end() == iteParent) {
-            XELOG("parse skeleton no find bonehierarchy2 error");
+            XELOG("error: parse skeleton no find bonehierarchy2");
 			return false;
 		}
 		iteChild->second->m_pParent = iteParent->second;
@@ -113,7 +113,7 @@ bool CSkeletonLoader::LoadSkeleton(tinyxml2::XMLElement* pRoot, CSkeleton* pSkel
 	}
 	// 存在2根以上父节点为空的骨骼
 	if (BoneMap.size()-1 != i) {
-        XELOG("parse skeleton root bone too more error");
+        XELOG("error: parse skeleton root bone too more");
 		return false;
 	}
 	auto ite = BoneMap.begin();
@@ -128,11 +128,11 @@ bool CSkeletonLoader::LoadSkeleton(tinyxml2::XMLElement* pRoot, CSkeleton* pSkel
 	// animations
 	tinyxml2::XMLElement* pAnimations = pRoot->FirstChildElement("animations");
 	if (!pAnimations) {
-        XELOG("parse skeleton no find animations error");
+        XELOG("error: parse skeleton no find animations");
 		return false;
 	}
 	if (!LoadActions(pAnimations, pSkeleton)) {
-        XELOG("parse skeleton parse animations error");
+        XELOG("error: parse skeleton parse animations");
 		return false;
 	}
 
@@ -163,7 +163,7 @@ const char* CSkeletonLoader::LoadAction(tinyxml2::XMLElement* pXml, CSkeleton* p
 	// animation
 	const char* szName = pXml->Attribute("name");
     if (!szName) {
-        XELOG("parse skeleton no find action name error");
+        XELOG("error: parse skeleton no find action name");
         return NULL;
     }
 	float len = pXml->FloatAttribute("length");
@@ -207,3 +207,7 @@ const char* CSkeletonLoader::LoadAction(tinyxml2::XMLElement* pXml, CSkeleton* p
 }
 
 }
+
+
+
+
